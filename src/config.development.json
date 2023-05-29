@@ -1,13 +1,13 @@
 {
-  "url": "http://localhost:2368/",
+  "url": "http://localhost:2369/",
   "server": {
-    "port": 2368,
+    "port": 2369,
     "host": "127.0.0.1"
   },
   "database": {
     "client": "sqlite3",
     "connection": {
-      "filename": "/Volumes/Data 1/Indie/Spacecraft/docs/content/data/ghost-local.db"
+      "filename": "/Volumes/Data 1/Indie/Spacecraft/src/content/data/ghost-local.db"
     }
   },
   "mail": {
@@ -21,6 +21,6 @@
   },
   "process": "local",
   "paths": {
-    "contentPath": "/Volumes/Data 1/Indie/Spacecraft/docs/content"
+    "contentPath": "/Volumes/Data 1/Indie/Spacecraft/src/content"
   }
 }
