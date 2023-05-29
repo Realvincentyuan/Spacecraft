@@ -7,7 +7,7 @@
   "database": {
     "client": "sqlite3",
     "connection": {
-      "filename": "/Users/vincent.yuan/Documents/Indie_project/BulletTech/GitHub_Repo/Spacecraft/docs/content/data/ghost-local.db"
+      "filename": "/Volumes/Data 1/Indie/Spacecraft/docs/content/data/ghost-local.db"
     }
   },
   "mail": {
@@ -21,6 +21,6 @@
   },
   "process": "local",
   "paths": {
-    "contentPath": "/Users/vincent.yuan/Documents/Indie_project/BulletTech/GitHub_Repo/Spacecraft/docs/content"
+    "contentPath": "/Volumes/Data 1/Indie/Spacecraft/docs/content"
   }
 }
