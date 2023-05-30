@@ -1,8 +1,12 @@
 {{!< default}}
+<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
 
 <main class="gh-main gh-outer">
     <div class="gh-inner">
         {{#post}}
+
+        {{reading_time}}
+        
             <article class="gh-article {{post_class}}">
                 {{#if feature_image}}
                     <header class="gh-article-header gh-canvas">

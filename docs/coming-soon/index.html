@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Coming soon</title>
-    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=de33ae8c8e.css">
+    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=be82a70203.css">
 
 
     <style>
@@ -161,9 +161,9 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="e4490deb911045b1aec3b56401" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="realvincentyuan.github.io/" crossorigin="anonymous"></script>
     
     <link href="realvincentyuan.github.io/webmentions/receive/" rel="webmention">
-    <script defer src="../public/cards.min.js%3Fv=de33ae8c8e"></script>
-    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=de33ae8c8e.css">
-    <script defer src="../public/member-attribution.min.js%3Fv=de33ae8c8e"></script>
+    <script defer src="../public/cards.min.js%3Fv=be82a70203"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=be82a70203.css">
+    <script defer src="../public/member-attribution.min.js%3Fv=be82a70203"></script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
 <script>
@@ -172,7 +172,30 @@
   gtag('js', new Date());
 
   gtag('config', 'G-633EG809GP');
-</script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</script>
+
+<!-- Reading progress bar -->
+<style>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 5px; /* Progress bar height */
+  background: #c5d2d9; /* Progress bar background color */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Hide default progress bar */
+}
+
+.reading-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+  background: var(--ghost-accent-color); /* Progress bar color */
+}
+</style><style>:root {--ghost-accent-color: #FF1A75;}</style>
 </head>
 
 <body class="post-template tag-news is-head-left-logo has-classic-feed">
@@ -216,9 +239,13 @@
         </div>
     </header>
 
-    
+    <progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
 <main class="gh-main gh-outer">
     <div class="gh-inner">
+
+        1 min read
+        
             <article class="gh-article post tag-news">
                     <header class="gh-article-header gh-canvas">
                         <h1 class="gh-article-title">Coming soon</h1>
@@ -245,7 +272,7 @@
                                 <h4 class="gh-author-name">
                                     <a href="../author/vincent/index.html">Vincent Yuan</a>
                                 </h4>
-                            <time class="gh-article-date" datetime="2023-05-29">May 29, 2023</time></div>
+                            <time class="gh-article-date" datetime="2023-05-28">May 28, 2023</time></div>
                                 <a class="gh-article-tag" href="../tag/news/index.html" style="--tag-color: ">News</a>
                         </div>
                     </aside>
@@ -326,7 +353,22 @@
         </div>
     </div>
 </div>
-<script src="../assets/built/main.min.js%3Fv=de33ae8c8e"></script>
+<script src="../assets/built/main.min.js%3Fv=be82a70203"></script>
+
+  <script>
+    const progressBar = document.querySelector('.reading-progress');
+
+    function updateProgress() {
+      const totalHeight = document.body.clientHeight;
+      const windowHeight = document.documentElement.clientHeight;
+      const position = window.scrollY;
+      const progress = position / (totalHeight - windowHeight) * 100;
+      progressBar.setAttribute('value', progress);
+      requestAnimationFrame(updateProgress);
+    }
+
+    requestAnimationFrame(updateProgress);
+  </script>
 
 
 
