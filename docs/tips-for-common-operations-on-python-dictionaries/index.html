@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tips for Common Operations on Python Dictionaries</title>
+    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=9ec7b1b9f1.css">
+
+
+    <style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast was taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Spacecraft">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Tips for Common Operations on Python Dictionaries">
+    <meta property="og:description" content="1 Introduction
+
+In the previous article, we reviewed common operations on Python lists. As a commonly used data type, lists play a very important role in daily work. In this article, we will continue to talk about another commonly used data type in Python - dictionaries (Dict).
+
+Dictionaries can be">
+    <meta property="og:url" content="realvincentyuan.github.io/tips-for-common-operations-on-python-dictionaries/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2021-08-21T05:00:00.000Z">
+    <meta property="article:modified_time" content="2023-06-11T20:38:54.000Z">
+    <meta property="article:tag" content="Tech">
+    <meta property="article:tag" content="Python">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tips for Common Operations on Python Dictionaries">
+    <meta name="twitter:description" content="1 Introduction
+
+In the previous article, we reviewed common operations on Python lists. As a commonly used data type, lists play a very important role in daily work. In this article, we will continue to talk about another commonly used data type in Python - dictionaries (Dict).
+
+Dictionaries can be">
+    <meta name="twitter:url" content="realvincentyuan.github.io/tips-for-common-operations-on-python-dictionaries/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Vincent Yuan">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Tech, Python">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="1333">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Spacecraft",
+        "url": "realvincentyuan.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "realvincentyuan.github.io/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Vincent Yuan",
+        "url": "realvincentyuan.github.io/author/vincent/",
+        "sameAs": []
+    },
+    "headline": "Tips for Common Operations on Python Dictionaries",
+    "url": "realvincentyuan.github.io/tips-for-common-operations-on-python-dictionaries/",
+    "datePublished": "2021-08-21T05:00:00.000Z",
+    "dateModified": "2023-06-11T20:38:54.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 2000,
+        "height": 1333
+    },
+    "keywords": "Tech, Python",
+    "description": "1 Introduction\n\nIn the previous article, we reviewed common operations on Python lists. As a commonly used data type, lists play a very important role in daily work. In this article, we will continue to talk about another commonly used data type in Python - dictionaries (Dict).\n\nDictionaries can be defined using the dict() method or using curly braces, such as name2code &#x3D; {&#x27;Tony&#x27;:1, &#x27;Kevin&#x27;:2, &#x27;Luis&#x27;:3}. If you want to add elements, you can use the key-value assignment pattern: name2code[&#x27;Nick&#x27;]",
+    "mainEntityOfPage": "realvincentyuan.github.io/tips-for-common-operations-on-python-dictionaries/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.49">
+    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.33/umd/portal.min.js" data-i18n="false" data-ghost="realvincentyuan.github.io/" data-key="206cb569cfe36163ae0b6ed398" data-api="realvincentyuan.github.io/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="206cb569cfe36163ae0b6ed398" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="realvincentyuan.github.io/" crossorigin="anonymous"></script>
+    
+    <link href="realvincentyuan.github.io/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=9ec7b1b9f1"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=9ec7b1b9f1.css">
+    <script defer src="../public/member-attribution.min.js%3Fv=9ec7b1b9f1"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-633EG809GP');
+</script>
+
+<!-- Reading progress bar -->
+<style>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 5px; /* Progress bar height */
+  background: #c5d2d9; /* Progress bar background color */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Hide default progress bar */
+}
+
+.reading-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+  background: var(--ghost-accent-color); /* Progress bar color */
+}
+</style><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</head>
+
+<body class="post-template tag-tech tag-python is-head-left-logo has-classic-feed">
+<div class="gh-site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="../index.html">
+                            Spacecraft
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
+    <li class="nav-life"><a href="realvincentyuan.github.io/tag/life/">Life</a></li>
+    <li class="nav-about"><a href="../about/index.html">About</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="index.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    
+<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
+
+
+<main class="gh-main gh-outer">
+    <div class="gh-inner">
+            <article class="gh-article post tag-tech tag-python">
+                    <header class="gh-article-header gh-canvas">
+                        <h1 class="gh-article-title">Tips for Common Operations on Python Dictionaries</h1>
+                            <figure class="gh-article-image has-caption">
+        <img
+            srcset="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+                    https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
+                    https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                    https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
+                    https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            src="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+            alt="Tips for Common Operations on Python Dictionaries"
+        >
+            <figcaption>Photo by <a href="https://unsplash.com/@maxcodes?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Maxwell Nelson</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
+    </figure>
+                    </header>
+
+                <section class="gh-content gh-canvas">
+                    <h2 id="1-introduction">1 Introduction</h2><p>In the previous article, we reviewed <a href="https://mp.weixin.qq.com/s?__biz=MzI4Mjk3NzgxOQ%3D%3D&mid=2247484437&idx=1&sn=6d58dbd242157e216cb0e573678686d9&chksm=eb90f761dce77e7711ad25f26be3ff212d80db386a74d5902af1247e027e1108c84ec8d0fb7c&token=379425388&lang=zh_CN&ref=localhost#rd">common operations on Python lists</a>. As a commonly used data type, lists play a very important role in daily work. In this article, we will continue to talk about another commonly used data type in Python - dictionaries (Dict).</p><p>Dictionaries can be defined using the <code>dict()</code> method or using curly braces, such as <code>name2code = {'Tony':1, 'Kevin':2, 'Luis':3}</code>. If you want to add elements, you can use the key-value assignment pattern: <code>name2code['Nick'] = 0</code>. It is easy to see that, unlike lists, dictionaries do not use integers as subscripts. Let's take a look at the commonly used methods of dictionaries.</p><h2 id="2-common-dictionary-methods">2 Common Dictionary Methods</h2><h3 id="21-indexing">2.1 Indexing</h3><p>Since dictionaries are in the form of key-value pairs, you can use the key to index the value you need. For example:</p><pre><code class="language-python">print(name2code['Nick'] )
+</code></pre><p>Output:</p><pre><code class="language-python">0
+</code></pre><p>Similarly to lists, you can use the <code>in</code> operator to check whether the dictionary contains the key you want to find. It is worth noting that the implementation of the <code>in</code> operator in lists and dictionaries is different. Lists use a search algorithm, so when the list becomes longer, the search time will also become longer. But dictionaries use a hash table algorithm, so regardless of how many key-value pairs there are in the dictionary, the <code>in</code> operator takes almost the same amount of time.</p><pre><code class="language-python">print('Nick' in name2code)
+</code></pre><p>Output:</p><pre><code class="language-python">True
+</code></pre><p>If you want to see whether a value is in the dictionary, you can use the <code>values()</code> method to extract the values from the dictionary and use the <code>in</code> operator to check:</p><pre><code class="language-python">values = name2code.values()
+print(0 in values)
+</code></pre><p>Output:</p><pre><code class="language-python">True
+</code></pre><h3 id="22-deleting-elements">2.2 Deleting Elements</h3><p>The method for deleting elements from a dictionary is similar to that for a list:</p><ul><li>To clear a dictionary: <code>name2code.clear()</code>, note that the <code>clear()</code> method has no return value</li><li>Remove the key-value pair associated with the key k and return the corresponding value: <code>name2code.pop(k, [default])</code></li><li>Return the last key-value pair added and remove it: <code>name2code.popitem()</code></li></ul><h3 id="23-looping">2.3 Looping</h3><p>You can use a for loop to iterate through the keys of a dictionary. Please note that because the keys are hashable, their appearance does not follow a specific order. The following code may have a different output order on your computer (Note: Python 3.6 and later versions retain the order in which the key-value pairs were added, so the result is determined):</p><pre><code class="language-python">for i in name2code:
+    print(i, name2code[i])
+</code></pre><p>Output:</p><pre><code class="language-python">Tony 1
+Kevin 2
+Luis 3
+Nick 0
+</code></pre><p>If you want to iterate through both the key and value, you can use the <code>items()</code> method:</p><pre><code class="language-python">for k,v in name2code.items():
+    print(k,v)
+</code></pre><p>Output:</p><pre><code class="language-python">Tony 1
+Kevin 2
+Luis 3
+Nick 0
+</code></pre><h3 id="24-reverse-lookup">2.4 Reverse Lookup</h3><p>For a dictionary, the operation of using a key to find a value has been introduced above. If you want to use a value to find its associated key, then you need to perform a reverse lookup. Note that a <code>raise</code> statement is used here to throw an exception, which is used to display the value of the parameter being searched.</p><pre><code class="language-python">def reversed_lookup(d, v):
+    for i in d:
+        if d[i] == v:
+            return i
+    raise ValueError("The value being searched for is not in the dictionary")
+
+reversed_lookup(name2code,5)
+</code></pre><p>Output:</p><pre><code class="language-python">---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+&lt;ipython-input-33-832e824fe6b4&gt; in &lt;module&gt;
+----&gt; 1 reversed_lookup(name2code,5)
+
+&lt;ipython-input-32-be75152f6e58&gt; in reversed_lookup(d, v)
+      4             return i
+      5
+----&gt; 6     raise ValueError("The value being searched for is not in the dictionary")
+
+ValueError: The value being searched for is not in the dictionary
+</code></pre><h3 id="25-dictionary-comprehension">2.5 Dictionary Comprehension</h3><p>Starting from Python 2.7, list comprehension and generator expressions have also been ported to dictionaries. For example:</p><pre><code class="language-python">code2name = {code:name for name,code in name2code.items() if code &lt; 2}
+print(code2name)
+</code></pre><p>Output:</p><pre><code class="language-python">{1: 'Tony', 0: 'Nick'}
+</code></pre><h2 id="3-variants-of-dictionaries">3 Variants of Dictionaries</h2><p>In addition to <code>dict</code>, there are several other mapping types in the <code>collections</code> module of the Python standard library:</p><ul><li><code>collections.OrderedDict</code>: This type keeps the order of keys when they are added, so the iteration order of keys remains consistent. Please note that if you define an ordered dictionary and do not insert any data after that, the original key-value pairs are still unordered, just like a regular dictionary.</li><li><code>collections.ChainMap</code>: This type can hold multiple different mapping objects. When a key lookup operation is performed, these objects are searched one by one until the corresponding key is found. This is commonly used for managing dictionaries that represent different scopes and contexts.</li><li><code>collections.Counter</code>: As the name suggests, this is a counter. When a key is updated, the counter is also updated. It is commonly used to count elements in a hash table or as a multiset (a set where elements occur multiple times).</li><li><code>colllections.UserDict</code>: This class is mainly used for inheritance by users. Inheriting from this class is more convenient than inheriting from <code>dict</code> because the methods of built-in types like <code>dict</code> usually ignore user-overridden methods, causing unexpected troubles, as detailed in Chapter 12 of <a href="https://book.douban.com/subject/27028517/?ref=localhost">Fluent Python</a>.</li></ul><h2 id="4-summary">4 Summary</h2><p>The above knowledge points are commonly used in daily work. The following content also covers the summary of many years of practical experience of Python programmers. Let's review again:</p><ul><li>The keys of a dictionary must be hashable. This means that the hash value of an object remains unchanged during its lifetime, and the object must implement the <code>__hash__</code> method to support equality checks using the <code>__eq__</code> method.</li><li>Dictionaries consume a significant amount of memory. This is because dictionaries use hash tables, which must be sparse, resulting in low space utilization. If the data size is huge, it is recommended to use tuples or lists.</li><li>Key lookup in dictionaries is very efficient. As long as the dictionary can fit in memory, the speed of key lookup does not slow down with increasing data size. However, the fast speed comes at the cost of larger memory usage.</li><li>Adding new keys to a dictionary may change the order of existing keys. The specific reason depends on the implementation of the dictionary. It is recommended not to iterate and modify a dictionary simultaneously. It's better to divide it into two steps: iterate to find the content that needs to be modified and record it, then modify the original dictionary after iteration.</li></ul><p>While reviewing these knowledge points, I have gained new understanding and insights. I hope this content is helpful to you too!</p>
+                    <aside class="gh-article-meta">
+                        <div class="gh-article-meta-inner">
+                                <div class="gh-article-meta-wrapper">
+                                <h4 class="gh-author-name">
+                                    <a href="../author/vincent/index.html">Vincent Yuan</a>
+                                </h4>
+                            <time class="gh-article-date" datetime="2021-08-21">Aug 21, 2021</time></div>
+                            
+
+
+                             <a class="gh-article-tag" href="../tag/tech/index.html" style="--tag-color: ">Tech</a>
+                             <a class="gh-article-tag" href="../tag/python/index.html" style="--tag-color: ">Python</a>
+                           
+
+                        </div>
+                    </aside>
+                </section>
+
+
+                <footer class="gh-article-footer gh-canvas">
+                    <nav class="gh-navigation">
+                        <div class="gh-navigation-previous">
+                                <a class="gh-navigation-link" href="../tips-for-common-operations-on-python-lists/index.html">← Previous</a>
+                        </div>
+
+                        <div class="gh-navigation-middle"></div>
+
+                        <div class="gh-navigation-next">
+                                <a class="gh-navigation-link" href="../overview-of-snowflake-architecture/index.html">Next →</a>
+                        </div>
+                    </nav>
+                </footer>
+            </article>
+    </div>
+</main>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <nav class="gh-foot-menu">
+                <ul class="nav">
+    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-copyright">
+                    Spacecraft © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/built/main.min.js%3Fv=9ec7b1b9f1"></script>
+
+  <script>
+    const progressBar = document.querySelector('.reading-progress');
+
+    function updateProgress() {
+      const totalHeight = document.body.clientHeight;
+      const windowHeight = document.documentElement.clientHeight;
+      const position = window.scrollY;
+      const progress = position / (totalHeight - windowHeight) * 100;
+      progressBar.setAttribute('value', progress);
+      requestAnimationFrame(updateProgress);
+    }
+
+    requestAnimationFrame(updateProgress);
+  </script>
+
+
+
+
+</body>
+
+</html>
