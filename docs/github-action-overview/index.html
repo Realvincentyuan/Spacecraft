@@ -28,7 +28,7 @@
         document.documentElement.className = `has-${textColor}-text`;
     </script>
 
-    <link rel="canonical" href="index.html">
+    <link rel="canonical" href="../github-action-overview.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="Spacecraft">
@@ -44,7 +44,7 @@ We have introduced many cool features of GitHub before. To better understand the
     <meta property="og:url" content="realvincentyuan.github.io/github-action-overview/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta property="article:published_time" content="2021-11-13T06:00:00.000Z">
-    <meta property="article:modified_time" content="2023-06-11T21:15:52.000Z">
+    <meta property="article:modified_time" content="2023-06-11T21:27:34.000Z">
     <meta property="article:tag" content="Tech">
     <meta property="article:tag" content="GitHub">
     
@@ -92,7 +92,7 @@ We have introduced many cool features of GitHub before. To better understand the
     "headline": "GitHub Action Overview",
     "url": "realvincentyuan.github.io/github-action-overview/",
     "datePublished": "2021-11-13T06:00:00.000Z",
-    "dateModified": "2023-06-11T21:15:52.000Z",
+    "dateModified": "2023-06-11T21:27:34.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&ixlib=rb-4.0.3&q=80&w=2000",
@@ -245,8 +245,8 @@ We have introduced many cool features of GitHub before. To better understand the
 </svg>
 </button>
                     <div class="gh-head-members">
-                                <a class="gh-head-link" href="index.html#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-head-btn gh-btn gh-primary-btn" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                                <a class="gh-head-link" href="../github-action-overview.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="../github-action-overview.html#/portal/signup" data-portal="signup">Subscribe</a>
                     </div>
             </div>
         </div>
@@ -279,7 +279,7 @@ We have introduced many cool features of GitHub before. To better understand the
                     </header>
 
                 <section class="gh-content gh-canvas">
-                    <h2 id="1-introduction">1 Introduction</h2><p>We have introduced many cool features of GitHub before. To better understand the content of this article, it is recommended to review the basic GitHub operation knowledge in the previous articles:</p><ul><li><a href="https://mp.weixin.qq.com/s?__biz=MzI4Mjk3NzgxOQ%3D%3D&mid=2247484191&idx=1&sn=73a2aae2e46b2a836729c636b937f2ef&chksm=eb90f06bdce7797d71dee815e283559f05d0db8dcab9c6430c856a8da05aa79617a9c0eee39f&token=150554771&lang=zh_CN&ref=localhost#rdhow-to-use-github-without-writing-a-single-line-of-code">Teach You How to Use GitHub without Writing Any Code</a></li><li><a href="https://mp.weixin.qq.com/s?__biz=MzI4Mjk3NzgxOQ%3D%3D&mid=2247484312&idx=1&sn=420520ba2de61eedb13569b8cb03b0c6&chksm=eb90f0ecdce779fae14099e90400637b801dd4689372c466c033c36ce0c9dd55e9ec8deb10bb&token=2142567738&lang=zh_CN&ref=localhost#rd">Git Commonly Used Commands</a></li><li><a href="realvincentyuan.github.io/github-action-overview/creating-a-beautiful-online-resume-using-github">Create a Beautiful Online Resume Using GitHub</a></li></ul><p>In this article, we will introduce how to use GitHub Actions to simplify repeated mechanical tasks and greatly improve efficiency and save time.</p><h2 id="2-github-action-overview">2 GitHub Action Overview</h2><p>GitHub Action can automatically execute custom scripts to complete preset work. Users need to set the triggering conditions (events) and the commands to be executed when the conditions are met. GitHub can automatically complete the preset operations, for example, when a update is merged to the master/main branch, automatically execute the test script to check for errors. The following figure shows the components when GitHub Action is executed:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/overview-actions-design.png" class="kg-image" alt loading="lazy"><figcaption>GitHub Action components, source: GitHub</figcaption></figure><p>When an event occurs, GitHub automatically triggers the workflow. Then the program executes step by step.</p><h2 id="3-create-action">3 Create Action</h2><p>GitHub Action uses <a href="https://yaml.org/?ref=localhost">YAML</a> to define the triggered events, work, and steps. The workflow file needs to be stored in a specific location in the code repository: <code>.github/workflows</code>.</p><p>Take the continuous integration workflow of the <a href="https://github.com/BulletTech/BulletTech/blob/main/.github/workflows/ci.yml?ref=localhost">BulletTech blog</a> as an example:</p><pre><code class="language-yml">name: ci
+                    <h2 id="1-introduction">1 Introduction</h2><p>We have introduced many cool features of GitHub before. To better understand the content of this article, it is recommended to review the basic GitHub operation knowledge in the previous articles:</p><ul><li><a href="../how-to-use-github-without-writing-a-single-line-of-code.html">Teach You How to Use GitHub without Writing Any Code</a></li><li><a href="../a-list-of-common-git-commands.html">Git Commonly Used Commands</a></li><li><a href="../creating-a-beautiful-online-resume-using-github.html">Create a Beautiful Online Resume Using GitHub</a></li></ul><p>In this article, we will introduce how to use GitHub Actions to simplify repeated mechanical tasks and greatly improve efficiency and save time.</p><h2 id="2-github-action-overview">2 GitHub Action Overview</h2><p>GitHub Action can automatically execute custom scripts to complete preset work. Users need to set the triggering conditions (events) and the commands to be executed when the conditions are met. GitHub can automatically complete the preset operations, for example, when a update is merged to the master/main branch, automatically execute the test script to check for errors. The following figure shows the components when GitHub Action is executed:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/overview-actions-design.png" class="kg-image" alt loading="lazy"><figcaption>GitHub Action components, source: GitHub</figcaption></figure><p>When an event occurs, GitHub automatically triggers the workflow. Then the program executes step by step.</p><h2 id="3-create-action">3 Create Action</h2><p>GitHub Action uses <a href="https://yaml.org/?ref=localhost">YAML</a> to define the triggered events, work, and steps. The workflow file needs to be stored in a specific location in the code repository: <code>.github/workflows</code>.</p><p>Take the continuous integration workflow of the <a href="https://github.com/BulletTech/BulletTech/blob/main/.github/workflows/ci.yml?ref=localhost">BulletTech blog</a> as an example:</p><pre><code class="language-yml">name: ci
 on:
   push:
     branches:
@@ -328,7 +328,7 @@ jobs:
                 <footer class="gh-article-footer gh-canvas">
                     <nav class="gh-navigation">
                         <div class="gh-navigation-previous">
-                                <a class="gh-navigation-link" href="../creating-a-beautiful-online-resume-using-github/index.html">← Previous</a>
+                                <a class="gh-navigation-link" href="../creating-a-beautiful-online-resume-using-github.html">← Previous</a>
                         </div>
 
                         <div class="gh-navigation-middle"></div>
@@ -346,7 +346,7 @@ jobs:
         <div class="gh-foot-inner gh-inner">
             <nav class="gh-foot-menu">
                 <ul class="nav">
-    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+    <li class="nav-sign-up"><a href="../github-action-overview.html#/portal/">Sign up</a></li>
 </ul>
 
             </nav>

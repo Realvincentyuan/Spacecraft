@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>How to Use GitHub without Writing a Single Line of Code</title>
-    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=9ec7b1b9f1.css">
+    <title>GitHub Action Overview</title>
+    <link rel="stylesheet" href="assets/built/screen.css%3Fv=9ec7b1b9f1.css">
 
 
     <style>
@@ -28,29 +28,37 @@
         document.documentElement.className = `has-${textColor}-text`;
     </script>
 
-    <link rel="canonical" href="index.html">
+    <link rel="canonical" href="github-action-overview.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="Spacecraft">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="How to Use GitHub without Writing a Single Line of Code">
-    <meta property="og:description" content="1 What is GitHub?
+    <meta property="og:title" content="GitHub Action Overview">
+    <meta property="og:description" content="1 Introduction
 
-Many people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article">
-    <meta property="og:url" content="realvincentyuan.github.io/how-to-use-github-without-writing-a-single-line-of-code/">
+We have introduced many cool features of GitHub before. To better understand the content of this article, it is recommended to review the basic GitHub operation knowledge in the previous articles:
+
+ * Teach You How to Use GitHub without Writing Any Code
+ * Git Commonly Used Commands
+ * Create a Beautiful">
+    <meta property="og:url" content="realvincentyuan.github.io/github-action-overview/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
-    <meta property="article:published_time" content="2021-06-23T05:00:00.000Z">
-    <meta property="article:modified_time" content="2023-06-11T19:46:39.000Z">
+    <meta property="article:published_time" content="2021-11-13T06:00:00.000Z">
+    <meta property="article:modified_time" content="2023-06-11T21:27:34.000Z">
     <meta property="article:tag" content="Tech">
     <meta property="article:tag" content="GitHub">
     
     <meta property="article:publisher" content="https://www.facebook.com/ghost">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="How to Use GitHub without Writing a Single Line of Code">
-    <meta name="twitter:description" content="1 What is GitHub?
+    <meta name="twitter:title" content="GitHub Action Overview">
+    <meta name="twitter:description" content="1 Introduction
 
-Many people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article">
-    <meta name="twitter:url" content="realvincentyuan.github.io/how-to-use-github-without-writing-a-single-line-of-code/">
+We have introduced many cool features of GitHub before. To better understand the content of this article, it is recommended to review the basic GitHub operation knowledge in the previous articles:
+
+ * Teach You How to Use GitHub without Writing Any Code
+ * Git Commonly Used Commands
+ * Create a Beautiful">
+    <meta name="twitter:url" content="realvincentyuan.github.io/github-action-overview/">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Vincent Yuan">
@@ -81,10 +89,10 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
         "url": "realvincentyuan.github.io/author/vincent/",
         "sameAs": []
     },
-    "headline": "How to Use GitHub without Writing a Single Line of Code",
-    "url": "realvincentyuan.github.io/how-to-use-github-without-writing-a-single-line-of-code/",
-    "datePublished": "2021-06-23T05:00:00.000Z",
-    "dateModified": "2023-06-11T19:46:39.000Z",
+    "headline": "GitHub Action Overview",
+    "url": "realvincentyuan.github.io/github-action-overview/",
+    "datePublished": "2021-11-13T06:00:00.000Z",
+    "dateModified": "2023-06-11T21:27:34.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&ixlib=rb-4.0.3&q=80&w=2000",
@@ -92,13 +100,13 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
         "height": 1333
     },
     "keywords": "Tech, GitHub",
-    "description": "1 What is GitHub?\n\nMany people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article will teach you how to use GitHub from scratch, and help you get to know this powerful productivity tool. First, let&#x27;s get familiar with some common GitHub terms:\n\n * Repository: can be considered as a ",
-    "mainEntityOfPage": "realvincentyuan.github.io/how-to-use-github-without-writing-a-single-line-of-code/"
+    "description": "1 Introduction\n\nWe have introduced many cool features of GitHub before. To better understand the content of this article, it is recommended to review the basic GitHub operation knowledge in the previous articles:\n\n * Teach You How to Use GitHub without Writing Any Code\n * Git Commonly Used Commands\n * Create a Beautiful Online Resume Using GitHub\n\nIn this article, we will introduce how to use GitHub Actions to simplify repeated mechanical tasks and greatly improve efficiency and save time.\n\n\n2 G",
+    "mainEntityOfPage": "realvincentyuan.github.io/github-action-overview/"
 }
     </script>
 
     <meta name="generator" content="Ghost 5.49">
-    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
+    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="rss/index.html">
     <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.33/umd/portal.min.js" data-i18n="false" data-ghost="realvincentyuan.github.io/" data-key="206cb569cfe36163ae0b6ed398" data-api="realvincentyuan.github.io/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
 .gh-post-upgrade-cta {
     display: flex;
@@ -166,9 +174,9 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="206cb569cfe36163ae0b6ed398" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="realvincentyuan.github.io/" crossorigin="anonymous"></script>
     
     <link href="realvincentyuan.github.io/webmentions/receive/" rel="webmention">
-    <script defer src="../public/cards.min.js%3Fv=9ec7b1b9f1"></script>
-    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=9ec7b1b9f1.css">
-    <script defer src="../public/member-attribution.min.js%3Fv=9ec7b1b9f1"></script>
+    <script defer src="public/cards.min.js%3Fv=9ec7b1b9f1"></script>
+    <link rel="stylesheet" type="text/css" href="public/cards.min.css%3Fv=9ec7b1b9f1.css">
+    <script defer src="public/member-attribution.min.js%3Fv=9ec7b1b9f1"></script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
 <script>
@@ -210,7 +218,7 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
         <div class="gh-head-inner gh-inner">
             <div class="gh-head-brand">
                 <div class="gh-head-brand-wrapper">
-                    <a class="gh-head-logo" href="../index.html">
+                    <a class="gh-head-logo" href="index.html">
                             Spacecraft
                     </a>
                 </div>
@@ -223,10 +231,10 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
 
             <nav class="gh-head-menu">
                 <ul class="nav">
-    <li class="nav-home"><a href="../index.html">Home</a></li>
-    <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
+    <li class="nav-home"><a href="index.html">Home</a></li>
+    <li class="nav-tech"><a href="tag/tech/index.html">Tech</a></li>
     <li class="nav-life"><a href="realvincentyuan.github.io/tag/life/">Life</a></li>
-    <li class="nav-about"><a href="../about/index.html">About</a></li>
+    <li class="nav-about"><a href="about/index.html">About</a></li>
 </ul>
 
             </nav>
@@ -237,8 +245,8 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
 </svg>
 </button>
                     <div class="gh-head-members">
-                                <a class="gh-head-link" href="index.html#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-head-btn gh-btn gh-primary-btn" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                                <a class="gh-head-link" href="github-action-overview.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="github-action-overview.html#/portal/signup" data-portal="signup">Subscribe</a>
                     </div>
             </div>
         </div>
@@ -253,7 +261,7 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
     <div class="gh-inner">
             <article class="gh-article post tag-tech tag-github">
                     <header class="gh-article-header gh-canvas">
-                        <h1 class="gh-article-title">How to Use GitHub without Writing a Single Line of Code</h1>
+                        <h1 class="gh-article-title">GitHub Action Overview</h1>
                             <figure class="gh-article-image has-caption">
         <img
             srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
@@ -264,26 +272,52 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
                     https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
             sizes="(max-width: 1200px) 100vw, 1200px"
             src="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
-            alt="How to Use GitHub without Writing a Single Line of Code"
+            alt="GitHub Action Overview"
         >
             <figcaption>Photo by <a href="https://unsplash.com/@markuswinkler?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Markus Winkler</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
     </figure>
                     </header>
 
                 <section class="gh-content gh-canvas">
-                    <h2 id="1-what-is-github">1 What is GitHub?</h2><p>Many people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article will teach you how to use GitHub from scratch, and help you get to know this powerful productivity tool. First, let's get familiar with some common GitHub terms:</p><ul><li>Repository: can be considered as a folder for storing code and files. When you are the repository owner, you can set access permissions.</li><li>Remote Repository: a copy of the repository, usually used to make changes, which will be later added to the repository main branch.</li><li>Main/Branch: the current status of the project.</li><li>Branch: a copy of the main branch, used to temporarily store modified states, usually for updating the main branch.</li><li>Push: submit modifications to the repository.</li><li>Pull: synchronize updates from the repository to the current work state.</li><li>Pull Request: used to merge modifications on the branch to the main branch.</li><li>Merged: updates on the branch have been merged to the main branch, and the repository is updated.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-7-17/1626489355119-Github%20%E5%9B%BE%E4%BE%8B.png" class="kg-image" alt loading="lazy" width="600" height="755"><figcaption>Diagram of common GitHub terms</figcaption></figure><p>Next, we will mainly use the GitHub Desktop client (which can be downloaded for free from the official website) to introduce the functions, which allows you to use most of GitHub's core functions.</p><h2 id="2-what-can-github-do">2 What Can GitHub Do?</h2><p>GitHub is an excellent tool for version control and collaboration.</p><h3 id="21-version-control">2.1 Version Control</h3><p>Specifically, version management can help save the modified history of files, so that it can be easily checked and rolled back when needed.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-7-17/1626489404945-Github%20%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC.png" class="kg-image" alt loading="lazy" width="600" height="1544"><figcaption>GitHub Desktop view of version history</figcaption></figure><p>In the example, BulletTech's repository saves the change history, and you can click on the change to see the modified files and the corresponding updates.</p><h3 id="22-collaboration">2.2 Collaboration</h3><p>These changes were made by members of the BulletTech team. When multiple people collaborate, it is recommended to work on different branches. After completing the updates, you can merge the updates on your branch to the main branch through a pull request (⌘/Ctrl + R). At this time, the software will automatically guide you to the web page to create a request. Members of the team can review the changes. If they meet the requirements, the update can be merged to the main branch.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-7-17/1626489452783-Github%E5%90%88%E5%B9%B6%E8%AF%B7%E6%B1%82.png" class="kg-image" alt loading="lazy" width="600" height="442"><figcaption>Merge request</figcaption></figure><p>It is recommended to set the merge request template. Filling in the update information clearly will save a lot of communication time and make it easier to trace back in the future. You can find the corresponding template in our <a href="https://github.com/BulletTech/BulletTech/tree/main/.github?ref=localhost">repository</a> and modify it according to your needs for use in your own project.</p><h3 id="23-build-a-blog">2.3 Build a Blog</h3><p>GitHub provides free server hosting for simple blogs. BulletTech's own blog is built on GitHub. You just need to enable the GitHub Pages feature in the repository settings, and the blog will be generated automatically. GitHub provides many templates to choose from, or you can write your own from scratch. We won't go into detail here. If you are interested, please visit our <a href="https://bullettech.github.io/BulletTech/?ref=localhost">repository</a> to view the source code and learn.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-24/1624539190066-Blog.jpeg" class="kg-image" alt loading="lazy" width="300" height="2109"><figcaption>BulletTech blog</figcaption></figure><h2 id="3-how-to-use-github">3 How to Use GitHub</h2><h3 id="31-create-a-repository">3.1 Create a Repository</h3><p>After registering for GitHub, on your homepage, click the most prominent green button (New) to create a new repository. Clicking into the repository and clicking the green button (Code) will open GitHub Desktop and download the files to your computer. You can now start your project!</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-24/1624540363015-%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93.png" class="kg-image" alt loading="lazy" width="600" height="1286"><figcaption>Create a repository</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/84658804/123267740-ecebfd00-d52f-11eb-85d9-b2f90583bf4c.png" class="kg-image" alt loading="lazy" width="600" height="632"><figcaption>Open the repository with GitHub Desktop</figcaption></figure><h3 id="32-basic-functions-of-github-desktop">3.2 Basic Functions of GitHub Desktop</h3><p>Basic operations are shown in the figure below. Please note that sometimes there may be conflicts when synchronizing (pulling) the repository. Most of the time it is because the local update has not been synchronized to the branch, but other people have updated the branch. In this case, you need to stash or discard your updates before synchronizing, which can be found in the top menu under Branch.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-26/1624676128227-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.png" class="kg-image" alt loading="lazy" width="600" height="1286"><figcaption>Basic operations of GitHub Desktop</figcaption></figure><p>In summary, after mastering these basic knowledge and skills, you can use GitHub smoothly for file management, collaborative work, and create your own blog, and so far, without writing a single line of code. Of course, using code can also operate GitHub conveniently. Next time we will use command operations to explore GitHub. Stay tuned!</p>
+                    <h2 id="1-introduction">1 Introduction</h2><p>We have introduced many cool features of GitHub before. To better understand the content of this article, it is recommended to review the basic GitHub operation knowledge in the previous articles:</p><ul><li><a href="how-to-use-github-without-writing-a-single-line-of-code.html">Teach You How to Use GitHub without Writing Any Code</a></li><li><a href="a-list-of-common-git-commands.html">Git Commonly Used Commands</a></li><li><a href="creating-a-beautiful-online-resume-using-github.html">Create a Beautiful Online Resume Using GitHub</a></li></ul><p>In this article, we will introduce how to use GitHub Actions to simplify repeated mechanical tasks and greatly improve efficiency and save time.</p><h2 id="2-github-action-overview">2 GitHub Action Overview</h2><p>GitHub Action can automatically execute custom scripts to complete preset work. Users need to set the triggering conditions (events) and the commands to be executed when the conditions are met. GitHub can automatically complete the preset operations, for example, when a update is merged to the master/main branch, automatically execute the test script to check for errors. The following figure shows the components when GitHub Action is executed:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/overview-actions-design.png" class="kg-image" alt loading="lazy"><figcaption>GitHub Action components, source: GitHub</figcaption></figure><p>When an event occurs, GitHub automatically triggers the workflow. Then the program executes step by step.</p><h2 id="3-create-action">3 Create Action</h2><p>GitHub Action uses <a href="https://yaml.org/?ref=localhost">YAML</a> to define the triggered events, work, and steps. The workflow file needs to be stored in a specific location in the code repository: <code>.github/workflows</code>.</p><p>Take the continuous integration workflow of the <a href="https://github.com/BulletTech/BulletTech/blob/main/.github/workflows/ci.yml?ref=localhost">BulletTech blog</a> as an example:</p><pre><code class="language-yml">name: ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: python ./docs/Scripts/Update_reading_time.py
+      - run: pip install mkdocs-material
+      - run: pip install mkdocs-redirects
+      - run: pip install mkdocs-minify-plugin
+      - run: pip install mkdocs-macros-plugin
+      - run: pip install mkdocs-git-revision-date-localized-plugin
+      - run: pip install --upgrade mkdocs-material
+      - run: pip install --upgrade mkdocs-redirects
+      - run: pip install --upgrade mkdocs-minify-plugin
+      - run: pip install --upgrade mkdocs-macros-plugin
+      - run: pip install --upgrade mkdocs-git-revision-date-localized-plugin   
+      - run: git pull
+      - run: mkdocs gh-deploy --force
+</code></pre><p>Key points are as follows:</p><ul><li><code>name</code> defines the name of the workflow, in this case, continuous integration (CI).</li><li><code>on</code> is the event that triggers the workflow. Here, it is defined that the command needs to be executed when a push is updated to the main branch.</li><li><code>jobs</code> defines the work tasks. <code>deploy</code> is the name of the work. It runs a series of steps on GitHub's Ubuntu Linux virtual machine.</li><li><code>uses</code> is followed by an action in GitHub Action Marketplace. Here, actions are used to check out the repository and download the code to the server that runs the code, and configure the Python runtime environment.</li><li><code>run</code> is followed by the command to be executed. Here, some Python packages required by the blog are installed and the deployment command is run.</li></ul><h2 id="4-check-action-status">4 Check Action Status</h2><p>In the Actions tab of the GitHub repository, you can see the running status of the action:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/Action_Status.png" class="kg-image" alt loading="lazy"><figcaption>GitHub Action status</figcaption></figure><p>You can see the <code>ci</code> workflow used by BulletTech, and click on <code>runs</code> to view the running status of each step of the action.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/Action_steps.png" class="kg-image" alt loading="lazy"><figcaption>Action running status</figcaption></figure><h2 id="5-conclusion">5 Conclusion</h2><p>Using GitHub Action automates many repetitive and mechanical labor tasks, saving time that can be used for more meaningful things. For more information, please refer to the following reference materials to customize your own workflow.</p><p>I hope this sharing can help you. Feel free to leave a comment in the comment section for discussion!</p>
                     <aside class="gh-article-meta">
                         <div class="gh-article-meta-inner">
                                 <div class="gh-article-meta-wrapper">
                                 <h4 class="gh-author-name">
-                                    <a href="../author/vincent/index.html">Vincent Yuan</a>
+                                    <a href="author/vincent/index.html">Vincent Yuan</a>
                                 </h4>
-                            <time class="gh-article-date" datetime="2021-06-23">Jun 23, 2021</time></div>
+                            <time class="gh-article-date" datetime="2021-11-13">Nov 13, 2021</time></div>
                             
 
 
-                             <a class="gh-article-tag" href="../tag/tech/index.html" style="--tag-color: ">Tech</a>
-                             <a class="gh-article-tag" href="../tag/github/index.html" style="--tag-color: ">GitHub</a>
+                             <a class="gh-article-tag" href="tag/tech/index.html" style="--tag-color: ">Tech</a>
+                             <a class="gh-article-tag" href="tag/github/index.html" style="--tag-color: ">GitHub</a>
                            
 
                         </div>
@@ -294,13 +328,13 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
                 <footer class="gh-article-footer gh-canvas">
                     <nav class="gh-navigation">
                         <div class="gh-navigation-previous">
-                                <a class="gh-navigation-link" href="../half-year-experience-of-m1-mac-mini-the-new-future-of-mac/index.html">← Previous</a>
+                                <a class="gh-navigation-link" href="creating-a-beautiful-online-resume-using-github.html">← Previous</a>
                         </div>
 
                         <div class="gh-navigation-middle"></div>
 
                         <div class="gh-navigation-next">
-                                <a class="gh-navigation-link" href="../a-list-of-common-git-commands/index.html">Next →</a>
+                                <a class="gh-navigation-link" href="automatically-build-and-push-docker-image-with-github-action/index.html">Next →</a>
                         </div>
                     </nav>
                 </footer>
@@ -312,7 +346,7 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
         <div class="gh-foot-inner gh-inner">
             <nav class="gh-foot-menu">
                 <ul class="nav">
-    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+    <li class="nav-sign-up"><a href="github-action-overview.html#/portal/">Sign up</a></li>
 </ul>
 
             </nav>
@@ -366,7 +400,7 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
         </div>
     </div>
 </div>
-<script src="../assets/built/main.min.js%3Fv=9ec7b1b9f1"></script>
+<script src="assets/built/main.min.js%3Fv=9ec7b1b9f1"></script>
 
   <script>
     const progressBar = document.querySelector('.reading-progress');

@@ -28,7 +28,7 @@
         document.documentElement.className = `has-${textColor}-text`;
     </script>
 
-    <link rel="canonical" href="index.html">
+    <link rel="canonical" href="../tips-for-common-operations-on-python-lists.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="Spacecraft">
@@ -42,7 +42,7 @@ Like tuples, lists are also sequences created by square brackets []. The values 
     <meta property="og:url" content="realvincentyuan.github.io/tips-for-common-operations-on-python-lists/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta property="article:published_time" content="2021-08-14T05:00:00.000Z">
-    <meta property="article:modified_time" content="2023-06-11T20:36:36.000Z">
+    <meta property="article:modified_time" content="2023-06-11T21:32:04.000Z">
     <meta property="article:tag" content="Tech">
     <meta property="article:tag" content="Python">
     
@@ -88,7 +88,7 @@ Like tuples, lists are also sequences created by square brackets []. The values 
     "headline": "Tips for Common Operations on Python Lists",
     "url": "realvincentyuan.github.io/tips-for-common-operations-on-python-lists/",
     "datePublished": "2021-08-14T05:00:00.000Z",
-    "dateModified": "2023-06-11T20:36:36.000Z",
+    "dateModified": "2023-06-11T21:32:04.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&ixlib=rb-4.0.3&q=80&w=2000",
@@ -241,8 +241,8 @@ Like tuples, lists are also sequences created by square brackets []. The values 
 </svg>
 </button>
                     <div class="gh-head-members">
-                                <a class="gh-head-link" href="index.html#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-head-btn gh-btn gh-primary-btn" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                                <a class="gh-head-link" href="../tips-for-common-operations-on-python-lists.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="../tips-for-common-operations-on-python-lists.html#/portal/signup" data-portal="signup">Subscribe</a>
                     </div>
             </div>
         </div>
@@ -275,7 +275,7 @@ Like tuples, lists are also sequences created by square brackets []. The values 
                     </header>
 
                 <section class="gh-content gh-canvas">
-                    <h2 id="1-preface">1. Preface</h2><p>In the previous article, we reviewed the <a href="https://mp.weixin.qq.com/s?__biz=MzI4Mjk3NzgxOQ%3D%3D&tempkey=MTEyNl96d1NDWlZlNm1CSWJxKzEyeTlkcTIybWVyQmlFcFJWZncyZGFqZndNUFl1dHA2R1Jzb09STmVLYzZNeGNFUk5nUDJsanZSOUMzMFpLbUlmTUhzOWVUeDZVUjM5MnJtVlc3MkpTRWc0a1haaDBGdmFJUDVLLVFUR29QYlhteDhaN3RTRmpNZFRJTVBJTGs5cmpCcHdtMnAzQjhTbjl2aXBxRzl1S1p3fn4%3D&chksm=6b90f0865ce77990c57a2be4493364667bb91c1a0f0d2f70498bc6f318395c9abbcc5f9cd376&ref=localhost#rd">common operations on Python tuples</a>, in this article, let's talk about another common data type in Python: lists.</p><p>Like tuples, lists are also sequences created by square brackets <code>[]</code>. The values in the list are commonly referred to as elements, and the data type of the elements can be different. For example, <code>test_list = [0,1,1,'a','b']</code> can successfully create a list.</p><p>Unlike tuples, lists are mutable sequences, so the operations available for sequences will be more flexible. Next, we will review the most commonly used operations on lists.</p><h2 id="2-common-operations-on-lists">2. Common operations on lists</h2><h3 id="21-traversal">2.1 Traversal</h3><p>Taking the list <code>people = ['Adam','Nick','Tony']</code> as an example, we can use a for loop to traverse:</p><pre><code class="language-python">for i in people:
+                    <h2 id="1-preface">1. Preface</h2><p>In the previous article, we reviewed the <a href="../tips-for-common-operations-with-python-tuples.html">common operations on Python tuples</a>, in this article, let's talk about another common data type in Python: lists.</p><p>Like tuples, lists are also sequences created by square brackets <code>[]</code>. The values in the list are commonly referred to as elements, and the data type of the elements can be different. For example, <code>test_list = [0,1,1,'a','b']</code> can successfully create a list.</p><p>Unlike tuples, lists are mutable sequences, so the operations available for sequences will be more flexible. Next, we will review the most commonly used operations on lists.</p><h2 id="2-common-operations-on-lists">2. Common operations on lists</h2><h3 id="21-traversal">2.1 Traversal</h3><p>Taking the list <code>people = ['Adam','Nick','Tony']</code> as an example, we can use a for loop to traverse:</p><pre><code class="language-python">for i in people:
   print(i)
 </code></pre><p>When updating the list, using an index to traverse will be more convenient:</p><pre><code class="language-python">for i in range(len(people)):
   people[i] += '_suffix'
@@ -362,7 +362,7 @@ Copyright: All rights reserved.</code></pre>
                 <footer class="gh-article-footer gh-canvas">
                     <nav class="gh-navigation">
                         <div class="gh-navigation-previous">
-                                <a class="gh-navigation-link" href="../tips-for-common-operations-with-python-tuples/index.html">← Previous</a>
+                                <a class="gh-navigation-link" href="../tips-for-common-operations-with-python-tuples.html">← Previous</a>
                         </div>
 
                         <div class="gh-navigation-middle"></div>
@@ -380,7 +380,7 @@ Copyright: All rights reserved.</code></pre>
         <div class="gh-foot-inner gh-inner">
             <nav class="gh-foot-menu">
                 <ul class="nav">
-    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+    <li class="nav-sign-up"><a href="../tips-for-common-operations-on-python-lists.html#/portal/">Sign up</a></li>
 </ul>
 
             </nav>
