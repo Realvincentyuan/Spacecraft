@@ -2,7 +2,9 @@ rm -rf static
 rm -rf docs
 
 
-gssg --productionDomain https://realvincentyuan.github.io/
+bash get_web_page.txt
+
+# gssg --productionDomain https://realvincentyuan.github.io/
 
 
 mv static docs
