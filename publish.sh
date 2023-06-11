@@ -2,9 +2,9 @@ rm -rf static
 rm -rf docs
 
 
-bash get_web_page.txt
+# bash get_web_page.txt
 
-# gssg --productionDomain https://realvincentyuan.github.io/
+gssg --productionDomain https://realvincentyuan.github.io/Spacecraft
 
 
 mv static docs
