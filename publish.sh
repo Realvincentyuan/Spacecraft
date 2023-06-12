@@ -2,7 +2,7 @@ rm -rf static
 rm -rf docs
 
 
-bash get_web_page.txt
+bash get_web_page.sh
 
 # gssg --productionDomain https://realvincentyuan.github.io/Spacecraft
 
