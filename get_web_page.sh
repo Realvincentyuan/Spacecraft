@@ -6,7 +6,7 @@ to_url=https://realvincentyuan.github.io/Spacecraft
 
 # Copy blog content
 # wget -r -nH -P docs -E -T 2 -np -k ${from_url}/
-wget --recursive --no-host-directories --directory-prefix=static --adjust-extension --timeout=30 --no-parent --convert-links ${from_url}/
+wget --recursive --no-host-directories --directory-prefix=static --adjust-extension --timeout=30 --no-parent -e robots=off -U mozilla --convert-links --no-cookies ${from_url}/
 
 
 # Copy 404 page
