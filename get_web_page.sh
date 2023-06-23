@@ -9,6 +9,7 @@ to_url=https://realvincentyuan.github.io/Spacecraft
 wget --recursive --no-host-directories --directory-prefix=static --adjust-extension --timeout=30 --no-parent -e robots=off -U mozilla --convert-links --no-cookies ${from_url}/
 
 
+
 # Copy 404 page
 wget --no-host-directories --directory-prefix=static --adjust-extension --timeout=30 --no-parent --convert-links --content-on-error --timestamping ${from_url}/404.html
 
