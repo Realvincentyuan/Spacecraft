@@ -60,6 +60,11 @@
                 </section>
 
                 {{!-- {{#if comments}} --}}
+                <div class="gh-comments gh-canvas"></div>
+                
+                <h2 class="gh-comments-title">{{comment_count empty="" single="comment" plural="comments"}}</h2>
+                        {{comments title="" count=false}}
+
                    <div id="disqus_thread"></div>
                         <script>
                             var disqus_config = function () {
@@ -73,6 +78,7 @@
                             (d.head || d.body).appendChild(s);
                             })();
                         </script>
+                        </div>
                 {{!-- {{/if}} --}}
 
                 <footer class="gh-article-footer gh-canvas">
