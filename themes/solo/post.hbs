@@ -59,12 +59,21 @@
                     </aside>
                 </section>
 
-                {{#if comments}}
-                    <div class="gh-comments gh-canvas">
-                        <h2 class="gh-comments-title">{{comment_count empty="" single="comment" plural="comments"}}</h2>
-                        {{comments title="" count=false}}
-                    </div>
-                {{/if}}
+                {{!-- {{#if comments}} --}}
+                   <div id="disqus_thread"></div>
+                        <script>
+                            var disqus_config = function () {
+                                this.page.url = "{{url absolute="true"}}";
+                                this.page.identifier = "ghost-{{comment_id}}"
+                            };
+                            (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://vincentyuan.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                {{!-- {{/if}} --}}
 
                 <footer class="gh-article-footer gh-canvas">
                     <nav class="gh-navigation">
