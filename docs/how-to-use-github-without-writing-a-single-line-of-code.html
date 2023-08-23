@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to Use GitHub without Writing a Single Line of Code</title>
+    <link rel="stylesheet" href="assets/built/screen.css%3Fv=e2e91b37b9.css">
+
+
+    <style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast was taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <link rel="canonical" href="how-to-use-github-without-writing-a-single-line-of-code.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Spacecraft">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Use GitHub without Writing a Single Line of Code">
+    <meta property="og:description" content="1 What is GitHub?
+
+Many people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article">
+    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/how-to-use-github-without-writing-a-single-line-of-code/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2021-06-23T05:00:00.000Z">
+    <meta property="article:modified_time" content="2023-06-11T19:46:39.000Z">
+    <meta property="article:tag" content="Tech">
+    <meta property="article:tag" content="Git">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Use GitHub without Writing a Single Line of Code">
+    <meta name="twitter:description" content="1 What is GitHub?
+
+Many people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article">
+    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/how-to-use-github-without-writing-a-single-line-of-code/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Vincent Yuan">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Tech, Git">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="1333">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Spacecraft",
+        "url": "https://realvincentyuan.github.io/Spacecraft/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Vincent Yuan",
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
+        "sameAs": []
+    },
+    "headline": "How to Use GitHub without Writing a Single Line of Code",
+    "url": "https://realvincentyuan.github.io/Spacecraft/how-to-use-github-without-writing-a-single-line-of-code/",
+    "datePublished": "2021-06-23T05:00:00.000Z",
+    "dateModified": "2023-06-11T19:46:39.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 2000,
+        "height": 1333
+    },
+    "keywords": "Tech, Git",
+    "description": "1 What is GitHub?\n\nMany people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article will teach you how to use GitHub from scratch, and help you get to know this powerful productivity tool. First, let&#x27;s get familiar with some common GitHub terms:\n\n * Repository: can be considered as a ",
+    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/how-to-use-github-without-writing-a-single-line-of-code/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.49">
+    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="rss/index.html">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.33/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="206cb569cfe36163ae0b6ed398" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="206cb569cfe36163ae0b6ed398" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
+    <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
+    <script defer src="public/cards.min.js%3Fv=e2e91b37b9"></script>
+    <link rel="stylesheet" type="text/css" href="public/cards.min.css%3Fv=e2e91b37b9.css">
+    <script defer src="public/member-attribution.min.js%3Fv=e2e91b37b9"></script>
+    <!-- Reading progress bar -->
+<style>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 5px; /* Progress bar height */
+  background: #c5d2d9; /* Progress bar background color */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Hide default progress bar */
+}
+
+.reading-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+  background: var(--ghost-accent-color); /* Progress bar color */
+}
+</style><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</head>
+
+<body class="post-template tag-tech tag-github tag-hash-import-2023-07-07-20-42 is-head-left-logo has-classic-feed">
+<div class="gh-site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="index.html">
+                            Spacecraft
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="index.html">Home</a></li>
+    <li class="nav-tech"><a href="tag/tech/index.html">Tech</a></li>
+    <li class="nav-profession"><a href="tag/pro/index.html">Profession</a></li>
+    <li class="nav-about"><a href="about/index.html">About</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="how-to-use-github-without-writing-a-single-line-of-code.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="how-to-use-github-without-writing-a-single-line-of-code.html#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    
+<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
+
+
+<main class="gh-main gh-outer">
+    <div class="gh-inner">
+            <article class="gh-article post tag-tech tag-github tag-hash-import-2023-07-07-20-42">
+                    <header class="gh-article-header gh-canvas">
+                        <h1 class="gh-article-title">How to Use GitHub without Writing a Single Line of Code</h1>
+                            <figure class="gh-article-image has-caption">
+        <img
+            srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            src="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+            alt="How to Use GitHub without Writing a Single Line of Code"
+        >
+            <figcaption>Photo by <a href="https://unsplash.com/@markuswinkler?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Markus Winkler</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
+    </figure>
+                    </header>
+
+                <section class="gh-content gh-canvas">
+                    <h2 id="1-what-is-github">1 What is GitHub?</h2><p>Many people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article will teach you how to use GitHub from scratch, and help you get to know this powerful productivity tool. First, let's get familiar with some common GitHub terms:</p><ul><li>Repository: can be considered as a folder for storing code and files. When you are the repository owner, you can set access permissions.</li><li>Remote Repository: a copy of the repository, usually used to make changes, which will be later added to the repository main branch.</li><li>Main/Branch: the current status of the project.</li><li>Branch: a copy of the main branch, used to temporarily store modified states, usually for updating the main branch.</li><li>Push: submit modifications to the repository.</li><li>Pull: synchronize updates from the repository to the current work state.</li><li>Pull Request: used to merge modifications on the branch to the main branch.</li><li>Merged: updates on the branch have been merged to the main branch, and the repository is updated.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-7-17/1626489355119-Github%20%E5%9B%BE%E4%BE%8B.png" class="kg-image" alt loading="lazy" width="600" height="755"><figcaption>Diagram of common GitHub terms</figcaption></figure><p>Next, we will mainly use the GitHub Desktop client (which can be downloaded for free from the official website) to introduce the functions, which allows you to use most of GitHub's core functions.</p><h2 id="2-what-can-github-do">2 What Can GitHub Do?</h2><p>GitHub is an excellent tool for version control and collaboration.</p><h3 id="21-version-control">2.1 Version Control</h3><p>Specifically, version management can help save the modified history of files, so that it can be easily checked and rolled back when needed.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-7-17/1626489404945-Github%20%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC.png" class="kg-image" alt loading="lazy" width="600" height="1544"><figcaption>GitHub Desktop view of version history</figcaption></figure><p>In the example, BulletTech's repository saves the change history, and you can click on the change to see the modified files and the corresponding updates.</p><h3 id="22-collaboration">2.2 Collaboration</h3><p>These changes were made by members of the BulletTech team. When multiple people collaborate, it is recommended to work on different branches. After completing the updates, you can merge the updates on your branch to the main branch through a pull request (⌘/Ctrl + R). At this time, the software will automatically guide you to the web page to create a request. Members of the team can review the changes. If they meet the requirements, the update can be merged to the main branch.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-7-17/1626489452783-Github%E5%90%88%E5%B9%B6%E8%AF%B7%E6%B1%82.png" class="kg-image" alt loading="lazy" width="600" height="442"><figcaption>Merge request</figcaption></figure><p>It is recommended to set the merge request template. Filling in the update information clearly will save a lot of communication time and make it easier to trace back in the future. You can find the corresponding template in our <a href="https://github.com/BulletTech/BulletTech/tree/main/.github?ref=localhost">repository</a> and modify it according to your needs for use in your own project.</p><h3 id="23-build-a-blog">2.3 Build a Blog</h3><p>GitHub provides free server hosting for simple blogs. BulletTech's own blog is built on GitHub. You just need to enable the GitHub Pages feature in the repository settings, and the blog will be generated automatically. GitHub provides many templates to choose from, or you can write your own from scratch. We won't go into detail here. If you are interested, please visit our <a href="https://bullettech.github.io/BulletTech/?ref=localhost">repository</a> to view the source code and learn.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-24/1624539190066-Blog.jpeg" class="kg-image" alt loading="lazy" width="300" height="2109"><figcaption>BulletTech blog</figcaption></figure><h2 id="3-how-to-use-github">3 How to Use GitHub</h2><h3 id="31-create-a-repository">3.1 Create a Repository</h3><p>After registering for GitHub, on your homepage, click the most prominent green button (New) to create a new repository. Clicking into the repository and clicking the green button (Code) will open GitHub Desktop and download the files to your computer. You can now start your project!</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-24/1624540363015-%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93.png" class="kg-image" alt loading="lazy" width="600" height="1286"><figcaption>Create a repository</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/84658804/123267740-ecebfd00-d52f-11eb-85d9-b2f90583bf4c.png" class="kg-image" alt loading="lazy" width="600" height="632"><figcaption>Open the repository with GitHub Desktop</figcaption></figure><h3 id="32-basic-functions-of-github-desktop">3.2 Basic Functions of GitHub Desktop</h3><p>Basic operations are shown in the figure below. Please note that sometimes there may be conflicts when synchronizing (pulling) the repository. Most of the time it is because the local update has not been synchronized to the branch, but other people have updated the branch. In this case, you need to stash or discard your updates before synchronizing, which can be found in the top menu under Branch.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-26/1624676128227-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.png" class="kg-image" alt loading="lazy" width="600" height="1286"><figcaption>Basic operations of GitHub Desktop</figcaption></figure><p>In summary, after mastering these basic knowledge and skills, you can use GitHub smoothly for file management, collaborative work, and create your own blog, and so far, without writing a single line of code. Of course, using code can also operate GitHub conveniently. Next time we will use command operations to explore GitHub. Stay tuned!</p>
+                    <aside class="gh-article-meta">
+                        <div class="gh-article-meta-inner">
+                                <div class="gh-article-meta-wrapper">
+                                <h4 class="gh-author-name">
+                                    <a href="author/vincent/index.html">Vincent Yuan</a>
+                                </h4>
+                            <time class="gh-article-date" datetime="2021-06-23">Jun 23, 2021</time></div>
+                            
+
+
+                             <a class="gh-article-tag" href="tag/tech/index.html" style="--tag-color: ">Tech</a>
+                             <a class="gh-article-tag" href="tag/github/index.html" style="--tag-color: ">Git</a>
+                           
+
+                        </div>
+                    </aside>
+                </section>
+
+
+                <footer class="gh-article-footer gh-canvas">
+                    <nav class="gh-navigation">
+                        <div class="gh-navigation-previous">
+                                <a class="gh-navigation-link" href="half-year-experience-of-m1-mac-mini-the-new-future-of-mac/index.html">← Previous</a>
+                        </div>
+
+                        <div class="gh-navigation-middle"></div>
+
+                        <div class="gh-navigation-next">
+                                <a class="gh-navigation-link" href="a-list-of-common-git-commands.html">Next →</a>
+                        </div>
+                    </nav>
+                </footer>
+            </article>
+    </div>
+</main>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <nav class="gh-foot-menu">
+                <ul class="nav">
+    <li class="nav-sign-up"><a href="how-to-use-github-without-writing-a-single-line-of-code.html#/portal/">Sign up</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-copyright">
+                    Spacecraft © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/built/main.min.js%3Fv=e2e91b37b9"></script>
+
+  <script>
+    const progressBar = document.querySelector('.reading-progress');
+
+    function updateProgress() {
+      const totalHeight = document.body.clientHeight;
+      const windowHeight = document.documentElement.clientHeight;
+      const position = window.scrollY;
+      const progress = position / (totalHeight - windowHeight) * 100;
+      progressBar.setAttribute('value', progress);
+      requestAnimationFrame(updateProgress);
+    }
+
+    requestAnimationFrame(updateProgress);
+  </script>
+
+
+
+
+</body>
+
+</html>
