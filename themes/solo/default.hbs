@@ -71,9 +71,6 @@
         </style>
 
     {{ghost_head}}
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.2/tocbot.css">
-<link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
 </head>
 
 <body class="{{body_class}}{{{block "body_class"}}} is-head-{{#match @custom.navigation_layout "Logo on the left"}}left-logo{{else match @custom.navigation_layout "Logo in the middle"}}middle-logo{{else}}stacked{{/match}}{{#match @custom.typography "Elegant serif"}} has-serif-font{{/match}}{{#match @custom.typography "Consistent mono"}} has-mono-font{{/match}}{{#match @custom.post_feed_layout "Classic"}} has-classic-feed{{/match}}{{#match @custom.post_feed_layout "Typographic"}} has-typographic-feed{{/match}}{{#match @custom.post_feed_layout "Parallax"}} has-parallax-feed{{/match}}">
@@ -171,16 +168,23 @@
   </script>
 {{/is}}
 
+{{!-- TOC JS --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.2/tocbot.min.js"></script>
+{{! Initialize Tocbot after you load the script }}
 <script>
     tocbot.init({
-        tocSelector: '.toc',
-        contentSelector: '.post-content',
-        hasInnerContainers: true
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3',
+        // Ensure correct positioning
+        hasInnerContainers: true,
     });
 </script>
-{{{block "scripts"}}}
+
 
 {{ghost_foot}}
 
