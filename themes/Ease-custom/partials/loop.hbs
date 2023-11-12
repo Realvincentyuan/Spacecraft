@@ -19,7 +19,11 @@
         <div class="post-excerpt">
             {{excerpt words="20"}}
         </div>
-        {{> post-meta}}
+        {{!-- {{> post-meta}} --}}
+        <div class="post-meta">
+                Last updated on&nbsp;
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date updated_at}}</time>
+            </div>
     </div>
 
 </article>
