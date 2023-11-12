@@ -7,10 +7,10 @@
         {{> "featured-posts"}}
     {{/if}}
 
-    {{#get "tags" limit="all"}}
+    {{#get "tags" limit="all" filter=tag:-Life}}
     <div class="topic-feed">
 
-        {{#foreach tags filter=tag:-Life}}
+        {{#foreach tags }}
                 <section class="topic">
                     <header class="topic-header">
                         <h2 class="topic-name">
