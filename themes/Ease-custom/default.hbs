@@ -15,7 +15,7 @@
             position: relative;
         }
 
-        {{!-- Remove underline in the TOC text  --}}
+        /*-- Remove underline in the TOC text  */
         .gh-content a {
             text-decoration: none;
         }
@@ -28,7 +28,7 @@
         .toc-list {
             overflow: hidden;
             list-style: none;
-            left: 40px;
+            left: 30%;
 
         }
 
@@ -46,6 +46,9 @@
             .gh-toc {
                 position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
                 top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: -1;
 
             }
         }
