@@ -17,35 +17,19 @@
             <h1 class="gh-article-title">{{title}}</h1>
 
 
-            {{!-- <div class="article-byline">
-                    <section class="article-byline-content">
-
-                        <ul class="author-list">
-                            {{#foreach authors}}
-                            <li class="author-list-item">
+            <div class="gh-article-meta-inner">
+                            {{#primary_author}}
                                 {{#if profile_image}}
-                                <a href="{{url}}" class="author-avatar">
-                                    <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
-                                </a>
-                                {{else}}
-                                <a href="{{url}}" class="author-avatar author-profile-image">{{> "icons/avatar"}}</a>
+                                    <figure class="gh-author-image">
+                                        <img src="{{profile_image}}" alt="{{name}}">
+                                    </figure>
                                 {{/if}}
-                            </li>
-                            {{/foreach}}
-                        </ul>
-
-                        <div class="article-byline-meta">
-                            <h4 class="author-name">{{authors}}</h4>
-                            <div class="byline-meta-content">
-                                <time class="byline-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
-                                {{#if reading_time}}
-                                    <span class="byline-reading-time"><span class="bull">&bull;</span> {{reading_time}}</span>
-                                {{/if}}
-                            </div>
+                                <div class="gh-article-meta-wrapper">
+                                <h4 class="gh-author-name">
+                                    <a href="{{url}}">{{name}}</a>
+                                </h4>
+                            {{/primary_author}}
                         </div>
-
-                    </section>
-             </div> --}}
 
 
             <div class="post-meta">
