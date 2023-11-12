@@ -9,6 +9,11 @@
             {{#if description}}
                 <div class="term-description">{{description}}</div>
             {{/if}}
+            
+            <div class="post-meta">
+                Last updated on&nbsp;
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date updated_at}}</time>
+            </div>
         </section>
     </div>
     {{/tag}}
