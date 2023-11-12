@@ -13,23 +13,21 @@
             <style>
         .gh-content {
             position: relative;
-            text-decoration: none;
         }
 
+        {{!-- Remove underline in the TOC text  --}}
         .gh-content a {
             text-decoration: none;
         }
 
         .gh-toc > .toc-list {
             position: relative;
-            text-decoration: none;
             
         }
 
         .toc-list {
             overflow: hidden;
             list-style: none;
-            text-decoration: none;
 
         }
 
@@ -39,21 +37,20 @@
                 top: 0;
                 bottom: 0;
                 margin-top: 4vmin;
-                text-decoration: none;
-                grid-column: wide-start / main-start; /* Place the TOC to the left of the content */
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
             }
         
             .gh-toc {
                 position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
                 top: 4vmin;
-                text-decoration: none;
 
             }
         }
 
         .gh-toc .is-active-link::before {
             background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
-            text-decoration: none;
 
         } 
         </style>
