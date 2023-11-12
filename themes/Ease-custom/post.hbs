@@ -37,9 +37,16 @@
 
         <div class="gh-content gh-canvas">
 
-            <aside class="gh-sidebar"><div class="gh-toc"></div></aside> {{! The TOC will be inserted here }}
-
-            {{content}}
+            <section class="gh-content gh-canvas">
+                <div class="post-full-content">
+                    <aside class="toc-container">
+                        <div class="toc"></div>
+                    </aside>
+                    <div class="post-content">
+                        {{content}}
+                    </div>
+                </div>
+            </section>
         </div>
 
         <div class="pagination-container gh-canvas">
