@@ -16,47 +16,17 @@
 
             <h1 class="gh-article-title">{{title}}</h1>
 
-        <div class="article-byline">
-            <section class="article-byline-content">
-                    {{#primary_author}}
-                        {{#if profile_image}}
-                        <a href="{{url}}" class="author-avatar">
-                            <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
-                        </a>
-                        {{else}}
-                        <a href="{{url}}" class="author-avatar author-profile-image">{{> "icons/avatar"}}</a>
-                        {{/if}}
-                    {{/primary_author}}
-            </ul>
-                
-
-                <div class="article-byline-meta">
-                    <h4 class="author-name">{{authors}}</h4>
-                    <div class="byline-meta-content">
-                        <time class="byline-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
-                        {{#if reading_time}}
-                            <span class="byline-reading-time"><span class="bull">&bull;</span> {{reading_time}}</span>
-                        {{/if}}
-                    </div>
-                </div>
-
-            </section>
-        </div>
-
+            {{!-- Post meta data --}}
             <div class="post-meta">
-                Last updated on&nbsp;
+                {{authors}}&nbsp;·&nbsp;Last updated on&nbsp;
                 <time datetime="{{date format="YYYY-MM-DD"}}">{{date updated_at}}</time>&nbsp;·&nbsp;<span class="gh-card-length">{{reading_time}}</span>
             </div>
 
-
+            {{!-- Tags --}}
             <div class="post-meta">
-        
-
                 {{#foreach tags}}
                     <a class="post-tag tag-{{slug}}" href="{{url}}" title="{{name}}">{{name}}</a>
                 {{/foreach}}
-
-         
             </div>
 
 
