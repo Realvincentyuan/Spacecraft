@@ -194,6 +194,15 @@
     });
 </script>
 
+{{!-- Turn off tocbot in phones --}}
+<script>
+  if (navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/iPhone/i)  
+    ) {
+    tocbot.deactivate();
+  }
+</script>
+
 {{ghost_foot}}
 
 </body>
