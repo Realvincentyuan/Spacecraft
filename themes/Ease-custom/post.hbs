@@ -18,12 +18,7 @@
 
         <div class="article-byline">
             <section class="article-byline-content">
-
-            <ul class="author-list">
-
                     {{#primary_author}}
-                <li class="author-list-item">
-
                         {{#if profile_image}}
                         <a href="{{url}}" class="author-avatar">
                             <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
@@ -31,8 +26,6 @@
                         {{else}}
                         <a href="{{url}}" class="author-avatar author-profile-image">{{> "icons/avatar"}}</a>
                         {{/if}}
-                </li>
-
                     {{/primary_author}}
             </ul>
                 
