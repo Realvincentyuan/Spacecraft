@@ -53,6 +53,13 @@
             }
         }
 
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
         .gh-toc .is-active-link::before {
             background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
 
@@ -194,14 +201,6 @@
     });
 </script>
 
-{{!-- Turn off tocbot in phones --}}
-<script>
-  if (navigator.userAgent.match(/Android/i) ||
-    navigator.userAgent.match(/iPhone/i)  
-    ) {
-    tocbot.deactivate();
-  }
-</script>
 
 {{ghost_foot}}
 
