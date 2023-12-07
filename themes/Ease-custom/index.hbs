@@ -17,7 +17,7 @@
                                 <a href="{{url}}">{{name}}</a>
                             </h2>
                         </header>
-                        {{#get "posts" order="published_at asc" filter="tag:{{slug}}" limit="5" as |featured|}}
+                        {{#get "posts" order="published_at desc" filter="tag:{{slug}}" limit="5" as |featured|}}
                             <ul class="topic-article-feed">
                                 {{#foreach featured}}
                                 <li class="topic-article">
