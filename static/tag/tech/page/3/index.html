@@ -1,56 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
-    <title>Tech - Spacecraft (Page 3)</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="preload" as="style" href="../../../../assets/built/screen.css%3Fv=9b52753ec9.css">
-    <link rel="preload" as="script" href="../../../../assets/built/source.js%3Fv=9b52753ec9">
-    
-    <link rel="preload" as="font" type="font/woff2" href="../../../../assets/fonts/inter-roman.woff2%3Fv=9b52753ec9" crossorigin="anonymous">
-<style>
-    @font-face {
-        font-family: "Inter";
-        font-style: normal;
-        font-weight: 100 900;
-        font-display: optional;
-        src: url(../../../../assets/fonts/inter-roman.woff2%3Fv=9b52753ec9) format("woff2");
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tech - Spacecraft (Page 3)</title>
+    <link rel="stylesheet" href="../../../../assets/built/screen.css%3Fv=88df665c6b.css">
 
-    <link rel="stylesheet" type="text/css" href="../../../../assets/built/screen.css%3Fv=9b52753ec9.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
 
     <style>
-        :root {
-            --background-color: #ffffff
+        .gh-content {
+            position: relative;
+            z-index: 1;
         }
+
+        /*-- Remove underline in the TOC text  */
+        .gh-content a {
+            text-decoration: none;
+        }
+
+        .gh-content img{
+            position: relative;
+            z-index: 2;
+        }
+
+        .gh-toc > .toc-list {
+            position: relative;
+            
+        }
+
+        .toc-list {
+            overflow: hidden;
+            list-style: none;
+            left: 20%;
+
+        }
+
+        @media (min-width: 1300px) {
+            .gh-sidebar {
+                position: absolute; 
+                top: 0;
+                bottom: 0;
+                margin-top: 4vmin;
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
+            }
+        
+            .gh-toc {
+                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+                top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: 1; 
+
+            }
+        }
+
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
+        .gh-toc .is-active-link::before {
+            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
+
+        } 
     </style>
-
-    <script>
-        /* The script for calculating the color contrast has been taken from
-        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
-        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
-        accentColor = accentColor.trim().slice(1);
-
-        if (accentColor.length === 3) {
-            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
-        }
-
-        var r = parseInt(accentColor.substr(0, 2), 16);
-        var g = parseInt(accentColor.substr(2, 2), 16);
-        var b = parseInt(accentColor.substr(4, 2), 16);
-        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        var textColor = (yiq >= 128) ? 'dark' : 'light';
-
-        document.documentElement.className = `has-${textColor}-text`;
-    </script>
 
     <link rel="canonical" href="index.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
     <link rel="prev" href="../2/index.html">
+    <link rel="next" href="../4/index.html">
     <meta name="generator" content="Ghost 5.87">
     <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../../../../rss/index.html">
     <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="59658b4dc0364cacbc3332171d" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
@@ -120,10 +144,10 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
-    <script defer src="../../../../public/cards.min.js%3Fv=9b52753ec9"></script>
-    <link rel="stylesheet" type="text/css" href="../../../../public/cards.min.css%3Fv=9b52753ec9.css">
-    <script defer src="../../../../public/comment-counts.min.js%3Fv=9b52753ec9" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
-    <script defer src="../../../../public/member-attribution.min.js%3Fv=9b52753ec9"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <script defer src="../../../../public/cards.min.js%3Fv=88df665c6b"></script>
+    <link rel="stylesheet" type="text/css" href="../../../../public/cards.min.css%3Fv=88df665c6b.css">
+    <script defer src="../../../../public/comment-counts.min.js%3Fv=88df665c6b" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
+    <script defer src="../../../../public/member-attribution.min.js%3Fv=88df665c6b"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
 <script>
@@ -232,26 +256,28 @@
 
 <!-- Code highlights -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
-<body class="tag-template tag-tech paged has-sans-title has-sans-body">
 
-<div class="gh-viewport">
-    
-    <header id="gh-navigation" class="gh-navigation is-middle-logo gh-outer">
-    <div class="gh-navigation-inner gh-inner">
+<body class="tag-template tag-tech paged  is-head-left-logo">
+<div class="site">
 
-        <div class="gh-navigation-brand">
-            <a class="gh-navigation-logo is-title" href="../../../../index.html">
-                    Spacecraft
-            </a>
-            <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>            <button class="gh-burger gh-icon-button" aria-label="Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>            </button>
-        </div>
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="../../../../index.html">
+                            Spacecraft
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                <button class="gh-burger"></button>
+            </div>
 
-        <nav class="gh-navigation-menu">
-            <ul class="nav">
+            <nav class="gh-head-menu">
+                <ul class="nav">
     <li class="nav-home"><a href="../../../../index.html">Home</a></li>
     <li class="nav-tech nav-current-parent"><a href="../../index.html">Tech</a></li>
     <li class="nav-profession"><a href="../../../pro/index.html">Profession</a></li>
@@ -259,530 +285,321 @@
     <li class="nav-about"><a href="../../../../about/index.html">About</a></li>
 </ul>
 
-        </nav>
+            </nav>
 
-        <div class="gh-navigation-actions">
-                <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>                <div class="gh-navigation-members">
-                            <a href="index.html#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-button" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
-                </div>
-        </div>
-
-    </div>
-</header>
-
-    
-<main class="gh-main gh-outer">
-
-        <section class="gh-archive has-image gh-inner">
-            <div class="gh-archive-inner">
-                <header class="gh-archive-wrapper">
-                    <h1 class="gh-article-title is-title">Tech</h1>
-                        <p class="gh-article-excerpt">Tech, data science, programming and of course, AI.</p>
-                </header>
-                    <figure class="gh-article-image">
-        <picture>
-            <source srcset="https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fHRlY2h8ZW58MHx8fHwxNjg4MjQ4MjAzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" media="(min-width: 2000px)">
-            <source srcset="https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fHRlY2h8ZW58MHx8fHwxNjg4MjQ4MjAzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" media="(min-width: 1200px)">
-            <source srcset="https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fHRlY2h8ZW58MHx8fHwxNjg4MjQ4MjAzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960" media="(min-width: 960px)">
-            <source srcset="https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fHRlY2h8ZW58MHx8fHwxNjg4MjQ4MjAzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600" media="(min-width: 600px)">
-            <source srcset="https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fHRlY2h8ZW58MHx8fHwxNjg4MjQ4MjAzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320" media="(min-width: 320px)">
-            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fHRlY2h8ZW58MHx8fHwxNjg4MjQ4MjAzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" alt="">
-        </picture>
-    </figure>
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="index.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
             </div>
-        </section>
+        </div>
+    </header>
 
-    
-<section class="gh-container is-list gh-outer">
-    <div class="gh-container-inner gh-inner">
+
+    <div class="site-content">
         
+<main class="site-main">
 
-        <main class="gh-main">
-            <div class="gh-feed">
+    <div class="term-container gh-canvas">
+        <section class="term">
+            <h1 class="term-name">Tech</h1>
+                <div class="term-description">Tech, data science, programming and of course, AI.</div>
+
+        </section>
+    </div>
+
+    <div class="post-feed gh-canvas">
+            <article class="post tag-tech tag-knowledge-graph tag-python tag-hash-import-2024-07-07-04-35">
+
+    <a class="post-link u-permalink" href="../../../../neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups-2/index.html"></a>
 
 
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">Neo4J Graph Database Anti-Fraud Analysis in Practice (III) - Identifying Criminal Groups</h2>
+        </header>
+        <div class="post-excerpt">
+            1 Introduction
 
-                        <article class="gh-card post tag-tech tag-ai tag-python tag-tensorflow tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../introduction-to-various-keras-callbacks/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://realvincentyuan.github.io/Spacecraft/content/images/size/w160/format/webp/2023/07/TF_FullColor_Stacked.png 160w,
-                           https://realvincentyuan.github.io/Spacecraft/content/images/size/w320/format/webp/2023/07/TF_FullColor_Stacked.png 320w,
-                          https://realvincentyuan.github.io/Spacecraft/content/images/size/w600/format/webp/2023/07/TF_FullColor_Stacked.png 600w,
-                         https://realvincentyuan.github.io/Spacecraft/content/images/size/w960/format/webp/2023/07/TF_FullColor_Stacked.png 960w,
-                        https://realvincentyuan.github.io/Spacecraft/content/images/size/w1200/format/webp/2023/07/TF_FullColor_Stacked.png.png 1200w,
-                       https://realvincentyuan.github.io/Spacecraft/content/images/size/w2000/format/webp/2023/07/TF_FullColor_Stacked.pngd.png 2000w"
-                    sizes="320px"
-                    src="https://realvincentyuan.github.io/Spacecraft/content/images/size/w600/2023/07/TF_FullColor_Stacked.png"
-                    alt="Introduction to various Keras Callbacks"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Introduction to various Keras Callbacks</h3>
-                    <p class="gh-card-excerpt is-body">1 Introduction
-
-In tensorflow.keras, callbacks can run along with the model&#39;s life cycle during fit, evaluate and predict processes. At present, tensorflow.keras has built many types of callbacks available for users to prevent overfitting, visualize the training process, debug, save model checkpoints, and generate TensorBoard, etc.</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-10-02">Oct 2, 2021</time>
-                <!--
-         --></footer>
+In the Neo4J Graph Database Anti-Fraud Analysis Practice (II) - Preparing Data section, I introduced how to import
         </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-python tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../tips-for-common-operations-on-python-dictionaries-co/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Understanding Python Closures"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Understanding Python Closures</h3>
-                    <p class="gh-card-excerpt is-body">1 Introduction
-
-When working with Python in daily work, you may have encountered code like this:
-
-def make_counter():
-    # Outer closure function
-    count = 0
-    def counter():
-      # Nested function
-        nonlocal count
-        count += 1
-        return count
-
-    return counter
-
-
-Why define functions like this - with one function inside another, and the outer</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-09-21">Sep 21, 2021</time>
-                <!--
-         --></footer>
+        <div class="post-meta">
+            <time datetime="2022-03-06">Jul 1, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">3 min read</span>
+               
         </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-analytics tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../overview-of-snowflake-architecture/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Overview of SnowFlake Database Architecture"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Overview of SnowFlake Database Architecture</h3>
-                    <p class="gh-card-excerpt is-body">1 Introduction
 
-SnowFlake, as a highly popular data warehousing application in recent years, has gained the favor of many users and investors. In my daily work, I also often use SnowFlake for analysis, so I have done some research on its underlying operation mechanism. Today, I will talk to you</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-09-11">Sep 11, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-python tag-ai tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../decision-tree-overview/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1596987851982-3b90e09ab4ac?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHxmb3Jlc3R8ZW58MHx8fHwxNjg4MjY4MjY4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1596987851982-3b90e09ab4ac?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHxmb3Jlc3R8ZW58MHx8fHwxNjg4MjY4MjY4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1596987851982-3b90e09ab4ac?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHxmb3Jlc3R8ZW58MHx8fHwxNjg4MjY4MjY4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1596987851982-3b90e09ab4ac?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHxmb3Jlc3R8ZW58MHx8fHwxNjg4MjY4MjY4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1596987851982-3b90e09ab4ac?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHxmb3Jlc3R8ZW58MHx8fHwxNjg4MjY4MjY4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1596987851982-3b90e09ab4ac?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHxmb3Jlc3R8ZW58MHx8fHwxNjg4MjY4MjY4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1596987851982-3b90e09ab4ac?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHxmb3Jlc3R8ZW58MHx8fHwxNjg4MjY4MjY4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Decision Tree Overview"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Decision Tree Overview</h3>
-                    <p class="gh-card-excerpt is-body">1 Introduction
-
-Decision tree is very classical machine learning model that can be used to solve many classification and regression problems in daily work. Many more advanced machine learning models are also built based on decision trees. Today, let&#39;s review some of the most important technical details in</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-08-28">Aug 28, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-python tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../tips-for-common-operations-on-python-dictionaries/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Tips for Common Operations on Python Dictionaries"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Tips for Common Operations on Python Dictionaries</h3>
-                    <p class="gh-card-excerpt is-body">1 Introduction
-
-In the previous article, we reviewed common operations on Python lists. As a commonly used data type, lists play a very important role in daily work. In this article, we will continue to talk about another commonly used data type in Python - dictionaries (Dict).
-
-Dictionaries can be</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-08-21">Aug 21, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-python tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../tips-for-common-operations-on-python-lists.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Tips for Common Operations on Python Lists"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Tips for Common Operations on Python Lists</h3>
-                    <p class="gh-card-excerpt is-body">1. Preface
-
-In the previous article, we reviewed the common operations on Python tuples, in this article, let&#39;s talk about another common data type in Python: lists.
-
-Like tuples, lists are also sequences created by square brackets []. The values in the list are commonly referred to as elements,</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-08-14">Aug 14, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-python tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../tips-for-common-operations-with-python-tuples.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxweXRob258ZW58MHx8fHwxNjg2NTE1NTMwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Tips for Common Operations with Python Tuples"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Tips for Common Operations with Python Tuples</h3>
-                    <p class="gh-card-excerpt is-body">1 Introduction
-
-Python, as a popular programming language, has attracted a lot of attention in the fields of data science and artificial intelligence. Many people are learning it. However, on the road to excellence, we must not neglect the basics, such as common data structures, syntax specifications, and best practices</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-08-07">Aug 7, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-analytics tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../introduction-to-google-analytics/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFuYWx5dGljc3xlbnwwfHx8fDE2ODY1MTUzMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFuYWx5dGljc3xlbnwwfHx8fDE2ODY1MTUzMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFuYWx5dGljc3xlbnwwfHx8fDE2ODY1MTUzMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFuYWx5dGljc3xlbnwwfHx8fDE2ODY1MTUzMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFuYWx5dGljc3xlbnwwfHx8fDE2ODY1MTUzMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFuYWx5dGljc3xlbnwwfHx8fDE2ODY1MTUzMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFuYWx5dGljc3xlbnwwfHx8fDE2ODY1MTUzMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Introduction to Google Analytics"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Introduction to Google Analytics</h3>
-                    <p class="gh-card-excerpt is-body">1. Introduction
-
-Many products and strategic decisions on the internet today are driven by data. For example, at BulletTech, when operating WeChat official accounts, we monitor important indicators such as traffic sources, replication, and follow-up after reading through backend data for each article. This data can help us analyze reader</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-07-31">Jul 31, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-python tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../python-web-scraping-application-scraping-paypal-job-positions/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGpvYnxlbnwwfHx8fDE2ODY1MTQ5MjB8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGpvYnxlbnwwfHx8fDE2ODY1MTQ5MjB8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGpvYnxlbnwwfHx8fDE2ODY1MTQ5MjB8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGpvYnxlbnwwfHx8fDE2ODY1MTQ5MjB8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGpvYnxlbnwwfHx8fDE2ODY1MTQ5MjB8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGpvYnxlbnwwfHx8fDE2ODY1MTQ5MjB8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGpvYnxlbnwwfHx8fDE2ODY1MTQ5MjB8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Python Web Scraping Application - Scraping PayPal Job Positions"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Python Web Scraping Application - Scraping PayPal Job Positions</h3>
-                    <p class="gh-card-excerpt is-body">1 Introduction
-
-Not long after the traditional job-hunting season (around March/April in China), the autumn job-hunting season is approaching. In this busy and stressful period of time, I once dreamed of being able to grab all the job positions of my target companies with one click, and then conquer</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-07-18">Jul 18, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-github tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../a-list-of-common-git-commands.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1556075798-4825dfaaf498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdpdHxlbnwwfHx8fDE2ODY1MTMzMDZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1556075798-4825dfaaf498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdpdHxlbnwwfHx8fDE2ODY1MTMzMDZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1556075798-4825dfaaf498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdpdHxlbnwwfHx8fDE2ODY1MTMzMDZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1556075798-4825dfaaf498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdpdHxlbnwwfHx8fDE2ODY1MTMzMDZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1556075798-4825dfaaf498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdpdHxlbnwwfHx8fDE2ODY1MTMzMDZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1556075798-4825dfaaf498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdpdHxlbnwwfHx8fDE2ODY1MTMzMDZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdpdHxlbnwwfHx8fDE2ODY1MTMzMDZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="A List of Common Git Commands"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">A List of Common Git Commands</h3>
-                    <p class="gh-card-excerpt is-body">In the article How to Use GitHub without Writing a Single Line of Code where we introduced how to use GitHub Desktop to operate GitHub, the graphical interface is very friendly for friends who are not familiar with commands. However, sometimes it is more convenient to directly run Git commands</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-07-15">Jul 15, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-github tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../how-to-use-github-without-writing-a-single-line-of-code.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="How to Use GitHub without Writing a Single Line of Code"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">How to Use GitHub without Writing a Single Line of Code</h3>
-                    <p class="gh-card-excerpt is-body">1 What is GitHub?
-
-Many people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-06-23">Jun 23, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                        <article class="gh-card post tag-tech tag-python tag-hash-import-2024-07-07-04-35">
-    <a class="gh-card-link" href="../../../../build-a-taobao-robotic-purchasing-tool-in-two-minutes.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fHx8MTY4NjUxMTc1OHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fHx8MTY4NjUxMTc1OHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fHx8MTY4NjUxMTc1OHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fHx8MTY4NjUxMTc1OHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fHx8MTY4NjUxMTc1OHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fHx8MTY4NjUxMTc1OHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fHx8MTY4NjUxMTc1OHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Build a Taobao Robotic Purchasing Tool in Two Minutes"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-                <p class="gh-card-tag">Tech</p>
-            <h3 class="gh-card-title is-title">Build a Taobao Robotic Purchasing Tool in Two Minutes</h3>
-                    <p class="gh-card-excerpt is-body">1 Pain Points
-
-Major eCommerce websites offer promotional activities on specific days, such as 618 and Singles&#39; Day. Sometimes, you need to be alert to snap up limited-release products. However, is your success rate high? Do you often encounter situations where the app is always loading, and after refreshing,</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2021-06-08">Jun 8, 2021</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>
-            </div>
-        </main>
-
-
-            <div class="gh-more is-title">
-                <a href="../../../../page/2.html">See all <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg></a>
-            </div>
 
     </div>
-</section>
-</main>
-    
-    <footer class="gh-footer gh-outer">
-    <div class="gh-footer-inner gh-inner">
 
-        <div class="gh-footer-bar">
-            <span class="gh-footer-logo is-title">
-                    Spacecraft
-            </span>
-            <nav class="gh-footer-menu">
-                <ul class="nav">
+</article>            <article class="post tag-tech tag-knowledge-graph tag-python tag-hash-import-2024-07-07-04-35">
+
+    <a class="post-link u-permalink" href="../../../../neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data.html"></a>
+
+
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">Neo4J Graph Database Anti-Fraud Analysis in Practice (II) - Prepare Data</h2>
+        </header>
+        <div class="post-excerpt">
+            1 Introduction
+
+In the previous article Neo4J Graph Database Anti-Fraud Analysis in Practice (Part 1) - Setup Analysis Environment, we
+        </div>
+        <div class="post-meta">
+            <time datetime="2022-02-06">Jul 1, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">3 min read</span>
+               
+        </div>
+
+
+    </div>
+
+</article>            <article class="post tag-tech tag-knowledge-graph tag-python tag-hash-import-2024-07-07-04-35">
+
+    <a class="post-link u-permalink" href="../../../../neo4j-graph-database-anti-fraud-analysis-practice-part-1-building-analysis-environment.html"></a>
+
+
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">Neo4J Graph Database Anti-Fraud Analysis in Practice (I) - Set Up Analysis Environment</h2>
+        </header>
+        <div class="post-excerpt">
+            1 Introduction
+
+In the article An Introduction to Graph Databases, we introduced the basic components of a graph, such as
+        </div>
+        <div class="post-meta">
+            <time datetime="2022-01-29">Jul 1, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">2 min read</span>
+               
+        </div>
+
+
+    </div>
+
+</article>            <article class="post tag-tech tag-knowledge-graph tag-python tag-hash-import-2024-07-07-04-35">
+
+    <a class="post-link u-permalink" href="../../../../introduction-to-graph-databases.html"></a>
+
+
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">Introduction to Graph Databases</h2>
+        </header>
+        <div class="post-excerpt">
+            1. Introduction
+
+Have you ever heard of &quot;Graph Databases - Graph Database&quot;? Are they databases used to store
+        </div>
+        <div class="post-meta">
+            <time datetime="2022-01-25">Jul 1, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">3 min read</span>
+               
+        </div>
+
+
+    </div>
+
+</article>            <article class="post tag-tech tag-ai tag-python tag-hash-import-2024-07-07-04-35">
+
+    <a class="post-link u-permalink" href="../../../../permutation-importance-for-feature-selection/index.html"></a>
+
+
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">Permutation Importance for Feature Selection</h2>
+        </header>
+        <div class="post-excerpt">
+            1 Introduction
+
+In previous articles like Decision Tree Notes, some common feature selection techniques have been introduced. In this article,
+        </div>
+        <div class="post-meta">
+            <time datetime="2022-01-22">Jun 11, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">2 min read</span>
+               
+        </div>
+
+
+    </div>
+
+</article>            <article class="post tag-tech tag-github tag-hash-import-2024-07-07-04-35 featured">
+
+    <a class="post-link u-permalink" href="../../../../automatically-build-and-push-docker-image-with-github-action/index.html"></a>
+
+
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">Automatically Build and Push Docker Image with GitHub Action</h2>
+        </header>
+        <div class="post-excerpt">
+            1 Introduction
+
+In this article, we will introduce how to use GitHub Action to automatically push Docker images to a
+        </div>
+        <div class="post-meta">
+            <time datetime="2021-11-20">Jun 11, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">3 min read</span>
+               
+        </div>
+
+
+    </div>
+
+</article>            <article class="post tag-tech tag-github tag-hash-import-2024-07-07-04-35">
+
+    <a class="post-link u-permalink" href="../../../../github-action-overview.html"></a>
+
+
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">GitHub Action Overview</h2>
+        </header>
+        <div class="post-excerpt">
+            1 Introduction
+
+We have introduced many cool features of GitHub before. To better understand the content of this article, it
+        </div>
+        <div class="post-meta">
+            <time datetime="2021-11-13">Jun 11, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">3 min read</span>
+               
+        </div>
+
+
+    </div>
+
+</article>            <article class="post tag-tech tag-github tag-hash-import-2024-07-07-04-35">
+
+    <a class="post-link u-permalink" href="../../../../creating-a-beautiful-online-resume-using-github.html"></a>
+
+
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">Creating a Great Online Resume using GitHub</h2>
+        </header>
+        <div class="post-excerpt">
+            1 Introduction
+
+We have previously introduced many cool features of GitHub. To better understand the content of this article, it
+        </div>
+        <div class="post-meta">
+            <time datetime="2021-11-03">Jun 11, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">2 min read</span>
+               
+        </div>
+
+
+    </div>
+
+</article>            <article class="post tag-tech tag-hash-import-2024-07-07-04-35">
+
+    <a class="post-link u-permalink" href="../../../../picgo-image-hosting-just-right/index.html"></a>
+
+
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">PicGo Image Hosting Tool, Just Right!</h2>
+        </header>
+        <div class="post-excerpt">
+            1 Introduction
+
+Pictures are indispensable in the workflow of self-media. A good image hosting can conveniently manage and reference pictures.
+        </div>
+        <div class="post-meta">
+            <time datetime="2021-10-23">Jun 11, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">3 min read</span>
+               
+        </div>
+
+
+    </div>
+
+</article>            <article class="post tag-tech tag-analytics tag-hash-import-2024-07-07-04-35">
+
+    <a class="post-link u-permalink" href="../../../../snowflake-permission-overview/index.html"></a>
+
+
+    <div class="post-wrapper">
+        <header class="post-header">
+            <h2 class="post-title">SnowFlake Database Permission Overview</h2>
+        </header>
+        <div class="post-excerpt">
+            1 Introduction
+
+Properly managing permissions for objects (such as databases and tables) in a database is very important but often
+        </div>
+        <div class="post-meta">
+            <time datetime="2021-10-11">Jun 11, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">4 min read</span>
+               
+        </div>
+
+
+    </div>
+
+</article>    </div>
+
+    <div class="pagination-container gh-canvas">
+<nav class="pagination">
+
+    <div class="pagination-left">
+            <a class="newer-posts" href="../2/index.html">← Previous</a>
+    </div>
+
+        <span class="page-number hidden-xs hidden-sm">Page 3 of 5</span>
+
+    <div class="pagination-right">
+            <a class="older-posts" href="../4/index.html">Next →</a>
+    </div>
+
+</nav>
+</div>
+
+</main>
+    </div>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <div class="gh-copyright">
+                Spacecraft © 2024
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
     <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
 </ul>
 
-            </nav>
-            <div class="gh-footer-copyright">
-                Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
             </div>
         </div>
+    </footer>
 
-                <section class="gh-footer-signup">
-                    <h2 class="gh-footer-signup-header is-title">
-                        Spacecraft
-                    </h2>
-                    <p class="gh-footer-signup-subhead is-body">
-                        Healthy food for thoughts about this beautiful life!
-                    </p>
-                    <form class="gh-form" data-members-form>
-    <input class="gh-form-input" id="footer-email" name="email" type="email" placeholder="jamie@example.com" required data-members-email>
-    <button class="gh-button" type="submit" aria-label="Subscribe">
-        <span><span>Subscribe</span> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg></span>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-    <g stroke-linecap="round" stroke-width="2" fill="currentColor" stroke="none" stroke-linejoin="round" class="nc-icon-wrapper">
-        <g class="nc-loop-dots-4-24-icon-o">
-            <circle cx="4" cy="12" r="3"></circle>
-            <circle cx="12" cy="12" r="3"></circle>
-            <circle cx="20" cy="12" r="3"></circle>
-        </g>
-        <style data-cap="butt">
-            .nc-loop-dots-4-24-icon-o{--animation-duration:0.8s}
-            .nc-loop-dots-4-24-icon-o *{opacity:.4;transform:scale(.75);animation:nc-loop-dots-4-anim var(--animation-duration) infinite}
-            .nc-loop-dots-4-24-icon-o :nth-child(1){transform-origin:4px 12px;animation-delay:-.3s;animation-delay:calc(var(--animation-duration)/-2.666)}
-            .nc-loop-dots-4-24-icon-o :nth-child(2){transform-origin:12px 12px;animation-delay:-.15s;animation-delay:calc(var(--animation-duration)/-5.333)}
-            .nc-loop-dots-4-24-icon-o :nth-child(3){transform-origin:20px 12px}
-            @keyframes nc-loop-dots-4-anim{0%,100%{opacity:.4;transform:scale(.75)}50%{opacity:1;transform:scale(1)}}
-        </style>
-    </g>
-</svg>        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-    <style>
-        .checkmark {
-            width: 40px;
-            height: 40px;
-            display: block;
-            stroke-width: 2.5;
-            stroke: currentColor;
-            stroke-miterlimit: 10;
-        }
-
-        .checkmark__check {
-            transform-origin: 50% 50%;
-            stroke-dasharray: 48;
-            stroke-dashoffset: 48;
-            animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
-        }
-
-        @keyframes stroke {
-            100% { stroke-dashoffset: 0; }
-        }
-    </style>
-</svg>    </button>
-    <p data-members-error></p>
-</form>                </section>
-
-    </div>
-</footer>    
 </div>
 
 
-<script src="../../../../assets/built/source.js%3Fv=9b52753ec9"></script>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="../../../../assets/built/main.min.js%3Fv=88df665c6b"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
+
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+
+        orderedList: false,
+    });
+</script>
+
 
 <!-- Code highlights -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

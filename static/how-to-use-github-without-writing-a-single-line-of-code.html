@@ -1,52 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
-    <title>How to Use GitHub without Writing a Single Line of Code</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="preload" as="style" href="assets/built/screen.css%3Fv=9b52753ec9.css">
-    <link rel="preload" as="script" href="assets/built/source.js%3Fv=9b52753ec9">
-    
-    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-roman.woff2%3Fv=9b52753ec9" crossorigin="anonymous">
-<style>
-    @font-face {
-        font-family: "Inter";
-        font-style: normal;
-        font-weight: 100 900;
-        font-display: optional;
-        src: url(assets/fonts/inter-roman.woff2%3Fv=9b52753ec9) format("woff2");
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to Use GitHub without Writing a Single Line of Code</title>
+    <link rel="stylesheet" href="assets/built/screen.css%3Fv=88df665c6b.css">
 
-    <link rel="stylesheet" type="text/css" href="assets/built/screen.css%3Fv=9b52753ec9.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
 
     <style>
-        :root {
-            --background-color: #ffffff
+        .gh-content {
+            position: relative;
+            z-index: 1;
         }
+
+        /*-- Remove underline in the TOC text  */
+        .gh-content a {
+            text-decoration: none;
+        }
+
+        .gh-content img{
+            position: relative;
+            z-index: 2;
+        }
+
+        .gh-toc > .toc-list {
+            position: relative;
+            
+        }
+
+        .toc-list {
+            overflow: hidden;
+            list-style: none;
+            left: 20%;
+
+        }
+
+        @media (min-width: 1300px) {
+            .gh-sidebar {
+                position: absolute; 
+                top: 0;
+                bottom: 0;
+                margin-top: 4vmin;
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
+            }
+        
+            .gh-toc {
+                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+                top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: 1; 
+
+            }
+        }
+
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
+        .gh-toc .is-active-link::before {
+            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
+
+        } 
     </style>
-
-    <script>
-        /* The script for calculating the color contrast has been taken from
-        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
-        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
-        accentColor = accentColor.trim().slice(1);
-
-        if (accentColor.length === 3) {
-            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
-        }
-
-        var r = parseInt(accentColor.substr(0, 2), 16);
-        var g = parseInt(accentColor.substr(2, 2), 16);
-        var b = parseInt(accentColor.substr(4, 2), 16);
-        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        var textColor = (yiq >= 128) ? 'dark' : 'light';
-
-        document.documentElement.className = `has-${textColor}-text`;
-    </script>
 
     <link rel="canonical" href="how-to-use-github-without-writing-a-single-line-of-code.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -196,10 +219,10 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
-    <script defer src="public/cards.min.js%3Fv=9b52753ec9"></script>
-    <link rel="stylesheet" type="text/css" href="public/cards.min.css%3Fv=9b52753ec9.css">
-    <script defer src="public/comment-counts.min.js%3Fv=9b52753ec9" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
-    <script defer src="public/member-attribution.min.js%3Fv=9b52753ec9"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <script defer src="public/cards.min.js%3Fv=88df665c6b"></script>
+    <link rel="stylesheet" type="text/css" href="public/cards.min.css%3Fv=88df665c6b.css">
+    <script defer src="public/comment-counts.min.js%3Fv=88df665c6b" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
+    <script defer src="public/member-attribution.min.js%3Fv=88df665c6b"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
 <script>
@@ -308,26 +331,28 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
 
 <!-- Code highlights -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
-<body class="post-template tag-tech tag-github tag-hash-import-2024-07-07-04-35 has-sans-title has-sans-body">
 
-<div class="gh-viewport">
-    
-    <header id="gh-navigation" class="gh-navigation is-middle-logo gh-outer">
-    <div class="gh-navigation-inner gh-inner">
+<body class="post-template tag-tech tag-github tag-hash-import-2024-07-07-04-35  is-head-left-logo">
+<div class="site">
 
-        <div class="gh-navigation-brand">
-            <a class="gh-navigation-logo is-title" href="index.html">
-                    Spacecraft
-            </a>
-            <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>            <button class="gh-burger gh-icon-button" aria-label="Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>            </button>
-        </div>
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="index.html">
+                            Spacecraft
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                <button class="gh-burger"></button>
+            </div>
 
-        <nav class="gh-navigation-menu">
-            <ul class="nav">
+            <nav class="gh-head-menu">
+                <ul class="nav">
     <li class="nav-home"><a href="index.html">Home</a></li>
     <li class="nav-tech"><a href="tag/tech/index.html">Tech</a></li>
     <li class="nav-profession"><a href="tag/pro/index.html">Profession</a></li>
@@ -335,271 +360,118 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
     <li class="nav-about"><a href="about/index.html">About</a></li>
 </ul>
 
-        </nav>
+            </nav>
 
-        <div class="gh-navigation-actions">
-                <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>                <div class="gh-navigation-members">
-                            <a href="how-to-use-github-without-writing-a-single-line-of-code.html#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-button" href="how-to-use-github-without-writing-a-single-line-of-code.html#/portal/signup" data-portal="signup">Subscribe</a>
-                </div>
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="how-to-use-github-without-writing-a-single-line-of-code.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="how-to-use-github-without-writing-a-single-line-of-code.html#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
         </div>
+    </header>
 
-    </div>
-</header>
 
-    
+    <div class="site-content">
+        
+<main class="site-main">
 
-<main class="gh-main">
 
-    <article class="gh-article post tag-tech tag-github tag-hash-import-2024-07-07-04-35">
+    <article class="post tag-tech tag-github tag-hash-import-2024-07-07-04-35">
 
         <header class="gh-article-header gh-canvas">
 
-                <a class="gh-article-tag" href="tag/tech/index.html">Tech</a>
-            <h1 class="gh-article-title is-title">How to Use GitHub without Writing a Single Line of Code</h1>
+        <div class="article-tag post-card-tags">
+        </div>
 
-            <div class="gh-article-meta">
-                <div class="gh-article-author-image instapaper_ignore">
-                            <a href="author/vincent-2/index.html">
-                                <img class="author-profile-image" src="content/images/size/w160/2024/07/avatar-1.png" alt="Vincent Yuan">
-                            </a>
-                </div>
-                <div class="gh-article-meta-wrapper">
-                    <h4 class="gh-article-author-name"><a href="author/vincent-2/index.html">Vincent Yuan</a></h4>
-                    <div class="gh-article-meta-content">
-                        <time class="gh-article-meta-date" datetime="2021-06-23">Jun 23, 2021</time>
-                            <span class="gh-article-meta-length"><span class="bull">—</span> 4 min read</span>
-                    </div>
-                </div>
+            <h1 class="gh-article-title">How to Use GitHub without Writing a Single Line of Code</h1>
+
+            <div class="post-meta">
+                <a href="author/vincent-2/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
+                <time datetime="2021-06-23">Jun 11, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">4 min read</span>
+            </div>
+
+            <div class="post-meta">
+                    <a class="post-tag tag-tech" href="tag/tech/index.html" title="Tech">Tech</a>
+                    <a class="post-tag tag-github" href="tag/github/index.html" title="Git">Git</a>
             </div>
 
                 <figure class="gh-article-image">
-        <picture>
-            <source srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" media="(min-width: 2000px)">
-            <source srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" media="(min-width: 1200px)">
-            <source srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960" media="(min-width: 960px)">
-            <source srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600" media="(min-width: 600px)">
-            <source srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320" media="(min-width: 320px)">
-            <img src="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" alt="How to Use GitHub without Writing a Single Line of Code">
-        </picture>
+        <img
+            class="post-image"
+            srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            sizes="(min-width: 1200px) 960px, 92vw"
+            src="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+            alt="How to Use GitHub without Writing a Single Line of Code"
+        >
             <figcaption>Photo by <a href="https://unsplash.com/@markuswinkler?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Markus Winkler</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
     </figure>
-
         </header>
 
-        <section class="gh-content gh-canvas is-body">
+        <div class="gh-content gh-canvas">
+
+            <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
+
             <h2 id="1-what-is-github">1 What is GitHub?</h2><p>Many people think of GitHub as a tool mainly used by programmers for coding. In fact, the main feature of GitHub is version control and collaboration, which means that not only programmers but also non-technical people can use it to work more efficiently. Therefore, this article will teach you how to use GitHub from scratch, and help you get to know this powerful productivity tool. First, let's get familiar with some common GitHub terms:</p><ul><li>Repository: can be considered as a folder for storing code and files. When you are the repository owner, you can set access permissions.</li><li>Remote Repository: a copy of the repository, usually used to make changes, which will be later added to the repository main branch.</li><li>Main/Branch: the current status of the project.</li><li>Branch: a copy of the main branch, used to temporarily store modified states, usually for updating the main branch.</li><li>Push: submit modifications to the repository.</li><li>Pull: synchronize updates from the repository to the current work state.</li><li>Pull Request: used to merge modifications on the branch to the main branch.</li><li>Merged: updates on the branch have been merged to the main branch, and the repository is updated.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-7-17/1626489355119-Github%20%E5%9B%BE%E4%BE%8B.png" class="kg-image" alt loading="lazy" width="600" height="755"><figcaption>Diagram of common GitHub terms</figcaption></figure><p>Next, we will mainly use the GitHub Desktop client (which can be downloaded for free from the official website) to introduce the functions, which allows you to use most of GitHub's core functions.</p><h2 id="2-what-can-github-do">2 What Can GitHub Do?</h2><p>GitHub is an excellent tool for version control and collaboration.</p><h3 id="21-version-control">2.1 Version Control</h3><p>Specifically, version management can help save the modified history of files, so that it can be easily checked and rolled back when needed.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-7-17/1626489404945-Github%20%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC.png" class="kg-image" alt loading="lazy" width="600" height="1544"><figcaption>GitHub Desktop view of version history</figcaption></figure><p>In the example, BulletTech's repository saves the change history, and you can click on the change to see the modified files and the corresponding updates.</p><h3 id="22-collaboration">2.2 Collaboration</h3><p>These changes were made by members of the BulletTech team. When multiple people collaborate, it is recommended to work on different branches. After completing the updates, you can merge the updates on your branch to the main branch through a pull request (⌘/Ctrl + R). At this time, the software will automatically guide you to the web page to create a request. Members of the team can review the changes. If they meet the requirements, the update can be merged to the main branch.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-7-17/1626489452783-Github%E5%90%88%E5%B9%B6%E8%AF%B7%E6%B1%82.png" class="kg-image" alt loading="lazy" width="600" height="442"><figcaption>Merge request</figcaption></figure><p>It is recommended to set the merge request template. Filling in the update information clearly will save a lot of communication time and make it easier to trace back in the future. You can find the corresponding template in our <a href="https://github.com/BulletTech/BulletTech/tree/main/.github?ref=localhost">repository</a> and modify it according to your needs for use in your own project.</p><h3 id="23-build-a-blog">2.3 Build a Blog</h3><p>GitHub provides free server hosting for simple blogs. BulletTech's own blog is built on GitHub. You just need to enable the GitHub Pages feature in the repository settings, and the blog will be generated automatically. GitHub provides many templates to choose from, or you can write your own from scratch. We won't go into detail here. If you are interested, please visit our <a href="https://bullettech.github.io/BulletTech/?ref=localhost">repository</a> to view the source code and learn.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-24/1624539190066-Blog.jpeg" class="kg-image" alt loading="lazy" width="300" height="2109"><figcaption>BulletTech blog</figcaption></figure><h2 id="3-how-to-use-github">3 How to Use GitHub</h2><h3 id="31-create-a-repository">3.1 Create a Repository</h3><p>After registering for GitHub, on your homepage, click the most prominent green button (New) to create a new repository. Clicking into the repository and clicking the green button (Code) will open GitHub Desktop and download the files to your computer. You can now start your project!</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-24/1624540363015-%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93.png" class="kg-image" alt loading="lazy" width="600" height="1286"><figcaption>Create a repository</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/84658804/123267740-ecebfd00-d52f-11eb-85d9-b2f90583bf4c.png" class="kg-image" alt loading="lazy" width="600" height="632"><figcaption>Open the repository with GitHub Desktop</figcaption></figure><h3 id="32-basic-functions-of-github-desktop">3.2 Basic Functions of GitHub Desktop</h3><p>Basic operations are shown in the figure below. Please note that sometimes there may be conflicts when synchronizing (pulling) the repository. Most of the time it is because the local update has not been synchronized to the branch, but other people have updated the branch. In this case, you need to stash or discard your updates before synchronizing, which can be found in the top menu under Branch.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-26/1624676128227-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.png" class="kg-image" alt loading="lazy" width="600" height="1286"><figcaption>Basic operations of GitHub Desktop</figcaption></figure><p>In summary, after mastering these basic knowledge and skills, you can use GitHub smoothly for file management, collaborative work, and create your own blog, and so far, without writing a single line of code. Of course, using code can also operate GitHub conveniently. Next time we will use command operations to explore GitHub. Stay tuned!</p>
-        </section>
+        </div>
+
+        <div class="pagination-container gh-canvas">
+        <nav class="pagination">
+
+            <div class="pagination-left">
+                    <a class="newer-posts" href="half-year-experience-of-m1-mac-mini-the-new-future-of-mac/index.html">
+                        <span class="pagination-label">Previous</span>
+                        Half-year Experience of M1 Mac mini - The New Future of Mac
+                    </a>
+            </div>
+
+            <div class="pagination-right">
+                    <a class="older-posts" href="a-list-of-common-git-commands.html">
+                        <span class="pagination-label">Next</span>
+                        A List of Common Git Commands
+                    </a>
+            </div>
+
+        </nav>
+        </div>
+
+            <div class="gh-comments gh-canvas">
+                
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2ab" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+    
+            </div>
 
     </article>
 
-        <div class="gh-comments gh-canvas">
-            
-        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2ab" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
-    
-        </div>
 
 </main>
+    </div>
 
-
-            <section class="gh-container is-grid gh-outer">
-                <div class="gh-container-inner gh-inner">
-                    <h2 class="gh-container-title">Read more</h2>
-                    <div class="gh-feed">
-                            <article class="gh-card post featured">
-    <a class="gh-card-link" href="how-to-prompt-correctly-with-llama-2/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="How to Prompt Correctly with Llama 2?"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-            <h3 class="gh-card-title is-title">How to Prompt Correctly with Llama 2?</h3>
-                <p class="gh-card-excerpt is-body">Some learnings with prompting to Llama 2.</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2024-01-27">Jan 27, 2024</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                            <article class="gh-card post featured">
-    <a class="gh-card-link" href="build-a-fraud-intelligence-analyst-powered-by-llama-2-in-google-colab-with-gpus/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Build a Fraud Intelligence Analyst Powered by Llama 2 in Google Colab with GPUs"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-            <h3 class="gh-card-title is-title">Build a Fraud Intelligence Analyst Powered by Llama 2 in Google Colab with GPUs</h3>
-                <p class="gh-card-excerpt is-body">Let Llama 2 help credit card fraud detection!
-</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2024-01-12">Jan 12, 2024</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                            <article class="gh-card post featured">
-    <a class="gh-card-link" href="run-llama-2-with-retrieval-augmented-generation-rag-in-google-colab-with-gpus/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Run Llama 2 with Retrieval Augmented Generation in Google Colab with GPUs"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-            <h3 class="gh-card-title is-title">Run Llama 2 with Retrieval Augmented Generation in Google Colab with GPUs</h3>
-                <p class="gh-card-excerpt is-body">Run Llama 2 with RAG in Google Colab.
-</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2024-01-07">Jan 7, 2024</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                            <article class="gh-card post featured">
-    <a class="gh-card-link" href="say-hello-to-2024/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Say Hello to 2024"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-            <h3 class="gh-card-title is-title">Say Hello to 2024</h3>
-                <p class="gh-card-excerpt is-body">Reflecting on 2023 and looking ahead to 2024.</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2023-12-31">Dec 31, 2023</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                    </div>
-                </div>
-            </section>
-
-    
-    <footer class="gh-footer gh-outer">
-    <div class="gh-footer-inner gh-inner">
-
-        <div class="gh-footer-bar">
-            <span class="gh-footer-logo is-title">
-                    Spacecraft
-            </span>
-            <nav class="gh-footer-menu">
-                <ul class="nav">
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <div class="gh-copyright">
+                Spacecraft © 2024
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
     <li class="nav-sign-up"><a href="how-to-use-github-without-writing-a-single-line-of-code.html#/portal/">Sign up</a></li>
 </ul>
 
-            </nav>
-            <div class="gh-footer-copyright">
-                Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
             </div>
         </div>
+    </footer>
 
-                <section class="gh-footer-signup">
-                    <h2 class="gh-footer-signup-header is-title">
-                        Spacecraft
-                    </h2>
-                    <p class="gh-footer-signup-subhead is-body">
-                        Healthy food for thoughts about this beautiful life!
-                    </p>
-                    <form class="gh-form" data-members-form>
-    <input class="gh-form-input" id="footer-email" name="email" type="email" placeholder="jamie@example.com" required data-members-email>
-    <button class="gh-button" type="submit" aria-label="Subscribe">
-        <span><span>Subscribe</span> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg></span>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-    <g stroke-linecap="round" stroke-width="2" fill="currentColor" stroke="none" stroke-linejoin="round" class="nc-icon-wrapper">
-        <g class="nc-loop-dots-4-24-icon-o">
-            <circle cx="4" cy="12" r="3"></circle>
-            <circle cx="12" cy="12" r="3"></circle>
-            <circle cx="20" cy="12" r="3"></circle>
-        </g>
-        <style data-cap="butt">
-            .nc-loop-dots-4-24-icon-o{--animation-duration:0.8s}
-            .nc-loop-dots-4-24-icon-o *{opacity:.4;transform:scale(.75);animation:nc-loop-dots-4-anim var(--animation-duration) infinite}
-            .nc-loop-dots-4-24-icon-o :nth-child(1){transform-origin:4px 12px;animation-delay:-.3s;animation-delay:calc(var(--animation-duration)/-2.666)}
-            .nc-loop-dots-4-24-icon-o :nth-child(2){transform-origin:12px 12px;animation-delay:-.15s;animation-delay:calc(var(--animation-duration)/-5.333)}
-            .nc-loop-dots-4-24-icon-o :nth-child(3){transform-origin:20px 12px}
-            @keyframes nc-loop-dots-4-anim{0%,100%{opacity:.4;transform:scale(.75)}50%{opacity:1;transform:scale(1)}}
-        </style>
-    </g>
-</svg>        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-    <style>
-        .checkmark {
-            width: 40px;
-            height: 40px;
-            display: block;
-            stroke-width: 2.5;
-            stroke: currentColor;
-            stroke-miterlimit: 10;
-        }
-
-        .checkmark__check {
-            transform-origin: 50% 50%;
-            stroke-dasharray: 48;
-            stroke-dashoffset: 48;
-            animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
-        }
-
-        @keyframes stroke {
-            100% { stroke-dashoffset: 0; }
-        }
-    </style>
-</svg>    </button>
-    <p data-members-error></p>
-</form>                </section>
-
-    </div>
-</footer>    
 </div>
 
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -643,7 +515,31 @@ Many people think of GitHub as a tool mainly used by programmers for coding. In 
         </div>
     </div>
 </div>
-<script src="assets/built/source.js%3Fv=9b52753ec9"></script>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="assets/built/main.min.js%3Fv=88df665c6b"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
+
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+
+        orderedList: false,
+    });
+</script>
+
 
 <!-- Code highlights -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

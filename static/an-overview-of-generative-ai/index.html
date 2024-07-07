@@ -1,52 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
-    <title>An Overview of Generative AI</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="preload" as="style" href="../assets/built/screen.css%3Fv=9b52753ec9.css">
-    <link rel="preload" as="script" href="../assets/built/source.js%3Fv=9b52753ec9">
-    
-    <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-roman.woff2%3Fv=9b52753ec9" crossorigin="anonymous">
-<style>
-    @font-face {
-        font-family: "Inter";
-        font-style: normal;
-        font-weight: 100 900;
-        font-display: optional;
-        src: url(../assets/fonts/inter-roman.woff2%3Fv=9b52753ec9) format("woff2");
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>An Overview of Generative AI</title>
+    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=88df665c6b.css">
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css%3Fv=9b52753ec9.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
 
     <style>
-        :root {
-            --background-color: #ffffff
+        .gh-content {
+            position: relative;
+            z-index: 1;
         }
+
+        /*-- Remove underline in the TOC text  */
+        .gh-content a {
+            text-decoration: none;
+        }
+
+        .gh-content img{
+            position: relative;
+            z-index: 2;
+        }
+
+        .gh-toc > .toc-list {
+            position: relative;
+            
+        }
+
+        .toc-list {
+            overflow: hidden;
+            list-style: none;
+            left: 20%;
+
+        }
+
+        @media (min-width: 1300px) {
+            .gh-sidebar {
+                position: absolute; 
+                top: 0;
+                bottom: 0;
+                margin-top: 4vmin;
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
+            }
+        
+            .gh-toc {
+                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+                top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: 1; 
+
+            }
+        }
+
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
+        .gh-toc .is-active-link::before {
+            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
+
+        } 
     </style>
-
-    <script>
-        /* The script for calculating the color contrast has been taken from
-        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
-        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
-        accentColor = accentColor.trim().slice(1);
-
-        if (accentColor.length === 3) {
-            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
-        }
-
-        var r = parseInt(accentColor.substr(0, 2), 16);
-        var g = parseInt(accentColor.substr(2, 2), 16);
-        var b = parseInt(accentColor.substr(4, 2), 16);
-        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        var textColor = (yiq >= 128) ? 'dark' : 'light';
-
-        document.documentElement.className = `has-${textColor}-text`;
-    </script>
 
     <meta name="description" content="Most important things of Gen AI in one post.">
     <link rel="canonical" href="index.html">
@@ -194,10 +217,10 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
-    <script defer src="../public/cards.min.js%3Fv=9b52753ec9"></script>
-    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=9b52753ec9.css">
-    <script defer src="../public/comment-counts.min.js%3Fv=9b52753ec9" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
-    <script defer src="../public/member-attribution.min.js%3Fv=9b52753ec9"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <script defer src="../public/cards.min.js%3Fv=88df665c6b"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=88df665c6b.css">
+    <script defer src="../public/comment-counts.min.js%3Fv=88df665c6b" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
+    <script defer src="../public/member-attribution.min.js%3Fv=88df665c6b"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
 <script>
@@ -306,26 +329,28 @@
 
 <!-- Code highlights -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
-<body class="post-template tag-tech tag-ai tag-genai tag-hash-import-2024-07-07-04-35 has-sans-title has-sans-body">
 
-<div class="gh-viewport">
-    
-    <header id="gh-navigation" class="gh-navigation is-middle-logo gh-outer">
-    <div class="gh-navigation-inner gh-inner">
+<body class="post-template tag-tech tag-ai tag-genai tag-hash-import-2024-07-07-04-35  is-head-left-logo">
+<div class="site">
 
-        <div class="gh-navigation-brand">
-            <a class="gh-navigation-logo is-title" href="../index.html">
-                    Spacecraft
-            </a>
-            <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>            <button class="gh-burger gh-icon-button" aria-label="Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>            </button>
-        </div>
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="../index.html">
+                            Spacecraft
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                <button class="gh-burger"></button>
+            </div>
 
-        <nav class="gh-navigation-menu">
-            <ul class="nav">
+            <nav class="gh-head-menu">
+                <ul class="nav">
     <li class="nav-home"><a href="../index.html">Home</a></li>
     <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
     <li class="nav-profession"><a href="../tag/pro/index.html">Profession</a></li>
@@ -333,272 +358,122 @@
     <li class="nav-about"><a href="../about/index.html">About</a></li>
 </ul>
 
-        </nav>
+            </nav>
 
-        <div class="gh-navigation-actions">
-                <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>                <div class="gh-navigation-members">
-                            <a href="index.html#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-button" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
-                </div>
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="index.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
         </div>
+    </header>
 
-    </div>
-</header>
 
-    
+    <div class="site-content">
+        
+<main class="site-main">
 
-<main class="gh-main">
 
-    <article class="gh-article post tag-tech tag-ai tag-genai tag-hash-import-2024-07-07-04-35 featured">
+    <article class="post tag-tech tag-ai tag-genai tag-hash-import-2024-07-07-04-35 featured">
 
         <header class="gh-article-header gh-canvas">
 
-                <a class="gh-article-tag" href="../tag/tech/index.html">Tech</a>
-            <h1 class="gh-article-title is-title">An Overview of Generative AI</h1>
-                <p class="gh-article-excerpt is-body">Most important things of Gen AI in one post.</p>
+        <div class="article-tag post-card-tags">
+                <span class="post-card-featured"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4.49365 4.58752C3.53115 6.03752 2.74365 7.70002 2.74365 9.25002C2.74365 10.6424 3.29678 11.9778 4.28134 12.9623C5.26591 13.9469 6.60127 14.5 7.99365 14.5C9.38604 14.5 10.7214 13.9469 11.706 12.9623C12.6905 11.9778 13.2437 10.6424 13.2437 9.25002C13.2437 6.00002 10.9937 3.50002 9.16865 1.68127L6.99365 6.25002L4.49365 4.58752Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg> Featured</span>
+        </div>
 
-            <div class="gh-article-meta">
-                <div class="gh-article-author-image instapaper_ignore">
-                            <a href="../author/vincent-2/index.html">
-                                <img class="author-profile-image" src="../content/images/size/w160/2024/07/avatar-1.png" alt="Vincent Yuan">
-                            </a>
-                </div>
-                <div class="gh-article-meta-wrapper">
-                    <h4 class="gh-article-author-name"><a href="../author/vincent-2/index.html">Vincent Yuan</a></h4>
-                    <div class="gh-article-meta-content">
-                        <time class="gh-article-meta-date" datetime="2023-12-03">Dec 3, 2023</time>
-                            <span class="gh-article-meta-length"><span class="bull">—</span> 6 min read</span>
-                    </div>
-                </div>
+            <h1 class="gh-article-title">An Overview of Generative AI</h1>
+
+            <div class="post-meta">
+                <a href="../author/vincent-2/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
+                <time datetime="2023-12-03">Jan 27, 2024</time>&nbsp;·&nbsp;<span class="gh-card-length">6 min read</span>
+            </div>
+
+            <div class="post-meta">
+                    <a class="post-tag tag-tech" href="../tag/tech/index.html" title="Tech">Tech</a>
+                    <a class="post-tag tag-ai" href="../tag/ai/index.html" title="AI">AI</a>
+                    <a class="post-tag tag-genai" href="../tag/genai/index.html" title="GenAI">GenAI</a>
             </div>
 
                 <figure class="gh-article-image">
-        <picture>
-            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" media="(min-width: 2000px)">
-            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" media="(min-width: 1200px)">
-            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960" media="(min-width: 960px)">
-            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600" media="(min-width: 600px)">
-            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320" media="(min-width: 320px)">
-            <img src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" alt="An Overview of Generative AI">
-        </picture>
+        <img
+            class="post-image"
+            srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+                    https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            sizes="(min-width: 1200px) 960px, 92vw"
+            src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+            alt="An Overview of Generative AI"
+        >
             <figcaption>Photo by <a href="https://unsplash.com/@vincentyuan87?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Vincent Yuan @USA</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
     </figure>
-
         </header>
 
-        <section class="gh-content gh-canvas is-body">
+        <div class="gh-content gh-canvas">
+
+            <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
+
             <p>Generative AI (GenAI) is definitely a hype, it is so overwhelming since the debut of ChatGPT in late 2022, and ever since then, a lot of progress have been made in both tech and regulation. Therefore, this post is going to summarize the most important things to know about GenAI with an holistic view.</p><h2 id="1-introduction">1 Introduction</h2><p>Generative AI refers to a subset of artificial intelligence that focuses on creating or generating new content, data, or outputs based on patterns and knowledge learned from existing data. This form of AI is particularly adept at generating novel content that resembles and aligns with the patterns observed in the training data. Generative models aim to produce outputs that mimic the characteristics of the input data they were trained on.</p><h3 id="11-evolution-of-genai">1.1 Evolution of GenAI</h3><p>The history and evolution of generative AI span several decades and have seen significant advancements in machine learning and artificial intelligence research. Here's a brief overview:</p><h4 id="early-years-1950s1980s">Early Years (1950s - 1980s):</h4><ul><li><strong>Early Concepts:</strong> The foundational concepts of artificial intelligence emerged in the 1950s and 1960s. Researchers explored the idea of machines simulating human-like intelligence.</li><li><strong>Early Generative Models:</strong> Early generative models like Markov chains and simple probabilistic models were developed. These models generated basic sequences of text or data based on probabilistic rules.</li></ul><h4 id="neural-networks-resurgence-1980s2000s">Neural Networks Resurgence (1980s - 2000s):</h4><ul><li><strong>Neural Networks:</strong> Neural networks gained attention in the 1980s and 1990s, but due to limitations in computing power and data, they were not extensively explored for generative tasks.</li><li><strong>Restricted Success:</strong> Generative models during this period struggled due to challenges in training deep networks and limited datasets.</li></ul><h4 id="rise-of-deep-learning-2010spresent">Rise of Deep Learning (2010s - Present):</h4><ul><li><strong>Deep Learning Revolution:</strong> The advent of big data, increased computing power, and breakthroughs in deep learning techniques led to a resurgence of interest in generative models.</li><li><strong>Generative Adversarial Networks (GANs):</strong> Introduced by Ian Goodfellow and his colleagues in 2014, GANs became a groundbreaking architecture for generative tasks. GANs involve a generator and discriminator competing against each other, leading to impressive results in image generation and beyond.</li><li><strong>Variational Autoencoders (VAEs):</strong> VAEs emerged as another prominent framework for generative modeling, focusing on learning latent representations and generating data based on learned distributions.</li><li><strong>Transformer Models:</strong> Transformers, introduced in the paper <code>Attention is All You Need</code> by Vaswani et al. in 2017, revolutionized natural language processing (NLP) and enabled advanced text generation tasks like language translation, text summarization, and more.</li></ul><h2 id="2-core-concepts">2 Core Concepts</h2><p>Generative AI is based on several fundamental principles that enable machines to generate new content or data resembling patterns observed in the training data. Key principles include <code>unsupervised learning</code>, <code>probabilistic modeling</code>, and <code>latent space representation</code>.</p><h3 id="21-unsupervised-learning">2.1 Unsupervised Learning:</h3><ul><li><strong>Definition:</strong> Unsupervised learning involves training AI models on unlabeled data without explicit supervision or predefined targets.</li><li><strong>Role in Generative AI:</strong> Generative models use unsupervised learning to extract patterns and structures from the data. They learn the underlying distribution of the input data to generate new samples.</li><li><strong>Example:</strong> Autoencoders and Generative Adversarial Networks (GANs) are unsupervised learning approaches widely used in generative AI.</li></ul><h3 id="22-probabilistic-modeling">2.2 Probabilistic Modeling:</h3><ul><li><strong>Definition:</strong> Probabilistic modeling involves representing uncertainty in data using probability distributions and statistical methods.</li><li><strong>Role in Generative AI:</strong> Generative models use probability distributions to capture the complexity of the data. They learn the likelihood of generating data and sample from these distributions to create new data points.</li><li><strong>Example:</strong> Variational Autoencoders (VAEs) use probabilistic modeling to learn a latent space representation and generate data samples based on the learned distributions.</li></ul><h3 id="23-latent-space-representation">2.3 Latent Space Representation:</h3><ul><li><strong>Definition:</strong> Latent space is a lower-dimensional representation learned by the model that captures meaningful features or characteristics of the data.</li><li><strong>Role in Generative AI:</strong> Generative models encode high-dimensional data into a lower-dimensional latent space. This space represents underlying features, allowing the model to generate new data points by decoding these representations.</li><li><strong>Example:</strong> In VAEs, the encoder-decoder architecture learns to map data into a latent space and reconstruct data from latent space representations.</li></ul><h3 id="24-how-they-intersect-in-generative-ai">2.4 How They Intersect in Generative AI:</h3><ul><li><strong>Unsupervised Learning + Probabilistic Modeling:</strong> Generative models leverage unsupervised learning techniques to capture data distributions probabilistically. They learn representations of data and generate new samples probabilistically based on these learned distributions.</li><li><strong>Latent Space Representation + Probabilistic Modeling:</strong> Models like VAEs use latent space representations that follow specific probability distributions. By sampling from these distributions, they generate new data points with controlled characteristics.</li></ul><p>Generative AI models employ these principles to understand, model, and generate new data that captures the underlying patterns and structures present in the training data. These principles contribute to the creativity and flexibility of generative models, enabling them to produce realistic and diverse outputs.</p><h2 id="3-applications">3 Applications</h2><p>Generative AI is rapidly transforming various industries and has led to the development of innovative applications that are changing the way we interact with technology. Here are some of the most famous applications of generative AI today, along with examples and references:</p><h3 id="31-image-generation-and-manipulation">3.1 Image Generation and Manipulation</h3><p>a) Artbreeder: A collaborative art platform that allows users to create and share AI-generated images and manipulate existing images using a variety of AI-powered tools. (<a href="https://www.artbreeder.com/?ref=localhost" rel="noopener noreferrer">https://www.artbreeder.com/</a>)</p><h3 id="32-text-generation-and-summarization">3.2 Text Generation and Summarization</h3><p>a) Jasper: An AI-powered writing assistant that helps writers generate creative text formats, like poems, code, scripts, musical pieces, email, letters, etc. (<a href="https://www.jasper.ai/?ref=localhost" rel="noopener noreferrer">https://www.jasper.ai/</a>)</p><h3 id="33-code-generation">3.3 Code Generation</h3><p>a) GitHub Copilot: An AI-powered code completion tool that helps programmers write more efficient and error-free code by suggesting relevant code snippets based on the context. (<a href="https://github.com/features/copilot?ref=localhost" rel="noopener noreferrer">https://github.com/features/copilot</a>)</p><h3 id="34-audio-and-music-generation">3.4 Audio and Music Generation</h3><p>a) MuseNet: A generative model that can generate new musical pieces in various styles, including classical, jazz, and pop. (<a href="https://openai.com/research/musenet?ref=localhost" rel="noopener noreferrer">https://openai.com/research/musenet</a>)</p><h3 id="34-video-generation">3.4 Video Generation</h3><p>a) Runway ML: A cloud-based platform that provides various AI-powered tools for video editing, including automatic background removal, object tracking, and style transfer. (<a href="https://runwayml.com/?ref=localhost" rel="noopener noreferrer">https://runwayml.com/</a>)</p><h3 id="35-drug-discovery-and-development">3.5 Drug Discovery and Development</h3><p>a) Atomwise: An AI-powered drug discovery platform that uses generative models to design new drug candidates with improved properties. (<a href="https://www.atomwise.com/?ref=localhost" rel="noopener noreferrer">https://www.atomwise.com/</a>)</p><h3 id="36-customer-service-and-chatbots">3.6 Customer Service and Chatbots</h3><p>a) Dialpad: An AI-powered customer service platform that uses chatbots to provide automated support and answer customer questions. (<a href="https://www.dialpad.com/features/artificial-intelligence/?ref=localhost" rel="noopener noreferrer">https://www.dialpad.com/features/artificial-intelligence/</a>)</p><p>These examples demonstrate the wide range of applications for generative AI, and its potential to revolutionize various industries. As generative AI models continue to evolve, we can expect to see even more innovative applications emerge in the years to come.</p><h2 id="4-ethical-considerations">4 <strong>Ethical Considerations</strong></h2><p>While Generative AI has the potential to transform industries and bring about a productivity revolution, it also raises ethical concerns that need to be addressed.</p><p>Some of the key ethical concerns of using Generative AI include:</p><p><strong>Distribution of harmful content</strong>: While Generative AI systems can generate human-like content that enhances business productivity, it can also lead to generating harmful or offensive content. The most concerning harm stems from tools like Deepfakes that can create false images, videos, text, or speech that can be agenda-driven or fueled to spread hate speech. Such harmful content calls for human intervention to align it with the business ethics of the organization leveraging this technology .</p><p><strong>Copyright and legal exposure</strong>: Generative AI models are trained on data, which can infringe upon the copyrights and intellectual property rights of other companies. It can lead to legal, reputational, and financial risk for the company using pre-trained models and can negatively impact creators and copyright holders.</p><p><strong>Data privacy violations</strong>: The underlying training data may contain sensitive information, including personally identifiable information (PII). The common ethical principles include transparency, accountability, data privacy, and robustness that focus on the technology providers. Keeping informed of developments in these areas and engaging with the discourse around AI ethics is an essential part of making sure generative AI remains safe for all users.</p><p>It is important to note that addressing these concerns ensures responsible Generative AI development and deployment.</p><h2 id="5-outlook">5 Outlook</h2><p>Here are some of the key trends and challenges that are likely to shape the future of GenAI:</p><h3 id="big-picture">Big picture</h3><p><strong>Continued growth and investment:</strong> The field of GenAI is expected to continue to grow rapidly in the coming years, as more investment pours into the development of new models and applications.</p><p><strong>Increasing sophistication of models:</strong> GenAI models are becoming increasingly sophisticated, thanks to advances in machine learning and artificial intelligence.</p><p><strong>Expanding range of applications:</strong> GenAI is being used in a wider range of applications, from creating art and music to designing drugs and developing new materials.</p><p><strong>Growing concerns about ethical implications:</strong> There is growing concern about the ethical implications of GenAI, such as the potential for bias, discrimination, and misuse.</p><h3 id="individual">Individual</h3><p><strong>New creative tools:</strong> GenAI is providing individuals with new tools for creativity, such as software that can generate realistic images, music, and code.</p><p><strong>Personalized experiences:</strong> GenAI is being used to create personalized experiences for individuals, such as customized news feeds and recommendations.</p><p><strong>Augmented decision-making:</strong> GenAI can be used to augment human decision-making, by providing insights and recommendations.</p><p><strong>Job displacement:</strong> GenAI has the potential to displace some jobs, as machines become capable of performing tasks that were previously done by humans.</p><p>Overall, the outlook for GenAI is positive. GenAI has the potential to make our lives easier, more creative, and more productive. However, it is important to be aware of the ethical implications of this technology and to develop safeguards to ensure that it is used responsibly.</p>
-        </section>
+        </div>
+
+        <div class="pagination-container gh-canvas">
+        <nav class="pagination">
+
+            <div class="pagination-left">
+                    <a class="newer-posts" href="../ner-graph-1/index.html">
+                        <span class="pagination-label">Previous</span>
+                        Named Entity Recognition and Knowledge Graph for Natural Language Understanding
+                    </a>
+            </div>
+
+            <div class="pagination-right">
+                    <a class="older-posts" href="../build-a-macos-app-powered-by-llama-2-in-three-steps/index.html">
+                        <span class="pagination-label">Next</span>
+                        Build a macOS App Powered by Llama 2 in Three Steps
+                    </a>
+            </div>
+
+        </nav>
+        </div>
+
+            <div class="gh-comments gh-canvas">
+                
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2dc" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+    
+            </div>
 
     </article>
 
-        <div class="gh-comments gh-canvas">
-            
-        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2dc" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
-    
-        </div>
 
 </main>
+    </div>
 
-
-            <section class="gh-container is-grid gh-outer">
-                <div class="gh-container-inner gh-inner">
-                    <h2 class="gh-container-title">Read more</h2>
-                    <div class="gh-feed">
-                            <article class="gh-card post featured">
-    <a class="gh-card-link" href="../how-to-prompt-correctly-with-llama-2/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="How to Prompt Correctly with Llama 2?"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-            <h3 class="gh-card-title is-title">How to Prompt Correctly with Llama 2?</h3>
-                <p class="gh-card-excerpt is-body">Some learnings with prompting to Llama 2.</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2024-01-27">Jan 27, 2024</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                            <article class="gh-card post featured">
-    <a class="gh-card-link" href="../build-a-fraud-intelligence-analyst-powered-by-llama-2-in-google-colab-with-gpus/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Build a Fraud Intelligence Analyst Powered by Llama 2 in Google Colab with GPUs"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-            <h3 class="gh-card-title is-title">Build a Fraud Intelligence Analyst Powered by Llama 2 in Google Colab with GPUs</h3>
-                <p class="gh-card-excerpt is-body">Let Llama 2 help credit card fraud detection!
-</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2024-01-12">Jan 12, 2024</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                            <article class="gh-card post featured">
-    <a class="gh-card-link" href="../run-llama-2-with-retrieval-augmented-generation-rag-in-google-colab-with-gpus/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Run Llama 2 with Retrieval Augmented Generation in Google Colab with GPUs"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-            <h3 class="gh-card-title is-title">Run Llama 2 with Retrieval Augmented Generation in Google Colab with GPUs</h3>
-                <p class="gh-card-excerpt is-body">Run Llama 2 with RAG in Google Colab.
-</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2024-01-07">Jan 7, 2024</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                            <article class="gh-card post featured">
-    <a class="gh-card-link" href="../say-hello-to-2024/index.html">
-            <figure class="gh-card-image">
-                <img
-                    srcset="https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
-                    sizes="320px"
-                    src="https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
-                    alt="Say Hello to 2024"
-                    loading="lazy"
-                >
-            </figure>
-        <div class="gh-card-wrapper">
-            <h3 class="gh-card-title is-title">Say Hello to 2024</h3>
-                <p class="gh-card-excerpt is-body">Reflecting on 2023 and looking ahead to 2024.</p>
-            <footer class="gh-card-meta">
-<!--
-             -->
-                    <span class="gh-card-author">By Vincent Yuan</span>
-                    <time class="gh-card-date" datetime="2023-12-31">Dec 31, 2023</time>
-                <!--
-         --></footer>
-        </div>
-    </a>
-</article>                    </div>
-                </div>
-            </section>
-
-    
-    <footer class="gh-footer gh-outer">
-    <div class="gh-footer-inner gh-inner">
-
-        <div class="gh-footer-bar">
-            <span class="gh-footer-logo is-title">
-                    Spacecraft
-            </span>
-            <nav class="gh-footer-menu">
-                <ul class="nav">
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <div class="gh-copyright">
+                Spacecraft © 2024
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
     <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
 </ul>
 
-            </nav>
-            <div class="gh-footer-copyright">
-                Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
             </div>
         </div>
+    </footer>
 
-                <section class="gh-footer-signup">
-                    <h2 class="gh-footer-signup-header is-title">
-                        Spacecraft
-                    </h2>
-                    <p class="gh-footer-signup-subhead is-body">
-                        Healthy food for thoughts about this beautiful life!
-                    </p>
-                    <form class="gh-form" data-members-form>
-    <input class="gh-form-input" id="footer-email" name="email" type="email" placeholder="jamie@example.com" required data-members-email>
-    <button class="gh-button" type="submit" aria-label="Subscribe">
-        <span><span>Subscribe</span> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg></span>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-    <g stroke-linecap="round" stroke-width="2" fill="currentColor" stroke="none" stroke-linejoin="round" class="nc-icon-wrapper">
-        <g class="nc-loop-dots-4-24-icon-o">
-            <circle cx="4" cy="12" r="3"></circle>
-            <circle cx="12" cy="12" r="3"></circle>
-            <circle cx="20" cy="12" r="3"></circle>
-        </g>
-        <style data-cap="butt">
-            .nc-loop-dots-4-24-icon-o{--animation-duration:0.8s}
-            .nc-loop-dots-4-24-icon-o *{opacity:.4;transform:scale(.75);animation:nc-loop-dots-4-anim var(--animation-duration) infinite}
-            .nc-loop-dots-4-24-icon-o :nth-child(1){transform-origin:4px 12px;animation-delay:-.3s;animation-delay:calc(var(--animation-duration)/-2.666)}
-            .nc-loop-dots-4-24-icon-o :nth-child(2){transform-origin:12px 12px;animation-delay:-.15s;animation-delay:calc(var(--animation-duration)/-5.333)}
-            .nc-loop-dots-4-24-icon-o :nth-child(3){transform-origin:20px 12px}
-            @keyframes nc-loop-dots-4-anim{0%,100%{opacity:.4;transform:scale(.75)}50%{opacity:1;transform:scale(1)}}
-        </style>
-    </g>
-</svg>        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-    <style>
-        .checkmark {
-            width: 40px;
-            height: 40px;
-            display: block;
-            stroke-width: 2.5;
-            stroke: currentColor;
-            stroke-miterlimit: 10;
-        }
-
-        .checkmark__check {
-            transform-origin: 50% 50%;
-            stroke-dasharray: 48;
-            stroke-dashoffset: 48;
-            animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
-        }
-
-        @keyframes stroke {
-            100% { stroke-dashoffset: 0; }
-        }
-    </style>
-</svg>    </button>
-    <p data-members-error></p>
-</form>                </section>
-
-    </div>
-</footer>    
 </div>
 
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -642,7 +517,31 @@
         </div>
     </div>
 </div>
-<script src="../assets/built/source.js%3Fv=9b52753ec9"></script>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="../assets/built/main.min.js%3Fv=88df665c6b"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
+
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+
+        orderedList: false,
+    });
+</script>
+
 
 <!-- Code highlights -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
