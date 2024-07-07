@@ -40,5 +40,5 @@ LC_ALL=C find ./docs -type f -not -wholename *.git* -exec sed -i '' -e 's,http:/
 
 
 # Commit changes
-git commit -m 'Update post'
+git commit -m 'Update blogs'
 git push origin main
