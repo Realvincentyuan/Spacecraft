@@ -37,3 +37,8 @@ LC_ALL=C find ./docs -type f -not -wholename *.git* -exec sed -i '' -e 's,pngpng
 LC_ALL=C find ./docs -type f -not -wholename *.git* -exec sed -i '' -e "s,http://${from_url},https://${to_url},g" {} +; 
 LC_ALL=C find ./docs -type f -not -wholename *.git* -exec sed -i '' -e "s,${from_url},${to_url},g" {} +
 LC_ALL=C find ./docs -type f -not -wholename *.git* -exec sed -i '' -e 's,http://www.gravatar.com,https://www.gravatar.com,g' {} +
+
+
+# Commit changes
+git commit -m 'Update post'
+git push origin main
