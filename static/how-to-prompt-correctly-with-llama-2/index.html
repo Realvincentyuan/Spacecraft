@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>How to Prompt Correctly with Llama 2?</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preload" as="style" href="../assets/built/screen.css%3Fv=9b52753ec9.css">
+    <link rel="preload" as="script" href="../assets/built/source.js%3Fv=9b52753ec9">
+    
+    <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-roman.woff2%3Fv=9b52753ec9" crossorigin="anonymous">
+<style>
+    @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: optional;
+        src: url(../assets/fonts/inter-roman.woff2%3Fv=9b52753ec9) format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+</style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css%3Fv=9b52753ec9.css">
+
+    <style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast has been taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+
+        if (accentColor.length === 3) {
+            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
+        }
+
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <meta name="description" content="Some learnings with prompting to Llama 2.">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Spacecraft">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Prompt Correctly with Llama 2?">
+    <meta property="og:description" content="Some learnings with prompting to Llama 2.">
+    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/how-to-prompt-correctly-with-llama-2/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2024-01-28T04:26:24.000Z">
+    <meta property="article:modified_time" content="2024-07-07T19:46:19.000Z">
+    <meta property="article:tag" content="Tech">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="GenAI">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Prompt Correctly with Llama 2?">
+    <meta name="twitter:description" content="Some learnings with prompting to Llama 2.">
+    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/how-to-prompt-correctly-with-llama-2/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Vincent Yuan">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Tech, AI, GenAI">
+    <meta name="twitter:site" content="@ghost">
+    <meta name="twitter:creator" content="@RealVincentYuan">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Spacecraft",
+        "url": "https://realvincentyuan.github.io/Spacecraft/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Vincent Yuan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar-1.png",
+            "width": 752,
+            "height": 752
+        },
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent-2/",
+        "sameAs": [
+            "https://unsplash.com/@vincentyuan87",
+            "https://twitter.com/RealVincentYuan"
+        ]
+    },
+    "headline": "How to Prompt Correctly with Llama 2?",
+    "url": "https://realvincentyuan.github.io/Spacecraft/how-to-prompt-correctly-with-llama-2/",
+    "datePublished": "2024-01-28T04:26:24.000Z",
+    "dateModified": "2024-07-07T19:46:19.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 1200,
+        "height": 800
+    },
+    "keywords": "Tech, AI, GenAI",
+    "description": "Some learnings with prompting to Llama 2.",
+    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/how-to-prompt-correctly-with-llama-2/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.87">
+    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="59658b4dc0364cacbc3332171d" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
+    <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=9b52753ec9"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=9b52753ec9.css">
+    <script defer src="../public/comment-counts.min.js%3Fv=9b52753ec9" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
+    <script defer src="../public/member-attribution.min.js%3Fv=9b52753ec9"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-633EG809GP');
+</script>
+
+<!-- Reading progress bar -->
+<style>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 5px; /* Progress bar height */
+  background: #c5d2d9; /* Progress bar background color */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Hide default progress bar */
+}
+
+.reading-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+  background: var(--ghost-accent-color); /* Progress bar color */
+}
+</style>
+
+
+<!--   Scroll Top Button  -->
+<style>
+    /*Scroll to Top CSS*/
+    .scroll-top {
+		position: fixed;
+ 		z-index: 50;
+		padding: 0;
+		right: 30px;
+		bottom: 100px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(15px);    
+		height: 46px;
+		width: 46px;
+		cursor: pointer;
+		display: flex;
+  		align-items: center;
+  		justify-content: center;
+		border-radius: 50%;
+  	transition: all .4s ease;
+  	border: none;
+  	box-shadow: inset 0 0 0 2px #ccc;
+  	color: #ccc;
+  	background-color: #fff;
+	}
+
+	.scroll-top.is-active {
+		opacity: 1;
+  		visibility: visible;
+  		transform: translateY(0);
+	}
+
+	.scroll-top .icon-tabler-arrow-up {
+  		position: absolute;
+  		stroke-width: 2px;
+  		stroke: #333;
+	}
+
+	.scroll-top svg path { 
+		fill: none; 
+	}
+
+	.scroll-top svg.progress-circle path {
+		stroke: #333;
+		stroke-width: 4;
+  		transition: all .4s ease;
+	}
+
+	.scroll-top:hover {
+  		color: var(--ghost-accent-color);
+	}
+
+	.scroll-top:hover .progress-circle path, .scroll-top:hover .icon-tabler-arrow-up {
+  		stroke: var(--ghost-accent-color);
+	}
+          
+</style>
+
+    <button class="btn-toggle-round scroll-top js-scroll-top" type="button" title="Scroll to top">
+      <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="cuurentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="18" y1="11" x2="12" y2="5" />
+        <line x1="6" y1="11" x2="12" y2="5" />
+      </svg>
+    </button>
+
+
+
+<!-- Code highlights -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="post-template tag-tech tag-ai tag-genai tag-hash-import-2024-07-07-04-35 has-sans-title has-sans-body">
+
+<div class="gh-viewport">
+    
+    <header id="gh-navigation" class="gh-navigation is-middle-logo gh-outer">
+    <div class="gh-navigation-inner gh-inner">
+
+        <div class="gh-navigation-brand">
+            <a class="gh-navigation-logo is-title" href="../index.html">
+                    Spacecraft
+            </a>
+            <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>            <button class="gh-burger gh-icon-button" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>            </button>
+        </div>
+
+        <nav class="gh-navigation-menu">
+            <ul class="nav">
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
+    <li class="nav-profession"><a href="../tag/pro/index.html">Profession</a></li>
+    <li class="nav-life"><a href="../tag/life/index.html">Life</a></li>
+    <li class="nav-about"><a href="../about/index.html">About</a></li>
+</ul>
+
+        </nav>
+
+        <div class="gh-navigation-actions">
+                <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>                <div class="gh-navigation-members">
+                            <a href="index.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-button" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                </div>
+        </div>
+
+    </div>
+</header>
+
+    
+
+<main class="gh-main">
+
+    <article class="gh-article post tag-tech tag-ai tag-genai tag-hash-import-2024-07-07-04-35 featured">
+
+        <header class="gh-article-header gh-canvas">
+
+                <a class="gh-article-tag" href="../tag/tech/index.html">Tech</a>
+            <h1 class="gh-article-title is-title">How to Prompt Correctly with Llama 2?</h1>
+                <p class="gh-article-excerpt is-body">Some learnings with prompting to Llama 2.</p>
+
+            <div class="gh-article-meta">
+                <div class="gh-article-author-image instapaper_ignore">
+                            <a href="../author/vincent-2/index.html">
+                                <img class="author-profile-image" src="../content/images/size/w160/2024/07/avatar-1.png" alt="Vincent Yuan">
+                            </a>
+                </div>
+                <div class="gh-article-meta-wrapper">
+                    <h4 class="gh-article-author-name"><a href="../author/vincent-2/index.html">Vincent Yuan</a></h4>
+                    <div class="gh-article-meta-content">
+                        <time class="gh-article-meta-date" datetime="2024-01-27">Jan 27, 2024</time>
+                            <span class="gh-article-meta-length"><span class="bull">—</span> 7 min read</span>
+                    </div>
+                </div>
+            </div>
+
+                <figure class="gh-article-image">
+        <picture>
+            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" media="(min-width: 2000px)">
+            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" media="(min-width: 1200px)">
+            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960" media="(min-width: 960px)">
+            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600" media="(min-width: 600px)">
+            <source srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320" media="(min-width: 320px)">
+            <img src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" alt="How to Prompt Correctly with Llama 2?">
+        </picture>
+            <figcaption>Photo by <a href="https://unsplash.com/@vincentyuan87?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Vincent Yuan @USA</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
+    </figure>
+
+        </header>
+
+        <section class="gh-content gh-canvas is-body">
+            <p>Uncertain if you've encountered instances where Llama 2 provides irrelevant, redundant, or potentially harmful responses. Such outcomes can be perplexing and may lead users to disengage. A contributing factor to this issue is often the incorrect utilization of prompts. Therefore, this post aims to introduce best practices for prompting when developing GenAI apps with Llama 2.</p><p>The sample code can run on Google Colab with GPUs, kindly check below post for the GPU configuration of Llama 2.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="../run-llama-2-with-retrieval-augmented-generation-rag-in-google-colab-with-gpus/index.html"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Run Llama 2 with Retrieval Augmented Generation in Google Colab with GPUs</div><div class="kg-bookmark-description">Run Llama2 with RAG in Google Colab.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="../favicon.ico" alt=""><span class="kg-bookmark-author">Spacecraft</span><span class="kg-bookmark-publisher">Vincent Yuan</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDR8fGFpfGVufDB8fHx8MTcwMTYzNjU4OHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" alt=""></div></a></figure><p>This post will show:</p><ul><li>Run Llama 2 with GPUs</li><li>Comparison of different prompts and the impact to the response of Llama 2</li><li>Prompt design for chat, with awareness of historical messages</li></ul><h2 id="1-get-llama-2-ready">1 Get Llama 2 Ready</h2><p>Firstly, install Python dependencies, download the Llama 2 model, and load Llama 2 model. This part is identical to the reference link above so no details are shared repeatedly.</p><pre><code class="language-py">!CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python --no-cache-dir
+
+!pip install huggingface_hub   chromadb langchain sentence-transformers pinecone_client
+
+import numpy as np
+import pandas as pd
+
+from huggingface_hub import hf_hub_download
+from llama_cpp import Llama
+
+from langchain.llms import LlamaCpp
+from langchain.chains import LLMChain
+from langchain.callbacks.manager import CallbackManager
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.prompts import PromptTemplate
+
+# Vector store
+from langchain.document_loaders import CSVLoader
+from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
+from langchain.vectorstores import Chroma
+
+# Show result
+import markdown
+
+!wget https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/resolve/main/llama-2-7b-chat.Q5_0.gguf
+
+# for token-wise streaming so you'll see the answer gets generated token by token when Llama is answering your question
+callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
+
+llama_model_path = 'llama-2-7b-chat.Q5_0.gguf'
+
+n_gpu_layers = 40  # Change this value based on your model and your GPU VRAM pool.
+n_batch = 512  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.
+
+from langchain.llms import LlamaCpp
+llm = LlamaCpp(
+    model_path=llama_model_path,
+    temperature=0.1,
+    top_p=1,
+    n_ctx=16000,
+    n_gpu_layers=n_gpu_layers,
+    n_batch=n_batch,
+    callback_manager=callback_manager,
+    verbose=True,
+)</code></pre><h2 id="2-impact-of-different-prompts">2 Impact of Different Prompts</h2><p>It is pretty amazing that slightly different prompts will lead to quite different response. This can be reflected by simple testing as below.</p><h3 id="21-just-ask-questions">2.1 Just Ask Questions</h3><p>For instance, the most straightforward way is just to ask what you want like below:</p><pre><code class="language-py">Testing_message = "The Stoxx Europe 600 index slipped 0.5% at the close, extending a lackluster start to the year."
+
+# Use LangChain's PromptTemplate and LLMChain
+prompt = PromptTemplate.from_template(
+    "Extract the named entity information from below text: {text}"
+)
+
+chain = LLMChain(llm=llm, prompt=prompt)
+answer = chain.invoke(Testing_message)</code></pre><p>The answer is like below:</p><pre><code class="language-py"> The index has fallen 3.7% since the beginning of January and is down 12.9% from its peak in August last year.
+Please provide the named entities as follows:
+1. Stoxx Europe 600
+2. index
+3. Europe
+4. January
+5. August</code></pre><p>As you can see, Llama 2 firstly repeats the sentence and also adds more info, then answers the question, which is not expected by users as it seems to be out of control in a sense.</p><h3 id="22-prompt-with-system-message">2.2 Prompt with System Message</h3><p>By slightly adjusting the prompt, the response will become more normal.</p><pre><code class="language-py">prompt = PromptTemplate.from_template(
+    "[INST]Extract the important Named Entity Recoginiton information from this text: {text}, do not add unrelated content in the reply.[/INST]"
+)
+chain = LLMChain(llm=llm, prompt=prompt)
+answer = chain.invoke(Testing_message)</code></pre><p>The response becomes:</p><pre><code class="language-py">  Sure! Here are the important named entities recognized in the given text:
+
+1. Stoxx Europe 600 - Index
+2. Europe - Continent</code></pre><p>So now it does not change the sentence, and only answers the question that user asks. This version makes more sense simply because the addition of <code>[INST]</code> and <code>[/INST]</code> in the prompt. <code>[INST]</code> is part of the token used in the model training process, shared in the <a href="https://huggingface.co/papers/2307.09288?ref=localhost">Llama 2 paper</a>, which helps model understand the conversation.</p><p>Also, there is a more flexible way to do this, also with the addition of customizable system message as below:</p><pre><code class="language-py"># creating prompt for large language model
+pre_prompt = """[INST] &lt;&lt;SYS&gt;&gt;
+You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.
+
+If you cannot answer the question from the given documents, please state that you do not have an answer.\n
+"""
+
+prompt = pre_prompt + "{context}\n" +"Question : {question}" + "[\INST]"
+llama_prompt = PromptTemplate(template=prompt, input_variables=["context", "question"])
+
+chain = LLMChain(llm=llm, prompt=llama_prompt)
+
+result = chain({ "context" : "Extract the named entity information from below sentences:",
+                "question": Testing_message
+                 })</code></pre><p>The result is as below:</p><pre><code class="language-py">  Sure, I'd be happy to help! Here is the named entity information extracted from the sentence you provided:
+
+* Stoxx Europe 600 index
+* Europe
+* year
+
+I hope this helps! Let me know if you have any other questions.</code></pre><p>In fact this is the template strictly following the training procedure of Llama 2. And with above template, you can customize the system message more flexibly though the response might look similar to a simplified version as shown above.</p><pre><code class="language-py">&lt;s&gt;[INST] &lt;&lt;SYS&gt;&gt;
+{{ system_prompt }}
+&lt;&lt;/SYS&gt;&gt;
+
+{{ user_message }} [/INST]
+</code></pre><h3 id="23-prompt-with-chat-history">2.3 Prompt with Chat History</h3><p>Llama 2 does not have memory, using above prompt would not allow the model to answer your question based on the chat history, in order to address this challenge, we need to embed the chat history into the prompt so that the model is exposed to it.</p><p>Below is a vanilla version that works, firstly have the 1st round the question &amp; answering:</p><pre><code class="language-py">def create_chat_prompt(pre_prompt, chat_messages):
+  for dict_message in chat_messages:
+      if dict_message["role"] == "user":
+          pre_prompt += "User: " + dict_message["content"] + "\n\n"
+      else:
+          pre_prompt += "Assistant: " + dict_message["content"] + "\n\n"
+
+
+  prompt = pre_prompt + "User : {question}" + "[\INST]"
+  return prompt
+
+messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+
+# creating prompt for large language model
+pre_prompt = """[INST] &lt;&lt;SYS&gt;&gt;
+You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.
+
+If you cannot answer the question from the given documents, please state that you do not have an answer.\n
+"""
+
+
+llama_chat_prompt = PromptTemplate(template=prompt, input_variables=["question"])
+
+chat_chain = LLMChain(llm=llm, prompt=llama_chat_prompt)
+
+chat_question = { "question": "What do you think are the most beautiful things in the Autumn in the U.S.?"}
+
+messages.append({"role": "user", "content": chat_question['question']})
+
+response = chat_chain(chat_question)
+
+messages.append({"role": "Assistant", "content": response['text']})</code></pre><p>The response is like:</p><pre><code class="language-py">I'm here to help you with your question. However, I must inform you that the concept of "beauty" is subjective and can vary from person to person. What one person finds beautiful may not be the same for another.
+That being said, Autumn in the U.S. is known for its vibrant foliage, with trees changing colors from green to shades of orange, red, and yellow. The most beautiful things about Autumn in the U.S. can be observed through the following:
+1. Leaves: The vibrant colors of the leaves during Autumn are a sight to behold. The changing hues of orange, red, and yellow create a picturesque landscape that is both breathtaking and Instagram-worthy.
+2. Fall Foliage: The term "fall foliage" refers to the vibrant colors of the leaves during Autumn. The changing colors of the leaves are a result of the trees preparing for winter by storing energy in their roots, stems, and branches.
+3. Pumpkins: Pumpkins are a staple of Autumn in the U.S., often used in decorations</code></pre><p>This is a pretty standard response, then let's ask a follow-up question based on the response above:</p><pre><code class="language-py">prompt = create_chat_prompt(pre_prompt=pre_prompt, 
+                            chat_messages=messages)
+                            
+llama_chat_prompt = PromptTemplate(template=prompt, input_variables=["question"])
+
+chat_chain = LLMChain(llm=llm, prompt=llama_chat_prompt)
+
+
+chat_question = { "question": "For the 2nd point you mentioned above, can you please make a 3 day travel plan?"}
+messages.append({"role": "user", "content": chat_question})
+
+response = chat_chain(chat_question)
+
+messages.append({"role": "Assistant", "content": response['text']})</code></pre><p>As you can see, the question does not specify what 2nd point is, while the model is able to grasp that based on the chat history, and the response is like below:</p><pre><code class="language-py">Of course! I'd be happy to help you create a 3-day travel plan for experiencing the beautiful things about Autumn in the U.S. Here is a sample itinerary:
+Day 1:
+* Stop 1: Take a scenic drive through the Adirondack Mountains in upstate New York. The mountains offer breathtaking views of the changing leaves, and there are many scenic overlooks and hiking trails to explore.
+* Stop 2: Visit the Hudson River Valley, which is known for its picturesque towns, farms, and vineyards. Take a stroll through the charming streets of Cold Spring or Beacon, and enjoy the fall foliage along the riverfront.
+Day 2:
+* Stop 1: Head to New England, specifically Vermont or New Hampshire, for some of the most spectacular fall foliage in the country. Take a drive through the Green Mountains or White Mountains, and stop at scenic overlooks and hiking trails along the way.
+* Stop 2: Visit the coastal towns of Maine, such as Kennebunkport or Camden</code></pre><h2 id="3-summary">3 Summary</h2><p>Some the snippets are not made into a function just for demo purposes, while you can see by adding system messages and  chat history into the prompt, Llama 2 becomes even more intelligent and helpful. </p><p>So far, we have covered topics of Llama 2 regarding:</p><ul><li>Fast inference using GPUs</li><li>Better prompt tactics for reasonable response</li><li>Chat with Llama 2</li><li>RAG for domain knowledge question &amp; answering</li></ul><p>This means that a lot of useful apps powered by Llama 2 can be built using above tech stack. Stay tuned for more valuable sharing!</p><h2 id="reference">Reference</h2><p>How to Prompt Llama 2:</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://huggingface.co/blog/llama2?ref=localhost#how-to-prompt-llama-2"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Llama 2 is here - get it on Hugging Face</div><div class="kg-bookmark-description">We’re on a journey to advance and democratize artificial intelligence through open source and open science.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://huggingface.co/favicon.ico" alt=""><span class="kg-bookmark-author">get it on Hugging Face</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://huggingface.co/blog/assets/llama2/thumbnail.jpg" alt=""></div></a></figure><p></p>
+        </section>
+
+    </article>
+
+        <div class="gh-comments gh-canvas">
+            
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2e3" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+    
+        </div>
+
+</main>
+
+
+            <section class="gh-container is-grid gh-outer">
+                <div class="gh-container-inner gh-inner">
+                    <h2 class="gh-container-title">Read more</h2>
+                    <div class="gh-feed">
+                            <article class="gh-card post featured">
+    <a class="gh-card-link" href="../build-a-fraud-intelligence-analyst-powered-by-llama-2-in-google-colab-with-gpus/index.html">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+                    sizes="320px"
+                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+                    alt="Build a Fraud Intelligence Analyst Powered by Llama 2 in Google Colab with GPUs"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Build a Fraud Intelligence Analyst Powered by Llama 2 in Google Colab with GPUs</h3>
+                <p class="gh-card-excerpt is-body">Let Llama 2 help credit card fraud detection!
+</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By Vincent Yuan</span>
+                    <time class="gh-card-date" datetime="2024-01-12">Jan 12, 2024</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post featured">
+    <a class="gh-card-link" href="../run-llama-2-with-retrieval-augmented-generation-rag-in-google-colab-with-gpus/index.html">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+                    sizes="320px"
+                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+                    alt="Run Llama 2 with Retrieval Augmented Generation in Google Colab with GPUs"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Run Llama 2 with Retrieval Augmented Generation in Google Colab with GPUs</h3>
+                <p class="gh-card-excerpt is-body">Run Llama 2 with RAG in Google Colab.
+</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By Vincent Yuan</span>
+                    <time class="gh-card-date" datetime="2024-01-07">Jan 7, 2024</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post featured">
+    <a class="gh-card-link" href="../say-hello-to-2024/index.html">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+                    sizes="320px"
+                    src="https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+                    alt="Say Hello to 2024"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Say Hello to 2024</h3>
+                <p class="gh-card-excerpt is-body">Reflecting on 2023 and looking ahead to 2024.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By Vincent Yuan</span>
+                    <time class="gh-card-date" datetime="2023-12-31">Dec 31, 2023</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post">
+    <a class="gh-card-link" href="../highlights-of-the-trip-to-east-coast-america/index.html">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1703641853572-2466192f933a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQyMXx8dnkxMjE4fGVufDB8fHx8MTcwMzk5MjQ4NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
+                            https://images.unsplash.com/photo-1703641853572-2466192f933a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQyMXx8dnkxMjE4fGVufDB8fHx8MTcwMzk5MjQ4NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
+                            https://images.unsplash.com/photo-1703641853572-2466192f933a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQyMXx8dnkxMjE4fGVufDB8fHx8MTcwMzk5MjQ4NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                            https://images.unsplash.com/photo-1703641853572-2466192f933a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQyMXx8dnkxMjE4fGVufDB8fHx8MTcwMzk5MjQ4NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                            https://images.unsplash.com/photo-1703641853572-2466192f933a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQyMXx8dnkxMjE4fGVufDB8fHx8MTcwMzk5MjQ4NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                            https://images.unsplash.com/photo-1703641853572-2466192f933a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQyMXx8dnkxMjE4fGVufDB8fHx8MTcwMzk5MjQ4NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+                    sizes="320px"
+                    src="https://images.unsplash.com/photo-1703641853572-2466192f933a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQyMXx8dnkxMjE4fGVufDB8fHx8MTcwMzk5MjQ4NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+                    alt="Highlights of the Trip to the East Coast of the United States"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Highlights of the Trip to the East Coast of the United States</h3>
+                <p class="gh-card-excerpt is-body">A completely different experience of the life in the East Coast of the United States.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By Vincent Yuan</span>
+                    <time class="gh-card-date" datetime="2023-12-30">Dec 30, 2023</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>                    </div>
+                </div>
+            </section>
+
+    
+    <footer class="gh-footer gh-outer">
+    <div class="gh-footer-inner gh-inner">
+
+        <div class="gh-footer-bar">
+            <span class="gh-footer-logo is-title">
+                    Spacecraft
+            </span>
+            <nav class="gh-footer-menu">
+                <ul class="nav">
+    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+</ul>
+
+            </nav>
+            <div class="gh-footer-copyright">
+                Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+
+                <section class="gh-footer-signup">
+                    <h2 class="gh-footer-signup-header is-title">
+                        Spacecraft
+                    </h2>
+                    <p class="gh-footer-signup-subhead is-body">
+                        Healthy food for thoughts about this beautiful life!
+                    </p>
+                    <form class="gh-form" data-members-form>
+    <input class="gh-form-input" id="footer-email" name="email" type="email" placeholder="jamie@example.com" required data-members-email>
+    <button class="gh-button" type="submit" aria-label="Subscribe">
+        <span><span>Subscribe</span> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg></span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+    <g stroke-linecap="round" stroke-width="2" fill="currentColor" stroke="none" stroke-linejoin="round" class="nc-icon-wrapper">
+        <g class="nc-loop-dots-4-24-icon-o">
+            <circle cx="4" cy="12" r="3"></circle>
+            <circle cx="12" cy="12" r="3"></circle>
+            <circle cx="20" cy="12" r="3"></circle>
+        </g>
+        <style data-cap="butt">
+            .nc-loop-dots-4-24-icon-o{--animation-duration:0.8s}
+            .nc-loop-dots-4-24-icon-o *{opacity:.4;transform:scale(.75);animation:nc-loop-dots-4-anim var(--animation-duration) infinite}
+            .nc-loop-dots-4-24-icon-o :nth-child(1){transform-origin:4px 12px;animation-delay:-.3s;animation-delay:calc(var(--animation-duration)/-2.666)}
+            .nc-loop-dots-4-24-icon-o :nth-child(2){transform-origin:12px 12px;animation-delay:-.15s;animation-delay:calc(var(--animation-duration)/-5.333)}
+            .nc-loop-dots-4-24-icon-o :nth-child(3){transform-origin:20px 12px}
+            @keyframes nc-loop-dots-4-anim{0%,100%{opacity:.4;transform:scale(.75)}50%{opacity:1;transform:scale(1)}}
+        </style>
+    </g>
+</svg>        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+    <style>
+        .checkmark {
+            width: 40px;
+            height: 40px;
+            display: block;
+            stroke-width: 2.5;
+            stroke: currentColor;
+            stroke-miterlimit: 10;
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
+        }
+
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+    </style>
+</svg>    </button>
+    <p data-members-error></p>
+</form>                </section>
+
+    </div>
+</footer>    
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/built/source.js%3Fv=9b52753ec9"></script>
+
+<!-- Code highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!--   Scroll Top Button  -->
+<script>
+const scrollTopBtn = document.querySelector('.js-scroll-top');
+if (scrollTopBtn) {
+  scrollTopBtn.onclick = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  
+  const progressPath = document.querySelector('.scroll-top path');
+  const pathLength = progressPath.getTotalLength();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+  progressPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+  progressPath.style.strokeDashoffset = pathLength;
+  progressPath.getBoundingClientRect();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';		
+  const updateProgress = function() {
+    const scroll = window.scrollY || window.scrollTopBtn || document.documentElement.scrollTopBtn;
+
+    const docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+    const height = docHeight - windowHeight;
+    var progress = pathLength - (scroll * pathLength / height);
+    progressPath.style.strokeDashoffset = progress;
+  }
+
+  updateProgress();
+  const offset = 100;
+
+  window.addEventListener('scroll', function(event) {
+    updateProgress();
+
+    //Scroll back to top
+    const scrollPos = window.scrollY || window.scrollTopBtn || document.getElementsByTagName('html')[0].scrollTopBtn;
+    scrollPos > offset ? scrollTopBtn.classList.add('is-active') : scrollTopBtn.classList.remove('is-active');
+
+  }, false);
+}
+</script>
+
+</body>
+</html>

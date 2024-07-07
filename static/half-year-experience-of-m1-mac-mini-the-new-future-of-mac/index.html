@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Half-year Experience of M1 Mac mini - The New Future of Mac</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preload" as="style" href="../assets/built/screen.css%3Fv=9b52753ec9.css">
+    <link rel="preload" as="script" href="../assets/built/source.js%3Fv=9b52753ec9">
+    
+    <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-roman.woff2%3Fv=9b52753ec9" crossorigin="anonymous">
+<style>
+    @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: optional;
+        src: url(../assets/fonts/inter-roman.woff2%3Fv=9b52753ec9) format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+</style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css%3Fv=9b52753ec9.css">
+
+    <style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast has been taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+
+        if (accentColor.length === 3) {
+            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
+        }
+
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Spacecraft">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Half-year Experience of M1 Mac mini - The New Future of Mac">
+    <meta property="og:description" content="1 My Use Case
+
+I have been using Mac for 6 years, and except for the Mac Pro, I have used all other models as my primary work machines. So, I can be considered as an experienced user. The machine I currently have is the M1 Mac mini (8GB RAM">
+    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/half-year-experience-of-m1-mac-mini-the-new-future-of-mac/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1643906256051-51b92ae8d3f9?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxtYWMlMjBtaW5pfGVufDB8fHx8MTY4NjUxMDcxNnww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2021-06-13T05:00:00.000Z">
+    <meta property="article:modified_time" content="2023-07-11T02:06:55.000Z">
+    <meta property="article:tag" content="Pro">
+    <meta property="article:tag" content="Apple">
+    <meta property="article:tag" content="Hardware">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Half-year Experience of M1 Mac mini - The New Future of Mac">
+    <meta name="twitter:description" content="1 My Use Case
+
+I have been using Mac for 6 years, and except for the Mac Pro, I have used all other models as my primary work machines. So, I can be considered as an experienced user. The machine I currently have is the M1 Mac mini (8GB RAM">
+    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/half-year-experience-of-m1-mac-mini-the-new-future-of-mac/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1643906256051-51b92ae8d3f9?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxtYWMlMjBtaW5pfGVufDB8fHx8MTY4NjUxMDcxNnww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Vincent Yuan">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Pro, Apple, Hardware">
+    <meta name="twitter:site" content="@ghost">
+    <meta name="twitter:creator" content="@RealVincentYuan">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="795">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Spacecraft",
+        "url": "https://realvincentyuan.github.io/Spacecraft/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Vincent Yuan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar-1.png",
+            "width": 752,
+            "height": 752
+        },
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent-2/",
+        "sameAs": [
+            "https://unsplash.com/@vincentyuan87",
+            "https://twitter.com/RealVincentYuan"
+        ]
+    },
+    "headline": "Half-year Experience of M1 Mac mini - The New Future of Mac",
+    "url": "https://realvincentyuan.github.io/Spacecraft/half-year-experience-of-m1-mac-mini-the-new-future-of-mac/",
+    "datePublished": "2021-06-13T05:00:00.000Z",
+    "dateModified": "2023-07-11T02:06:55.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1643906256051-51b92ae8d3f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxtYWMlMjBtaW5pfGVufDB8fHx8MTY4NjUxMDcxNnww&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 1200,
+        "height": 795
+    },
+    "keywords": "Pro, Apple, Hardware",
+    "description": "1 My Use Case\n\nI have been using Mac for 6 years, and except for the Mac Pro, I have used all other models as my primary work machines. So, I can be considered as an experienced user. The machine I currently have is the M1 Mac mini (8GB RAM + 256GB SSD) released on November 11, 2020, which I purchased on December 18, 2020. This machine holds special significance for me as it is equipped with Apple&#x27;s first desktop-grade chip, the M1. This chip was unveiled at Apple&#x27;s Worldwide Developers Conferen",
+    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/half-year-experience-of-m1-mac-mini-the-new-future-of-mac/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.87">
+    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="59658b4dc0364cacbc3332171d" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
+    <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=9b52753ec9"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=9b52753ec9.css">
+    <script defer src="../public/comment-counts.min.js%3Fv=9b52753ec9" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
+    <script defer src="../public/member-attribution.min.js%3Fv=9b52753ec9"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-633EG809GP');
+</script>
+
+<!-- Reading progress bar -->
+<style>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 5px; /* Progress bar height */
+  background: #c5d2d9; /* Progress bar background color */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Hide default progress bar */
+}
+
+.reading-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+  background: var(--ghost-accent-color); /* Progress bar color */
+}
+</style>
+
+
+<!--   Scroll Top Button  -->
+<style>
+    /*Scroll to Top CSS*/
+    .scroll-top {
+		position: fixed;
+ 		z-index: 50;
+		padding: 0;
+		right: 30px;
+		bottom: 100px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(15px);    
+		height: 46px;
+		width: 46px;
+		cursor: pointer;
+		display: flex;
+  		align-items: center;
+  		justify-content: center;
+		border-radius: 50%;
+  	transition: all .4s ease;
+  	border: none;
+  	box-shadow: inset 0 0 0 2px #ccc;
+  	color: #ccc;
+  	background-color: #fff;
+	}
+
+	.scroll-top.is-active {
+		opacity: 1;
+  		visibility: visible;
+  		transform: translateY(0);
+	}
+
+	.scroll-top .icon-tabler-arrow-up {
+  		position: absolute;
+  		stroke-width: 2px;
+  		stroke: #333;
+	}
+
+	.scroll-top svg path { 
+		fill: none; 
+	}
+
+	.scroll-top svg.progress-circle path {
+		stroke: #333;
+		stroke-width: 4;
+  		transition: all .4s ease;
+	}
+
+	.scroll-top:hover {
+  		color: var(--ghost-accent-color);
+	}
+
+	.scroll-top:hover .progress-circle path, .scroll-top:hover .icon-tabler-arrow-up {
+  		stroke: var(--ghost-accent-color);
+	}
+          
+</style>
+
+    <button class="btn-toggle-round scroll-top js-scroll-top" type="button" title="Scroll to top">
+      <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="cuurentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="18" y1="11" x2="12" y2="5" />
+        <line x1="6" y1="11" x2="12" y2="5" />
+      </svg>
+    </button>
+
+
+
+<!-- Code highlights -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="post-template tag-pro tag-apple tag-hardware tag-hash-import-2024-07-07-04-35 has-sans-title has-sans-body">
+
+<div class="gh-viewport">
+    
+    <header id="gh-navigation" class="gh-navigation is-middle-logo gh-outer">
+    <div class="gh-navigation-inner gh-inner">
+
+        <div class="gh-navigation-brand">
+            <a class="gh-navigation-logo is-title" href="../index.html">
+                    Spacecraft
+            </a>
+            <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>            <button class="gh-burger gh-icon-button" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>            </button>
+        </div>
+
+        <nav class="gh-navigation-menu">
+            <ul class="nav">
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
+    <li class="nav-profession"><a href="../tag/pro/index.html">Profession</a></li>
+    <li class="nav-life"><a href="../tag/life/index.html">Life</a></li>
+    <li class="nav-about"><a href="../about/index.html">About</a></li>
+</ul>
+
+        </nav>
+
+        <div class="gh-navigation-actions">
+                <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>                <div class="gh-navigation-members">
+                            <a href="index.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-button" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                </div>
+        </div>
+
+    </div>
+</header>
+
+    
+
+<main class="gh-main">
+
+    <article class="gh-article post tag-pro tag-apple tag-hardware tag-hash-import-2024-07-07-04-35">
+
+        <header class="gh-article-header gh-canvas">
+
+                <a class="gh-article-tag" href="../tag/pro/index.html">Pro</a>
+            <h1 class="gh-article-title is-title">Half-year Experience of M1 Mac mini - The New Future of Mac</h1>
+
+            <div class="gh-article-meta">
+                <div class="gh-article-author-image instapaper_ignore">
+                            <a href="../author/vincent-2/index.html">
+                                <img class="author-profile-image" src="../content/images/size/w160/2024/07/avatar-1.png" alt="Vincent Yuan">
+                            </a>
+                </div>
+                <div class="gh-article-meta-wrapper">
+                    <h4 class="gh-article-author-name"><a href="../author/vincent-2/index.html">Vincent Yuan</a></h4>
+                    <div class="gh-article-meta-content">
+                        <time class="gh-article-meta-date" datetime="2021-06-13">Jun 13, 2021</time>
+                            <span class="gh-article-meta-length"><span class="bull">—</span> 8 min read</span>
+                    </div>
+                </div>
+            </div>
+
+                <figure class="gh-article-image">
+        <picture>
+            <source srcset="https://images.unsplash.com/photo-1643906256051-51b92ae8d3f9?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxtYWMlMjBtaW5pfGVufDB8fHx8MTY4NjUxMDcxNnww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" media="(min-width: 2000px)">
+            <source srcset="https://images.unsplash.com/photo-1643906256051-51b92ae8d3f9?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxtYWMlMjBtaW5pfGVufDB8fHx8MTY4NjUxMDcxNnww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" media="(min-width: 1200px)">
+            <source srcset="https://images.unsplash.com/photo-1643906256051-51b92ae8d3f9?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxtYWMlMjBtaW5pfGVufDB8fHx8MTY4NjUxMDcxNnww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960" media="(min-width: 960px)">
+            <source srcset="https://images.unsplash.com/photo-1643906256051-51b92ae8d3f9?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxtYWMlMjBtaW5pfGVufDB8fHx8MTY4NjUxMDcxNnww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600" media="(min-width: 600px)">
+            <source srcset="https://images.unsplash.com/photo-1643906256051-51b92ae8d3f9?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxtYWMlMjBtaW5pfGVufDB8fHx8MTY4NjUxMDcxNnww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320" media="(min-width: 320px)">
+            <img src="https://images.unsplash.com/photo-1643906256051-51b92ae8d3f9?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxtYWMlMjBtaW5pfGVufDB8fHx8MTY4NjUxMDcxNnww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200" alt="Half-year Experience of M1 Mac mini - The New Future of Mac">
+        </picture>
+            <figcaption>Photo by <a href="https://unsplash.com/@ryland_dean?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Ryland Dean</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
+    </figure>
+
+        </header>
+
+        <section class="gh-content gh-canvas is-body">
+            <h2 id="1-my-use-case">1 My Use Case</h2><p>I have been using Mac for 6 years, and except for the Mac Pro, I have used all other models as my primary work machines. So, I can be considered as an experienced user. The machine I currently have is the M1 Mac mini (8GB RAM + 256GB SSD) released on November 11, 2020, which I purchased on December 18, 2020. This machine holds special significance for me as it is equipped with Apple's first desktop-grade chip, the M1. This chip was unveiled at Apple's Worldwide Developers Conference (WWDC) in 2020 and received widespread acclaim after Apple officially released the M1-based Macs in the fall, with Mac sales surging in the sluggish personal computer market. So, with a mindset of giving it a try, I bought the M1 Mac, and after using it for six months, I want to share my thoughts on how this machine performs.</p><p>As the background of the readers may vary, I would like to clarify that I am a practitioner in the field of data science, and my usage scenarios on Mac may differ from others. In my work, the main uses of Mac are programming, using common office software, and browsing the web. In my personal life, I also use Mac for simple graphic design, video editing, and photo editing. So, I will share my experience from these perspectives.</p><h2 id="2-user-experience">2 User Experience</h2><h3 id="21-compatibilityoverall-satisfactory">2.1 Compatibility - Overall Satisfactory</h3><p>Compatibility is discussed first because the M1 chip architecture transitioned from x86 to ARM, and many people were concerned about whether software that ran on previous Intel Macs would be usable on the new computers. To address the software compatibility issue, Apple has proposed two solutions:</p><ul><li><a href="https://support.apple.com/en-us/HT211861?ref=localhost">Rosetta 2</a>, which is prompted to be installed the first time an app is installed, and it runs in the background to translate the code of apps built for Intel Macs into a format that can be run on ARM-based Macs.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-5/1622900346241-image.png" class="kg-image" alt loading="lazy" width="600" height="466"><figcaption>Installing Rosetta 2, image source: Apple</figcaption></figure><ul><li><a href="https://developer.apple.com/documentation/apple-silicon/porting-your-macos-apps-to-apple-silicon?ref=localhost">Developing universal apps with Xcode</a>, starting from Xcode 12, supports creating universal apps, where the code only needs to be written once and can run natively on both ARM and x86-based Macs.</li></ul><p>These two solutions have effectively addressed the issues of x86 software compatibility and the limited number of native apps. Based on my experience of using M1 Mac for six months, the conclusion is that most commonly used apps can run smoothly, and the user experience is almost indistinguishable from that of Intel Macs. It's worth noting that M1 Mac can also natively run many iOS apps.</p><p>However, apart from commonly used software, for data science practitioners, the compatibility of programming environments is crucial. As of June 3, 2021, most popular code editors have been natively adapted or can be installed and translated through Rosetta 2. The software itself runs without issues, but the compatibility of commonly used frameworks and packages varies. It is difficult to provide a general summary as the situation is diverse and complex. The installation and configuration process is not as smooth as on Intel Mac, and there are many different scenarios. Therefore, I would recommend searching for specific tutorials. Currently, my approach is to use third-party platforms like <a href="https://colab.research.google.com/notebooks/intro.ipynb?utm_source=scs-index">Colab</a>.</p><p>It can be foreseen that, for a long time, the experience of installing and running slower frameworks and packages will be discounted compared to Intel Mac. Similarly, for graphic design, video editing, and photo editing work, the software itself runs fine, but the compatibility of plugins still depends on the situation.</p><p>For friends who are sensitive to compatibility, I recommend a very useful website for checking the compatibility of apps: <a href="https://isapplesiliconready.com/for/m1?ref=localhost">Is Apple silicon ready?</a></p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-2/1622630407646-image.png" class="kg-image" alt loading="lazy"><figcaption>Is Apple silicon ready?</figcaption></figure><h3 id="22-stability-and-scalabilityregular-operations">2.2 Stability and Scalability - Regular Operations</h3><p>Apple made many important upgrades to macOS in macOS Big Sur: reshaping the system design language, adding Control Center, and optimizing many of Apple's own apps. Through multiple updates, the stability and security of M1 Mac have been gradually improving. <strong>Overall, for ordinary users, stability is not a concern at all</strong>, and M1 Mac maintains its consistently high level of performance! However, personally, there is still an issue that has not been resolved so far: <strong>intermittent black screen when using an external monitor</strong>, which requires re-plugging the monitor cable to resolve, otherwise, a prolonged black screen can cause the computer to restart. There are also many users sharing their stability issues online, such as difficulties in Bluetooth pairing, unstable connections, and fast SSD wear, but I haven't encountered them personally, as these issues may vary from person to person.</p><p>As for scalability, among the Mac models with M1 chips, the Mac mini has one of the highest and most complete numbers of interfaces (as shown in the figure below), while MacBook models only have two Thunderbolt 3 ports. The Mac mini supports connecting a 6K (60Hz) display and a 4K (60Hz) display simultaneously. I am using an LG 27UL850 display, and I have tested that both the Thunderbolt 3 and HDMI 2.0 ports can achieve 4K (60Hz) output. Apart from occasional black screen issues, the everyday office experience is excellent. However, compared to the Intel version of the Mac mini, the M1 version of the model has two fewer Thunderbolt ports. If the interfaces are not sufficient for connecting more devices, additional docking stations can be purchased as needed.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-2/1622642144426-image.png" class="kg-image" alt loading="lazy"><figcaption>Mac mini interfaces with M1, image source: Apple</figcaption></figure><h3 id="23-performanceimpressive">2.3 Performance - Impressive</h3><p>Conclusion: It may outperform 90% of computers in the same price range, and 8GB of RAM is sufficient in most cases. Many people have already shared the outstanding performance of the M1 chip in various scenarios such as code compilation, graphic design, and video editing, and I have found the same in my actual usage. When choosing a machine, the specifications and performance of the chip are almost the same, so many people are unsure whether to upgrade to 16GB of RAM. In this regard, I suggest that <strong>if you're unsure, don't upgrade, as it proves that 16GB of RAM is not a necessity</strong>. In six months of use, I have only encountered one situation where resources were insufficient: when opening four simulators in Xcode, it prompted limited resources and couldn't fulfill the request. However, in the six months of use, I have encountered only one situation where resources were insufficient: when opening four simulators in Xcode, it prompted limited resources and couldn't fulfill the request. However, the apps were still able to run smoothly, and in other tasks, 8GB of RAM was more than sufficient. So far, I haven't heard any fan noise from the machine.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/2021-6-3/1622713838377-image.png" class="kg-image" alt loading="lazy"><figcaption>M1 Chip, image source: Apple</figcaption></figure><p>For most ordinary users, the speed of opening software, response time, and smoothness when running multiple apps are among the most intuitive performance indicators. In these aspects, the M1 Mac outperforms most Intel Macs in the same price range. However, for professional users, it may take some time for professional software, plugins, and other dependencies to be fully adapted. It is recommended to research and gather information based on your specific needs before making a purchasing decision.</p><h3 id="24-areas-for-improvementfuture-changes">2.4 Areas for Improvement - Future Changes</h3><ul><li>Better iOS app adaptation: The ability of M1 Mac to run iOS apps natively is an attractive feature. It has the potential to significantly improve the software ecosystem on macOS. However, currently, most apps run on Mac in the form of iPhone or iPad apps and are not optimized for the desktop operating system. So far, I have only used a few iOS apps such as Gaode Maps, WeChat Read, and some simple interactive apps.</li><li>More ports: M1 MacBooks currently only have 2 Thunderbolt 3 ports. For users who need to connect multiple external devices, the limited number of ports can be a concern.</li><li>Compatibility of external devices: The stability of Bluetooth device connections and external display connections needs further improvement.</li></ul><p>Overall, the first Mac with a self-developed chip has exceeded the expectations of the general public. At WWDC 2020, Apple's CEO Tim Cook stated that Mac would complete the transition from x86 architecture to ARM architecture within two years. In reality, as of April 2021, the sales of M1 Mac have already surpassed Intel Mac[^1]. Compared to previous chip architecture transitions[^2], this transition has been relatively smooth. The M1 chip has provided unprecedented driving force for the new Mac, and the future looks promising!</p><h2 id="3-expectations-for-wwdc-2021">3 Expectations for WWDC 2021</h2><p>As someone with experience in iOS development, I closely follow the annual progress of WWDC. On one hand, Apple updates all its operating systems and upgrades development frameworks and tools. On the other hand, Apple has a precedent for announcing hardware at WWDC, providing an opportunity for consumers to learn about new Apple products. In this section, I have gathered predictions from the media as of June 5, 2021, regarding WWDC and shared my own expectations for WWDC 2021.</p><h3 id="31-macos">3.1 macOS</h3><p>Although Apple updates all its operating systems, I will focus on macOS in this article. Currently, there is very limited information about the new macOS, so the following content is purely speculative based on previous update patterns.</p><ul><li>One of the key focuses of the new macOS update is to further enhance optimization for Apple Silicon Macs.</li><li>Introduce more development tools in Xcode to help developers adapt their apps for Apple Silicon Macs and accelerate the adaptation of existing Intel Mac apps.</li><li>Optimize the functionality of the Notification Center and widgets.</li><li>Improve the design and functionality of the Control Center.</li><li>Enhance the features and user experience of Apple's native apps such as Mail, Messages, Photos, etc.</li><li>There might be</li></ul><p>slight adjustments to the icon design style, possibly moving closer to the new skeuomorphic design seen in iOS.</p><h3 id="32-new-macs">3.2 New Macs</h3><p>There are rumors that Apple will release new 14-inch and 16-inch MacBook Pro models at WWDC 2021. These new models are expected to feature the next generation of M-series chips, mini-LED displays, more than 2 USB-C ports, and a new square-edged design similar to the iPhone 12. They may also come with a new magnetic charging connector and replace the Touch Bar with traditional function keys. The likelihood of these predictions coming true is relatively high, especially regarding new chips, displays, and more ports. In summary, with the positive reception of the M1 MacBook Air and the 13-inch MacBook Pro, the new models are expected to bring even more improvements in terms of performance. If an upgrade is needed, there's no need to hesitate!</p><h2 id="4-conclusion">4 Conclusion</h2><p>Looking back on my years of using Mac, I have gained a lot of knowledge and skills and have done many meaningful and interesting things. After using the M1 Mac, I can personally feel the tremendous boost to the Mac experience brought by the self-developed chip. Just like the significance of the A-series chips for the iPhone, the M1 chip will provide increasing driving force for Mac in the future. It is imaginable that the M1 Mac is likely to become the most popular product in the personal computer market in the near future. Let's wait and see!</p>
+        </section>
+
+    </article>
+
+        <div class="gh-comments gh-canvas">
+            
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2a9" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+    
+        </div>
+
+</main>
+
+
+            <section class="gh-container is-grid gh-outer">
+                <div class="gh-container-inner gh-inner">
+                    <h2 class="gh-container-title">Read more</h2>
+                    <div class="gh-feed">
+                            <article class="gh-card post featured">
+    <a class="gh-card-link" href="../how-to-prompt-correctly-with-llama-2/index.html">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+                    sizes="320px"
+                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+                    alt="How to Prompt Correctly with Llama 2?"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">How to Prompt Correctly with Llama 2?</h3>
+                <p class="gh-card-excerpt is-body">Some learnings with prompting to Llama 2.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By Vincent Yuan</span>
+                    <time class="gh-card-date" datetime="2024-01-27">Jan 27, 2024</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post featured">
+    <a class="gh-card-link" href="../build-a-fraud-intelligence-analyst-powered-by-llama-2-in-google-colab-with-gpus/index.html">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+                    sizes="320px"
+                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+                    alt="Build a Fraud Intelligence Analyst Powered by Llama 2 in Google Colab with GPUs"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Build a Fraud Intelligence Analyst Powered by Llama 2 in Google Colab with GPUs</h3>
+                <p class="gh-card-excerpt is-body">Let Llama 2 help credit card fraud detection!
+</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By Vincent Yuan</span>
+                    <time class="gh-card-date" datetime="2024-01-12">Jan 12, 2024</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post featured">
+    <a class="gh-card-link" href="../run-llama-2-with-retrieval-augmented-generation-rag-in-google-colab-with-gpus/index.html">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                            https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+                    sizes="320px"
+                    src="https://images.unsplash.com/photo-1703693220150-422c569bb33e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDEyNHx8dnkxMjE4fGVufDB8fHx8MTcwNjQxNjI4OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+                    alt="Run Llama 2 with Retrieval Augmented Generation in Google Colab with GPUs"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Run Llama 2 with Retrieval Augmented Generation in Google Colab with GPUs</h3>
+                <p class="gh-card-excerpt is-body">Run Llama 2 with RAG in Google Colab.
+</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By Vincent Yuan</span>
+                    <time class="gh-card-date" datetime="2024-01-07">Jan 7, 2024</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post featured">
+    <a class="gh-card-link" href="../say-hello-to-2024/index.html">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;160 160w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;320 320w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                            https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+                    sizes="320px"
+                    src="https://images.unsplash.com/photo-1694140067948-0a015a055ce3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE2fHx2eTEyMTh8ZW58MHx8fHwxNzA0MDM5OTA0fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+                    alt="Say Hello to 2024"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Say Hello to 2024</h3>
+                <p class="gh-card-excerpt is-body">Reflecting on 2023 and looking ahead to 2024.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By Vincent Yuan</span>
+                    <time class="gh-card-date" datetime="2023-12-31">Dec 31, 2023</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>                    </div>
+                </div>
+            </section>
+
+    
+    <footer class="gh-footer gh-outer">
+    <div class="gh-footer-inner gh-inner">
+
+        <div class="gh-footer-bar">
+            <span class="gh-footer-logo is-title">
+                    Spacecraft
+            </span>
+            <nav class="gh-footer-menu">
+                <ul class="nav">
+    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+</ul>
+
+            </nav>
+            <div class="gh-footer-copyright">
+                Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+
+                <section class="gh-footer-signup">
+                    <h2 class="gh-footer-signup-header is-title">
+                        Spacecraft
+                    </h2>
+                    <p class="gh-footer-signup-subhead is-body">
+                        Healthy food for thoughts about this beautiful life!
+                    </p>
+                    <form class="gh-form" data-members-form>
+    <input class="gh-form-input" id="footer-email" name="email" type="email" placeholder="jamie@example.com" required data-members-email>
+    <button class="gh-button" type="submit" aria-label="Subscribe">
+        <span><span>Subscribe</span> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg></span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+    <g stroke-linecap="round" stroke-width="2" fill="currentColor" stroke="none" stroke-linejoin="round" class="nc-icon-wrapper">
+        <g class="nc-loop-dots-4-24-icon-o">
+            <circle cx="4" cy="12" r="3"></circle>
+            <circle cx="12" cy="12" r="3"></circle>
+            <circle cx="20" cy="12" r="3"></circle>
+        </g>
+        <style data-cap="butt">
+            .nc-loop-dots-4-24-icon-o{--animation-duration:0.8s}
+            .nc-loop-dots-4-24-icon-o *{opacity:.4;transform:scale(.75);animation:nc-loop-dots-4-anim var(--animation-duration) infinite}
+            .nc-loop-dots-4-24-icon-o :nth-child(1){transform-origin:4px 12px;animation-delay:-.3s;animation-delay:calc(var(--animation-duration)/-2.666)}
+            .nc-loop-dots-4-24-icon-o :nth-child(2){transform-origin:12px 12px;animation-delay:-.15s;animation-delay:calc(var(--animation-duration)/-5.333)}
+            .nc-loop-dots-4-24-icon-o :nth-child(3){transform-origin:20px 12px}
+            @keyframes nc-loop-dots-4-anim{0%,100%{opacity:.4;transform:scale(.75)}50%{opacity:1;transform:scale(1)}}
+        </style>
+    </g>
+</svg>        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+    <style>
+        .checkmark {
+            width: 40px;
+            height: 40px;
+            display: block;
+            stroke-width: 2.5;
+            stroke: currentColor;
+            stroke-miterlimit: 10;
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
+        }
+
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+    </style>
+</svg>    </button>
+    <p data-members-error></p>
+</form>                </section>
+
+    </div>
+</footer>    
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/built/source.js%3Fv=9b52753ec9"></script>
+
+<!-- Code highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!--   Scroll Top Button  -->
+<script>
+const scrollTopBtn = document.querySelector('.js-scroll-top');
+if (scrollTopBtn) {
+  scrollTopBtn.onclick = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  
+  const progressPath = document.querySelector('.scroll-top path');
+  const pathLength = progressPath.getTotalLength();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+  progressPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+  progressPath.style.strokeDashoffset = pathLength;
+  progressPath.getBoundingClientRect();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';		
+  const updateProgress = function() {
+    const scroll = window.scrollY || window.scrollTopBtn || document.documentElement.scrollTopBtn;
+
+    const docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+    const height = docHeight - windowHeight;
+    var progress = pathLength - (scroll * pathLength / height);
+    progressPath.style.strokeDashoffset = progress;
+  }
+
+  updateProgress();
+  const offset = 100;
+
+  window.addEventListener('scroll', function(event) {
+    updateProgress();
+
+    //Scroll back to top
+    const scrollPos = window.scrollY || window.scrollTopBtn || document.getElementsByTagName('html')[0].scrollTopBtn;
+    scrollPos > offset ? scrollTopBtn.classList.add('is-active') : scrollTopBtn.classList.remove('is-active');
+
+  }, false);
+}
+</script>
+
+</body>
+</html>
