@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Summary of Machine Learning Reference Resources (Continuously Updated)</title>
+    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=e2e91b37b9.css">
+
+
+    <style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast was taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Spacecraft">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Summary of Machine Learning Reference Resources (Continuously Updated)">
+    <meta property="og:description" content="1 Overview
+
+The purpose of this article is to summarize the machine learning reference materials that I usually use, facilitate my own review and update at any time, and also share with friends who need it. This article will be updated from time to time to ensure the relevance of">
+    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/summary-of-machine-learning-learning-resources-continuously-updated/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2022-12-18T06:00:00.000Z">
+    <meta property="article:modified_time" content="2023-07-03T00:58:02.000Z">
+    <meta property="article:tag" content="Tech">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Python">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Summary of Machine Learning Reference Resources (Continuously Updated)">
+    <meta name="twitter:description" content="1 Overview
+
+The purpose of this article is to summarize the machine learning reference materials that I usually use, facilitate my own review and update at any time, and also share with friends who need it. This article will be updated from time to time to ensure the relevance of">
+    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/summary-of-machine-learning-learning-resources-continuously-updated/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Vincent Yuan">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Tech, AI, Python">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="1817">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Spacecraft",
+        "url": "https://realvincentyuan.github.io/Spacecraft/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Vincent Yuan",
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
+        "sameAs": []
+    },
+    "headline": "Summary of Machine Learning Reference Resources (Continuously Updated)",
+    "url": "https://realvincentyuan.github.io/Spacecraft/summary-of-machine-learning-learning-resources-continuously-updated/",
+    "datePublished": "2022-12-18T06:00:00.000Z",
+    "dateModified": "2023-07-03T00:58:02.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 2000,
+        "height": 1817
+    },
+    "keywords": "Tech, AI, Python",
+    "description": "1 Overview\n\nThe purpose of this article is to summarize the machine learning reference materials that I usually use, facilitate my own review and update at any time, and also share with friends who need it. This article will be updated from time to time to ensure the relevance of the contents.\n\n\n2 Online Courses\n\n * Standford CS 229: Machine Learning - Bilibili\n * Stanford Seminar CS25: Transformers United - YouTube\n * 李沐学AI - Bilibili\n * TensorFlow Developer Certificate Course - Zero to Mastery",
+    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/summary-of-machine-learning-learning-resources-continuously-updated/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.49">
+    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.33/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="206cb569cfe36163ae0b6ed398" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="206cb569cfe36163ae0b6ed398" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
+    <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=e2e91b37b9"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=e2e91b37b9.css">
+    <script defer src="../public/member-attribution.min.js%3Fv=e2e91b37b9"></script>
+    <!-- Reading progress bar -->
+<style>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 5px; /* Progress bar height */
+  background: #c5d2d9; /* Progress bar background color */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Hide default progress bar */
+}
+
+.reading-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+  background: var(--ghost-accent-color); /* Progress bar color */
+}
+</style><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</head>
+
+<body class="post-template tag-tech tag-ai tag-python tag-hash-import-2023-07-07-20-42 is-head-left-logo has-classic-feed">
+<div class="gh-site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="../index.html">
+                            Spacecraft
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
+    <li class="nav-profession"><a href="../tag/pro/index.html">Profession</a></li>
+    <li class="nav-about"><a href="../about/index.html">About</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="index.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    
+<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
+
+
+<main class="gh-main gh-outer">
+    <div class="gh-inner">
+            <article class="gh-article post tag-tech tag-ai tag-python tag-hash-import-2023-07-07-20-42">
+                    <header class="gh-article-header gh-canvas">
+                        <h1 class="gh-article-title">Summary of Machine Learning Reference Resources (Continuously Updated)</h1>
+                            <figure class="gh-article-image has-caption">
+        <img
+            srcset="https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
+                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
+                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            src="https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+            alt="Summary of Machine Learning Reference Resources (Continuously Updated)"
+        >
+            <figcaption>Photo by <a href="https://unsplash.com/es/@olesichka?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Olesia 🇺🇦 Buyar</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
+    </figure>
+                    </header>
+
+                <section class="gh-content gh-canvas">
+                    <h2 id="1-overview">1 Overview</h2><p>The purpose of this article is to summarize the machine learning reference materials that I usually use, facilitate my own review and update at any time, and also share with friends who need it. This article will be updated from time to time to ensure the relevance of the contents.</p><h2 id="2-online-courses">2 Online Courses</h2><ul><li><a href="https://www.bilibili.com/video/BV1pp4y1t7Na?spm_id_from=333.337.search-card.all.click&ref=localhost">Standford CS 229: Machine Learning - Bilibili</a></li><li><a href="https://www.youtube.com/watch?v=P127jhj-8-Y&list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM&ab_channel=StanfordOnline&ref=localhost">Stanford Seminar CS25: Transformers United - YouTube</a></li><li><a href="https://space.bilibili.com/1567748478/channel/series?ref=localhost">李沐学AI - Bilibili</a></li><li><a href="https://dbourke.link/ZTMTFcourse?ref=localhost">TensorFlow Developer Certificate Course - Zero to Mastery</a></li><li><a href="https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187?ref=localhost">Intro to TensorFlow for Deep Learning - Udacity</a></li><li><a href="https://developers.google.com/machine-learning/crash-course?ref=localhost">Machine Learning Crash Course - Google</a></li><li><a href="https://microsoft.github.io/ML-For-Beginners/?ref=localhost#/">Machine Learning for Beginners - Microsoft</a></li><li><a href="https://microsoft.github.io/Data-Science-For-Beginners/?ref=localhost#/">Data Science for Beginners - Microsoft</a></li><li><a href="https://www.kaggle.com/learn?ref=localhost">Kaggle courses</a></li></ul><h2 id="3-technical-blogs-e-books">3 Technical Blogs &amp; E-Books</h2><h3 id="31-technical-blogs">3.1 Technical Blogs</h3><ul><li><a href="https://medium.com/kaggle-blog?ref=localhost">Kaggle Winner's Blog</a></li><li><a href="http://jalammar.github.io/?ref=localhost">Visualizing machine learning one concept at a time - Jay Alammar</a></li><li><a href="https://hanxiao.io/?ref=localhost">Han Xiao tech blog</a></li><li><a href="https://blog.google/technology/ai/?ref=localhost">Google AI</a></li><li><a href="https://openai.com/?ref=localhost">Open AI</a></li><li><a href="https://www.unofficialgoogledatascience.com/?ref=localhost">The Unofficial Google Data Science Blog</a></li><li><a href="http://karpathy.github.io/?ref=localhost">Andrej Karpathy blog</a></li><li><a href="http://blog.echen.me/?ref=localhost">Surge AI blog</a></li><li><a href="https://paperswithcode.com/?ref=localhost">Paper with Code</a></li><li><a href="http://blog.datadive.net/?ref=localhost">Diving into data</a></li><li><a href="https://blog.cloudera.com/?ref=localhost">Cloudera Blog</a></li><li><a href="http://drivendata.github.io/cookiecutter-data-science/?ref=localhost">Cookiecutter Data Science</a></li><li><a href="https://huggingface.co/blog/zh?ref=localhost">Hugging Face Chinese Blog</a></li></ul><h3 id="32-e-books">3.2 E-Books</h3><ul><li><a href="https://dev.mrdbourke.com/tensorflow-deep-learning/?ref=localhost">TensorFlow Developer Certificate Learning E-book</a></li><li><a href="https://tf.wiki/?ref=localhost">简单粗暴 TensorFlow 2 | A Concise Handbook of TensorFlow 2</a></li><li><a href="https://lyhue1991.github.io/eat_tensorflow2_in_30_days/chinese/?ref=localhost">30天吃掉那只TensorFlow2</a></li><li><a href="https://huyenchip.com/ml-interviews-book/?ref=localhost">Machine Learning Interviews Book</a></li><li><a href="https://zh-v2.d2l.ai/?ref=localhost">动手学深度学习 - Amazon</a></li><li><a href="https://huggingface.co/course/chapter1/1?ref=localhost">HuggingFace Course</a></li><li><a href="https://otexts.com/fpp3/index.html?ref=localhost">Forecasting: Principles and Practice - 3rd Edition</a></li><li><a href="https://developers.google.com/machine-learning/guides/rules-of-ml?ref=localhost#terminology">Rules of Machine Learning</a></li><li><a href="https://ml-cheatsheet.readthedocs.io/en/latest/index.html?ref=localhost">Machine Learning Glossary</a></li></ul><h2 id="4-github-resources">4 GitHub Resources</h2><ul><li><a href="https://github.com/microsoft/Data-Science-For-Beginners?ref=localhost">Data-Science-For-Beginners - Microsoft</a></li><li><a href="https://github.com/microsoft/ML-For-Beginners?ref=localhost">ML-For-Beginners - Microsoft</a></li><li><a href="https://github.com/ageron/handson-ml2?ref=localhost">Hands-on Machine Learning with Scikit-Learn, Keras and TensorFlow</a></li><li><a href="https://github.com/lmoroney/dlaicourse?ref=localhost">TensorFlow In Practice</a></li><li><a href="https://github.com/tensorflow/examples?ref=localhost">TensorFlow Examples</a></li><li><a href="https://github.com/google-research/tuning_playbook?ref=localhost">Deep Learning Tuning Playbook</a></li></ul><h2 id="5-notion-notes">5 Notion Notes</h2><ul><li><a href="https://www.notion.so/Course-TensorFlow-in-Practice-on-Coursera-Notes-5f4f8915fe3342e2a69f75ef1986ba3b?ref=localhost">TensorFlow in Practice on Coursera Notes</a></li><li><a href="https://www.notion.so/Course-MIT-Introduction-to-Deep-Learning-Notes-0e48ecc9ed7342b7b448956bed9e0e75?ref=localhost">MIT Introduction to Deep Learning Notes</a></li></ul><h2 id="6-competition-experience">6 Competition Experience</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/472915303?ref=localhost">2021 Kaggle All Event TOP Solution Summary</a></li></ul><h3 id="61-exploratory-data-analysis">6.1 Exploratory Data Analysis</h3><ul><li><a href="https://www.kaggle.com/code/kashnitsky/topic-1-exploratory-data-analysis-with-pandas/notebook?ref=localhost">Exploratory Data Analysis with Pandas</a></li><li><a href="https://www.kaggle.com/code/pmarcelino/comprehensive-data-exploration-with-python?ref=localhost">Comprehensive data exploration with Python</a></li></ul><h3 id="62-feature-engineering">6.2 Feature Engineering</h3><ul><li><a href="https://www.kaggle.com/competitions/ieee-fraud-detection/discussion/108575?ref=localhost">Feature Engineering Techniques</a></li><li><a href="https://www.kaggle.com/code/kyakovlev/ieee-fe-for-local-test/notebook?ref=localhost">IEEE - FE for Local test</a></li></ul><h3 id="63-tabular-data-modeling">6.3 Tabular Data Modeling</h3><ul><li><a href="https://neptune.ai/blog/tabular-data-binary-classification-tips-and-tricks-from-5-kaggle-competitions?ref=localhost">Tabular Data Binary Classification: All Tips and Tricks from 5 Kaggle Competitions</a></li><li><a href="https://www.kaggle.com/code/vbmokin/data-science-for-tabular-data-advanced-techniques/notebook?ref=localhost">Data Science for tabular data: Advanced Techniques</a></li><li><a href="https://www.kaggle.com/competitions/amex-default-prediction/discussion/335892?ref=localhost">Tabular Classification - Tips and Tricks</a></li><li><a href="https://www.kaggle.com/code/arthurtok/feature-ranking-rfe-random-forest-linear-models?ref=localhost">Feature Ranking RFE, Random Forest, linear models</a></li></ul><h3 id="64-time-series-modeling">6.4 Time Series Modeling</h3><ul><li><a href="https://www.kaggle.com/code/kashnitsky/topic-9-part-1-time-series-analysis-in-python?ref=localhost">Time Series Analysis in Python</a></li><li><a href="https://www.kaggle.com/code/dimitreoliveira/deep-learning-for-time-series-forecasting/notebook?ref=localhost">Deep Learning for Time Series Forecasting</a></li><li><a href="https://www.kaggle.com/code/dimitriosroussis/electricity-price-forecasting-with-dnns-eda?ref=localhost">Electricity price forecasting with DNNs (+ EDA)</a></li></ul><h2 id="7-summary">7 Summary</h2><p>This article will be continuously updated, and comments are welcome to add resources.</p>
+                    <aside class="gh-article-meta">
+                        <div class="gh-article-meta-inner">
+                                <div class="gh-article-meta-wrapper">
+                                <h4 class="gh-author-name">
+                                    <a href="../author/vincent/index.html">Vincent Yuan</a>
+                                </h4>
+                            <time class="gh-article-date" datetime="2022-12-18">Dec 18, 2022</time></div>
+                            
+
+
+                             <a class="gh-article-tag" href="../tag/tech/index.html" style="--tag-color: ">Tech</a>
+                             <a class="gh-article-tag" href="../tag/ai/index.html" style="--tag-color: ">AI</a>
+                             <a class="gh-article-tag" href="../tag/python/index.html" style="--tag-color: ">Python</a>
+                           
+
+                        </div>
+                    </aside>
+                </section>
+
+
+                <footer class="gh-article-footer gh-canvas">
+                    <nav class="gh-navigation">
+                        <div class="gh-navigation-previous">
+                                <a class="gh-navigation-link" href="../free-experiment-platform-amazon-sagemaker-studio-lab/index.html">← Previous</a>
+                        </div>
+
+                        <div class="gh-navigation-middle"></div>
+
+                        <div class="gh-navigation-next">
+                        </div>
+                    </nav>
+                </footer>
+            </article>
+    </div>
+</main>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <nav class="gh-foot-menu">
+                <ul class="nav">
+    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-copyright">
+                    Spacecraft © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/built/main.min.js%3Fv=e2e91b37b9"></script>
+
+  <script>
+    const progressBar = document.querySelector('.reading-progress');
+
+    function updateProgress() {
+      const totalHeight = document.body.clientHeight;
+      const windowHeight = document.documentElement.clientHeight;
+      const position = window.scrollY;
+      const progress = position / (totalHeight - windowHeight) * 100;
+      progressBar.setAttribute('value', progress);
+      requestAnimationFrame(updateProgress);
+    }
+
+    requestAnimationFrame(updateProgress);
+  </script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neo4J Graph Database Anti-Fraud Analysis in Practice (III) - Identifying Criminal Groups</title>
+    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=e2e91b37b9.css">
+
+
+    <style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast was taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Spacecraft">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Neo4J Graph Database Anti-Fraud Analysis in Practice (III) - Identifying Criminal Groups">
+    <meta property="og:description" content="1 Introduction
+
+In the Neo4J Graph Database Anti-Fraud Analysis Practice (II) - Preparing Data section, I introduced how to import data into the Neo4J analysis platform and performed some simple descriptive analysis of customer and transaction information. Next, we need to look for fraudsters selectively, and their identity information (such">
+    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups-2/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2022-03-06T06:00:00.000Z">
+    <meta property="article:modified_time" content="2023-07-02T01:53:50.000Z">
+    <meta property="article:tag" content="Tech">
+    <meta property="article:tag" content="Knowledge Graph">
+    <meta property="article:tag" content="Python">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Neo4J Graph Database Anti-Fraud Analysis in Practice (III) - Identifying Criminal Groups">
+    <meta name="twitter:description" content="1 Introduction
+
+In the Neo4J Graph Database Anti-Fraud Analysis Practice (II) - Preparing Data section, I introduced how to import data into the Neo4J analysis platform and performed some simple descriptive analysis of customer and transaction information. Next, we need to look for fraudsters selectively, and their identity information (such">
+    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups-2/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Vincent Yuan">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Tech, Knowledge Graph, Python">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="1328">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Spacecraft",
+        "url": "https://realvincentyuan.github.io/Spacecraft/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Vincent Yuan",
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
+        "sameAs": []
+    },
+    "headline": "Neo4J Graph Database Anti-Fraud Analysis in Practice (III) - Identifying Criminal Groups",
+    "url": "https://realvincentyuan.github.io/Spacecraft/neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups-2/",
+    "datePublished": "2022-03-06T06:00:00.000Z",
+    "dateModified": "2023-07-02T01:53:50.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 2000,
+        "height": 1328
+    },
+    "keywords": "Tech, Knowledge Graph, Python",
+    "description": "1 Introduction\n\nIn the Neo4J Graph Database Anti-Fraud Analysis Practice (II) - Preparing Data section, I introduced how to import data into the Neo4J analysis platform and performed some simple descriptive analysis of customer and transaction information. Next, we need to look for fraudsters selectively, and their identity information (such as phone numbers, ID numbers, etc.) is intertwined with many other accounts, and therefore clues can be found through these shared information.\n\n\n2 Shared I",
+    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups-2/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.49">
+    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.33/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="206cb569cfe36163ae0b6ed398" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="206cb569cfe36163ae0b6ed398" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
+    <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=e2e91b37b9"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=e2e91b37b9.css">
+    <script defer src="../public/member-attribution.min.js%3Fv=e2e91b37b9"></script>
+    <!-- Reading progress bar -->
+<style>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 5px; /* Progress bar height */
+  background: #c5d2d9; /* Progress bar background color */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Hide default progress bar */
+}
+
+.reading-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+  background: var(--ghost-accent-color); /* Progress bar color */
+}
+</style><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</head>
+
+<body class="post-template tag-tech tag-knowledge-graph tag-python tag-hash-import-2023-07-07-20-42 is-head-left-logo has-classic-feed">
+<div class="gh-site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="../index.html">
+                            Spacecraft
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
+    <li class="nav-profession"><a href="../tag/pro/index.html">Profession</a></li>
+    <li class="nav-about"><a href="../about/index.html">About</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="index.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    
+<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
+
+
+<main class="gh-main gh-outer">
+    <div class="gh-inner">
+            <article class="gh-article post tag-tech tag-knowledge-graph tag-python tag-hash-import-2023-07-07-20-42">
+                    <header class="gh-article-header gh-canvas">
+                        <h1 class="gh-article-title">Neo4J Graph Database Anti-Fraud Analysis in Practice (III) - Identifying Criminal Groups</h1>
+                            <figure class="gh-article-image has-caption">
+        <img
+            srcset="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
+                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
+                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            src="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+            alt="Neo4J Graph Database Anti-Fraud Analysis in Practice (III) - Identifying Criminal Groups"
+        >
+            <figcaption>Photo by <a href="https://unsplash.com/fr/@urielsc26?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Uriel SC</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
+    </figure>
+                    </header>
+
+                <section class="gh-content gh-canvas">
+                    <h2 id="1-introduction">1 Introduction</h2><p>In the <a href="../neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data.html">Neo4J Graph Database Anti-Fraud Analysis Practice (II) - Preparing Data</a> section, I introduced how to import data into the Neo4J analysis platform and performed some simple descriptive analysis of customer and transaction information. Next, we need to look for fraudsters selectively, and their identity information (such as phone numbers, ID numbers, etc.) is intertwined with many other accounts, and therefore clues can be found through these shared information.</p><h2 id="2-shared-identity-information">2 Shared Identity Information</h2><p>In the previous section, the relationship between clients and entities has been defined, such as a client having an email, phone number, SSN, etc. If multiple clients use the same information, these contacts can ensure that they are connected together, which greatly helps us deconstruct complex relationships. However, in order to run specific graph algorithms, these relationships need to be processed, because different graph structures are suitable for different graph algorithms, some algorithms are suitable for <code>homogeneous</code> graphs, that is, all node types in the graph are the same, only one type of relationship. Some algorithms are suitable for <code>heterogeneous</code> graphs, which contain multiple types of nodes and relationships.</p><p>The example provided by Neo4J uses the <a href="https://neo4j.com/docs/graph-data-science/current/algorithms/wcc/?ref=localhost">Weakly Connected Components</a> algorithm to find connected nodes in an undirected graph, which is suitable for a homogeneous graph, so a new relationship - <code>SHARED_IDENTIFIERS</code> needs to be created to calculate the number of shared entity information among each client, such as if the email, phone number, and SSN of clients A and B are the same, then the attribute count of SHARED_IDENTIFIERS is 3.</p><pre><code class="language-sql">// Create the SHARED_IDENTIFIERS relationship
+MATCH (c1:Client)-[:HAS_EMAIL|:HAS_PHONE|:HAS_SSN]-&gt;(info)
+&lt;-[:HAS_EMAIL|:HAS_PHONE|:HAS_SSN]-(c2:Client)
+WHERE c1.id&lt;&gt;c2.id
+WITH c1, c2, count(*) as cnt
+MERGE (c1) - [:SHARED_IDENTIFIERS {count: cnt}] - (c2);
+</code></pre><p>The <code>WITH</code> keyword can chain the query statements together, making it easy for variables in the previous step to be reused in the next step. The <code>MERGE</code> keyword is very versatile. In summary, it can make a pattern exist in the graph. If the pattern does not exist, it creates the pattern. It is used here to create a relationship. Please note that the example has a small amount of data and only has 300,000 nodes. If the number of nodes is large, it is recommended to use the <a href="https://neo4j.com/labs/apoc/4.2/overview/apoc.periodic/apoc.periodic.iterate/?ref=localhost">APOC</a> method provided by Neo4J to run in batches.</p><h2 id="3-create-the-graph">3 Create the Graph</h2><p>Before running any algorithms, you must first create the graph. You can use the <code>SHARED_IDENTIFIERS</code> relationship created earlier to build the graph and map it to memory. Therefore, Neo4J recommends estimating memory before building the graph or running the algorithm to ensure that the computing resources can meet the requirements:</p><pre><code class="language-sql">CALL gds.graph.create.cypher.estimate(
+'MATCH (c:Client) RETURN id(c) AS id',
+'MATCH (c1:Client)-[r:SHARED_IDENTIFIERS]-(c2:Client)
+WHERE c1.id&lt;&gt;c2.id
+RETURN id(c1) AS source,id(c2) AS target,r.count AS weight')
+YIELD requiredMemory,nodeCount,relationshipCount;
+</code></pre><p>The output is:</p><!--kg-card-begin: html--><table>
+<thead>
+<tr>
+<th>requiredMemory</th>
+<th>nodeCount</th>
+<th>relationshipCount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"8804 KiB"</td>
+<td>2433</td>
+<td>1517</td>
+</tr>
+</tbody>
+</table><!--kg-card-end: html--><p>After ensuring that sufficient memory is available, you can formally create the graph:</p><pre><code class="language-sql">CALL gds.graph.create('WCC', 'Client',
+	{
+    	SHARED_IDENTIFIERS:{
+        	type: 'SHARED_IDENTIFIERS',
+        	properties: {
+            	count: {
+                	property: 'count'
+                }
+            }
+        }
+	}
+) YIELD graphName,nodeCount,relationshipCount,createMillis;
+</code></pre><p>If it runs normally, you can use the <code>CALL gds.graph.list();</code> command to view the graph created.</p><h2 id="4-execute-the-wcc-algorithm-for-clustering">4 Execute the WCC Algorithm for Clustering</h2><p>Similarly, before running the algorithm, it is recommended to estimate memory resources. But I won't repeat it here. Run WCC using the following command. The <code>SET</code> instruction can assign a value to a new property, which is to label the cluster to which the client belongs. You can see that the code has excluded the situation where there is only one client in the cluster, because those people have no relationship with others.</p><pre><code class="language-sql">CALL gds.wcc.stream('WCC')
+YIELD componentId,nodeId
+WITH componentId AS cluster,gds.util.asNode(nodeId) AS client
+WITH cluster, collect(client.id) AS clients --collect merges a sequence
+WITH *,size(clients) AS clusterSize
+WHERE clusterSize&gt;1
+UNWIND clients AS client --UNWIND expands a sequence
+MATCH(c:Client)
+WHERE c.id=client
+SET c.firstPartyFraudGroup=cluster;
+</code></pre><p>The WCC algorithm helps to identify the population that needs attention, and subsequent algorithms can continue to be calculated based on the clustering results.</p><h2 id="5-conclusion">5 Conclusion</h2><p>This section completes the reintegration of the population relationship and identifies groups with similar characteristics, which is convenient for subsequent analysis. At the same time, the commonly used technical points are introduced, such as WITH, MERGE, SET, APOC, memory estimation, creating a graph, running graph algorithms, etc. In the next section, we will explain how to score dangerous populations and effectively identify fraudsters.</p>
+                    <aside class="gh-article-meta">
+                        <div class="gh-article-meta-inner">
+                                <div class="gh-article-meta-wrapper">
+                                <h4 class="gh-author-name">
+                                    <a href="../author/vincent/index.html">Vincent Yuan</a>
+                                </h4>
+                            <time class="gh-article-date" datetime="2022-03-06">Mar 6, 2022</time></div>
+                            
+
+
+                             <a class="gh-article-tag" href="../tag/tech/index.html" style="--tag-color: ">Tech</a>
+                             <a class="gh-article-tag" href="../tag/knowledge-graph/index.html" style="--tag-color: ">Knowledge Graph</a>
+                             <a class="gh-article-tag" href="../tag/python/index.html" style="--tag-color: ">Python</a>
+                           
+
+                        </div>
+                    </aside>
+                </section>
+
+
+                <footer class="gh-article-footer gh-canvas">
+                    <nav class="gh-navigation">
+                        <div class="gh-navigation-previous">
+                                <a class="gh-navigation-link" href="../neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data.html">← Previous</a>
+                        </div>
+
+                        <div class="gh-navigation-middle"></div>
+
+                        <div class="gh-navigation-next">
+                                <a class="gh-navigation-link" href="../neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups.html">Next →</a>
+                        </div>
+                    </nav>
+                </footer>
+            </article>
+    </div>
+</main>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <nav class="gh-foot-menu">
+                <ul class="nav">
+    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-copyright">
+                    Spacecraft © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/built/main.min.js%3Fv=e2e91b37b9"></script>
+
+  <script>
+    const progressBar = document.querySelector('.reading-progress');
+
+    function updateProgress() {
+      const totalHeight = document.body.clientHeight;
+      const windowHeight = document.documentElement.clientHeight;
+      const position = window.scrollY;
+      const progress = position / (totalHeight - windowHeight) * 100;
+      progressBar.setAttribute('value', progress);
+      requestAnimationFrame(updateProgress);
+    }
+
+    requestAnimationFrame(updateProgress);
+  </script>
+
+
+
+
+</body>
+
+</html>

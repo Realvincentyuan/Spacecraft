@@ -5,28 +5,71 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Overview of SnowFlake Database Architecture</title>
-    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=e2e91b37b9.css">
+    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=88df665c6b.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
 
     <style>
-        :root {
-            --background-color: #ffffff
+        .gh-content {
+            position: relative;
+            z-index: 1;
         }
+
+        /*-- Remove underline in the TOC text  */
+        .gh-content a {
+            text-decoration: none;
+        }
+
+        .gh-content img{
+            position: relative;
+            z-index: 2;
+        }
+
+        .gh-toc > .toc-list {
+            position: relative;
+            
+        }
+
+        .toc-list {
+            overflow: hidden;
+            list-style: none;
+            left: 20%;
+
+        }
+
+        @media (min-width: 1300px) {
+            .gh-sidebar {
+                position: absolute; 
+                top: 0;
+                bottom: 0;
+                margin-top: 4vmin;
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
+            }
+        
+            .gh-toc {
+                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+                top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: 1; 
+
+            }
+        }
+
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
+        .gh-toc .is-active-link::before {
+            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
+
+        } 
     </style>
-
-    <script>
-        /* The script for calculating the color contrast was taken from
-        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
-        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
-        accentColor = accentColor.trim().slice(1);
-        var r = parseInt(accentColor.substr(0, 2), 16);
-        var g = parseInt(accentColor.substr(2, 2), 16);
-        var b = parseInt(accentColor.substr(4, 2), 16);
-        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        var textColor = (yiq >= 128) ? 'dark' : 'light';
-
-        document.documentElement.className = `has-${textColor}-text`;
-    </script>
 
     <link rel="canonical" href="index.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -57,8 +100,9 @@ SnowFlake, as a highly popular data warehousing application in recent years, has
     <meta name="twitter:label2" content="Filed under">
     <meta name="twitter:data2" content="Tech, Analytics">
     <meta name="twitter:site" content="@ghost">
-    <meta property="og:image:width" content="2000">
-    <meta property="og:image:height" content="1500">
+    <meta name="twitter:creator" content="@RealVincentYuan">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="900">
     
     <script type="application/ld+json">
 {
@@ -78,8 +122,17 @@ SnowFlake, as a highly popular data warehousing application in recent years, has
     "author": {
         "@type": "Person",
         "name": "Vincent Yuan",
-        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
-        "sameAs": []
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar-1.png",
+            "width": 752,
+            "height": 752
+        },
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent-2/",
+        "sameAs": [
+            "https://unsplash.com/@vincentyuan87",
+            "https://twitter.com/RealVincentYuan"
+        ]
     },
     "headline": "Overview of SnowFlake Database Architecture",
     "url": "https://realvincentyuan.github.io/Spacecraft/overview-of-snowflake-architecture/",
@@ -88,8 +141,8 @@ SnowFlake, as a highly popular data warehousing application in recent years, has
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1457269449834-928af64c684d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&ixlib=rb-4.0.3&q=80&w=2000",
-        "width": 2000,
-        "height": 1500
+        "width": 1200,
+        "height": 900
     },
     "keywords": "Tech, Analytics",
     "description": "1 Introduction\n\nSnowFlake, as a highly popular data warehousing application in recent years, has gained the favor of many users and investors. In my daily work, I also often use SnowFlake for analysis, so I have done some research on its underlying operation mechanism. Today, I will talk to you about the main architecture and working principles of SnowFlake.\n\n\n2 Main Features of SnowFlake\n\n * Security and Data Protection: SnowFlake supports multiple authentication methods, such as Multi-Factor A",
@@ -97,9 +150,9 @@ SnowFlake, as a highly popular data warehousing application in recent years, has
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.49">
+    <meta name="generator" content="Ghost 5.87">
     <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
-    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.33/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="206cb569cfe36163ae0b6ed398" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="59658b4dc0364cacbc3332171d" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
 .gh-post-upgrade-cta {
     display: flex;
     flex-direction: column;
@@ -163,13 +216,24 @@ SnowFlake, as a highly popular data warehousing application in recent years, has
 .gh-post-upgrade-cta a.gh-btn:hover {
     opacity: 0.92;
 }</style>
-    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="206cb569cfe36163ae0b6ed398" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
-    <script defer src="../public/cards.min.js%3Fv=e2e91b37b9"></script>
-    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=e2e91b37b9.css">
-    <script defer src="../public/member-attribution.min.js%3Fv=e2e91b37b9"></script>
-    <!-- Reading progress bar -->
+    <script defer src="../public/cards.min.js%3Fv=88df665c6b"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=88df665c6b.css">
+    <script defer src="../public/comment-counts.min.js%3Fv=88df665c6b" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
+    <script defer src="../public/member-attribution.min.js%3Fv=88df665c6b"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-633EG809GP');
+</script>
+
+<!-- Reading progress bar -->
 <style>
 .reading-progress {
   position: fixed;
@@ -190,11 +254,87 @@ SnowFlake, as a highly popular data warehousing application in recent years, has
 .reading-progress::-webkit-progress-value {
   background: var(--ghost-accent-color); /* Progress bar color */
 }
-</style><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</style>
+
+
+<!--   Scroll Top Button  -->
+<style>
+    /*Scroll to Top CSS*/
+    .scroll-top {
+		position: fixed;
+ 		z-index: 50;
+		padding: 0;
+		right: 30px;
+		bottom: 100px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(15px);    
+		height: 46px;
+		width: 46px;
+		cursor: pointer;
+		display: flex;
+  		align-items: center;
+  		justify-content: center;
+		border-radius: 50%;
+  	transition: all .4s ease;
+  	border: none;
+  	box-shadow: inset 0 0 0 2px #ccc;
+  	color: #ccc;
+  	background-color: #fff;
+	}
+
+	.scroll-top.is-active {
+		opacity: 1;
+  		visibility: visible;
+  		transform: translateY(0);
+	}
+
+	.scroll-top .icon-tabler-arrow-up {
+  		position: absolute;
+  		stroke-width: 2px;
+  		stroke: #333;
+	}
+
+	.scroll-top svg path { 
+		fill: none; 
+	}
+
+	.scroll-top svg.progress-circle path {
+		stroke: #333;
+		stroke-width: 4;
+  		transition: all .4s ease;
+	}
+
+	.scroll-top:hover {
+  		color: var(--ghost-accent-color);
+	}
+
+	.scroll-top:hover .progress-circle path, .scroll-top:hover .icon-tabler-arrow-up {
+  		stroke: var(--ghost-accent-color);
+	}
+          
+</style>
+
+    <button class="btn-toggle-round scroll-top js-scroll-top" type="button" title="Scroll to top">
+      <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="cuurentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="18" y1="11" x2="12" y2="5" />
+        <line x1="6" y1="11" x2="12" y2="5" />
+      </svg>
+    </button>
+
+
+
+<!-- Code highlights -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="post-template tag-tech tag-analytics tag-hash-import-2023-07-07-20-42 is-head-left-logo has-classic-feed">
-<div class="gh-site">
+<body class="post-template tag-tech tag-analytics tag-hash-import-2024-07-07-04-35  is-head-left-logo">
+<div class="site">
 
     <header id="gh-head" class="gh-head gh-outer">
         <div class="gh-head-inner gh-inner">
@@ -216,6 +356,7 @@ SnowFlake, as a highly popular data warehousing application in recent years, has
     <li class="nav-home"><a href="../index.html">Home</a></li>
     <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
     <li class="nav-profession"><a href="../tag/pro/index.html">Profession</a></li>
+    <li class="nav-life"><a href="../tag/life/index.html">Life</a></li>
     <li class="nav-about"><a href="../about/index.html">About</a></li>
 </ul>
 
@@ -234,81 +375,99 @@ SnowFlake, as a highly popular data warehousing application in recent years, has
         </div>
     </header>
 
-    
-<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
+    <div class="site-content">
+        
+<main class="site-main">
 
 
+    <article class="post tag-tech tag-analytics tag-hash-import-2024-07-07-04-35">
 
-<main class="gh-main gh-outer">
-    <div class="gh-inner">
-            <article class="gh-article post tag-tech tag-analytics tag-hash-import-2023-07-07-20-42">
-                    <header class="gh-article-header gh-canvas">
-                        <h1 class="gh-article-title">Overview of SnowFlake Database Architecture</h1>
-                            <figure class="gh-article-image has-caption">
+        <header class="gh-article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+        </div>
+
+            <h1 class="gh-article-title">Overview of SnowFlake Database Architecture</h1>
+
+            <div class="post-meta">
+                <a href="../author/vincent-2/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
+                <time datetime="2021-09-11">Jun 11, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">4 min read</span>
+            </div>
+
+            <div class="post-meta">
+                    <a class="post-tag tag-tech" href="../tag/tech/index.html" title="Tech">Tech</a>
+                    <a class="post-tag tag-analytics" href="../tag/analytics/index.html" title="Analytics">Analytics</a>
+            </div>
+
+                <figure class="gh-article-image">
         <img
-            srcset="https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
-                    https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
+            class="post-image"
+            srcset="https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
                     https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                    https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                    https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
-                    https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
-            sizes="(max-width: 1200px) 100vw, 1200px"
-            src="https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+                    https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            sizes="(min-width: 1200px) 960px, 92vw"
+            src="https://images.unsplash.com/photo-1457269449834-928af64c684d?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNub3dmbGFrZXxlbnwwfHx8fDE2ODY1MTYyMzN8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
             alt="Overview of SnowFlake Database Architecture"
         >
             <figcaption>Photo by <a href="https://unsplash.com/@aaronburden?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Aaron Burden</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
     </figure>
-                    </header>
+        </header>
 
-                <section class="gh-content gh-canvas">
-                    <h2 id="1-introduction">1 Introduction</h2><p>SnowFlake, as a highly popular data warehousing application in recent years, has gained the favor of many users and investors. In my daily work, I also often use SnowFlake for analysis, so I have done some research on its underlying operation mechanism. Today, I will talk to you about the main architecture and working principles of SnowFlake.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/26101303/132982228-360bd20b-ed29-4ff6-84d3-c77d74169c9f.png" class="kg-image" alt loading="lazy"><figcaption>SnowFlake stock price</figcaption></figure><h2 id="2-main-features-of-snowflake">2 Main Features of SnowFlake</h2><ul><li>Security and Data Protection: SnowFlake supports multiple authentication methods, such as Multi-Factor Authentication (MFA), Federal Authentication, Single Sign-on (SSO), and OAuth. Communication between clients and servers is protected by <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security?ref=localhost">TLS</a>.</li><li>Support Standard SQL and Many Extended SQL Features: SnowFlake supports most SQL data definition language (Data Definition Language) and data manipulation language (Data Manipulation Language), so there is no need to worry about finding corresponding operations when doing data analysis.</li><li>SnowFlake supports software clients for connection, and also provides interfaces for various programming languages such as Python connector, Spark connector, Node.js driver, .NET driver, etc.</li><li>Convenient Sharing Functionality: Users can easily share data and query statements with other users.</li></ul><h2 id="3-snowflake-architecture">3 SnowFlake Architecture</h2><p>The SnowFlake architecture combines the advantages of Shared-Disk architecture and Shared-Nothing architecture, and consists of three different layers: the Storage Layer, the Compute Layer, and the Cloud Services Layer. The architecture diagrams of these two types are shown below:</p><h3 id="31-shared-disk-architecture-diagram">3.1 Shared-Disk Architecture Diagram</h3><p>This is commonly used in traditional databases. It has a storage layer that all nodes in the cluster can access, and the computing nodes in the cluster do not have their own storage. They all access the central storage layer to retrieve data and perform processing. The cluster control software is used to monitor and manage data processing. All nodes obtain the same data, so it is absolutely forbidden for two or more nodes to update the same data at the same time.</p><p>This architecture is not conducive to performance, and lacks scalability. Applications that require frequent data updates are not suitable for this type of architecture because the Shared-Disk lock mechanism will impede them.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/26101303/132982226-1ccaf053-bddd-4c1c-933a-f555eebd1e29.png" class="kg-image" alt loading="lazy"><figcaption>Shared-Disk Architecture</figcaption></figure><h3 id="32-shared-nothing-architecture-diagram">3.2 Shared-Nothing Architecture Diagram</h3><p>As the name suggests, in the Shared-Nothing architecture, each node in the cluster has its own separate computing resources and storage space, and data can be stored in various nodes by partition. When processing user requests, the router assigns the request to the appropriate node for calculation. When a calculation error occurs, the processing process can be taken over by another node to ensure stable and correct processing of user requests. This architecture is very suitable for applications with a large amount of data reads, such as data warehouses.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/26101303/132982223-b99b67f5-3018-4f47-b03f-ac1f165f76b9.png" class="kg-image" alt loading="lazy"><figcaption>Shared-Nothing Architecture</figcaption></figure><h3 id="33-snowflake-architecture-diagram">3.3 SnowFlake Architecture Diagram</h3><p>SnowFlake uses three different layers to build the application: the storage layer, the compute layer, and the cloud services layer. The diagram is shown below:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/26101303/132982227-9cb5fbcd-cb8b-4c53-8f8d-448abddb2663.png" class="kg-image" alt loading="lazy"><figcaption>SnowFlake Architecture</figcaption></figure><p>The Storage Layer is responsible for optimizing, compressing, and storing data in multiple tiny fragments. Data is stored in row column format and managed in a manner similar to Shared-Disk. Compute nodes retrieve and process data by connecting to the Storage Layer, which is independent of other resources. SnowFlake is deployed in the cloud, so its super large distributed storage system can ensure high performance, stability, availability, capacity, and scalability.</p><p>The Compute Layer uses virtual warehouses (based on virtual machines) to run query statements. The Compute Layer and the Storage Layer are designed to be separate, and SnowFlake implements intelligent caching mechanisms between them to optimize resource utilization and reduce unnecessary interaction between the Compute Layer and the Storage Layer. Virtual warehouses come in different sizes and can be used to process requests with different performance requirements. Each virtual warehouse is independent of each other, so compute resources are not shared. The advantages of this design are:</p><ul><li>Virtual warehouses can be created or deleted at any time. It is also easy to expand the computing resources of virtual warehouses without affecting the calculation of query statements.</li><li>Virtual warehouses can be easily stopped or restarted, suitable for long periods of time without queries or need to participate in queries after a period of dormancy.</li><li>Virtual warehouse cluster size can be automatically changed very easily.</li></ul><p>The Cloud Services Layer is responsible for user information authentication, cluster management, security and encryption, metadata management of data, optimization of query statements, etc. These tasks are all completed by the Compute Layer. Common processing content examples include:</p><ul><li>User login</li><li>After the query statement is submitted, it will first go through the optimizer of the Cloud Services Layer, and then be passed to the Compute Layer for processing</li><li>Metadata required for optimizing queries and filtering data is also stored at this level</li></ul><p>The three-layer architecture of SnowFlake can be independently expanded, but SnowFlake only charges for the Storage Layer and the Compute Layer, as the Cloud Services Layer is processed in the Compute Node. The advantage of independent expansion is obvious. If more data is needed, the Storage Layer can be individually expanded. If stronger computing performance is required, the Compute Layer can be individually expanded. Refer to the official SnowFlake <a href="https://docs.snowflake.com/en/user-guide/intro-key-concepts.html?ref=localhost">Architecture Guide</a> for more details.</p><h2 id="4-conclusion">4 Conclusion</h2><p>After understanding the SnowFlake architecture, I believe you can better understand why so many companies choose SnowFlake. Its cloud-based architecture provides efficient, secure, stable, and cost-effective solutions for many enterprises. As a data analyst, I have personally experienced that SnowFlake is indeed easier to use than many traditional data warehouses.</p>
-                    <aside class="gh-article-meta">
-                        <div class="gh-article-meta-inner">
-                                <div class="gh-article-meta-wrapper">
-                                <h4 class="gh-author-name">
-                                    <a href="../author/vincent/index.html">Vincent Yuan</a>
-                                </h4>
-                            <time class="gh-article-date" datetime="2021-09-11">Sep 11, 2021</time></div>
-                            
+        <div class="gh-content gh-canvas">
+
+            <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
+
+            <h2 id="1-introduction">1 Introduction</h2><p>SnowFlake, as a highly popular data warehousing application in recent years, has gained the favor of many users and investors. In my daily work, I also often use SnowFlake for analysis, so I have done some research on its underlying operation mechanism. Today, I will talk to you about the main architecture and working principles of SnowFlake.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/26101303/132982228-360bd20b-ed29-4ff6-84d3-c77d74169c9f.png" class="kg-image" alt loading="lazy"><figcaption>SnowFlake stock price</figcaption></figure><h2 id="2-main-features-of-snowflake">2 Main Features of SnowFlake</h2><ul><li>Security and Data Protection: SnowFlake supports multiple authentication methods, such as Multi-Factor Authentication (MFA), Federal Authentication, Single Sign-on (SSO), and OAuth. Communication between clients and servers is protected by <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security?ref=localhost">TLS</a>.</li><li>Support Standard SQL and Many Extended SQL Features: SnowFlake supports most SQL data definition language (Data Definition Language) and data manipulation language (Data Manipulation Language), so there is no need to worry about finding corresponding operations when doing data analysis.</li><li>SnowFlake supports software clients for connection, and also provides interfaces for various programming languages such as Python connector, Spark connector, Node.js driver, .NET driver, etc.</li><li>Convenient Sharing Functionality: Users can easily share data and query statements with other users.</li></ul><h2 id="3-snowflake-architecture">3 SnowFlake Architecture</h2><p>The SnowFlake architecture combines the advantages of Shared-Disk architecture and Shared-Nothing architecture, and consists of three different layers: the Storage Layer, the Compute Layer, and the Cloud Services Layer. The architecture diagrams of these two types are shown below:</p><h3 id="31-shared-disk-architecture-diagram">3.1 Shared-Disk Architecture Diagram</h3><p>This is commonly used in traditional databases. It has a storage layer that all nodes in the cluster can access, and the computing nodes in the cluster do not have their own storage. They all access the central storage layer to retrieve data and perform processing. The cluster control software is used to monitor and manage data processing. All nodes obtain the same data, so it is absolutely forbidden for two or more nodes to update the same data at the same time.</p><p>This architecture is not conducive to performance, and lacks scalability. Applications that require frequent data updates are not suitable for this type of architecture because the Shared-Disk lock mechanism will impede them.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/26101303/132982226-1ccaf053-bddd-4c1c-933a-f555eebd1e29.png" class="kg-image" alt loading="lazy"><figcaption>Shared-Disk Architecture</figcaption></figure><h3 id="32-shared-nothing-architecture-diagram">3.2 Shared-Nothing Architecture Diagram</h3><p>As the name suggests, in the Shared-Nothing architecture, each node in the cluster has its own separate computing resources and storage space, and data can be stored in various nodes by partition. When processing user requests, the router assigns the request to the appropriate node for calculation. When a calculation error occurs, the processing process can be taken over by another node to ensure stable and correct processing of user requests. This architecture is very suitable for applications with a large amount of data reads, such as data warehouses.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/26101303/132982223-b99b67f5-3018-4f47-b03f-ac1f165f76b9.png" class="kg-image" alt loading="lazy"><figcaption>Shared-Nothing Architecture</figcaption></figure><h3 id="33-snowflake-architecture-diagram">3.3 SnowFlake Architecture Diagram</h3><p>SnowFlake uses three different layers to build the application: the storage layer, the compute layer, and the cloud services layer. The diagram is shown below:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://user-images.githubusercontent.com/26101303/132982227-9cb5fbcd-cb8b-4c53-8f8d-448abddb2663.png" class="kg-image" alt loading="lazy"><figcaption>SnowFlake Architecture</figcaption></figure><p>The Storage Layer is responsible for optimizing, compressing, and storing data in multiple tiny fragments. Data is stored in row column format and managed in a manner similar to Shared-Disk. Compute nodes retrieve and process data by connecting to the Storage Layer, which is independent of other resources. SnowFlake is deployed in the cloud, so its super large distributed storage system can ensure high performance, stability, availability, capacity, and scalability.</p><p>The Compute Layer uses virtual warehouses (based on virtual machines) to run query statements. The Compute Layer and the Storage Layer are designed to be separate, and SnowFlake implements intelligent caching mechanisms between them to optimize resource utilization and reduce unnecessary interaction between the Compute Layer and the Storage Layer. Virtual warehouses come in different sizes and can be used to process requests with different performance requirements. Each virtual warehouse is independent of each other, so compute resources are not shared. The advantages of this design are:</p><ul><li>Virtual warehouses can be created or deleted at any time. It is also easy to expand the computing resources of virtual warehouses without affecting the calculation of query statements.</li><li>Virtual warehouses can be easily stopped or restarted, suitable for long periods of time without queries or need to participate in queries after a period of dormancy.</li><li>Virtual warehouse cluster size can be automatically changed very easily.</li></ul><p>The Cloud Services Layer is responsible for user information authentication, cluster management, security and encryption, metadata management of data, optimization of query statements, etc. These tasks are all completed by the Compute Layer. Common processing content examples include:</p><ul><li>User login</li><li>After the query statement is submitted, it will first go through the optimizer of the Cloud Services Layer, and then be passed to the Compute Layer for processing</li><li>Metadata required for optimizing queries and filtering data is also stored at this level</li></ul><p>The three-layer architecture of SnowFlake can be independently expanded, but SnowFlake only charges for the Storage Layer and the Compute Layer, as the Cloud Services Layer is processed in the Compute Node. The advantage of independent expansion is obvious. If more data is needed, the Storage Layer can be individually expanded. If stronger computing performance is required, the Compute Layer can be individually expanded. Refer to the official SnowFlake <a href="https://docs.snowflake.com/en/user-guide/intro-key-concepts.html?ref=localhost">Architecture Guide</a> for more details.</p><h2 id="4-conclusion">4 Conclusion</h2><p>After understanding the SnowFlake architecture, I believe you can better understand why so many companies choose SnowFlake. Its cloud-based architecture provides efficient, secure, stable, and cost-effective solutions for many enterprises. As a data analyst, I have personally experienced that SnowFlake is indeed easier to use than many traditional data warehouses.</p>
+        </div>
+
+        <div class="pagination-container gh-canvas">
+        <nav class="pagination">
+
+            <div class="pagination-left">
+                    <a class="newer-posts" href="../decision-tree-overview/index.html">
+                        <span class="pagination-label">Previous</span>
+                        Decision Tree Overview
+                    </a>
+            </div>
+
+            <div class="pagination-right">
+                    <a class="older-posts" href="../tips-for-common-operations-on-python-dictionaries-co/index.html">
+                        <span class="pagination-label">Next</span>
+                        Understanding Python Closures
+                    </a>
+            </div>
+
+        </nav>
+        </div>
+
+            <div class="gh-comments gh-canvas">
+                
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2b2" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+    
+            </div>
+
+    </article>
 
 
-                             <a class="gh-article-tag" href="../tag/tech/index.html" style="--tag-color: ">Tech</a>
-                             <a class="gh-article-tag" href="../tag/analytics/index.html" style="--tag-color: ">Analytics</a>
-                           
-
-                        </div>
-                    </aside>
-                </section>
-
-
-                <footer class="gh-article-footer gh-canvas">
-                    <nav class="gh-navigation">
-                        <div class="gh-navigation-previous">
-                                <a class="gh-navigation-link" href="../decision-tree-learning-notes.html">← Previous</a>
-                        </div>
-
-                        <div class="gh-navigation-middle"></div>
-
-                        <div class="gh-navigation-next">
-                                <a class="gh-navigation-link" href="../tips-for-common-operations-on-python-dictionaries-co/index.html">Next →</a>
-                        </div>
-                    </nav>
-                </footer>
-            </article>
-    </div>
 </main>
+    </div>
 
     <footer class="gh-foot gh-outer">
         <div class="gh-foot-inner gh-inner">
-            <nav class="gh-foot-menu">
-                <ul class="nav">
+            <div class="gh-copyright">
+                Spacecraft © 2024
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
     <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
 </ul>
 
-            </nav>
-
-            <div class="gh-copyright">
-                    Spacecraft © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
             </div>
         </div>
     </footer>
@@ -356,26 +515,81 @@ SnowFlake, as a highly popular data warehousing application in recent years, has
         </div>
     </div>
 </div>
-<script src="../assets/built/main.min.js%3Fv=e2e91b37b9"></script>
-
-  <script>
-    const progressBar = document.querySelector('.reading-progress');
-
-    function updateProgress() {
-      const totalHeight = document.body.clientHeight;
-      const windowHeight = document.documentElement.clientHeight;
-      const position = window.scrollY;
-      const progress = position / (totalHeight - windowHeight) * 100;
-      progressBar.setAttribute('value', progress);
-      requestAnimationFrame(updateProgress);
-    }
-
-    requestAnimationFrame(updateProgress);
-  </script>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="../assets/built/main.min.js%3Fv=88df665c6b"></script>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
 
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+
+        orderedList: false,
+    });
+</script>
+
+
+<!-- Code highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!--   Scroll Top Button  -->
+<script>
+const scrollTopBtn = document.querySelector('.js-scroll-top');
+if (scrollTopBtn) {
+  scrollTopBtn.onclick = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  
+  const progressPath = document.querySelector('.scroll-top path');
+  const pathLength = progressPath.getTotalLength();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+  progressPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+  progressPath.style.strokeDashoffset = pathLength;
+  progressPath.getBoundingClientRect();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';		
+  const updateProgress = function() {
+    const scroll = window.scrollY || window.scrollTopBtn || document.documentElement.scrollTopBtn;
+
+    const docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+    const height = docHeight - windowHeight;
+    var progress = pathLength - (scroll * pathLength / height);
+    progressPath.style.strokeDashoffset = progress;
+  }
+
+  updateProgress();
+  const offset = 100;
+
+  window.addEventListener('scroll', function(event) {
+    updateProgress();
+
+    //Scroll back to top
+    const scrollPos = window.scrollY || window.scrollTopBtn || document.getElementsByTagName('html')[0].scrollTopBtn;
+    scrollPos > offset ? scrollTopBtn.classList.add('is-active') : scrollTopBtn.classList.remove('is-active');
+
+  }, false);
+}
+</script>
 
 </body>
-
 </html>

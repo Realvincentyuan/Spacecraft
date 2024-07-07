@@ -5,28 +5,71 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GitHub Action Overview</title>
-    <link rel="stylesheet" href="assets/built/screen.css%3Fv=e2e91b37b9.css">
+    <link rel="stylesheet" href="assets/built/screen.css%3Fv=88df665c6b.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
 
     <style>
-        :root {
-            --background-color: #ffffff
+        .gh-content {
+            position: relative;
+            z-index: 1;
         }
+
+        /*-- Remove underline in the TOC text  */
+        .gh-content a {
+            text-decoration: none;
+        }
+
+        .gh-content img{
+            position: relative;
+            z-index: 2;
+        }
+
+        .gh-toc > .toc-list {
+            position: relative;
+            
+        }
+
+        .toc-list {
+            overflow: hidden;
+            list-style: none;
+            left: 20%;
+
+        }
+
+        @media (min-width: 1300px) {
+            .gh-sidebar {
+                position: absolute; 
+                top: 0;
+                bottom: 0;
+                margin-top: 4vmin;
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
+            }
+        
+            .gh-toc {
+                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+                top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: 1; 
+
+            }
+        }
+
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
+        .gh-toc .is-active-link::before {
+            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
+
+        } 
     </style>
-
-    <script>
-        /* The script for calculating the color contrast was taken from
-        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
-        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
-        accentColor = accentColor.trim().slice(1);
-        var r = parseInt(accentColor.substr(0, 2), 16);
-        var g = parseInt(accentColor.substr(2, 2), 16);
-        var b = parseInt(accentColor.substr(4, 2), 16);
-        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        var textColor = (yiq >= 128) ? 'dark' : 'light';
-
-        document.documentElement.className = `has-${textColor}-text`;
-    </script>
 
     <link rel="canonical" href="github-action-overview.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -65,8 +108,9 @@ We have introduced many cool features of GitHub before. To better understand the
     <meta name="twitter:label2" content="Filed under">
     <meta name="twitter:data2" content="Tech, Git">
     <meta name="twitter:site" content="@ghost">
-    <meta property="og:image:width" content="2000">
-    <meta property="og:image:height" content="1333">
+    <meta name="twitter:creator" content="@RealVincentYuan">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
     
     <script type="application/ld+json">
 {
@@ -86,8 +130,17 @@ We have introduced many cool features of GitHub before. To better understand the
     "author": {
         "@type": "Person",
         "name": "Vincent Yuan",
-        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
-        "sameAs": []
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar-1.png",
+            "width": 752,
+            "height": 752
+        },
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent-2/",
+        "sameAs": [
+            "https://unsplash.com/@vincentyuan87",
+            "https://twitter.com/RealVincentYuan"
+        ]
     },
     "headline": "GitHub Action Overview",
     "url": "https://realvincentyuan.github.io/Spacecraft/github-action-overview/",
@@ -96,8 +149,8 @@ We have introduced many cool features of GitHub before. To better understand the
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&ixlib=rb-4.0.3&q=80&w=2000",
-        "width": 2000,
-        "height": 1333
+        "width": 1200,
+        "height": 800
     },
     "keywords": "Tech, Git",
     "description": "1 Introduction\n\nWe have introduced many cool features of GitHub before. To better understand the content of this article, it is recommended to review the basic GitHub operation knowledge in the previous articles:\n\n * Teach You How to Use GitHub without Writing Any Code\n * Git Commonly Used Commands\n * Create a Beautiful Online Resume Using GitHub\n\nIn this article, we will introduce how to use GitHub Actions to simplify repeated mechanical tasks and greatly improve efficiency and save time.\n\n\n2 G",
@@ -105,9 +158,9 @@ We have introduced many cool features of GitHub before. To better understand the
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.49">
+    <meta name="generator" content="Ghost 5.87">
     <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="rss/index.html">
-    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.33/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="206cb569cfe36163ae0b6ed398" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="59658b4dc0364cacbc3332171d" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
 .gh-post-upgrade-cta {
     display: flex;
     flex-direction: column;
@@ -171,13 +224,24 @@ We have introduced many cool features of GitHub before. To better understand the
 .gh-post-upgrade-cta a.gh-btn:hover {
     opacity: 0.92;
 }</style>
-    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="206cb569cfe36163ae0b6ed398" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
-    <script defer src="public/cards.min.js%3Fv=e2e91b37b9"></script>
-    <link rel="stylesheet" type="text/css" href="public/cards.min.css%3Fv=e2e91b37b9.css">
-    <script defer src="public/member-attribution.min.js%3Fv=e2e91b37b9"></script>
-    <!-- Reading progress bar -->
+    <script defer src="public/cards.min.js%3Fv=88df665c6b"></script>
+    <link rel="stylesheet" type="text/css" href="public/cards.min.css%3Fv=88df665c6b.css">
+    <script defer src="public/comment-counts.min.js%3Fv=88df665c6b" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
+    <script defer src="public/member-attribution.min.js%3Fv=88df665c6b"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-633EG809GP');
+</script>
+
+<!-- Reading progress bar -->
 <style>
 .reading-progress {
   position: fixed;
@@ -198,11 +262,87 @@ We have introduced many cool features of GitHub before. To better understand the
 .reading-progress::-webkit-progress-value {
   background: var(--ghost-accent-color); /* Progress bar color */
 }
-</style><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</style>
+
+
+<!--   Scroll Top Button  -->
+<style>
+    /*Scroll to Top CSS*/
+    .scroll-top {
+		position: fixed;
+ 		z-index: 50;
+		padding: 0;
+		right: 30px;
+		bottom: 100px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(15px);    
+		height: 46px;
+		width: 46px;
+		cursor: pointer;
+		display: flex;
+  		align-items: center;
+  		justify-content: center;
+		border-radius: 50%;
+  	transition: all .4s ease;
+  	border: none;
+  	box-shadow: inset 0 0 0 2px #ccc;
+  	color: #ccc;
+  	background-color: #fff;
+	}
+
+	.scroll-top.is-active {
+		opacity: 1;
+  		visibility: visible;
+  		transform: translateY(0);
+	}
+
+	.scroll-top .icon-tabler-arrow-up {
+  		position: absolute;
+  		stroke-width: 2px;
+  		stroke: #333;
+	}
+
+	.scroll-top svg path { 
+		fill: none; 
+	}
+
+	.scroll-top svg.progress-circle path {
+		stroke: #333;
+		stroke-width: 4;
+  		transition: all .4s ease;
+	}
+
+	.scroll-top:hover {
+  		color: var(--ghost-accent-color);
+	}
+
+	.scroll-top:hover .progress-circle path, .scroll-top:hover .icon-tabler-arrow-up {
+  		stroke: var(--ghost-accent-color);
+	}
+          
+</style>
+
+    <button class="btn-toggle-round scroll-top js-scroll-top" type="button" title="Scroll to top">
+      <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="cuurentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="18" y1="11" x2="12" y2="5" />
+        <line x1="6" y1="11" x2="12" y2="5" />
+      </svg>
+    </button>
+
+
+
+<!-- Code highlights -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="post-template tag-tech tag-github tag-hash-import-2023-07-07-20-42 is-head-left-logo has-classic-feed">
-<div class="gh-site">
+<body class="post-template tag-tech tag-github tag-hash-import-2024-07-07-04-35  is-head-left-logo">
+<div class="site">
 
     <header id="gh-head" class="gh-head gh-outer">
         <div class="gh-head-inner gh-inner">
@@ -224,6 +364,7 @@ We have introduced many cool features of GitHub before. To better understand the
     <li class="nav-home"><a href="index.html">Home</a></li>
     <li class="nav-tech"><a href="tag/tech/index.html">Tech</a></li>
     <li class="nav-profession"><a href="tag/pro/index.html">Profession</a></li>
+    <li class="nav-life"><a href="tag/life/index.html">Life</a></li>
     <li class="nav-about"><a href="about/index.html">About</a></li>
 </ul>
 
@@ -242,34 +383,52 @@ We have introduced many cool features of GitHub before. To better understand the
         </div>
     </header>
 
-    
-<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
+    <div class="site-content">
+        
+<main class="site-main">
 
 
+    <article class="post tag-tech tag-github tag-hash-import-2024-07-07-04-35">
 
-<main class="gh-main gh-outer">
-    <div class="gh-inner">
-            <article class="gh-article post tag-tech tag-github tag-hash-import-2023-07-07-20-42">
-                    <header class="gh-article-header gh-canvas">
-                        <h1 class="gh-article-title">GitHub Action Overview</h1>
-                            <figure class="gh-article-image has-caption">
+        <header class="gh-article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+        </div>
+
+            <h1 class="gh-article-title">GitHub Action Overview</h1>
+
+            <div class="post-meta">
+                <a href="author/vincent-2/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
+                <time datetime="2021-11-13">Jun 11, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">3 min read</span>
+            </div>
+
+            <div class="post-meta">
+                    <a class="post-tag tag-tech" href="tag/tech/index.html" title="Tech">Tech</a>
+                    <a class="post-tag tag-github" href="tag/github/index.html" title="Git">Git</a>
+            </div>
+
+                <figure class="gh-article-image">
         <img
-            srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
-                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
+            class="post-image"
+            srcset="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
                     https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
-                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
-            sizes="(max-width: 1200px) 100vw, 1200px"
-            src="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            sizes="(min-width: 1200px) 960px, 92vw"
+            src="https://images.unsplash.com/photo-1591608516485-a1a53df39498?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGdpdGh1YnxlbnwwfHx8fDE2ODY1MTI2NjJ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
             alt="GitHub Action Overview"
         >
             <figcaption>Photo by <a href="https://unsplash.com/@markuswinkler?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Markus Winkler</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
     </figure>
-                    </header>
+        </header>
 
-                <section class="gh-content gh-canvas">
-                    <h2 id="1-introduction">1 Introduction</h2><p>We have introduced many cool features of GitHub before. To better understand the content of this article, it is recommended to review the basic GitHub operation knowledge in the previous articles:</p><ul><li><a href="how-to-use-github-without-writing-a-single-line-of-code.html">Teach You How to Use GitHub without Writing Any Code</a></li><li><a href="a-list-of-common-git-commands.html">Git Commonly Used Commands</a></li><li><a href="creating-a-beautiful-online-resume-using-github.html">Create a Beautiful Online Resume Using GitHub</a></li></ul><p>In this article, we will introduce how to use GitHub Actions to simplify repeated mechanical tasks and greatly improve efficiency and save time.</p><h2 id="2-github-action-overview">2 GitHub Action Overview</h2><p>GitHub Action can automatically execute custom scripts to complete preset work. Users need to set the triggering conditions (events) and the commands to be executed when the conditions are met. GitHub can automatically complete the preset operations, for example, when a update is merged to the master/main branch, automatically execute the test script to check for errors. The following figure shows the components when GitHub Action is executed:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/overview-actions-design.png" class="kg-image" alt loading="lazy"><figcaption>GitHub Action components, source: GitHub</figcaption></figure><p>When an event occurs, GitHub automatically triggers the workflow. Then the program executes step by step.</p><h2 id="3-create-action">3 Create Action</h2><p>GitHub Action uses <a href="https://yaml.org/?ref=localhost">YAML</a> to define the triggered events, work, and steps. The workflow file needs to be stored in a specific location in the code repository: <code>.github/workflows</code>.</p><p>Take the continuous integration workflow of the <a href="https://github.com/BulletTech/BulletTech/blob/main/.github/workflows/ci.yml?ref=localhost">BulletTech blog</a> as an example:</p><pre><code class="language-yml">name: ci
+        <div class="gh-content gh-canvas">
+
+            <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
+
+            <h2 id="1-introduction">1 Introduction</h2><p>We have introduced many cool features of GitHub before. To better understand the content of this article, it is recommended to review the basic GitHub operation knowledge in the previous articles:</p><ul><li><a href="how-to-use-github-without-writing-a-single-line-of-code.html">Teach You How to Use GitHub without Writing Any Code</a></li><li><a href="a-list-of-common-git-commands.html">Git Commonly Used Commands</a></li><li><a href="creating-a-beautiful-online-resume-using-github.html">Create a Beautiful Online Resume Using GitHub</a></li></ul><p>In this article, we will introduce how to use GitHub Actions to simplify repeated mechanical tasks and greatly improve efficiency and save time.</p><h2 id="2-github-action-overview">2 GitHub Action Overview</h2><p>GitHub Action can automatically execute custom scripts to complete preset work. Users need to set the triggering conditions (events) and the commands to be executed when the conditions are met. GitHub can automatically complete the preset operations, for example, when a update is merged to the master/main branch, automatically execute the test script to check for errors. The following figure shows the components when GitHub Action is executed:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/overview-actions-design.png" class="kg-image" alt loading="lazy"><figcaption>GitHub Action components, source: GitHub</figcaption></figure><p>When an event occurs, GitHub automatically triggers the workflow. Then the program executes step by step.</p><h2 id="3-create-action">3 Create Action</h2><p>GitHub Action uses <a href="https://yaml.org/?ref=localhost">YAML</a> to define the triggered events, work, and steps. The workflow file needs to be stored in a specific location in the code repository: <code>.github/workflows</code>.</p><p>Take the continuous integration workflow of the <a href="https://github.com/BulletTech/BulletTech/blob/main/.github/workflows/ci.yml?ref=localhost">BulletTech blog</a> as an example:</p><pre><code class="language-yml">name: ci
 on:
   push:
     branches:
@@ -296,53 +455,53 @@ jobs:
       - run: git pull
       - run: mkdocs gh-deploy --force
 </code></pre><p>Key points are as follows:</p><ul><li><code>name</code> defines the name of the workflow, in this case, continuous integration (CI).</li><li><code>on</code> is the event that triggers the workflow. Here, it is defined that the command needs to be executed when a push is updated to the main branch.</li><li><code>jobs</code> defines the work tasks. <code>deploy</code> is the name of the work. It runs a series of steps on GitHub's Ubuntu Linux virtual machine.</li><li><code>uses</code> is followed by an action in GitHub Action Marketplace. Here, actions are used to check out the repository and download the code to the server that runs the code, and configure the Python runtime environment.</li><li><code>run</code> is followed by the command to be executed. Here, some Python packages required by the blog are installed and the deployment command is run.</li></ul><h2 id="4-check-action-status">4 Check Action Status</h2><p>In the Actions tab of the GitHub repository, you can see the running status of the action:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/Action_Status.png" class="kg-image" alt loading="lazy"><figcaption>GitHub Action status</figcaption></figure><p>You can see the <code>ci</code> workflow used by BulletTech, and click on <code>runs</code> to view the running status of each step of the action.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/Action_steps.png" class="kg-image" alt loading="lazy"><figcaption>Action running status</figcaption></figure><h2 id="5-conclusion">5 Conclusion</h2><p>Using GitHub Action automates many repetitive and mechanical labor tasks, saving time that can be used for more meaningful things. For more information, please refer to the following reference materials to customize your own workflow.</p><p>I hope this sharing can help you. Feel free to leave a comment in the comment section for discussion!</p>
-                    <aside class="gh-article-meta">
-                        <div class="gh-article-meta-inner">
-                                <div class="gh-article-meta-wrapper">
-                                <h4 class="gh-author-name">
-                                    <a href="author/vincent/index.html">Vincent Yuan</a>
-                                </h4>
-                            <time class="gh-article-date" datetime="2021-11-13">Nov 13, 2021</time></div>
-                            
+        </div>
+
+        <div class="pagination-container gh-canvas">
+        <nav class="pagination">
+
+            <div class="pagination-left">
+                    <a class="newer-posts" href="creating-a-beautiful-online-resume-using-github.html">
+                        <span class="pagination-label">Previous</span>
+                        Creating a Great Online Resume using GitHub
+                    </a>
+            </div>
+
+            <div class="pagination-right">
+                    <a class="older-posts" href="automatically-build-and-push-docker-image-with-github-action/index.html">
+                        <span class="pagination-label">Next</span>
+                        Automatically Build and Push Docker Image with GitHub Action
+                    </a>
+            </div>
+
+        </nav>
+        </div>
+
+            <div class="gh-comments gh-canvas">
+                
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2ba" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+    
+            </div>
+
+    </article>
 
 
-                             <a class="gh-article-tag" href="tag/tech/index.html" style="--tag-color: ">Tech</a>
-                             <a class="gh-article-tag" href="tag/github/index.html" style="--tag-color: ">Git</a>
-                           
-
-                        </div>
-                    </aside>
-                </section>
-
-
-                <footer class="gh-article-footer gh-canvas">
-                    <nav class="gh-navigation">
-                        <div class="gh-navigation-previous">
-                                <a class="gh-navigation-link" href="creating-a-beautiful-online-resume-using-github.html">← Previous</a>
-                        </div>
-
-                        <div class="gh-navigation-middle"></div>
-
-                        <div class="gh-navigation-next">
-                                <a class="gh-navigation-link" href="automatically-build-and-push-docker-image-with-github-action/index.html">Next →</a>
-                        </div>
-                    </nav>
-                </footer>
-            </article>
-    </div>
 </main>
+    </div>
 
     <footer class="gh-foot gh-outer">
         <div class="gh-foot-inner gh-inner">
-            <nav class="gh-foot-menu">
-                <ul class="nav">
+            <div class="gh-copyright">
+                Spacecraft © 2024
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
     <li class="nav-sign-up"><a href="github-action-overview.html#/portal/">Sign up</a></li>
 </ul>
 
-            </nav>
-
-            <div class="gh-copyright">
-                    Spacecraft © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
             </div>
         </div>
     </footer>
@@ -390,26 +549,81 @@ jobs:
         </div>
     </div>
 </div>
-<script src="assets/built/main.min.js%3Fv=e2e91b37b9"></script>
-
-  <script>
-    const progressBar = document.querySelector('.reading-progress');
-
-    function updateProgress() {
-      const totalHeight = document.body.clientHeight;
-      const windowHeight = document.documentElement.clientHeight;
-      const position = window.scrollY;
-      const progress = position / (totalHeight - windowHeight) * 100;
-      progressBar.setAttribute('value', progress);
-      requestAnimationFrame(updateProgress);
-    }
-
-    requestAnimationFrame(updateProgress);
-  </script>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="assets/built/main.min.js%3Fv=88df665c6b"></script>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
 
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+
+        orderedList: false,
+    });
+</script>
+
+
+<!-- Code highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!--   Scroll Top Button  -->
+<script>
+const scrollTopBtn = document.querySelector('.js-scroll-top');
+if (scrollTopBtn) {
+  scrollTopBtn.onclick = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  
+  const progressPath = document.querySelector('.scroll-top path');
+  const pathLength = progressPath.getTotalLength();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+  progressPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+  progressPath.style.strokeDashoffset = pathLength;
+  progressPath.getBoundingClientRect();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';		
+  const updateProgress = function() {
+    const scroll = window.scrollY || window.scrollTopBtn || document.documentElement.scrollTopBtn;
+
+    const docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+    const height = docHeight - windowHeight;
+    var progress = pathLength - (scroll * pathLength / height);
+    progressPath.style.strokeDashoffset = progress;
+  }
+
+  updateProgress();
+  const offset = 100;
+
+  window.addEventListener('scroll', function(event) {
+    updateProgress();
+
+    //Scroll back to top
+    const scrollPos = window.scrollY || window.scrollTopBtn || document.getElementsByTagName('html')[0].scrollTopBtn;
+    scrollPos > offset ? scrollTopBtn.classList.add('is-active') : scrollTopBtn.classList.remove('is-active');
+
+  }, false);
+}
+</script>
 
 </body>
-
 </html>

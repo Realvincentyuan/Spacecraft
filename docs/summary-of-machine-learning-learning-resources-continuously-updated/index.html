@@ -4,50 +4,93 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Summary of Machine Learning Reference Resources (Continuously Updated)</title>
-    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=e2e91b37b9.css">
+    <title>Summary of Data Science and Artificial Intelligence Resources (Continuously Updated)</title>
+    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=88df665c6b.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
 
     <style>
-        :root {
-            --background-color: #ffffff
+        .gh-content {
+            position: relative;
+            z-index: 1;
         }
+
+        /*-- Remove underline in the TOC text  */
+        .gh-content a {
+            text-decoration: none;
+        }
+
+        .gh-content img{
+            position: relative;
+            z-index: 2;
+        }
+
+        .gh-toc > .toc-list {
+            position: relative;
+            
+        }
+
+        .toc-list {
+            overflow: hidden;
+            list-style: none;
+            left: 20%;
+
+        }
+
+        @media (min-width: 1300px) {
+            .gh-sidebar {
+                position: absolute; 
+                top: 0;
+                bottom: 0;
+                margin-top: 4vmin;
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
+            }
+        
+            .gh-toc {
+                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+                top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: 1; 
+
+            }
+        }
+
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
+        .gh-toc .is-active-link::before {
+            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
+
+        } 
     </style>
-
-    <script>
-        /* The script for calculating the color contrast was taken from
-        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
-        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
-        accentColor = accentColor.trim().slice(1);
-        var r = parseInt(accentColor.substr(0, 2), 16);
-        var g = parseInt(accentColor.substr(2, 2), 16);
-        var b = parseInt(accentColor.substr(4, 2), 16);
-        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        var textColor = (yiq >= 128) ? 'dark' : 'light';
-
-        document.documentElement.className = `has-${textColor}-text`;
-    </script>
 
     <link rel="canonical" href="index.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="Spacecraft">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Summary of Machine Learning Reference Resources (Continuously Updated)">
+    <meta property="og:title" content="Summary of Data Science and Artificial Intelligence Resources (Continuously Updated)">
     <meta property="og:description" content="1 Overview
 
 The purpose of this article is to summarize the machine learning reference materials that I usually use, facilitate my own review and update at any time, and also share with friends who need it. This article will be updated from time to time to ensure the relevance of">
     <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/summary-of-machine-learning-learning-resources-continuously-updated/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta property="article:published_time" content="2022-12-18T06:00:00.000Z">
-    <meta property="article:modified_time" content="2023-07-03T00:58:02.000Z">
+    <meta property="article:modified_time" content="2023-12-17T20:04:18.000Z">
     <meta property="article:tag" content="Tech">
     <meta property="article:tag" content="AI">
     <meta property="article:tag" content="Python">
     
     <meta property="article:publisher" content="https://www.facebook.com/ghost">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Summary of Machine Learning Reference Resources (Continuously Updated)">
+    <meta name="twitter:title" content="Summary of Data Science and Artificial Intelligence Resources (Continuously Updated)">
     <meta name="twitter:description" content="1 Overview
 
 The purpose of this article is to summarize the machine learning reference materials that I usually use, facilitate my own review and update at any time, and also share with friends who need it. This article will be updated from time to time to ensure the relevance of">
@@ -58,8 +101,9 @@ The purpose of this article is to summarize the machine learning reference mater
     <meta name="twitter:label2" content="Filed under">
     <meta name="twitter:data2" content="Tech, AI, Python">
     <meta name="twitter:site" content="@ghost">
-    <meta property="og:image:width" content="2000">
-    <meta property="og:image:height" content="1817">
+    <meta name="twitter:creator" content="@RealVincentYuan">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1090">
     
     <script type="application/ld+json">
 {
@@ -79,18 +123,27 @@ The purpose of this article is to summarize the machine learning reference mater
     "author": {
         "@type": "Person",
         "name": "Vincent Yuan",
-        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
-        "sameAs": []
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar-1.png",
+            "width": 752,
+            "height": 752
+        },
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent-2/",
+        "sameAs": [
+            "https://unsplash.com/@vincentyuan87",
+            "https://twitter.com/RealVincentYuan"
+        ]
     },
-    "headline": "Summary of Machine Learning Reference Resources (Continuously Updated)",
+    "headline": "Summary of Data Science and Artificial Intelligence Resources (Continuously Updated)",
     "url": "https://realvincentyuan.github.io/Spacecraft/summary-of-machine-learning-learning-resources-continuously-updated/",
     "datePublished": "2022-12-18T06:00:00.000Z",
-    "dateModified": "2023-07-03T00:58:02.000Z",
+    "dateModified": "2023-12-17T20:04:18.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&ixlib=rb-4.0.3&q=80&w=2000",
-        "width": 2000,
-        "height": 1817
+        "width": 1200,
+        "height": 1090
     },
     "keywords": "Tech, AI, Python",
     "description": "1 Overview\n\nThe purpose of this article is to summarize the machine learning reference materials that I usually use, facilitate my own review and update at any time, and also share with friends who need it. This article will be updated from time to time to ensure the relevance of the contents.\n\n\n2 Online Courses\n\n * Standford CS 229: Machine Learning - Bilibili\n * Stanford Seminar CS25: Transformers United - YouTube\n * 李沐学AI - Bilibili\n * TensorFlow Developer Certificate Course - Zero to Mastery",
@@ -98,9 +151,9 @@ The purpose of this article is to summarize the machine learning reference mater
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.49">
+    <meta name="generator" content="Ghost 5.87">
     <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
-    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.33/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="206cb569cfe36163ae0b6ed398" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="59658b4dc0364cacbc3332171d" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
 .gh-post-upgrade-cta {
     display: flex;
     flex-direction: column;
@@ -164,13 +217,24 @@ The purpose of this article is to summarize the machine learning reference mater
 .gh-post-upgrade-cta a.gh-btn:hover {
     opacity: 0.92;
 }</style>
-    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="206cb569cfe36163ae0b6ed398" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
-    <script defer src="../public/cards.min.js%3Fv=e2e91b37b9"></script>
-    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=e2e91b37b9.css">
-    <script defer src="../public/member-attribution.min.js%3Fv=e2e91b37b9"></script>
-    <!-- Reading progress bar -->
+    <script defer src="../public/cards.min.js%3Fv=88df665c6b"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=88df665c6b.css">
+    <script defer src="../public/comment-counts.min.js%3Fv=88df665c6b" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
+    <script defer src="../public/member-attribution.min.js%3Fv=88df665c6b"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-633EG809GP');
+</script>
+
+<!-- Reading progress bar -->
 <style>
 .reading-progress {
   position: fixed;
@@ -191,11 +255,87 @@ The purpose of this article is to summarize the machine learning reference mater
 .reading-progress::-webkit-progress-value {
   background: var(--ghost-accent-color); /* Progress bar color */
 }
-</style><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</style>
+
+
+<!--   Scroll Top Button  -->
+<style>
+    /*Scroll to Top CSS*/
+    .scroll-top {
+		position: fixed;
+ 		z-index: 50;
+		padding: 0;
+		right: 30px;
+		bottom: 100px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(15px);    
+		height: 46px;
+		width: 46px;
+		cursor: pointer;
+		display: flex;
+  		align-items: center;
+  		justify-content: center;
+		border-radius: 50%;
+  	transition: all .4s ease;
+  	border: none;
+  	box-shadow: inset 0 0 0 2px #ccc;
+  	color: #ccc;
+  	background-color: #fff;
+	}
+
+	.scroll-top.is-active {
+		opacity: 1;
+  		visibility: visible;
+  		transform: translateY(0);
+	}
+
+	.scroll-top .icon-tabler-arrow-up {
+  		position: absolute;
+  		stroke-width: 2px;
+  		stroke: #333;
+	}
+
+	.scroll-top svg path { 
+		fill: none; 
+	}
+
+	.scroll-top svg.progress-circle path {
+		stroke: #333;
+		stroke-width: 4;
+  		transition: all .4s ease;
+	}
+
+	.scroll-top:hover {
+  		color: var(--ghost-accent-color);
+	}
+
+	.scroll-top:hover .progress-circle path, .scroll-top:hover .icon-tabler-arrow-up {
+  		stroke: var(--ghost-accent-color);
+	}
+          
+</style>
+
+    <button class="btn-toggle-round scroll-top js-scroll-top" type="button" title="Scroll to top">
+      <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="cuurentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="18" y1="11" x2="12" y2="5" />
+        <line x1="6" y1="11" x2="12" y2="5" />
+      </svg>
+    </button>
+
+
+
+<!-- Code highlights -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="post-template tag-tech tag-ai tag-python tag-hash-import-2023-07-07-20-42 is-head-left-logo has-classic-feed">
-<div class="gh-site">
+<body class="post-template tag-tech tag-ai tag-python tag-hash-import-2024-07-07-04-35  is-head-left-logo">
+<div class="site">
 
     <header id="gh-head" class="gh-head gh-outer">
         <div class="gh-head-inner gh-inner">
@@ -217,6 +357,7 @@ The purpose of this article is to summarize the machine learning reference mater
     <li class="nav-home"><a href="../index.html">Home</a></li>
     <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
     <li class="nav-profession"><a href="../tag/pro/index.html">Profession</a></li>
+    <li class="nav-life"><a href="../tag/life/index.html">Life</a></li>
     <li class="nav-about"><a href="../about/index.html">About</a></li>
 </ul>
 
@@ -235,81 +376,100 @@ The purpose of this article is to summarize the machine learning reference mater
         </div>
     </header>
 
-    
-<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
+    <div class="site-content">
+        
+<main class="site-main">
 
 
+    <article class="post tag-tech tag-ai tag-python tag-hash-import-2024-07-07-04-35">
 
-<main class="gh-main gh-outer">
-    <div class="gh-inner">
-            <article class="gh-article post tag-tech tag-ai tag-python tag-hash-import-2023-07-07-20-42">
-                    <header class="gh-article-header gh-canvas">
-                        <h1 class="gh-article-title">Summary of Machine Learning Reference Resources (Continuously Updated)</h1>
-                            <figure class="gh-article-image has-caption">
+        <header class="gh-article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+        </div>
+
+            <h1 class="gh-article-title">Summary of Data Science and Artificial Intelligence Resources (Continuously Updated)</h1>
+
+            <div class="post-meta">
+                <a href="../author/vincent-2/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
+                <time datetime="2022-12-18">Dec 17, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">2 min read</span>
+            </div>
+
+            <div class="post-meta">
+                    <a class="post-tag tag-tech" href="../tag/tech/index.html" title="Tech">Tech</a>
+                    <a class="post-tag tag-ai" href="../tag/ai/index.html" title="AI">AI</a>
+                    <a class="post-tag tag-python" href="../tag/python/index.html" title="Python">Python</a>
+            </div>
+
+                <figure class="gh-article-image">
         <img
-            srcset="https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
-                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
+            class="post-image"
+            srcset="https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
                     https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
-                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
-            sizes="(max-width: 1200px) 100vw, 1200px"
-            src="https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
-            alt="Summary of Machine Learning Reference Resources (Continuously Updated)"
+                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            sizes="(min-width: 1200px) 960px, 92vw"
+            src="https://images.unsplash.com/photo-1558901357-ca41e027e43a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxib29rfGVufDB8fHx8MTY4ODI2Mzk1M3ww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+            alt="Summary of Data Science and Artificial Intelligence Resources (Continuously Updated)"
         >
             <figcaption>Photo by <a href="https://unsplash.com/es/@olesichka?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Olesia 🇺🇦 Buyar</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
     </figure>
-                    </header>
+        </header>
 
-                <section class="gh-content gh-canvas">
-                    <h2 id="1-overview">1 Overview</h2><p>The purpose of this article is to summarize the machine learning reference materials that I usually use, facilitate my own review and update at any time, and also share with friends who need it. This article will be updated from time to time to ensure the relevance of the contents.</p><h2 id="2-online-courses">2 Online Courses</h2><ul><li><a href="https://www.bilibili.com/video/BV1pp4y1t7Na?spm_id_from=333.337.search-card.all.click&ref=localhost">Standford CS 229: Machine Learning - Bilibili</a></li><li><a href="https://www.youtube.com/watch?v=P127jhj-8-Y&list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM&ab_channel=StanfordOnline&ref=localhost">Stanford Seminar CS25: Transformers United - YouTube</a></li><li><a href="https://space.bilibili.com/1567748478/channel/series?ref=localhost">李沐学AI - Bilibili</a></li><li><a href="https://dbourke.link/ZTMTFcourse?ref=localhost">TensorFlow Developer Certificate Course - Zero to Mastery</a></li><li><a href="https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187?ref=localhost">Intro to TensorFlow for Deep Learning - Udacity</a></li><li><a href="https://developers.google.com/machine-learning/crash-course?ref=localhost">Machine Learning Crash Course - Google</a></li><li><a href="https://microsoft.github.io/ML-For-Beginners/?ref=localhost#/">Machine Learning for Beginners - Microsoft</a></li><li><a href="https://microsoft.github.io/Data-Science-For-Beginners/?ref=localhost#/">Data Science for Beginners - Microsoft</a></li><li><a href="https://www.kaggle.com/learn?ref=localhost">Kaggle courses</a></li></ul><h2 id="3-technical-blogs-e-books">3 Technical Blogs &amp; E-Books</h2><h3 id="31-technical-blogs">3.1 Technical Blogs</h3><ul><li><a href="https://medium.com/kaggle-blog?ref=localhost">Kaggle Winner's Blog</a></li><li><a href="http://jalammar.github.io/?ref=localhost">Visualizing machine learning one concept at a time - Jay Alammar</a></li><li><a href="https://hanxiao.io/?ref=localhost">Han Xiao tech blog</a></li><li><a href="https://blog.google/technology/ai/?ref=localhost">Google AI</a></li><li><a href="https://openai.com/?ref=localhost">Open AI</a></li><li><a href="https://www.unofficialgoogledatascience.com/?ref=localhost">The Unofficial Google Data Science Blog</a></li><li><a href="http://karpathy.github.io/?ref=localhost">Andrej Karpathy blog</a></li><li><a href="http://blog.echen.me/?ref=localhost">Surge AI blog</a></li><li><a href="https://paperswithcode.com/?ref=localhost">Paper with Code</a></li><li><a href="http://blog.datadive.net/?ref=localhost">Diving into data</a></li><li><a href="https://blog.cloudera.com/?ref=localhost">Cloudera Blog</a></li><li><a href="http://drivendata.github.io/cookiecutter-data-science/?ref=localhost">Cookiecutter Data Science</a></li><li><a href="https://huggingface.co/blog/zh?ref=localhost">Hugging Face Chinese Blog</a></li></ul><h3 id="32-e-books">3.2 E-Books</h3><ul><li><a href="https://dev.mrdbourke.com/tensorflow-deep-learning/?ref=localhost">TensorFlow Developer Certificate Learning E-book</a></li><li><a href="https://tf.wiki/?ref=localhost">简单粗暴 TensorFlow 2 | A Concise Handbook of TensorFlow 2</a></li><li><a href="https://lyhue1991.github.io/eat_tensorflow2_in_30_days/chinese/?ref=localhost">30天吃掉那只TensorFlow2</a></li><li><a href="https://huyenchip.com/ml-interviews-book/?ref=localhost">Machine Learning Interviews Book</a></li><li><a href="https://zh-v2.d2l.ai/?ref=localhost">动手学深度学习 - Amazon</a></li><li><a href="https://huggingface.co/course/chapter1/1?ref=localhost">HuggingFace Course</a></li><li><a href="https://otexts.com/fpp3/index.html?ref=localhost">Forecasting: Principles and Practice - 3rd Edition</a></li><li><a href="https://developers.google.com/machine-learning/guides/rules-of-ml?ref=localhost#terminology">Rules of Machine Learning</a></li><li><a href="https://ml-cheatsheet.readthedocs.io/en/latest/index.html?ref=localhost">Machine Learning Glossary</a></li></ul><h2 id="4-github-resources">4 GitHub Resources</h2><ul><li><a href="https://github.com/microsoft/Data-Science-For-Beginners?ref=localhost">Data-Science-For-Beginners - Microsoft</a></li><li><a href="https://github.com/microsoft/ML-For-Beginners?ref=localhost">ML-For-Beginners - Microsoft</a></li><li><a href="https://github.com/ageron/handson-ml2?ref=localhost">Hands-on Machine Learning with Scikit-Learn, Keras and TensorFlow</a></li><li><a href="https://github.com/lmoroney/dlaicourse?ref=localhost">TensorFlow In Practice</a></li><li><a href="https://github.com/tensorflow/examples?ref=localhost">TensorFlow Examples</a></li><li><a href="https://github.com/google-research/tuning_playbook?ref=localhost">Deep Learning Tuning Playbook</a></li></ul><h2 id="5-notion-notes">5 Notion Notes</h2><ul><li><a href="https://www.notion.so/Course-TensorFlow-in-Practice-on-Coursera-Notes-5f4f8915fe3342e2a69f75ef1986ba3b?ref=localhost">TensorFlow in Practice on Coursera Notes</a></li><li><a href="https://www.notion.so/Course-MIT-Introduction-to-Deep-Learning-Notes-0e48ecc9ed7342b7b448956bed9e0e75?ref=localhost">MIT Introduction to Deep Learning Notes</a></li></ul><h2 id="6-competition-experience">6 Competition Experience</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/472915303?ref=localhost">2021 Kaggle All Event TOP Solution Summary</a></li></ul><h3 id="61-exploratory-data-analysis">6.1 Exploratory Data Analysis</h3><ul><li><a href="https://www.kaggle.com/code/kashnitsky/topic-1-exploratory-data-analysis-with-pandas/notebook?ref=localhost">Exploratory Data Analysis with Pandas</a></li><li><a href="https://www.kaggle.com/code/pmarcelino/comprehensive-data-exploration-with-python?ref=localhost">Comprehensive data exploration with Python</a></li></ul><h3 id="62-feature-engineering">6.2 Feature Engineering</h3><ul><li><a href="https://www.kaggle.com/competitions/ieee-fraud-detection/discussion/108575?ref=localhost">Feature Engineering Techniques</a></li><li><a href="https://www.kaggle.com/code/kyakovlev/ieee-fe-for-local-test/notebook?ref=localhost">IEEE - FE for Local test</a></li></ul><h3 id="63-tabular-data-modeling">6.3 Tabular Data Modeling</h3><ul><li><a href="https://neptune.ai/blog/tabular-data-binary-classification-tips-and-tricks-from-5-kaggle-competitions?ref=localhost">Tabular Data Binary Classification: All Tips and Tricks from 5 Kaggle Competitions</a></li><li><a href="https://www.kaggle.com/code/vbmokin/data-science-for-tabular-data-advanced-techniques/notebook?ref=localhost">Data Science for tabular data: Advanced Techniques</a></li><li><a href="https://www.kaggle.com/competitions/amex-default-prediction/discussion/335892?ref=localhost">Tabular Classification - Tips and Tricks</a></li><li><a href="https://www.kaggle.com/code/arthurtok/feature-ranking-rfe-random-forest-linear-models?ref=localhost">Feature Ranking RFE, Random Forest, linear models</a></li></ul><h3 id="64-time-series-modeling">6.4 Time Series Modeling</h3><ul><li><a href="https://www.kaggle.com/code/kashnitsky/topic-9-part-1-time-series-analysis-in-python?ref=localhost">Time Series Analysis in Python</a></li><li><a href="https://www.kaggle.com/code/dimitreoliveira/deep-learning-for-time-series-forecasting/notebook?ref=localhost">Deep Learning for Time Series Forecasting</a></li><li><a href="https://www.kaggle.com/code/dimitriosroussis/electricity-price-forecasting-with-dnns-eda?ref=localhost">Electricity price forecasting with DNNs (+ EDA)</a></li></ul><h2 id="7-summary">7 Summary</h2><p>This article will be continuously updated, and comments are welcome to add resources.</p>
-                    <aside class="gh-article-meta">
-                        <div class="gh-article-meta-inner">
-                                <div class="gh-article-meta-wrapper">
-                                <h4 class="gh-author-name">
-                                    <a href="../author/vincent/index.html">Vincent Yuan</a>
-                                </h4>
-                            <time class="gh-article-date" datetime="2022-12-18">Dec 18, 2022</time></div>
-                            
+        <div class="gh-content gh-canvas">
+
+            <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
+
+            <h2 id="1-overview">1 Overview</h2><p>The purpose of this article is to summarize the machine learning reference materials that I usually use, facilitate my own review and update at any time, and also share with friends who need it. This article will be updated from time to time to ensure the relevance of the contents.</p><h2 id="2-online-courses">2 Online Courses</h2><ul><li><a href="https://www.bilibili.com/video/BV1pp4y1t7Na?spm_id_from=333.337.search-card.all.click&ref=localhost">Standford CS 229: Machine Learning - Bilibili</a></li><li><a href="https://www.youtube.com/watch?v=P127jhj-8-Y&list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM&ab_channel=StanfordOnline&ref=localhost">Stanford Seminar CS25: Transformers United - YouTube</a></li><li><a href="https://space.bilibili.com/1567748478/channel/series?ref=localhost">李沐学AI - Bilibili</a></li><li><a href="https://dbourke.link/ZTMTFcourse?ref=localhost">TensorFlow Developer Certificate Course - Zero to Mastery</a></li><li><a href="https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187?ref=localhost">Intro to TensorFlow for Deep Learning - Udacity</a></li><li><a href="https://developers.google.com/machine-learning/crash-course?ref=localhost">Machine Learning Crash Course - Google</a></li><li><a href="https://microsoft.github.io/ML-For-Beginners/?ref=localhost#/">Machine Learning for Beginners - Microsoft</a></li><li><a href="https://microsoft.github.io/Data-Science-For-Beginners/?ref=localhost#/">Data Science for Beginners - Microsoft</a></li><li><a href="https://www.kaggle.com/learn?ref=localhost">Kaggle courses</a></li></ul><h2 id="3-technical-blogs-e-books">3 Technical Blogs &amp; E-Books</h2><h3 id="31-technical-blogs">3.1 Technical Blogs</h3><ul><li><a href="https://medium.com/kaggle-blog?ref=localhost">Kaggle Winner's Blog</a></li><li><a href="http://jalammar.github.io/?ref=localhost">Visualizing machine learning one concept at a time - Jay Alammar</a></li><li><a href="https://hanxiao.io/?ref=localhost">Han Xiao tech blog</a></li><li><a href="https://blog.google/technology/ai/?ref=localhost">Google AI</a></li><li><a href="https://openai.com/?ref=localhost">Open AI</a></li><li><a href="https://www.unofficialgoogledatascience.com/?ref=localhost">The Unofficial Google Data Science Blog</a></li><li><a href="http://karpathy.github.io/?ref=localhost">Andrej Karpathy blog</a></li><li><a href="http://blog.echen.me/?ref=localhost">Surge AI blog</a></li><li><a href="https://paperswithcode.com/?ref=localhost">Paper with Code</a></li><li><a href="http://blog.datadive.net/?ref=localhost">Diving into data</a></li><li><a href="https://blog.cloudera.com/?ref=localhost">Cloudera Blog</a></li><li><a href="http://drivendata.github.io/cookiecutter-data-science/?ref=localhost">Cookiecutter Data Science</a></li><li><a href="https://huggingface.co/blog/zh?ref=localhost">Hugging Face Chinese Blog</a></li><li><a href="https://blog.samaltman.com/?ref=localhost">Sam Altman Blog</a></li></ul><h3 id="32-e-books">3.2 E-Books</h3><ul><li><a href="https://dev.mrdbourke.com/tensorflow-deep-learning/?ref=localhost">TensorFlow Developer Certificate Learning E-book</a></li><li><a href="https://tf.wiki/?ref=localhost">简单粗暴 TensorFlow 2 | A Concise Handbook of TensorFlow 2</a></li><li><a href="https://lyhue1991.github.io/eat_tensorflow2_in_30_days/chinese/?ref=localhost">30天吃掉那只TensorFlow2</a></li><li><a href="https://huyenchip.com/ml-interviews-book/?ref=localhost">Machine Learning Interviews Book</a></li><li><a href="https://zh-v2.d2l.ai/?ref=localhost">动手学深度学习 - Amazon</a></li><li><a href="https://huggingface.co/course/chapter1/1?ref=localhost">HuggingFace Course</a></li><li><a href="https://otexts.com/fpp3/index.html?ref=localhost">Forecasting: Principles and Practice - 3rd Edition</a></li><li><a href="https://developers.google.com/machine-learning/guides/rules-of-ml?ref=localhost#terminology">Rules of Machine Learning</a></li><li><a href="https://ml-cheatsheet.readthedocs.io/en/latest/index.html?ref=localhost">Machine Learning Glossary</a></li></ul><h2 id="4-github-resources">4 GitHub Resources</h2><ul><li><a href="https://github.com/microsoft/Data-Science-For-Beginners?ref=localhost">Data-Science-For-Beginners - Microsoft</a></li><li><a href="https://github.com/microsoft/ML-For-Beginners?ref=localhost">ML-For-Beginners - Microsoft</a></li><li><a href="https://github.com/ageron/handson-ml2?ref=localhost">Hands-on Machine Learning with Scikit-Learn, Keras and TensorFlow</a></li><li><a href="https://github.com/lmoroney/dlaicourse?ref=localhost">TensorFlow In Practice</a></li><li><a href="https://github.com/tensorflow/examples?ref=localhost">TensorFlow Examples</a></li><li><a href="https://github.com/google-research/tuning_playbook?ref=localhost">Deep Learning Tuning Playbook</a></li></ul><h2 id="5-notion-notes">5 Notion Notes</h2><ul><li><a href="https://www.notion.so/Course-TensorFlow-in-Practice-on-Coursera-Notes-5f4f8915fe3342e2a69f75ef1986ba3b?ref=localhost">TensorFlow in Practice on Coursera Notes</a></li><li><a href="https://www.notion.so/Course-MIT-Introduction-to-Deep-Learning-Notes-0e48ecc9ed7342b7b448956bed9e0e75?ref=localhost">MIT Introduction to Deep Learning Notes</a></li></ul><h2 id="6-competition-experience">6 Competition Experience</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/472915303?ref=localhost">2021 Kaggle All Event TOP Solution Summary</a></li></ul><h3 id="61-exploratory-data-analysis">6.1 Exploratory Data Analysis</h3><ul><li><a href="https://www.kaggle.com/code/kashnitsky/topic-1-exploratory-data-analysis-with-pandas/notebook?ref=localhost">Exploratory Data Analysis with Pandas</a></li><li><a href="https://www.kaggle.com/code/pmarcelino/comprehensive-data-exploration-with-python?ref=localhost">Comprehensive data exploration with Python</a></li></ul><h3 id="62-feature-engineering">6.2 Feature Engineering</h3><ul><li><a href="https://www.kaggle.com/competitions/ieee-fraud-detection/discussion/108575?ref=localhost">Feature Engineering Techniques</a></li><li><a href="https://www.kaggle.com/code/kyakovlev/ieee-fe-for-local-test/notebook?ref=localhost">IEEE - FE for Local test</a></li></ul><h3 id="63-tabular-data-modeling">6.3 Tabular Data Modeling</h3><ul><li><a href="https://neptune.ai/blog/tabular-data-binary-classification-tips-and-tricks-from-5-kaggle-competitions?ref=localhost">Tabular Data Binary Classification: All Tips and Tricks from 5 Kaggle Competitions</a></li><li><a href="https://www.kaggle.com/code/vbmokin/data-science-for-tabular-data-advanced-techniques/notebook?ref=localhost">Data Science for tabular data: Advanced Techniques</a></li><li><a href="https://www.kaggle.com/competitions/amex-default-prediction/discussion/335892?ref=localhost">Tabular Classification - Tips and Tricks</a></li><li><a href="https://www.kaggle.com/code/arthurtok/feature-ranking-rfe-random-forest-linear-models?ref=localhost">Feature Ranking RFE, Random Forest, linear models</a></li></ul><h3 id="64-time-series-modeling">6.4 Time Series Modeling</h3><ul><li><a href="https://www.kaggle.com/code/kashnitsky/topic-9-part-1-time-series-analysis-in-python?ref=localhost">Time Series Analysis in Python</a></li><li><a href="https://www.kaggle.com/code/dimitreoliveira/deep-learning-for-time-series-forecasting/notebook?ref=localhost">Deep Learning for Time Series Forecasting</a></li><li><a href="https://www.kaggle.com/code/dimitriosroussis/electricity-price-forecasting-with-dnns-eda?ref=localhost">Electricity price forecasting with DNNs (+ EDA)</a></li></ul><h2 id="7-genai">7 GenAI</h2><h3 id="71-large-language-model-user-guide">7.1 Large Language Model User Guide</h3><ul><li><a href="https://ai.meta.com/llama/get-started/?ref=localhost#getting-the-models">Get started with Llama 2</a></li></ul><h3 id="72-applications">7.2 Applications</h3><ul><li><a href="https://docs.pinecone.io/page/examples?ref=localhost">Pinecone vector database demos</a></li><li><a href="https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/?ref=localhost">Build a chatbot with custom data sources</a></li></ul><h3 id="73-safety">7.3 Safety</h3><ul><li><a href="https://mlcommons.org/working-groups/ai-safety/ai-safety/?ref=localhost">AI Safety - ML Commons</a></li><li><a href="https://blog.mithrilsecurity.io/?ref=localhost">Mithril Security</a></li></ul><p></p><h2 id="remarks">Remarks</h2><p>This article will be continuously updated, and comments are welcome to add resources.</p>
+        </div>
+
+        <div class="pagination-container gh-canvas">
+        <nav class="pagination">
+
+            <div class="pagination-left">
+                    <a class="newer-posts" href="../amex-default-prediction-kaggle-competition-summary/index.html">
+                        <span class="pagination-label">Previous</span>
+                        AMEX - Default Prediction Kaggle Competition Summary
+                    </a>
+            </div>
+
+            <div class="pagination-right">
+                    <a class="older-posts" href="../one-day-in-lake-geneva/index.html">
+                        <span class="pagination-label">Next</span>
+                        One Day in Lake Geneva
+                    </a>
+            </div>
+
+        </nav>
+        </div>
+
+            <div class="gh-comments gh-canvas">
+                
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2c9" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+    
+            </div>
+
+    </article>
 
 
-                             <a class="gh-article-tag" href="../tag/tech/index.html" style="--tag-color: ">Tech</a>
-                             <a class="gh-article-tag" href="../tag/ai/index.html" style="--tag-color: ">AI</a>
-                             <a class="gh-article-tag" href="../tag/python/index.html" style="--tag-color: ">Python</a>
-                           
-
-                        </div>
-                    </aside>
-                </section>
-
-
-                <footer class="gh-article-footer gh-canvas">
-                    <nav class="gh-navigation">
-                        <div class="gh-navigation-previous">
-                                <a class="gh-navigation-link" href="../free-experiment-platform-amazon-sagemaker-studio-lab/index.html">← Previous</a>
-                        </div>
-
-                        <div class="gh-navigation-middle"></div>
-
-                        <div class="gh-navigation-next">
-                        </div>
-                    </nav>
-                </footer>
-            </article>
-    </div>
 </main>
+    </div>
 
     <footer class="gh-foot gh-outer">
         <div class="gh-foot-inner gh-inner">
-            <nav class="gh-foot-menu">
-                <ul class="nav">
+            <div class="gh-copyright">
+                Spacecraft © 2024
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
     <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
 </ul>
 
-            </nav>
-
-            <div class="gh-copyright">
-                    Spacecraft © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
             </div>
         </div>
     </footer>
@@ -357,26 +517,81 @@ The purpose of this article is to summarize the machine learning reference mater
         </div>
     </div>
 </div>
-<script src="../assets/built/main.min.js%3Fv=e2e91b37b9"></script>
-
-  <script>
-    const progressBar = document.querySelector('.reading-progress');
-
-    function updateProgress() {
-      const totalHeight = document.body.clientHeight;
-      const windowHeight = document.documentElement.clientHeight;
-      const position = window.scrollY;
-      const progress = position / (totalHeight - windowHeight) * 100;
-      progressBar.setAttribute('value', progress);
-      requestAnimationFrame(updateProgress);
-    }
-
-    requestAnimationFrame(updateProgress);
-  </script>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="../assets/built/main.min.js%3Fv=88df665c6b"></script>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
 
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+
+        orderedList: false,
+    });
+</script>
+
+
+<!-- Code highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!--   Scroll Top Button  -->
+<script>
+const scrollTopBtn = document.querySelector('.js-scroll-top');
+if (scrollTopBtn) {
+  scrollTopBtn.onclick = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  
+  const progressPath = document.querySelector('.scroll-top path');
+  const pathLength = progressPath.getTotalLength();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+  progressPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+  progressPath.style.strokeDashoffset = pathLength;
+  progressPath.getBoundingClientRect();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';		
+  const updateProgress = function() {
+    const scroll = window.scrollY || window.scrollTopBtn || document.documentElement.scrollTopBtn;
+
+    const docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+    const height = docHeight - windowHeight;
+    var progress = pathLength - (scroll * pathLength / height);
+    progressPath.style.strokeDashoffset = progress;
+  }
+
+  updateProgress();
+  const offset = 100;
+
+  window.addEventListener('scroll', function(event) {
+    updateProgress();
+
+    //Scroll back to top
+    const scrollPos = window.scrollY || window.scrollTopBtn || document.getElementsByTagName('html')[0].scrollTopBtn;
+    scrollPos > offset ? scrollTopBtn.classList.add('is-active') : scrollTopBtn.classList.remove('is-active');
+
+  }, false);
+}
+</script>
 
 </body>
-
 </html>

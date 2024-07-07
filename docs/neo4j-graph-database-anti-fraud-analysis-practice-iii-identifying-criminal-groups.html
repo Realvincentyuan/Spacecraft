@@ -5,28 +5,71 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Neo4J Graph Database Anti-Fraud Analysis in Practice (IV) - Risk Scoring</title>
-    <link rel="stylesheet" href="assets/built/screen.css%3Fv=e2e91b37b9.css">
+    <link rel="stylesheet" href="assets/built/screen.css%3Fv=88df665c6b.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
 
     <style>
-        :root {
-            --background-color: #ffffff
+        .gh-content {
+            position: relative;
+            z-index: 1;
         }
+
+        /*-- Remove underline in the TOC text  */
+        .gh-content a {
+            text-decoration: none;
+        }
+
+        .gh-content img{
+            position: relative;
+            z-index: 2;
+        }
+
+        .gh-toc > .toc-list {
+            position: relative;
+            
+        }
+
+        .toc-list {
+            overflow: hidden;
+            list-style: none;
+            left: 20%;
+
+        }
+
+        @media (min-width: 1300px) {
+            .gh-sidebar {
+                position: absolute; 
+                top: 0;
+                bottom: 0;
+                margin-top: 4vmin;
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
+            }
+        
+            .gh-toc {
+                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+                top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: 1; 
+
+            }
+        }
+
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
+        .gh-toc .is-active-link::before {
+            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
+
+        } 
     </style>
-
-    <script>
-        /* The script for calculating the color contrast was taken from
-        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
-        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
-        accentColor = accentColor.trim().slice(1);
-        var r = parseInt(accentColor.substr(0, 2), 16);
-        var g = parseInt(accentColor.substr(2, 2), 16);
-        var b = parseInt(accentColor.substr(4, 2), 16);
-        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        var textColor = (yiq >= 128) ? 'dark' : 'light';
-
-        document.documentElement.className = `has-${textColor}-text`;
-    </script>
 
     <link rel="canonical" href="neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -64,8 +107,9 @@ In the Neo4J graph database anti-fraud series, we have identified risky users. T
     <meta name="twitter:label2" content="Filed under">
     <meta name="twitter:data2" content="Tech, Knowledge Graph, Python">
     <meta name="twitter:site" content="@ghost">
-    <meta property="og:image:width" content="2000">
-    <meta property="og:image:height" content="1328">
+    <meta name="twitter:creator" content="@RealVincentYuan">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="797">
     
     <script type="application/ld+json">
 {
@@ -85,8 +129,17 @@ In the Neo4J graph database anti-fraud series, we have identified risky users. T
     "author": {
         "@type": "Person",
         "name": "Vincent Yuan",
-        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
-        "sameAs": []
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar-1.png",
+            "width": 752,
+            "height": 752
+        },
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent-2/",
+        "sameAs": [
+            "https://unsplash.com/@vincentyuan87",
+            "https://twitter.com/RealVincentYuan"
+        ]
     },
     "headline": "Neo4J Graph Database Anti-Fraud Analysis in Practice (IV) - Risk Scoring",
     "url": "https://realvincentyuan.github.io/Spacecraft/neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups/",
@@ -95,8 +148,8 @@ In the Neo4J graph database anti-fraud series, we have identified risky users. T
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&ixlib=rb-4.0.3&q=80&w=2000",
-        "width": 2000,
-        "height": 1328
+        "width": 1200,
+        "height": 797
     },
     "keywords": "Tech, Knowledge Graph, Python",
     "description": "1 Preface\n\nIn the Neo4J graph database anti-fraud series, we have identified risky users. This article will explain how to score the risk of each customer. If you need to review the previous articles, you can directly jump to the links:\n\n * Introduction to Graph Database\n * Neo4j Graph Database Anti-Fraud Analysis In Practice (I) - Build Analysis Environment\n * Neo4j Graph Database Anti-Fraud Analysis In Practice (II) - Data Preparation\n * Neo4j Graph Database Anti-Fraud Analysis In Practice (II",
@@ -104,9 +157,9 @@ In the Neo4J graph database anti-fraud series, we have identified risky users. T
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.49">
+    <meta name="generator" content="Ghost 5.87">
     <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="rss/index.html">
-    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.33/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="206cb569cfe36163ae0b6ed398" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" data-i18n="false" data-ghost="https://realvincentyuan.github.io/Spacecraft/" data-key="59658b4dc0364cacbc3332171d" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
 .gh-post-upgrade-cta {
     display: flex;
     flex-direction: column;
@@ -170,13 +223,24 @@ In the Neo4J graph database anti-fraud series, we have identified risky users. T
 .gh-post-upgrade-cta a.gh-btn:hover {
     opacity: 0.92;
 }</style>
-    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="206cb569cfe36163ae0b6ed398" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://realvincentyuan.github.io/Spacecraft/" data-api-url="https://realvincentyuan.github.io/Spacecraft/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
-    <script defer src="public/cards.min.js%3Fv=e2e91b37b9"></script>
-    <link rel="stylesheet" type="text/css" href="public/cards.min.css%3Fv=e2e91b37b9.css">
-    <script defer src="public/member-attribution.min.js%3Fv=e2e91b37b9"></script>
-    <!-- Reading progress bar -->
+    <script defer src="public/cards.min.js%3Fv=88df665c6b"></script>
+    <link rel="stylesheet" type="text/css" href="public/cards.min.css%3Fv=88df665c6b.css">
+    <script defer src="public/comment-counts.min.js%3Fv=88df665c6b" data-ghost-comments-counts-api="https://realvincentyuan.github.io/Spacecraft/members/api/comments/counts/"></script>
+    <script defer src="public/member-attribution.min.js%3Fv=88df665c6b"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-633EG809GP');
+</script>
+
+<!-- Reading progress bar -->
 <style>
 .reading-progress {
   position: fixed;
@@ -197,11 +261,87 @@ In the Neo4J graph database anti-fraud series, we have identified risky users. T
 .reading-progress::-webkit-progress-value {
   background: var(--ghost-accent-color); /* Progress bar color */
 }
-</style><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</style>
+
+
+<!--   Scroll Top Button  -->
+<style>
+    /*Scroll to Top CSS*/
+    .scroll-top {
+		position: fixed;
+ 		z-index: 50;
+		padding: 0;
+		right: 30px;
+		bottom: 100px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(15px);    
+		height: 46px;
+		width: 46px;
+		cursor: pointer;
+		display: flex;
+  		align-items: center;
+  		justify-content: center;
+		border-radius: 50%;
+  	transition: all .4s ease;
+  	border: none;
+  	box-shadow: inset 0 0 0 2px #ccc;
+  	color: #ccc;
+  	background-color: #fff;
+	}
+
+	.scroll-top.is-active {
+		opacity: 1;
+  		visibility: visible;
+  		transform: translateY(0);
+	}
+
+	.scroll-top .icon-tabler-arrow-up {
+  		position: absolute;
+  		stroke-width: 2px;
+  		stroke: #333;
+	}
+
+	.scroll-top svg path { 
+		fill: none; 
+	}
+
+	.scroll-top svg.progress-circle path {
+		stroke: #333;
+		stroke-width: 4;
+  		transition: all .4s ease;
+	}
+
+	.scroll-top:hover {
+  		color: var(--ghost-accent-color);
+	}
+
+	.scroll-top:hover .progress-circle path, .scroll-top:hover .icon-tabler-arrow-up {
+  		stroke: var(--ghost-accent-color);
+	}
+          
+</style>
+
+    <button class="btn-toggle-round scroll-top js-scroll-top" type="button" title="Scroll to top">
+      <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="cuurentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="18" y1="11" x2="12" y2="5" />
+        <line x1="6" y1="11" x2="12" y2="5" />
+      </svg>
+    </button>
+
+
+
+<!-- Code highlights -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="post-template tag-tech tag-knowledge-graph tag-python tag-hash-import-2023-07-07-20-42 is-head-left-logo has-classic-feed">
-<div class="gh-site">
+<body class="post-template tag-tech tag-knowledge-graph tag-python tag-hash-import-2024-07-07-04-35  is-head-left-logo">
+<div class="site">
 
     <header id="gh-head" class="gh-head gh-outer">
         <div class="gh-head-inner gh-inner">
@@ -223,6 +363,7 @@ In the Neo4J graph database anti-fraud series, we have identified risky users. T
     <li class="nav-home"><a href="index.html">Home</a></li>
     <li class="nav-tech"><a href="tag/tech/index.html">Tech</a></li>
     <li class="nav-profession"><a href="tag/pro/index.html">Profession</a></li>
+    <li class="nav-life"><a href="tag/life/index.html">Life</a></li>
     <li class="nav-about"><a href="about/index.html">About</a></li>
 </ul>
 
@@ -241,34 +382,56 @@ In the Neo4J graph database anti-fraud series, we have identified risky users. T
         </div>
     </header>
 
-    
-<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
+    <div class="site-content">
+        
+<main class="site-main">
 
 
+    <article class="post tag-tech tag-knowledge-graph tag-python tag-hash-import-2024-07-07-04-35 featured">
 
-<main class="gh-main gh-outer">
-    <div class="gh-inner">
-            <article class="gh-article post tag-tech tag-knowledge-graph tag-python tag-hash-import-2023-07-07-20-42 featured">
-                    <header class="gh-article-header gh-canvas">
-                        <h1 class="gh-article-title">Neo4J Graph Database Anti-Fraud Analysis in Practice (IV) - Risk Scoring</h1>
-                            <figure class="gh-article-image has-caption">
+        <header class="gh-article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+                <span class="post-card-featured"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4.49365 4.58752C3.53115 6.03752 2.74365 7.70002 2.74365 9.25002C2.74365 10.6424 3.29678 11.9778 4.28134 12.9623C5.26591 13.9469 6.60127 14.5 7.99365 14.5C9.38604 14.5 10.7214 13.9469 11.706 12.9623C12.6905 11.9778 13.2437 10.6424 13.2437 9.25002C13.2437 6.00002 10.9937 3.50002 9.16865 1.68127L6.99365 6.25002L4.49365 4.58752Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg> Featured</span>
+        </div>
+
+            <h1 class="gh-article-title">Neo4J Graph Database Anti-Fraud Analysis in Practice (IV) - Risk Scoring</h1>
+
+            <div class="post-meta">
+                <a href="author/vincent-2/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
+                <time datetime="2022-04-09">Jul 1, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">2 min read</span>
+            </div>
+
+            <div class="post-meta">
+                    <a class="post-tag tag-tech" href="tag/tech/index.html" title="Tech">Tech</a>
+                    <a class="post-tag tag-knowledge-graph" href="tag/knowledge-graph/index.html" title="Knowledge Graph">Knowledge Graph</a>
+                    <a class="post-tag tag-python" href="tag/python/index.html" title="Python">Python</a>
+            </div>
+
+                <figure class="gh-article-image">
         <img
-            srcset="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
-                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
+            class="post-image"
+            srcset="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
                     https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
-                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
-                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
-            sizes="(max-width: 1200px) 100vw, 1200px"
-            src="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            sizes="(min-width: 1200px) 960px, 92vw"
+            src="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
             alt="Neo4J Graph Database Anti-Fraud Analysis in Practice (IV) - Risk Scoring"
         >
             <figcaption>Photo by <a href="https://unsplash.com/fr/@urielsc26?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Uriel SC</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
     </figure>
-                    </header>
+        </header>
 
-                <section class="gh-content gh-canvas">
-                    <h2 id="1-preface">1 Preface</h2><p>In the Neo4J graph database anti-fraud series, we have identified risky users. This article will explain how to score the risk of each customer. If you need to review the previous articles, you can directly jump to the links:</p><ul><li><a href="introduction-to-graph-databases.html">Introduction to Graph Database</a></li><li><a href="neo4j-graph-database-anti-fraud-analysis-practice-part-1-building-analysis-environment.html">Neo4j Graph Database Anti-Fraud Analysis In Practice (I) - Build Analysis Environment</a></li><li><a href="neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data.html">Neo4j Graph Database Anti-Fraud Analysis In Practice (II) - Data Preparation</a></li><li><a href="neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups.html">Neo4j Graph Database Anti-Fraud Analysis In Practice (III) - Identify Criminal Organizations</a></li></ul><h2 id="2-finding-similar-nodes">2 Finding Similar Nodes</h2><p>Last time, we used the <a href="https://neo4j.com/docs/graph-data-science/current/algorithms/wcc/?ref=localhost">Weakly Connected Components</a> algorithm to cluster the data. Next, we can look for similar customers in each cluster.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/1_V/cluster_1.png" class="kg-image" alt loading="lazy"><figcaption>WCC clustering results</figcaption></figure><p>This step uses node similarity (<a href="https://neo4j.com/docs/graph-data-science/current/algorithms/node-similarity/?ref=localhost#algorithms-node-similarity">Jaccard coefficient</a>) to judge. The node similarity algorithm requires two types of nodes in the graph structure, so we create the <code>Similarity</code> graph, which contains two types of nodes: <code>Client</code> and <code>Entity</code> information nodes, and their corresponding relationships.</p><pre><code class="language-sql">CALL gds.graph.project.cypher('Similarity',
+        <div class="gh-content gh-canvas">
+
+            <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
+
+            <h2 id="1-preface">1 Preface</h2><p>In the Neo4J graph database anti-fraud series, we have identified risky users. This article will explain how to score the risk of each customer. If you need to review the previous articles, you can directly jump to the links:</p><ul><li><a href="introduction-to-graph-databases.html">Introduction to Graph Database</a></li><li><a href="neo4j-graph-database-anti-fraud-analysis-practice-part-1-building-analysis-environment.html">Neo4j Graph Database Anti-Fraud Analysis In Practice (I) - Build Analysis Environment</a></li><li><a href="neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data.html">Neo4j Graph Database Anti-Fraud Analysis In Practice (II) - Data Preparation</a></li><li><a href="neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups.html">Neo4j Graph Database Anti-Fraud Analysis In Practice (III) - Identify Criminal Organizations</a></li></ul><h2 id="2-finding-similar-nodes">2 Finding Similar Nodes</h2><p>Last time, we used the <a href="https://neo4j.com/docs/graph-data-science/current/algorithms/wcc/?ref=localhost">Weakly Connected Components</a> algorithm to cluster the data. Next, we can look for similar customers in each cluster.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/1_V/cluster_1.png" class="kg-image" alt loading="lazy"><figcaption>WCC clustering results</figcaption></figure><p>This step uses node similarity (<a href="https://neo4j.com/docs/graph-data-science/current/algorithms/node-similarity/?ref=localhost#algorithms-node-similarity">Jaccard coefficient</a>) to judge. The node similarity algorithm requires two types of nodes in the graph structure, so we create the <code>Similarity</code> graph, which contains two types of nodes: <code>Client</code> and <code>Entity</code> information nodes, and their corresponding relationships.</p><pre><code class="language-sql">CALL gds.graph.project.cypher('Similarity',
 'MATCH(c:Client)
     WHERE exists(c.firstPartyFraudGroup)
     RETURN id(c) AS id,labels(c) AS labels
@@ -303,54 +466,53 @@ MATCH(c:Client)
 WHERE c.firstPartyFraudScore&gt;firstPartyFraudThreshold
 SET c:FirstPartyFraudster;
 </code></pre><h2 id="4-summary">4 Summary</h2><p>The Neo4J Graph Database Anti-Fraud Analysis Practical Series has come to an end. Through this series of articles, we have learned and consolidated the following knowledge points:</p><ul><li>Basics of graph structure</li><li>Neo4J graph database query language Cypher common commands</li><li>Common algorithms in anti-fraud applications</li></ul>
-                    <aside class="gh-article-meta">
-                        <div class="gh-article-meta-inner">
-                                <div class="gh-article-meta-wrapper">
-                                <h4 class="gh-author-name">
-                                    <a href="author/vincent/index.html">Vincent Yuan</a>
-                                </h4>
-                            <time class="gh-article-date" datetime="2022-04-09">Apr 9, 2022</time></div>
-                            
+        </div>
+
+        <div class="pagination-container gh-canvas">
+        <nav class="pagination">
+
+            <div class="pagination-left">
+                    <a class="newer-posts" href="neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups-2/index.html">
+                        <span class="pagination-label">Previous</span>
+                        Neo4J Graph Database Anti-Fraud Analysis in Practice (III) - Identifying Criminal Groups
+                    </a>
+            </div>
+
+            <div class="pagination-right">
+                    <a class="older-posts" href="text-classification-with-tensorflow/index.html">
+                        <span class="pagination-label">Next</span>
+                        Text Classification with TensorFlow
+                    </a>
+            </div>
+
+        </nav>
+        </div>
+
+            <div class="gh-comments gh-canvas">
+                
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2c0" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+    
+            </div>
+
+    </article>
 
 
-                             <a class="gh-article-tag" href="tag/tech/index.html" style="--tag-color: ">Tech</a>
-                             <a class="gh-article-tag" href="tag/knowledge-graph/index.html" style="--tag-color: ">Knowledge Graph</a>
-                             <a class="gh-article-tag" href="tag/python/index.html" style="--tag-color: ">Python</a>
-                           
-
-                        </div>
-                    </aside>
-                </section>
-
-
-                <footer class="gh-article-footer gh-canvas">
-                    <nav class="gh-navigation">
-                        <div class="gh-navigation-previous">
-                                <a class="gh-navigation-link" href="neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups-2/index.html">← Previous</a>
-                        </div>
-
-                        <div class="gh-navigation-middle"></div>
-
-                        <div class="gh-navigation-next">
-                                <a class="gh-navigation-link" href="free-experiment-platform-amazon-sagemaker-studio-lab/index.html">Next →</a>
-                        </div>
-                    </nav>
-                </footer>
-            </article>
-    </div>
 </main>
+    </div>
 
     <footer class="gh-foot gh-outer">
         <div class="gh-foot-inner gh-inner">
-            <nav class="gh-foot-menu">
-                <ul class="nav">
+            <div class="gh-copyright">
+                Spacecraft © 2024
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
     <li class="nav-sign-up"><a href="neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups.html#/portal/">Sign up</a></li>
 </ul>
 
-            </nav>
-
-            <div class="gh-copyright">
-                    Spacecraft © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
             </div>
         </div>
     </footer>
@@ -398,26 +560,81 @@ SET c:FirstPartyFraudster;
         </div>
     </div>
 </div>
-<script src="assets/built/main.min.js%3Fv=e2e91b37b9"></script>
-
-  <script>
-    const progressBar = document.querySelector('.reading-progress');
-
-    function updateProgress() {
-      const totalHeight = document.body.clientHeight;
-      const windowHeight = document.documentElement.clientHeight;
-      const position = window.scrollY;
-      const progress = position / (totalHeight - windowHeight) * 100;
-      progressBar.setAttribute('value', progress);
-      requestAnimationFrame(updateProgress);
-    }
-
-    requestAnimationFrame(updateProgress);
-  </script>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="assets/built/main.min.js%3Fv=88df665c6b"></script>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
 
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+
+        orderedList: false,
+    });
+</script>
+
+
+<!-- Code highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!--   Scroll Top Button  -->
+<script>
+const scrollTopBtn = document.querySelector('.js-scroll-top');
+if (scrollTopBtn) {
+  scrollTopBtn.onclick = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  
+  const progressPath = document.querySelector('.scroll-top path');
+  const pathLength = progressPath.getTotalLength();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+  progressPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+  progressPath.style.strokeDashoffset = pathLength;
+  progressPath.getBoundingClientRect();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';		
+  const updateProgress = function() {
+    const scroll = window.scrollY || window.scrollTopBtn || document.documentElement.scrollTopBtn;
+
+    const docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+    const height = docHeight - windowHeight;
+    var progress = pathLength - (scroll * pathLength / height);
+    progressPath.style.strokeDashoffset = progress;
+  }
+
+  updateProgress();
+  const offset = 100;
+
+  window.addEventListener('scroll', function(event) {
+    updateProgress();
+
+    //Scroll back to top
+    const scrollPos = window.scrollY || window.scrollTopBtn || document.getElementsByTagName('html')[0].scrollTopBtn;
+    scrollPos > offset ? scrollTopBtn.classList.add('is-active') : scrollTopBtn.classList.remove('is-active');
+
+  }, false);
+}
+</script>
 
 </body>
-
 </html>
