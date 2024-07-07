@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Build a Regulation Assistant Powered by Llama 2 and Streamlit with Google Colab GPUs</title>
+    <title>Support Conversational History in RAG Pipelines with Llama 3</title>
     <link rel="stylesheet" href="../assets/built/screen.css%3Fv=88df665c6b.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
@@ -71,33 +71,33 @@
         } 
     </style>
 
-    <meta name="description" content="End to end chatbot powered by Llama 2.">
+    <meta name="description" content="Add memory to Llama 3 with RAG.">
     <link rel="canonical" href="index.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="Spacecraft">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Build a Regulation Assistant Powered by Llama 2 and Streamlit with Google Colab GPUs">
-    <meta property="og:description" content="End to end chatbot powered by Llama 2.">
-    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/build-a-regulation-assistant-powered-by-llama-2-and-streamlit-with-google-colab-gpus/">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
-    <meta property="article:published_time" content="2024-07-07T20:42:19.000Z">
-    <meta property="article:modified_time" content="2024-07-07T20:42:19.000Z">
+    <meta property="og:title" content="Support Conversational History in RAG Pipelines with Llama 3">
+    <meta property="og:description" content="Add memory to Llama 3 with RAG.">
+    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/support-conversational-history-in-rag-pipelines-with-llama-3/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1715398940416-43e3ec908fa0?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2024-07-07T20:47:28.000Z">
+    <meta property="article:modified_time" content="2024-07-07T20:47:28.000Z">
     <meta property="article:tag" content="GenAI">
     
     <meta property="article:publisher" content="https://www.facebook.com/ghost">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Build a Regulation Assistant Powered by Llama 2 and Streamlit with Google Colab GPUs">
-    <meta name="twitter:description" content="End to end chatbot powered by Llama 2.">
-    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/build-a-regulation-assistant-powered-by-llama-2-and-streamlit-with-google-colab-gpus/">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:title" content="Support Conversational History in RAG Pipelines with Llama 3">
+    <meta name="twitter:description" content="Add memory to Llama 3 with RAG.">
+    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/support-conversational-history-in-rag-pipelines-with-llama-3/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1715398940416-43e3ec908fa0?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Vincent Yuan">
     <meta name="twitter:label2" content="Filed under">
     <meta name="twitter:data2" content="GenAI">
     <meta name="twitter:site" content="@ghost">
     <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="823">
+    <meta property="og:image:height" content="800">
     
     <script type="application/ld+json">
 {
@@ -126,19 +126,19 @@
         "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
         "sameAs": []
     },
-    "headline": "Build a Regulation Assistant Powered by Llama 2 and Streamlit with Google Colab GPUs",
-    "url": "https://realvincentyuan.github.io/Spacecraft/build-a-regulation-assistant-powered-by-llama-2-and-streamlit-with-google-colab-gpus/",
-    "datePublished": "2024-07-07T20:42:19.000Z",
-    "dateModified": "2024-07-07T20:42:19.000Z",
+    "headline": "Support Conversational History in RAG Pipelines with Llama 3",
+    "url": "https://realvincentyuan.github.io/Spacecraft/support-conversational-history-in-rag-pipelines-with-llama-3/",
+    "datePublished": "2024-07-07T20:47:28.000Z",
+    "dateModified": "2024-07-07T20:47:28.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&ixlib=rb-4.0.3&q=80&w=2000",
+        "url": "https://images.unsplash.com/photo-1715398940416-43e3ec908fa0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQxfHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&ixlib=rb-4.0.3&q=80&w=2000",
         "width": 1200,
-        "height": 823
+        "height": 800
     },
     "keywords": "GenAI",
-    "description": "\bEnd to end chatbot powered by Llama 2.",
-    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/build-a-regulation-assistant-powered-by-llama-2-and-streamlit-with-google-colab-gpus/"
+    "description": "Add memory to Llama 3 with RAG.",
+    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/support-conversational-history-in-rag-pipelines-with-llama-3/"
 }
     </script>
 
@@ -383,11 +383,11 @@
 </svg> Featured</span>
         </div>
 
-            <h1 class="gh-article-title">Build a Regulation Assistant Powered by Llama 2 and Streamlit with Google Colab GPUs</h1>
+            <h1 class="gh-article-title">Support Conversational History in RAG Pipelines with Llama 3</h1>
 
             <div class="post-meta">
                 <a href="../author/vincent/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
-                <time datetime="2024-07-07">Jul 7, 2024</time>&nbsp;·&nbsp;<span class="gh-card-length">7 min read</span>
+                <time datetime="2024-07-07">Jul 7, 2024</time>&nbsp;·&nbsp;<span class="gh-card-length">4 min read</span>
             </div>
 
             <div class="post-meta">
@@ -397,14 +397,14 @@
                 <figure class="gh-article-image">
         <img
             class="post-image"
-            srcset="https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
-                    https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
-                    https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                    https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
-                    https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            srcset="https://images.unsplash.com/photo-1715398940416-43e3ec908fa0?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1715398940416-43e3ec908fa0?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+                    https://images.unsplash.com/photo-1715398940416-43e3ec908fa0?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1715398940416-43e3ec908fa0?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1715398940416-43e3ec908fa0?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
             sizes="(min-width: 1200px) 960px, 92vw"
-            src="https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
-            alt="Build a Regulation Assistant Powered by Llama 2 and Streamlit with Google Colab GPUs"
+            src="https://images.unsplash.com/photo-1715398940416-43e3ec908fa0?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQxfHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+            alt="Support Conversational History in RAG Pipelines with Llama 3"
         >
             <figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@vincentyuan87?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Vincent Yuan @USA</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption>
     </figure>
@@ -414,57 +414,40 @@
 
             <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
 
-            <p>In our previous discussion, we explored the concept of creating a web chatbot using Llama 2. However, an incredibly practical application of chatbots is their ability to field questions within specific domains of knowledge. For example, a chatbot can be trained on policies, regulations, and laws, effectively functioning as a knowledge assistant that users can collaborate with. This functionality holds significant value for enterprise users, who often have vast repositories of internal documents that can be utilized to train the chatbot. Employees can then leverage the chatbot as a quick reference tool.</p><p>Furthermore, this solution can be entirely constructed using open-source components, eliminating the need to rely on external APIs like OpenAI and alleviating any privacy concerns.</p><p>This post showcases a compliance assistant built with the utilization of the open-source large language model&nbsp;<code>Llama 2</code>, in conjunction with&nbsp;<code>retrieval-augmented generation (RAG)</code>, all presented through a user-friendly web interface powered by&nbsp;<code>Streamlit</code>.</p><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">The code can be replicated on Google Colab, using free T4 GPUs. Kudos to Google.</div></div><h2 id="1-dependencies">1 Dependencies</h2><p>Firstly, install a few dependencies:</p><pre><code class="language-py">!pip install -q streamlit
-
-!npm install localtunnel
-
-# GPU setup of LangChain
-!CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --force-reinstall llama-cpp-python==0.2.28  --no-cache-dir
-
-!pip install huggingface_hub  chromadb langchain sentence-transformers pypdf </code></pre><p>Then download the Llama 2 model to the Colab notebook:</p><pre><code class="language-py">!wget https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/resolve/main/llama-2-7b-chat.Q5_0.gguf</code></pre><h3 id="11-mount-the-google-drive">1.1 Mount the Google Drive</h3><p>This chatbot needs to retrieve documents from a vector database which is composed of embeddings of regulations PDFs. The PDFs are saved in Google Drive, so let's mount the Google Drive so the code can access the PDFs:</p><pre><code class="language-py"># Mount the google drive
-from google.colab import drive
-drive.mount('/gdrive')</code></pre><h2 id="2-build-the-web-chatbot">2 Build the Web Chatbot</h2><p>The web chatbot is like this:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/1_V/compliance_bot.png" class="kg-image" alt="" loading="lazy" width="3456" height="1920"><figcaption><span style="white-space: pre-wrap;">A Compliance Assistant&nbsp;</span></figcaption></figure><p>Below is the entire code to build the compliance assistant, the details of each part will be introduced in the follow section:</p><pre><code class="language-py">%%writefile app.py
-
-import streamlit as st
-import os
-
+            <p>In Retrieval-Augmented Generation (RAG) pipelines, it's crucial to help chatbots recall previous conversations, as users may ask follow-up questions that rely on earlier context. However, users' prompts might lack sufficient context, assuming previous discussions are still relevant. To tackle this challenge, incorporating chat history into LLMs' question-answering context enables them to retrieve relevant information for new queries.</p><p>This post presents a solution leveraging LangChain, Llama 3-8B, and Ollama, which can efficiently run on an M2 Pro MacBook Pro with 16 GB memory.</p><h2 id="1-dependencies">1 Dependencies</h2><h3 id="11-ollama-and-llama-3-model">1.1 Ollama and Llama 3 Model</h3><p>Firstly, Ollama should be installed on a MacBook. Ollama can utilize the GPUs of the machine, ensuring efficient inference, provided there is sufficient memory. Llama 3-8B performs well on machines with 16 GB of memory.</p><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">Ollama can be downloaded here:<a href="https://ollama.com/?ref=localhost" target="_blank">https://ollama.com/</a></div></div><p>Once it is downloaded, can use below command in the terminal to pull the Llama 3-8B model:</p><pre><code class="language-shell">ollama pull llama3</code></pre><h3 id="12-python-dependencies">1.2 Python Dependencies</h3><p>Now, let's import the required packages to construct a RAG system with chat history, utilizing the LangChain toolkit.</p><pre><code class="language-python"># Models
 from langchain.llms import LlamaCpp
-from langchain.chains import LLMChain
+from langchain.chat_models import ChatOpenAI
+
+# Setup
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-from langchain.prompts import PromptTemplate
 
-from langchain.llms import LlamaCpp
-
-from langchain_community.document_loaders import PyPDFLoader, PyPDFDirectoryLoader
+# Vector store
+from langchain.document_loaders import  TextLoader
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-from langchain.chains import RetrievalQA
+# LangChain supports many other chat models. Here, we're using Ollama
+from langchain_community.chat_models import ChatOllama
+from langchain_core.prompts import ChatPromptTemplate
 
+# RAG with Memory 
+from langchain.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_core.chat_history import BaseChatMessageHistory
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.runnables.history import RunnableWithMessageHistory
 
-
-
-# App title
-st.set_page_config(page_title="🦙💬 Llama 2 Chatbot")
-
-llama_model_path = 'llama-2-7b-chat.Q5_0.gguf'
-
-n_gpu_layers = 40  # Change this value based on your model and your GPU VRAM pool.
-n_batch = 512  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.
+# Display results
+import markdown
+from IPython.display import display, Markdown, Latex</code></pre><h2 id="2-create-vector-store">2 Create Vector Store</h2><p>The source data consists of&nbsp;<a href="https://vincentyuan.us/r/18a4e24d?m=df98d831-fc77-4019-8ad0-29db6fe20ba1&ref=localhost">a summary of important events and statistics</a>from the week of May 13th, 2024, as published by Yahoo Finance. This data is not included in the training set of Llama 3. For demonstration purposes, the news is extracted to a text file and utilized in the code to create the Chroma vector store and retriever.</p><pre><code class="language-python">source_data_path = '../data/yahoo.txt'
 
 # for token-wise streaming so you'll see the answer gets generated token by token when Llama is answering your question
 callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 
-
-
-# ====================== RAG ======================
-
-# Encoding the PDFs
-pdf_folder_path = '/gdrive/MyDrive/Research/Data/GenAI/PDFs'
-
-loader = PyPDFDirectoryLoader(pdf_folder_path)
+loader = TextLoader(source_data_path)
 
 documents = loader.load()
 
@@ -472,231 +455,96 @@ documents = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 texts = text_splitter.split_documents(documents)
 
-# Create vector DB, embed and store the texts
-# Supplying a persist_directory will store the embeddings on disk
-persist_directory = 'db'
-
-## here we are using OpenAI embeddings but in future we will swap out to local embeddings
 embedding = HuggingFaceEmbeddings()
 
 vectordb = Chroma.from_documents(documents=texts,
-                                 embedding=embedding,
-                                 persist_directory=persist_directory)
-
-retriever = vectordb.as_retriever(search_kwargs={"k": 5})
-
-# ====================== App ======================
-with st.sidebar:
-    st.title('🦙💬 Llama 2 Chatbot')
-
-
-    st.subheader('Models and parameters')
-    selected_model = st.sidebar.selectbox('Choose a Llama2 model', ['Llama2-7B', 'Llama2-13B'], key='selected_model')
-
-    if selected_model == 'Llama2-7B':
-        llm_path = llama_model_path
-    elif selected_model == 'Llama2-13B':
-        llm_path = llama_model_path
-
-    temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=5.0, value=0.1, step=0.01)
-    top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
-    max_length = st.sidebar.slider('max_length', min_value=32, max_value=128, value=120, step=8)
-    st.markdown('📖 Learn how to build this app in this [blog](https://blog.streamlit.io/how-to-build-a-llama-2-chatbot/)!')
+                                 embedding=embedding
+                                 # persist_directory=persist_directory
+                                )
+                                
+retriever = vectordb.as_retriever(search_kwargs={"k": 5})</code></pre><h2 id="3-create-the-llm-object">3 Create the LLM Object</h2><p>Make sure the Ollama is on and the LLama 3 model has been downloaded, then below code can be used to define a LLM object in the pipeline:</p><pre><code class="language-python">llm = ChatOllama(model="llama3",
+                temperature=0.1)</code></pre><h2 id="4-rag-with-memory">4 RAG with Memory</h2><p>In essence, there should be place to store chat history, also the the chat history is added to the prompt &nbsp;in RAG, so that the LLM can access past conversation, also the chat history is update after each round of conversation. Below is a way to use the&nbsp;<code>BaseChatMessageHistory</code>&nbsp;to address this need:</p><pre><code class="language-python">### Contextualize question ###
+contextualize_q_system_prompt = """Given a chat history and the latest user question \
+which might reference context in the chat history, formulate a standalone question \
+which can be understood without the chat history. Do NOT answer the question, \
+just reformulate it if needed and otherwise return it as is."""
+contextualize_q_prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", contextualize_q_system_prompt),
+        MessagesPlaceholder("chat_history"),
+        ("human", "{input}"),
+    ]
+)
+history_aware_retriever = create_history_aware_retriever(
+    llm, retriever, contextualize_q_prompt
+)
 
 
-    llm = LlamaCpp(
-      model_path=llm_path,
-      temperature=temperature,
-      top_p=top_p,
-      n_ctx=2048,
-      n_gpu_layers=n_gpu_layers,
-      n_batch=n_batch,
-      callback_manager=callback_manager,
-      verbose=True,
-    )
+### Answer question ###
+qa_system_prompt = """You are an assistant for question-answering tasks. \
+Use the following pieces of retrieved context to answer the question. \
+If you don't know the answer, just say that you don't know. \
+Use three sentences maximum and keep the answer concise.\
 
-    # use another LangChain's chain, RetrievalQA, to associate Llama with the loaded documents stored in the vector db
+{context}"""
+qa_prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", qa_system_prompt),
+        MessagesPlaceholder("chat_history"),
+        ("human", "{input}"),
+    ]
+)
+question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
 
+rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)</code></pre><p>Then define the RAG chain:</p><pre><code class="language-python">### Statefully manage chat history ###
+store = {}
 
-
-# Store LLM generated responses
-if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
-
-# Display or clear chat messages
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.write(message["content"])
-
-def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
-st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+def get_session_history(session_id: str) -&gt; BaseChatMessageHistory:
+    if session_id not in store:
+        store[session_id] = ChatMessageHistory()
+    return store[session_id]
 
 
-# Function for generating LLaMA2 response. Refactored from https://github.com/a16z-infra/llama2-chatbot
-def generate_llama2_response(prompt_input):
+conversational_rag_chain = RunnableWithMessageHistory(
+    rag_chain,
+    get_session_history,
+    input_messages_key="input",
+    history_messages_key="chat_history",
+    output_messages_key="answer",
+)</code></pre><p>Then let's try if the model understands the Yahoo Finance analysis, the question is&nbsp;<code>What is the wall street expectation of the April Consumer Price Index (CPI)?</code>.</p><pre><code class="language-python">llm_response = conversational_rag_chain.invoke(
+    {"input": "What is the wall street expectation of the April Consumer Price Index (CPI)?"},
+    config={
+        "configurable": {"session_id": "abc123"}
+    },  # constructs a key "abc123" in `store`.
+)["answer"]
 
-    pre_prompt = """[INST] &lt;&lt;SYS&gt;&gt;
-                  You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.
+print('='*50)
+display(Markdown(llm_response))</code></pre><p>The response is:</p><pre><code class="language-shell">According to the text, Wall Street expects an annual gain of 3.4% for headline CPI, which includes the price of food and energy, a decrease from the 3.5% headline number in March. Additionally, prices are expected to rise 0.4% on a month-over-month basis, in line with March's rise.</code></pre><p>This is aligned with the source:</p><figure class="kg-card kg-image-card"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/1_V/CPI.png" class="kg-image" alt="" loading="lazy" width="1358" height="708"></figure><p>Yahoo Finance Analysis</p><p>Then, a question is asked based on the output of last question to calculate the double of the expected CPI:</p><pre><code class="language-python">llm_response = conversational_rag_chain.invoke(
+    {"input": "What is the double of the expected CPI in the prior answer?"},
+    config={
+        "configurable": {"session_id": "abc123"}
+    },  # constructs a key "abc123" in `store`.
+)["answer"]
 
-                  If you cannot answer the question from the given documents, please state that you do not have an answer.\n
-                  """
+print('='*50)
+display(Markdown(llm_response))</code></pre><p>And this is the output:</p><pre><code class="language-shell">The expected annual gain for headline CPI is 3.4%. The double of this value would be:
 
+2 x 3.4% = 6.8%
 
-    for dict_message in st.session_state.messages:
-        if dict_message["role"] == "user":
-            pre_prompt += "User: " + dict_message["content"] + "\n\n"
-        else:
-            pre_prompt += "Assistant: " + dict_message["content"] + "\n\n"
-
-    prompt = pre_prompt +  "{context}User : {question}" + "[\INST]"
-    llama_prompt = PromptTemplate(template=prompt, input_variables=["context","question"])
-
-
-    qa_chain = RetrievalQA.from_chain_type(
-        llm,
-        retriever=retriever,
-         chain_type_kwargs={"prompt": llama_prompt}
-    )
-
-    result = qa_chain.run({
-                            "query": prompt_input})
-
-
-    return result
-
-# User-provided prompt
-if prompt := st.chat_input():
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.write(prompt)
-
-# Generate a new response if last message is not from assistant
-if st.session_state.messages[-1]["role"] != "assistant":
-    with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            response = generate_llama2_response(prompt)
-            placeholder = st.empty()
-            full_response = ''
-            for item in response:
-                full_response += item
-                placeholder.markdown(full_response)
-            placeholder.markdown(full_response)
-    message = {"role": "assistant", "content": full_response}
-    st.session_state.messages.append(message)</code></pre><h3 id="21-model-setup">2.1 Model Setup</h3><p>In the code, firstly tweak the params per your hardware, models and objectives:</p><pre><code class="language-py">llama_model_path = 'llama-2-7b-chat.Q5_0.gguf'
-
-n_gpu_layers = 40  # Change this value based on your model and your GPU VRAM pool.
-n_batch = 512  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.</code></pre><p>The free version of Colab does not have too much memory so here the&nbsp;<code>llama-2-7b-chat.Q5_0.gguf</code>&nbsp;is used but you can use a larger model for better performance.</p><h3 id="22-vector-database">2.2 Vector Database</h3><p>In order to perform RAG, a vector database has to be created first, in this example, the code read the&nbsp;<a href="https://vincentyuan.us/r/7344937c?m=43db1032-e0f7-47ae-b55c-36ea838b6b54&ref=localhost">regulation B</a>&nbsp;and&nbsp;<a href="https://vincentyuan.us/r/311211cf?m=43db1032-e0f7-47ae-b55c-36ea838b6b54&ref=localhost">regulation Z</a>&nbsp;PDFs and embed them, then a vector database is created based on that:</p><pre><code class="language-py">
-# ====================== RAG ======================
-
-# Encoding the PDFs
-pdf_folder_path = '/gdrive/MyDrive/Research/Data/GenAI/PDFs'
-
-loader = PyPDFDirectoryLoader(pdf_folder_path)
-
-documents = loader.load()
-
-#splitting the text into
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-texts = text_splitter.split_documents(documents)
-
-# Create vector DB, embed and store the texts
-# Supplying a persist_directory will store the embeddings on disk
-persist_directory = 'db'
-
-## here we are using OpenAI embeddings but in future we will swap out to local embeddings
-embedding = HuggingFaceEmbeddings()
-
-vectordb = Chroma.from_documents(documents=texts,
-                                 embedding=embedding,
-                                 persist_directory=persist_directory)
-
-retriever = vectordb.as_retriever(search_kwargs={"k": 5})
-
-</code></pre><h3 id="23-message-management">2.3 Message Management</h3><p>Then, these are the setup for the display/clear of messages of the chatbot:</p><pre><code class="language-py"># Store LLM generated responses
-if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
-
-# Display or clear chat messages
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.write(message["content"])
-
-def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
-st.sidebar.button('Clear Chat History', on_click=clear_chat_history)</code></pre><h3 id="24-get-llm-response">2.4 Get LLM Response</h3><p>Below function appends the chat history into the prompt and use the vector database created above to retrieve answers.</p><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">Note that this QA chain is different from a regular LLM chain.</div></div><pre><code class="language-py"># Function for generating LLaMA2 response based on RAG.
-def generate_llama2_response(prompt_input):
-
-    pre_prompt = """[INST] &lt;&lt;SYS&gt;&gt;
-                  You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.
-
-                  If you cannot answer the question from the given documents, please state that you do not have an answer.\n
-                  """
-
-
-    for dict_message in st.session_state.messages:
-        if dict_message["role"] == "user":
-            pre_prompt += "User: " + dict_message["content"] + "\n\n"
-        else:
-            pre_prompt += "Assistant: " + dict_message["content"] + "\n\n"
-
-    prompt = pre_prompt +  "{context}User : {question}" + "[\INST]"
-    llama_prompt = PromptTemplate(template=prompt, input_variables=["context","question"])
-
-
-    qa_chain = RetrievalQA.from_chain_type(
-        llm,
-        retriever=retriever,
-         chain_type_kwargs={"prompt": llama_prompt}
-    )
-
-    result = qa_chain.run({
-                            "query": prompt_input})
-
-
-    return result</code></pre><h3 id="25-conversation">2.5 Conversation</h3><p>Below shows the question and answering process, the chatbot responses to users' questions:</p><pre><code class="language-py"># User-provided prompt
-if prompt := st.chat_input():
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.write(prompt)
-
-# Generate a new response if last message is not from assistant
-if st.session_state.messages[-1]["role"] != "assistant":
-    with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            response = generate_llama2_response(prompt)
-            placeholder = st.empty()
-            full_response = ''
-            for item in response:
-                full_response += item
-                placeholder.markdown(full_response)
-            placeholder.markdown(full_response)
-    message = {"role": "assistant", "content": full_response}
-    st.session_state.messages.append(message)</code></pre><h2 id="3-start-the-chatbot">3 Start the Chatbot</h2><p>You can bring up the chatbot by using below command:</p><pre><code class="language-py">!streamlit run app.py --server.address=localhost &amp;&gt;/content/logs.txt &amp;
-
-import urllib
-print("Password/Enpoint IP for localtunnel is:",urllib.request.urlopen('https://ipv4.icanhazip.com').read().decode('utf8').strip("\n"))
-
-!npx localtunnel --port 8501</code></pre><p>The result shows a password to access the web app:</p><pre><code class="language-py">Password/Enpoint IP for localtunnel is: 34.125.220.166
-npx: installed 22 in 2.393s
-your url is: https://hot-pets-chew.loca.lt</code></pre><p>Go to that url and enter the password, and enjoy the time!</p><h2 id="4-summary">4 Summary</h2><p>This post demonstrates the construction of a versatile chatbot capable of more than just conversation. Specifically, it covers the following key features:</p><ul><li>Creation of a vector database utilizing domain knowledge.</li><li>Ability of the chatbot to retrieve information from the vector database and respond to user queries.</li><li>User-friendly interface for ease of use.</li></ul><p>This approach is scalable across various applications, as chatbots excel in information retrieval when equipped with a reliable database as the source of truth. Stay tuned for further insights into valuable applications of this technology.</p>
+So, the double of the expected CPI is 6.8%.</code></pre><p>So the model successfully picks up the information that it returns in the past and answer correctly to the new question.</p><h2 id="5-summary">5 Summary</h2><p>This enhanced solution extends the capabilities of a regular RAG by supporting chat history, making it highly beneficial for multiple rounds of conversations. With Ollama, experiments like this can be run on an affordable laptop with embedded GPUs. A special acknowledgment to Meta for their great work in improving Llama 3.</p><p></p>
         </div>
 
         <div class="pagination-container gh-canvas">
         <nav class="pagination">
 
             <div class="pagination-left">
-                    <a class="newer-posts" href="../unveiling-the-deal-what-happens-when-companies-merge/index.html">
+                    <a class="newer-posts" href="../build-a-regulation-assistant-powered-by-llama-2-and-streamlit-with-google-colab-gpus/index.html">
                         <span class="pagination-label">Previous</span>
-                        Unveiling the Deal: What Happens When Companies Merge
+                        Build a Regulation Assistant Powered by Llama 2 and Streamlit with Google Colab GPUs
                     </a>
             </div>
 
             <div class="pagination-right">
-                    <a class="older-posts" href="../support-conversational-history-in-rag-pipelines-with-llama-3/index.html">
-                        <span class="pagination-label">Next</span>
-                        Support Conversational History in RAG Pipelines with Llama 3
-                    </a>
             </div>
 
         </nav>
@@ -704,7 +552,7 @@ your url is: https://hot-pets-chew.loca.lt</code></pre><p>Go to that url and ent
 
             <div class="gh-comments gh-canvas">
                 
-        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668afd59ac15d470add4a52f" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668afeb5ac15d470add4a53f" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
     
             </div>
 
