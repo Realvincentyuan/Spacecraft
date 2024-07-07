@@ -2,4 +2,4 @@
 
 This repo has the Ghost blog theme code.
 
-Blog of me：[https://vincentyuan.us/](https://realvincentyuan.github.io/Spacecraft/index.html)
+Blog of me：[realvincentyuan.github.io/Spacecraft/](https://realvincentyuan.github.io/Spacecraft/index.html)
