@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Neo4J Graph Database Anti-Fraud Analysis in Practice (II) - Prepare Data</title>
+    <title>Built a Chatbot with Streamlit and Llama 2 with Google Colab GPUs from Scratch</title>
     <link rel="stylesheet" href="../assets/built/screen.css%3Fv=88df665c6b.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
@@ -71,39 +71,33 @@
         } 
     </style>
 
-    <link rel="canonical" href="../neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data.html">
+    <meta name="description" content="End to end chatbot development with Llama 2.">
+    <link rel="canonical" href="index.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="Spacecraft">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Neo4J Graph Database Anti-Fraud Analysis in Practice (II) - Prepare Data">
-    <meta property="og:description" content="1 Introduction
-
-In the previous article Neo4J Graph Database Anti-Fraud Analysis in Practice (Part 1) - Setup Analysis Environment, we introduced the Neo4J analysis platform and some basic operations of graph databases. In this article, we will officially start the exploration of the anti-fraud theme. The primary task is to">
-    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data/">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
-    <meta property="article:published_time" content="2022-02-06T06:00:00.000Z">
-    <meta property="article:modified_time" content="2023-07-02T01:41:31.000Z">
-    <meta property="article:tag" content="Tech">
-    <meta property="article:tag" content="Knowledge Graph">
-    <meta property="article:tag" content="Python">
+    <meta property="og:title" content="Built a Chatbot with Streamlit and Llama 2 with Google Colab GPUs from Scratch">
+    <meta property="og:description" content="End to end chatbot development with Llama 2.">
+    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/built-a-chatbot-with-streamlit-and-llama-2-with-google-colab-gpus-from-scratch/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2024-07-07T20:31:52.000Z">
+    <meta property="article:modified_time" content="2024-07-07T20:31:52.000Z">
+    <meta property="article:tag" content="GenAI">
     
     <meta property="article:publisher" content="https://www.facebook.com/ghost">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Neo4J Graph Database Anti-Fraud Analysis in Practice (II) - Prepare Data">
-    <meta name="twitter:description" content="1 Introduction
-
-In the previous article Neo4J Graph Database Anti-Fraud Analysis in Practice (Part 1) - Setup Analysis Environment, we introduced the Neo4J analysis platform and some basic operations of graph databases. In this article, we will officially start the exploration of the anti-fraud theme. The primary task is to">
-    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data/">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:title" content="Built a Chatbot with Streamlit and Llama 2 with Google Colab GPUs from Scratch">
+    <meta name="twitter:description" content="End to end chatbot development with Llama 2.">
+    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/built-a-chatbot-with-streamlit-and-llama-2-with-google-colab-gpus-from-scratch/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Vincent Yuan">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="Tech, Knowledge Graph, Python">
+    <meta name="twitter:data2" content="GenAI">
     <meta name="twitter:site" content="@ghost">
-    <meta name="twitter:creator" content="@RealVincentYuan">
     <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="797">
+    <meta property="og:image:height" content="823">
     
     <script type="application/ld+json">
 {
@@ -125,29 +119,26 @@ In the previous article Neo4J Graph Database Anti-Fraud Analysis in Practice (Pa
         "name": "Vincent Yuan",
         "image": {
             "@type": "ImageObject",
-            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar-1.png",
+            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar.png",
             "width": 752,
             "height": 752
         },
-        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent-2/",
-        "sameAs": [
-            "https://unsplash.com/@vincentyuan87",
-            "https://twitter.com/RealVincentYuan"
-        ]
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
+        "sameAs": []
     },
-    "headline": "Neo4J Graph Database Anti-Fraud Analysis in Practice (II) - Prepare Data",
-    "url": "https://realvincentyuan.github.io/Spacecraft/neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data/",
-    "datePublished": "2022-02-06T06:00:00.000Z",
-    "dateModified": "2023-07-02T01:41:31.000Z",
+    "headline": "Built a Chatbot with Streamlit and Llama 2 with Google Colab GPUs from Scratch",
+    "url": "https://realvincentyuan.github.io/Spacecraft/built-a-chatbot-with-streamlit-and-llama-2-with-google-colab-gpus-from-scratch/",
+    "datePublished": "2024-07-07T20:31:52.000Z",
+    "dateModified": "2024-07-07T20:31:52.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&ixlib=rb-4.0.3&q=80&w=2000",
+        "url": "https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&ixlib=rb-4.0.3&q=80&w=2000",
         "width": 1200,
-        "height": 797
+        "height": 823
     },
-    "keywords": "Tech, Knowledge Graph, Python",
-    "description": "1 Introduction\n\nIn the previous article Neo4J Graph Database Anti-Fraud Analysis in Practice (Part 1) - Setup Analysis Environment, we introduced the Neo4J analysis platform and some basic operations of graph databases. In this article, we will officially start the exploration of the anti-fraud theme. The primary task is to clarify the goal, obtain and sort the data. The example provided by Neo4J focuses on fraudsters using the same entity information to control a large number of accounts to con",
-    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data/"
+    "keywords": "GenAI",
+    "description": "End to end chatbot development with Llama 2.",
+    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/built-a-chatbot-with-streamlit-and-llama-2-with-google-colab-gpus-from-scratch/"
 }
     </script>
 
@@ -334,7 +325,7 @@ In the previous article Neo4J Graph Database Anti-Fraud Analysis in Practice (Pa
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="post-template tag-tech tag-knowledge-graph tag-python  is-head-left-logo">
+<body class="post-template tag-genai  is-head-left-logo">
 <div class="site">
 
     <header id="gh-head" class="gh-head gh-outer">
@@ -369,8 +360,8 @@ In the previous article Neo4J Graph Database Anti-Fraud Analysis in Practice (Pa
 </svg>
 </button>
                     <div class="gh-head-members">
-                                <a class="gh-head-link" href="../neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data.html#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-head-btn gh-btn gh-primary-btn" href="../neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data.html#/portal/signup" data-portal="signup">Subscribe</a>
+                                <a class="gh-head-link" href="index.html#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
                     </div>
             </div>
         </div>
@@ -382,39 +373,37 @@ In the previous article Neo4J Graph Database Anti-Fraud Analysis in Practice (Pa
 <main class="site-main">
 
 
-    <article class="post tag-tech tag-knowledge-graph tag-python">
+    <article class="post tag-genai">
 
         <header class="gh-article-header gh-canvas">
 
         <div class="article-tag post-card-tags">
         </div>
 
-            <h1 class="gh-article-title">Neo4J Graph Database Anti-Fraud Analysis in Practice (II) - Prepare Data</h1>
+            <h1 class="gh-article-title">Built a Chatbot with Streamlit and Llama 2 with Google Colab GPUs from Scratch</h1>
 
             <div class="post-meta">
-                <a href="../author/vincent-2/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
-                <time datetime="2022-02-06">Jul 1, 2023</time>&nbsp;·&nbsp;<span class="gh-card-length">3 min read</span>
+                <a href="../author/vincent/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
+                <time datetime="2024-07-07">Jul 7, 2024</time>&nbsp;·&nbsp;<span class="gh-card-length">5 min read</span>
             </div>
 
             <div class="post-meta">
-                    <a class="post-tag tag-tech" href="../tag/tech/index.html" title="Tech">Tech</a>
-                    <a class="post-tag tag-knowledge-graph" href="../tag/knowledge-graph/index.html" title="Knowledge Graph">Knowledge Graph</a>
-                    <a class="post-tag tag-python" href="../tag/python/index.html" title="Python">Python</a>
+                    <a class="post-tag tag-genai" href="../tag/genai/index.html" title="GenAI">GenAI</a>
             </div>
 
                 <figure class="gh-article-image">
         <img
             class="post-image"
-            srcset="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
-                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
-                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
-                    https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            srcset="https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+                    https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
             sizes="(min-width: 1200px) 960px, 92vw"
-            src="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fE5ldHxlbnwwfHx8fDE2ODgyNjEwNTF8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
-            alt="Neo4J Graph Database Anti-Fraud Analysis in Practice (II) - Prepare Data"
+            src="https://images.unsplash.com/photo-1715394016216-f0c45a43ca69?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDQ5fHx2eTEyMTh8ZW58MHx8fHwxNzIwMzgzNjQ1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+            alt="Built a Chatbot with Streamlit and Llama 2 with Google Colab GPUs from Scratch"
         >
-            <figcaption>Photo by <a href="https://unsplash.com/fr/@urielsc26?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Uriel SC</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
+            <figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@vincentyuan87?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Vincent Yuan @USA</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption>
     </figure>
         </header>
 
@@ -422,76 +411,206 @@ In the previous article Neo4J Graph Database Anti-Fraud Analysis in Practice (Pa
 
             <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
 
-            <h2 id="1-introduction">1 Introduction</h2><p>In the previous article <a href="../neo4j-graph-database-anti-fraud-analysis-practice-part-1-building-analysis-environment.html">Neo4J Graph Database Anti-Fraud Analysis in Practice (Part 1) - Setup Analysis Environment</a>, we introduced the Neo4J analysis platform and some basic operations of graph databases. In this article, we will officially start the exploration of the anti-fraud theme. The primary task is to clarify the goal, obtain and sort the data. The example provided by Neo4J focuses on fraudsters using the same entity information to control a large number of accounts to conduct fraudulent transactions. Therefore, the goal is to find the connections between these accounts and expose the criminal gangs. However, the example did not introduce the source and preparation of the data, which is actually vital in real work. Therefore, this article will focus on the data preparation part.</p><h2 id="2-obtain-data">2 Obtain Data</h2><p>Neo4J provides <a href="https://neo4j.com/developer/data-import/?ref=localhost">various methods</a> to connect to the data repository:</p><ul><li>Manually define the data</li><li>Import CSV file</li><li>Use API to import data</li><li>Import data from a relational database</li><li>Use an application-driven connection to import data (supporting multiple programming languages such as .Net, Java, JavaScript, Go, and Python, etc.)</li></ul><p>Personally, I prefer to use Python driver to import data because usually, we can first obtain the raw data in the relational database through Python, process it, and then use the Neo4J interface to connect multiple platforms to complete the data transfer work. In the face of large-scale data sets, using PySpark can further improve computing performance. Neo4J also provides <a href="https://neo4j.com/docs/spark/current/python/?ref=localhost">PySpark interface</a>, with very fast read and write speed. Here is an example PySpark code. Note that you need to download the corresponding <a href="https://github.com/neo4j-contrib/neo4j-spark-connector/releases?ref=localhost">Neo4j Connector for Apache Spark</a> Jar file before using it.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/1_V/Neo4J%E8%BF%9E%E6%8E%A5%E4%BF%A1%E6%81%AF.png" class="kg-image" alt loading="lazy"><figcaption>Neo4J Connection Information</figcaption></figure><pre><code class="language-python"># Read data from Neo4J
-# Replace the account name and password with your own settings
-df = spark.read.format("org.neo4j.spark.DataSource")\
-     .option("url", "bolt+s://63d2d43273493b399454b26961152ed9.neo4jsandbox.com:7687")\
-     .option("authentication.type", "basic")\
-     .option("authentication.basic.username", "neo4j")\
-     .option("authentication.basic.password", "password")\
-     .option("labels", "Person")\
-     .load()
+            <p>So far, we have talked about a lot of things regarding Llama 2:</p><ul><li>Swift inference powered by GPUs</li><li>Thoughtful responses with appropriate prompts</li><li>Question answering utilizing a knowledge database</li><li>A user-friendly web interface</li></ul><p>You can find those informative posts in the&nbsp;<code>GenAI</code>&nbsp;section of Spacecraft as below:</p><p>This post shows a product that makes the best of all the things learned, and build a web-based chatbot powered by a local Llama 2 model, running on Google Colab with GPUs.</p><h2 id="2-dependencies">2 Dependencies</h2><p>Firstly, install a few dependencies:</p><pre><code class="language-py">!pip install -q streamlit
 
-display(df)
+!npm install localtunnel
 
-# Write data to Neo4J
-df2 = spark.createDataFrame( [(1, "John"),(2, "Thomas")],
- ["id", "name"]
-)
+# GPU setup of LangChain
+!CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --force-reinstall llama-cpp-python==0.2.28  --no-cache-dir
 
-df2.write.format("org.neo4j.spark.DataSource")\
-     .option("url", "bolt+s://63d2d43273493b399454b26961152ed9.neo4jsandbox.com:7687")\
-     .option("authentication.type", "basic")\
-     .option("authentication.basic.username", "neo4j")\
-     .option("authentication.basic.password", "password")\
-     .option("labels", ":Person")\
-     .option("node.keys", "id")\
-     .mode("Overwrite")\
-     .save()
-</code></pre><p>Remember to <a href="https://neo4j.com/docs/cypher-manual/current/indexes-for-search-performance/?ref=localhost">define an index</a> before loading the data. This operation will significantly improve the program running speed.</p><h2 id="3-define-nodes-and-relationships">3 Define Nodes and Relationships</h2><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/1_V/%E8%8A%82%E7%82%B9%E5%92%8C%E5%85%B3%E7%B3%BB.png" class="kg-image" alt loading="lazy"><figcaption>Nodes and Relationships</figcaption></figure><p>As shown in the figure, the colored circles represent nodes, and the lines between nodes are their relationships. Intuitively, the raw data is a table, which contains some fields related to the target, and each field corresponds to an entity (node).</p><!--kg-card-begin: html--><table>
-<thead>
-<tr>
-<th>Mule</th>
-<th>Phone</th>
-<th>Email</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>John</td>
-<td>888888888</td>
-<td><a>demo@gmail.com</a></td>
-</tr>
-<tr>
-<td>Tim</td>
-<td>777777777</td>
-<td><a>demo2@gmail.com</a></td>
-</tr>
-</tbody>
-</table><!--kg-card-end: html--><p>Nodes can be written into Neo4J using the above code, and the relationships between entities that are useful for the goal can be defined <a href="https://neo4j.com/docs/cypher-manual/current/clauses/create/?ref=localhost#create-relationships">using Cypher</a>. For example, the fact that John has his own email can be defined as follows:</p><pre><code class="language-sql">MATCH
-  (a:Mule),
-  (b:Email)
-WHERE a.Email = b.Email
-CREATE (a)-[r:HAS_EMAIL]-&gt;(b)
-RETURN type(r)
-</code></pre><p>By analogy, relationships useful for the target can be defined in such a way.</p><h2 id="4-data-overview">4 Data Overview</h2><p>The first part of the anti-fraud example described the descriptive analysis of the data, such as the number of nodes and relationships, etc. This is helpful for understanding the data, checking data completeness, and ensuring that the data you need is stored in Neo4J according to the set goal. This module's content is relatively intuitive and will not be elaborated further.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/1_V/%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1.png" class="kg-image" alt loading="lazy"><figcaption>Descriptive Analysis</figcaption></figure><h2 id="5-conclusion">5 Conclusion</h2><p>This article solved many of the initial doubts of graph database beginners, how to import data (usually tables) into Neo4J, and define nodes and relationships that serve the goal. Undoubtedly, this is the foundation of subsequent analysis work, and we can officially analyze the data for anti-fraud. I hope that this sharing will be helpful to you, and welcome to leave a message for discussion in the comments!</p>
+!pip install huggingface_hub  chromadb langchain sentence-transformers pinecone_client</code></pre><p>Then download the Llama 2 model to the Colab notebook:</p><pre><code class="language-py">!wget https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/resolve/main/llama-2-7b-chat.Q5_0.gguf</code></pre><h2 id="3-build-the-web-chatbot">3 Build the Web Chatbot</h2><p>The web chatbot is like this:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/1_V/llama_2_bot.png" class="kg-image" alt="" loading="lazy" width="2998" height="1918"><figcaption><span style="white-space: pre-wrap;">Llama 2 Chatbot</span></figcaption></figure><p>You need to write the app code to the disk first:</p><pre><code class="language-py">%%writefile app.py
+
+import streamlit as st
+import os
+
+from langchain.llms import LlamaCpp
+from langchain.chains import LLMChain
+from langchain.callbacks.manager import CallbackManager
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.prompts import PromptTemplate
+
+from langchain.llms import LlamaCpp
+
+
+# App title
+st.set_page_config(page_title="🦙💬 Llama 2 Chatbot")
+
+llama_model_path = 'llama-2-7b-chat.Q5_0.gguf'
+
+n_gpu_layers = 40  # Change this value based on your model and your GPU VRAM pool.
+n_batch = 512  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.
+
+# for token-wise streaming so you'll see the answer gets generated token by token when Llama is answering your question
+callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
+
+# Replicate Credentials
+with st.sidebar:
+    st.title('🦙💬 Llama 2 Chatbot')
+
+
+    st.subheader('Models and parameters')
+    selected_model = st.sidebar.selectbox('Choose a Llama2 model', ['Llama2-7B', 'Llama2-13B'], key='selected_model')
+
+    if selected_model == 'Llama2-7B':
+        llm_path = llama_model_path
+    elif selected_model == 'Llama2-13B':
+        llm_path = llama_model_path
+
+    temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=5.0, value=0.1, step=0.01)
+    top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
+    max_length = st.sidebar.slider('max_length', min_value=32, max_value=128, value=120, step=8)
+    st.markdown('📖 Learn how to build this app in this [blog](https://blog.streamlit.io/how-to-build-a-llama-2-chatbot/)!')
+
+
+    llm = LlamaCpp(
+      model_path=llm_path,
+      temperature=temperature,
+      top_p=top_p,
+      n_ctx=2048,
+      n_gpu_layers=n_gpu_layers,
+      n_batch=n_batch,
+      callback_manager=callback_manager,
+      verbose=True,
+    )
+
+# Store LLM generated responses
+if "messages" not in st.session_state.keys():
+    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+
+# Display or clear chat messages
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.write(message["content"])
+
+def clear_chat_history():
+    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+
+
+# Function for generating LLaMA2 response. Refactored from https://github.com/a16z-infra/llama2-chatbot
+def generate_llama2_response(prompt_input):
+
+    pre_prompt = """[INST] &lt;&lt;SYS&gt;&gt;
+                  You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.
+
+                  If you cannot answer the question from the given documents, please state that you do not have an answer.\n
+                  """
+
+
+    for dict_message in st.session_state.messages:
+        if dict_message["role"] == "user":
+            pre_prompt += "User: " + dict_message["content"] + "\n\n"
+        else:
+            pre_prompt += "Assistant: " + dict_message["content"] + "\n\n"
+
+    prompt = pre_prompt +  "User : {question}" + "[\INST]"
+    llama_prompt = PromptTemplate(template=prompt, input_variables=["question"])
+
+    chain = LLMChain(llm=llm, prompt=llama_prompt)
+
+    result = chain({
+                "question": prompt_input
+                 })
+
+
+    return result['text']
+
+# User-provided prompt
+if prompt := st.chat_input():
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.write(prompt)
+
+# Generate a new response if last message is not from assistant
+if st.session_state.messages[-1]["role"] != "assistant":
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking..."):
+            response = generate_llama2_response(prompt)
+            placeholder = st.empty()
+            full_response = ''
+            for item in response:
+                full_response += item
+                placeholder.markdown(full_response)
+            placeholder.markdown(full_response)
+    message = {"role": "assistant", "content": full_response}
+    st.session_state.messages.append(message)</code></pre><h3 id="31-model-setup">3.1 Model Setup</h3><p>In the code, firstly tweak the params per your hardware, models and objectives:</p><pre><code class="language-py">llama_model_path = 'llama-2-7b-chat.Q5_0.gguf'
+
+n_gpu_layers = 40  # Change this value based on your model and your GPU VRAM pool.
+n_batch = 512  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.</code></pre><p>The free version of Colab does not too much memory so here the&nbsp;<code>llama-2-7b-chat.Q5_0.gguf</code>&nbsp;is used but you can use a larger model for better performance.</p><h3 id="32-message-management">3.2 Message Management</h3><p>Then, these are the setup for the display/clear of messages of the chatbot:</p><pre><code class="language-py"># Store LLM generated responses
+if "messages" not in st.session_state.keys():
+    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+
+# Display or clear chat messages
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.write(message["content"])
+
+def clear_chat_history():
+    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+st.sidebar.button('Clear Chat History', on_click=clear_chat_history)</code></pre><h3 id="33-get-llm-response">3.3 Get LLM Response</h3><p>Below function appends the chat history into the prompt and get the response of model:</p><pre><code class="language-py">def generate_llama2_response(prompt_input):
+
+    pre_prompt = """[INST] &lt;&lt;SYS&gt;&gt;
+                  You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.
+
+                  If you cannot answer the question from the given documents, please state that you do not have an answer.\n
+                  """
+
+
+    for dict_message in st.session_state.messages:
+        if dict_message["role"] == "user":
+            pre_prompt += "User: " + dict_message["content"] + "\n\n"
+        else:
+            pre_prompt += "Assistant: " + dict_message["content"] + "\n\n"
+
+    prompt = pre_prompt +  "User : {question}" + "[\INST]"
+    llama_prompt = PromptTemplate(template=prompt, input_variables=["question"])
+
+    chain = LLMChain(llm=llm, prompt=llama_prompt)
+
+    result = chain({
+                "question": prompt_input
+                 })
+
+
+    return result['text']</code></pre><h3 id="34-conversation">3.4 Conversation</h3><p>Below shows the question and answering process, the chatbot responses to users' questions:</p><pre><code class="language-py"># User-provided prompt
+if prompt := st.chat_input():
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.write(prompt)
+
+# Generate a new response if last message is not from assistant
+if st.session_state.messages[-1]["role"] != "assistant":
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking..."):
+            response = generate_llama2_response(prompt)
+            placeholder = st.empty()
+            full_response = ''
+            for item in response:
+                full_response += item
+                placeholder.markdown(full_response)
+            placeholder.markdown(full_response)
+    message = {"role": "assistant", "content": full_response}
+    st.session_state.messages.append(message)</code></pre><h2 id="4-start-the-chatbot">4 Start the Chatbot</h2><p>You can bring up the chatbot by using below command:</p><pre><code class="language-py">!streamlit run app.py --server.address=localhost &amp;&gt;/content/logs.txt &amp;
+
+import urllib
+print("Password/Enpoint IP for localtunnel is:",urllib.request.urlopen('https://ipv4.icanhazip.com').read().decode('utf8').strip("\n"))
+
+!npx localtunnel --port 8501</code></pre><p>The result shows a password to access the web app:</p><pre><code class="language-py">Password/Enpoint IP for localtunnel is: 35.185.197.1
+npx: installed 22 in 2.393s
+your url is: https://hot-pets-chew.loca.lt</code></pre><p>Go to that url and enter the password, and enjoy the time!</p><h2 id="5-conclusion">5 Conclusion</h2><p>This post consolidates information to transform your local Llama 2 model into a fully functional chatbot. Moreover, you have the flexibility to craft specialized assistants for distinct domains by customizing the system prompts, all at no additional cost.</p><p>Let's build something cool!</p>
         </div>
 
         <div class="pagination-container gh-canvas">
         <nav class="pagination">
 
             <div class="pagination-left">
-                    <a class="newer-posts" href="../neo4j-graph-database-anti-fraud-analysis-practice-part-1-building-analysis-environment.html">
+                    <a class="newer-posts" href="../question-answering-on-multiple-files-with-llama-2-and-rag/index.html">
                         <span class="pagination-label">Previous</span>
-                        Neo4J Graph Database Anti-Fraud Analysis in Practice (I) - Set Up Analysis Environment
+                        Question Answering on Multiple Files with Llama 2 and RAG
                     </a>
             </div>
 
             <div class="pagination-right">
-                    <a class="older-posts" href="../neo4j-graph-database-anti-fraud-analysis-practice-iii-identifying-criminal-groups-2/index.html">
-                        <span class="pagination-label">Next</span>
-                        Neo4J Graph Database Anti-Fraud Analysis in Practice (III) - Identifying Criminal Groups
-                    </a>
             </div>
 
         </nav>
@@ -499,7 +618,7 @@ RETURN type(r)
 
             <div class="gh-comments gh-canvas">
                 
-        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668a1b22ac15d470add4a2bf" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.17/umd/comments-ui.min.js" data-ghost-comments="https://realvincentyuan.github.io/Spacecraft/" data-api="https://realvincentyuan.github.io/Spacecraft/ghost/api/content/" data-admin="https://realvincentyuan.github.io/Spacecraft/ghost/" data-key="59658b4dc0364cacbc3332171d" data-title="null" data-count="true" data-post-id="668afae6ac15d470add4a506" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0f69c2" data-comments-enabled="all" data-publication="Spacecraft" crossorigin="anonymous"></script>
     
             </div>
 
@@ -516,7 +635,7 @@ RETURN type(r)
             </div>
                 <nav class="gh-foot-menu">
                     <ul class="nav">
-    <li class="nav-sign-up"><a href="../neo4j-graph-database-anti-fraud-analysis-in-practice-part-2-prepare-data.html#/portal/">Sign up</a></li>
+    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
 </ul>
 
                 </nav>
