@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Risk Mitigation in the MANIC Payment Scheme: A Component-Level Analysis</title>
+    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=601a53df09.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
+
+    <style>
+        .gh-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /*-- Remove underline in the TOC text  */
+        .gh-content a {
+            text-decoration: none;
+        }
+
+        .gh-content img{
+            position: relative;
+            z-index: 2;
+        }
+
+        .gh-toc > .toc-list {
+            position: relative;
+            
+        }
+
+        .toc-list {
+            overflow: hidden;
+            list-style: none;
+            left: 20%;
+
+        }
+
+        @media (min-width: 1300px) {
+            .gh-sidebar {
+                position: absolute; 
+                top: 0;
+                bottom: 0;
+                margin-top: 4vmin;
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
+            }
+        
+            .gh-toc {
+                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+                top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: 1; 
+
+            }
+        }
+
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
+        .gh-toc .is-active-link::before {
+            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
+
+        } 
+    </style>
+
+    <meta name="description" content="Risk Mitigation in the MANIC Payment Scheme.">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Spacecraft">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Risk Mitigation in the MANIC Payment Scheme: A Component-Level Analysis">
+    <meta property="og:description" content="Risk Mitigation in the MANIC Payment Scheme.">
+    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/risk-mitigation-in-the-manic-payment-scheme-a-component-level-analysis/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2025-04-27T19:41:22.000Z">
+    <meta property="article:modified_time" content="2025-04-27T19:41:22.000Z">
+    <meta property="article:tag" content="Pro">
+    <meta property="article:tag" content="Payment">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Risk Mitigation in the MANIC Payment Scheme: A Component-Level Analysis">
+    <meta name="twitter:description" content="Risk Mitigation in the MANIC Payment Scheme.">
+    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/risk-mitigation-in-the-manic-payment-scheme-a-component-level-analysis/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Vincent Yuan">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Pro, Payment">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Spacecraft",
+        "url": "https://realvincentyuan.github.io/Spacecraft/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Vincent Yuan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar.png",
+            "width": 752,
+            "height": 752
+        },
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
+        "sameAs": []
+    },
+    "headline": "Risk Mitigation in the MANIC Payment Scheme: A Component-Level Analysis",
+    "url": "https://realvincentyuan.github.io/Spacecraft/risk-mitigation-in-the-manic-payment-scheme-a-component-level-analysis/",
+    "datePublished": "2025-04-27T19:41:22.000Z",
+    "dateModified": "2025-04-27T19:41:22.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 1200,
+        "height": 800
+    },
+    "keywords": "Pro, Payment",
+    "description": "Risk Mitigation in the MANIC Payment Scheme.",
+    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/risk-mitigation-in-the-manic-payment-scheme-a-component-level-analysis/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.87">
+    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    
+    <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=601a53df09"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=601a53df09.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-633EG809GP');
+</script>
+
+<!-- Reading progress bar -->
+<style>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 5px; /* Progress bar height */
+  background: #c5d2d9; /* Progress bar background color */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Hide default progress bar */
+}
+
+.reading-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+  background: var(--ghost-accent-color); /* Progress bar color */
+}
+</style>
+
+
+<!--   Scroll Top Button  -->
+<style>
+    /*Scroll to Top CSS*/
+    .scroll-top {
+		position: fixed;
+ 		z-index: 50;
+		padding: 0;
+		right: 30px;
+		bottom: 100px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(15px);    
+		height: 46px;
+		width: 46px;
+		cursor: pointer;
+		display: flex;
+  		align-items: center;
+  		justify-content: center;
+		border-radius: 50%;
+  	transition: all .4s ease;
+  	border: none;
+  	box-shadow: inset 0 0 0 2px #ccc;
+  	color: #ccc;
+  	background-color: #fff;
+	}
+
+	.scroll-top.is-active {
+		opacity: 1;
+  		visibility: visible;
+  		transform: translateY(0);
+	}
+
+	.scroll-top .icon-tabler-arrow-up {
+  		position: absolute;
+  		stroke-width: 2px;
+  		stroke: #333;
+	}
+
+	.scroll-top svg path { 
+		fill: none; 
+	}
+
+	.scroll-top svg.progress-circle path {
+		stroke: #333;
+		stroke-width: 4;
+  		transition: all .4s ease;
+	}
+
+	.scroll-top:hover {
+  		color: var(--ghost-accent-color);
+	}
+
+	.scroll-top:hover .progress-circle path, .scroll-top:hover .icon-tabler-arrow-up {
+  		stroke: var(--ghost-accent-color);
+	}
+          
+</style>
+
+    <button class="btn-toggle-round scroll-top js-scroll-top" type="button" title="Scroll to top">
+      <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="cuurentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="18" y1="11" x2="12" y2="5" />
+        <line x1="6" y1="11" x2="12" y2="5" />
+      </svg>
+    </button>
+
+
+
+<!-- Code highlights -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="post-template tag-pro tag-payment  is-head-middle-logo has-serif-title has-serif-body">
+<div class="site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="../index.html">
+                            Spacecraft
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
+    <li class="nav-profession"><a href="../tag/pro/index.html">Profession</a></li>
+    <li class="nav-life"><a href="../tag/life/index.html">Life</a></li>
+    <li class="nav-about"><a href="../about/index.html">About</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="site-content">
+        
+<main class="site-main">
+
+
+    <article class="post tag-pro tag-payment featured">
+
+        <header class="gh-article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+                <span class="post-card-featured"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4.49365 4.58752C3.53115 6.03752 2.74365 7.70002 2.74365 9.25002C2.74365 10.6424 3.29678 11.9778 4.28134 12.9623C5.26591 13.9469 6.60127 14.5 7.99365 14.5C9.38604 14.5 10.7214 13.9469 11.706 12.9623C12.6905 11.9778 13.2437 10.6424 13.2437 9.25002C13.2437 6.00002 10.9937 3.50002 9.16865 1.68127L6.99365 6.25002L4.49365 4.58752Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg> Featured</span>
+        </div>
+
+            <h1 class="gh-article-title">Risk Mitigation in the MANIC Payment Scheme: A Component-Level Analysis</h1>
+
+            <div class="post-meta">
+                <a href="../author/vincent/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
+                <time datetime="2025-04-27">Apr 27, 2025</time>&nbsp;·&nbsp;<span class="gh-card-length">3 min read</span>
+            </div>
+
+            <div class="post-meta">
+                    <a class="post-tag tag-pro" href="../tag/pro/index.html" title="Pro">Pro</a>
+                    <a class="post-tag tag-payment" href="../tag/payment/index.html" title="Payment">Payment</a>
+            </div>
+
+                <figure class="gh-article-image">
+        <img
+            class="post-image"
+            srcset="https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+                    https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            sizes="(min-width: 1200px) 960px, 92vw"
+            src="https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+            alt="Risk Mitigation in the MANIC Payment Scheme: A Component-Level Analysis"
+        >
+            <figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@vincentyuan87?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Vincent Yuan @USA</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption>
+    </figure>
+        </header>
+
+        <div class="gh-content gh-canvas">
+
+            <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
+
+            <figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="../the-manic-scheme-in-payment-networksrehensive-analysis-of-transaction-ecosystems/index.html"><div class="kg-bookmark-content"><div class="kg-bookmark-title">The MANIC Scheme in Payment Networks: A Comprehensive Analysis of Transaction Ecosystems</div><div class="kg-bookmark-description">A Comprehensive Analysis of Transaction Ecosystems.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="../favicon.ico" alt=""><span class="kg-bookmark-author">Spacecraft</span><span class="kg-bookmark-publisher">Vincent Yuan</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://images.unsplash.com/photo-1703693220546-498e09d5ec33?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDYzfHx2eTEyMTh8ZW58MHx8fHwxNzQ1NzY4MjU1fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt=""></div></a></figure><p>The MANIC framework’s interconnected structure introduces risks at every node, from merchant fraud to network vulnerabilities. Below, we dissect risks specific to each participant and outline mitigation strategies informed by industry practices and technological innovations.</p><h3 id="1-merchant-risks">1. <strong>Merchant Risks</strong></h3><p><strong>Primary Threats</strong>:</p><ul><li><strong>Chargebacks</strong>: High dispute rates (e.g., ≥1% of transactions) trigger penalties and account termination.</li><li><strong>Data Breaches</strong>: Weak PCI DSS compliance exposes cardholder data to theft.</li><li><strong>Reputational Risk</strong>: Association with fraudulent or high-risk industries (e.g., CBD, gambling).</li></ul><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">PCI DSS (Payment Card Industry Data Security Standard) compliance refers to a set of security standards designed to protect cardholder data across payment networks. It is a framework of best practices and guidelines established by the PCI Security Standards Council to ensure that all organizations handling credit card and payment data maintain secure systems and processes to protect that data from fraud, breaches, and theft.</div></div><p><strong>Mitigation Strategies</strong>:</p><ul><li><strong>Dynamic Fraud Detection</strong>: Deploy AI-driven tools (e.g., NMI’s machine learning models) to flag suspicious transactions using behavioral analytics (typing speed, device fingerprints).</li><li><strong>Tokenization</strong>: Replace sensitive data with tokens to reduce breach impact.</li><li><strong>Rolling Reserves</strong>: Maintain 5–10% of transaction volume in reserve accounts to offset chargeback liabilities.</li></ul><h3 id="2-acquiring-bank-risks">2. <strong>Acquiring Bank Risks</strong></h3><p><strong>Primary Threats</strong>:</p><ul><li><strong>Merchant Default</strong>: High-risk merchants (e.g., those in crypto) may suddenly cease operations, leaving unresolved chargebacks.</li><li><strong>Compliance Failures</strong>: Violations of AML/KYC regulations incur fines up to $1M per incident.</li></ul><p><strong>Mitigation Strategies</strong>:</p><ul><li><strong>Enhanced Underwriting</strong>: Use AI underwriting tools to assess merchant credit scores, industry risk tiers, and transaction history.</li><li><strong>Real-Time Monitoring</strong>: Track chargeback ratios and transaction velocity via platforms like Stax, triggering alerts for anomalies (e.g., &gt;50% MoM volume spikes).</li><li><strong>Contractual Safeguards</strong>: Enforce early termination clauses for merchants exceeding agreed chargeback thresholds.</li></ul><h3 id="3-network-risks">3. <strong>Network Risks</strong></h3><p><strong>Primary Threats</strong>:</p><ul><li><strong>Illicit Use</strong>: Money laundering via prepaid cards or anonymized transactions.</li><li><strong>Operational Disruptions</strong>: Downtime in clearing systems (e.g., VisaNet outages) halts global transactions.</li></ul><p><strong>Mitigation Strategies</strong>:</p><ul><li><strong>Link Analysis</strong>: Map transactional relationships to uncover fraud rings (e.g., detecting mule accounts funding terror groups).</li><li><strong>MACH Architecture</strong>: Adopt cloud-native, microservices-based systems (e.g., Visa Direct) for 99.999% uptime and rapid failover.</li><li><strong>Geo-Blocking</strong>: Restrict transactions from high-risk jurisdictions flagged in OFAC lists.</li></ul><h3 id="4-issuing-bank-risks">4. <strong>Issuing Bank Risks</strong></h3><p><strong>Primary Threats</strong>:</p><ul><li><strong>Credit Risk</strong>: Cardholder defaults (e.g., 3.5% delinquency rates in Q1 2025).</li><li><strong>Account Takeovers</strong>: Stolen credentials used for unauthorized purchases.</li></ul><p><strong>Mitigation Strategies</strong>:</p><ul><li><strong>Behavioral Biometrics</strong>: Deploy passive authentication via typing cadence or screen-touch pressure analysis.</li><li><strong>Dynamic Credit Limits</strong>: Adjust spending caps in real-time based on cardholder income signals (e.g., Plaid’s cash flow verification).</li><li><strong>3D Secure 2.0</strong>: Mandate biometric authentication for high-value online transactions.</li></ul><h3 id="5-customer-risks">5. <strong>Customer Risks</strong></h3><p><strong>Primary Threats</strong>:</p><ul><li><strong>Identity Theft</strong>: Stolen card details sold on dark web markets (e.g., $40 avg. price per credit card dump).</li><li><strong>Friendly Fraud</strong>: False chargeback claims (“item not received”) cost merchants $25B annually.</li></ul><p><strong>Mitigation Strategies</strong>:</p><ul><li><strong>EMV® 3-D Secure</strong>: Shift liability to issuers via cryptogram-based authentication.</li><li><strong>Transactional Transparency</strong>: Provide real-time SMS updates with delivery tracking links to deter false disputes.</li><li><strong>Education Campaigns</strong>: Teach customers to recognize phishing attempts via issuer-branded tutorials.</li></ul><h2 id="cross-component-risk-synergies">Cross-Component Risk Synergies</h2>
+<!--kg-card-begin: html-->
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Risk Type</th>
+<th style="text-align:left">Collaborative Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Data Breaches</strong></td>
+<td style="text-align:left">End-to-end encryption (E2EE) across MANIC nodes, audited quarterly via PCI DSS-certified tools.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Money Laundering</strong></td>
+<td style="text-align:left">Shared blockchain ledgers between issuers and networks for immutable transaction tracing.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Systemic Fraud</strong></td>
+<td style="text-align:left">Federated machine learning models pooling anonymized data from acquirers and networks.</td>
+</tr>
+</tbody>
+</table>
+<!--kg-card-end: html-->
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://images.unsplash.com/photo-1726137570741-ed4306ce2904?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8c2VhcmNofDh8fGNyZWRpdCUyMGNhcmR8ZW58MHx8fHwxNzQ1NzgyODM4fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" class="kg-image" alt="A person holding a credit card in front of a computer" loading="lazy" width="6000" height="4000" srcset="https://images.unsplash.com/photo-1726137570741-ed4306ce2904?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8c2VhcmNofDh8fGNyZWRpdCUyMGNhcmR8ZW58MHx8fHwxNzQ1NzgyODM4fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=600 600w, https://images.unsplash.com/photo-1726137570741-ed4306ce2904?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8c2VhcmNofDh8fGNyZWRpdCUyMGNhcmR8ZW58MHx8fHwxNzQ1NzgyODM4fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1000 1000w, https://images.unsplash.com/photo-1726137570741-ed4306ce2904?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8c2VhcmNofDh8fGNyZWRpdCUyMGNhcmR8ZW58MHx8fHwxNzQ1NzgyODM4fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1600 1600w, https://images.unsplash.com/photo-1726137570741-ed4306ce2904?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8c2VhcmNofDh8fGNyZWRpdCUyMGNhcmR8ZW58MHx8fHwxNzQ1NzgyODM4fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2400 2400w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@sumup?ref=localhost"><span style="white-space: pre-wrap;">SumUp</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption></figure><h2 id="future-proofing-the-manic-model">Future-Proofing the MANIC Model</h2><ul><li><strong>Quantum-Resistant Cryptography</strong>: Preparing for Y2Q threats with lattice-based algorithms (NIST-standardized by 2026).</li><li><strong>Decentralized Identity</strong>: Letting customers control data via self-sovereign wallets (e.g., Mastercard’s ID Service).</li><li><strong>AI Co-Pilots</strong>: Tools like Stripe Radar 2.0 auto-negotiate chargebacks using generative AI for evidence compilation.</li></ul><p>By layering these technical, contractual, and educational safeguards, stakeholders can reduce MANIC-related losses by 40–60% while maintaining transaction velocity. However, balancing security with user experience remains pivotal—overly stringent measures (e.g., step-up auth for $10 purchases) risk cart abandonment rates exceeding 35%.</p>
+        </div>
+
+        <div class="pagination-container gh-canvas">
+        <nav class="pagination">
+
+            <div class="pagination-left">
+                    <a class="newer-posts" href="../the-manic-scheme-in-payment-networksrehensive-analysis-of-transaction-ecosystems/index.html">
+                        <span class="pagination-label">Previous</span>
+                        The MANIC Scheme in Payment Networks: A Comprehensive Analysis of Transaction Ecosystems
+                    </a>
+            </div>
+
+            <div class="pagination-right">
+            </div>
+
+        </nav>
+        </div>
+
+
+    </article>
+
+
+</main>
+    </div>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <div class="gh-copyright">
+                Spacecraft © 2025
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
+    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+</ul>
+
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="../assets/built/main.min.js%3Fv=601a53df09"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
+
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+
+        orderedList: false,
+    });
+</script>
+
+
+<!-- Code highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!--   Scroll Top Button  -->
+<script>
+const scrollTopBtn = document.querySelector('.js-scroll-top');
+if (scrollTopBtn) {
+  scrollTopBtn.onclick = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  
+  const progressPath = document.querySelector('.scroll-top path');
+  const pathLength = progressPath.getTotalLength();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+  progressPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+  progressPath.style.strokeDashoffset = pathLength;
+  progressPath.getBoundingClientRect();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';		
+  const updateProgress = function() {
+    const scroll = window.scrollY || window.scrollTopBtn || document.documentElement.scrollTopBtn;
+
+    const docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+    const height = docHeight - windowHeight;
+    var progress = pathLength - (scroll * pathLength / height);
+    progressPath.style.strokeDashoffset = progress;
+  }
+
+  updateProgress();
+  const offset = 100;
+
+  window.addEventListener('scroll', function(event) {
+    updateProgress();
+
+    //Scroll back to top
+    const scrollPos = window.scrollY || window.scrollTopBtn || document.getElementsByTagName('html')[0].scrollTopBtn;
+    scrollPos > offset ? scrollTopBtn.classList.add('is-active') : scrollTopBtn.classList.remove('is-active');
+
+  }, false);
+}
+</script>
+
+</body>
+</html>
