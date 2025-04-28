@@ -43,5 +43,5 @@ LC_ALL=C find ./docs -type f -not -wholename *.git* -exec sed -i '' -e 's,http:/
 
 # Commit changes
 git add --all docs/*
-git commit -m 'Update blogs'
+git commit -m "Update blogs - $(date '+%Y-%m-%d %H:%M:%S')"
 git push origin main
