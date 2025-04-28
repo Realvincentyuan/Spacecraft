@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Running this shell script will retrieve the blog content from Ghost and save it to the docs folder
+
 # Define urls and https
 from_url=http://localhost:2368
 to_url=https://realvincentyuan.github.io/Spacecraft
