@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Service Provider Case Study: Airwallex - Part 2</title>
+    <link rel="stylesheet" href="../assets/built/screen.css%3Fv=077dc313fa.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
+
+    <style>
+        .gh-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /*-- Remove underline in the TOC text  */
+        .gh-content a {
+            text-decoration: none;
+        }
+
+        .gh-content img{
+            position: relative;
+            z-index: 2;
+        }
+
+        .gh-toc > .toc-list {
+            position: relative;
+            
+        }
+
+        .toc-list {
+            overflow: hidden;
+            list-style: none;
+            left: 20%;
+
+        }
+
+        @media (min-width: 1300px) {
+            .gh-sidebar {
+                position: absolute; 
+                top: 0;
+                bottom: 0;
+                margin-top: 4vmin;
+                /* grid-column: wide-start / main-start;  Place the TOC to the left of the content */
+                grid-column: main-end / wide-end ; /* Place the TOC to the right of the content */
+
+            }
+        
+            .gh-toc {
+                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+                top: 4vmin;
+
+                /*-- Send the TOC to the back, in case it is overlapped with images  */
+                z-index: 1; 
+
+            }
+        }
+
+        /*-- Hide TOC on mobile devices */
+        @media (max-width: 768px) {
+            .gh-toc {
+                display: none;
+            }
+        }
+
+        .gh-toc .is-active-link::before {
+            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
+
+        } 
+    </style>
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Spacecraft">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Payment Service Provider Case Study: Airwallex - Part 2">
+    <meta property="og:description" content="Last part, the most important services that Airwallex provides have been briefed.
+
+Payment Service Provider Case Study: Airwallex - Part 1Airwallex is a financial technology (fintech) platform that provides cross-border payment solutions and financial services for businesses. Founded in 2015 in Melbourne, Australia, it has quickly grown into a global">
+    <meta property="og:url" content="https://realvincentyuan.github.io/Spacecraft/payment-service-provider-case-study-airwallex-part-2/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2025-05-04T02:26:02.000Z">
+    <meta property="article:modified_time" content="2025-05-04T02:26:02.000Z">
+    <meta property="article:tag" content="Pro">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Payment Service Provider Case Study: Airwallex - Part 2">
+    <meta name="twitter:description" content="Last part, the most important services that Airwallex provides have been briefed.
+
+Payment Service Provider Case Study: Airwallex - Part 1Airwallex is a financial technology (fintech) platform that provides cross-border payment solutions and financial services for businesses. Founded in 2015 in Melbourne, Australia, it has quickly grown into a global">
+    <meta name="twitter:url" content="https://realvincentyuan.github.io/Spacecraft/payment-service-provider-case-study-airwallex-part-2/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Vincent Yuan">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Pro">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="750">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Spacecraft",
+        "url": "https://realvincentyuan.github.io/Spacecraft/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Vincent Yuan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://realvincentyuan.github.io/Spacecraft/content/images/2024/07/avatar.png",
+            "width": 752,
+            "height": 752
+        },
+        "url": "https://realvincentyuan.github.io/Spacecraft/author/vincent/",
+        "sameAs": []
+    },
+    "headline": "Payment Service Provider Case Study: Airwallex - Part 2",
+    "url": "https://realvincentyuan.github.io/Spacecraft/payment-service-provider-case-study-airwallex-part-2/",
+    "datePublished": "2025-05-04T02:26:02.000Z",
+    "dateModified": "2025-05-04T02:26:02.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 1200,
+        "height": 750
+    },
+    "keywords": "Pro",
+    "description": "Last part, the most important services that Airwallex provides have been briefed.\n\nPayment Service Provider Case Study: Airwallex - Part 1Airwallex is a financial technology (fintech) platform that provides cross-border payment solutions and financial services for businesses. Founded in 2015 in Melbourne, Australia, it has quickly grown into a global platform that helps companies manage international payments, treasury, and expenses. Though not a bank, Airwallex is licensed and regulated toSpace",
+    "mainEntityOfPage": "https://realvincentyuan.github.io/Spacecraft/payment-service-provider-case-study-airwallex-part-2/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.87">
+    <link rel="alternate" type="application/rss+xml" title="Spacecraft" href="../rss/index.html">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="59658b4dc0364cacbc3332171d" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://realvincentyuan.github.io/Spacecraft/" crossorigin="anonymous"></script>
+    
+    <link href="https://realvincentyuan.github.io/Spacecraft/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=077dc313fa"></script><style>:root {--ghost-accent-color: #0f69c2;}</style>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=077dc313fa.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-633EG809GP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-633EG809GP');
+</script>
+
+<!-- Reading progress bar -->
+<style>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 5px; /* Progress bar height */
+  background: #c5d2d9; /* Progress bar background color */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Hide default progress bar */
+}
+
+.reading-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+  background: var(--ghost-accent-color); /* Progress bar color */
+}
+</style>
+
+
+<!--   Scroll Top Button  -->
+<style>
+    /*Scroll to Top CSS*/
+    .scroll-top {
+		position: fixed;
+ 		z-index: 50;
+		padding: 0;
+		right: 30px;
+		bottom: 100px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(15px);    
+		height: 46px;
+		width: 46px;
+		cursor: pointer;
+		display: flex;
+  		align-items: center;
+  		justify-content: center;
+		border-radius: 50%;
+  	transition: all .4s ease;
+  	border: none;
+  	box-shadow: inset 0 0 0 2px #ccc;
+  	color: #ccc;
+  	background-color: #fff;
+	}
+
+	.scroll-top.is-active {
+		opacity: 1;
+  		visibility: visible;
+  		transform: translateY(0);
+	}
+
+	.scroll-top .icon-tabler-arrow-up {
+  		position: absolute;
+  		stroke-width: 2px;
+  		stroke: #333;
+	}
+
+	.scroll-top svg path { 
+		fill: none; 
+	}
+
+	.scroll-top svg.progress-circle path {
+		stroke: #333;
+		stroke-width: 4;
+  		transition: all .4s ease;
+	}
+
+	.scroll-top:hover {
+  		color: var(--ghost-accent-color);
+	}
+
+	.scroll-top:hover .progress-circle path, .scroll-top:hover .icon-tabler-arrow-up {
+  		stroke: var(--ghost-accent-color);
+	}
+          
+</style>
+
+    <button class="btn-toggle-round scroll-top js-scroll-top" type="button" title="Scroll to top">
+      <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="cuurentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="18" y1="11" x2="12" y2="5" />
+        <line x1="6" y1="11" x2="12" y2="5" />
+      </svg>
+    </button>
+
+
+
+<!-- Code highlights -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="post-template tag-pro  is-head-middle-logo has-serif-title has-serif-body">
+<div class="site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="../index.html">
+                            Spacecraft
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-tech"><a href="../tag/tech/index.html">Tech</a></li>
+    <li class="nav-profession"><a href="../tag/pro/index.html">Profession</a></li>
+    <li class="nav-life"><a href="../tag/life/index.html">Life</a></li>
+    <li class="nav-about"><a href="../about/index.html">About</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="site-content">
+        
+<main class="site-main">
+
+
+    <article class="post tag-pro">
+
+        <header class="gh-article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+        </div>
+
+            <h1 class="gh-article-title">Payment Service Provider Case Study: Airwallex - Part 2</h1>
+
+            <div class="post-meta">
+                <a href="../author/vincent/index.html">Vincent Yuan</a>&nbsp;·&nbsp;updated on&nbsp;
+                <time datetime="2025-05-03">May 3, 2025</time>&nbsp;·&nbsp;<span class="gh-card-length">4 min read</span>
+            </div>
+
+            <div class="post-meta">
+                    <a class="post-tag tag-pro" href="../tag/pro/index.html" title="Pro">Pro</a>
+            </div>
+
+                <figure class="gh-article-image">
+        <img
+            class="post-image"
+            srcset="https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                    https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+                    https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
+                    https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+            sizes="(min-width: 1200px) 960px, 92vw"
+            src="https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+            alt="Payment Service Provider Case Study: Airwallex - Part 2"
+        >
+            <figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@cardmapr?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">CardMapr.nl</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption>
+    </figure>
+        </header>
+
+        <div class="gh-content gh-canvas">
+
+            <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
+
+            <p>Last part, the most important services that Airwallex provides have been briefed.</p><figure class="kg-card kg-bookmark-card kg-card-hascaption"><a class="kg-bookmark-container" href="../case-study-airwallex/index.html"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Payment Service Provider Case Study: Airwallex - Part 1</div><div class="kg-bookmark-description">Airwallex is a&nbsp;financial technology (fintech) platform&nbsp;that provides cross-border payment solutions and financial services for businesses.&nbsp;Founded in 2015 in Melbourne, Australia, it has quickly grown into a global platform that helps companies manage international payments, treasury, and expenses. Though not a bank, Airwallex is licensed and regulated to</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="../favicon.ico" alt=""><span class="kg-bookmark-author">Spacecraft</span><span class="kg-bookmark-publisher">Vincent Yuan</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGFwcGxlJTIwd2FsbGV0fGVufDB8fHx8MTc0NjMwMDgxOHww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt=""></div></a><figcaption><p><span style="white-space: pre-wrap;">Most Important Services of Airwallex</span></p></figcaption></figure><p>It is to dive deeper into how Airwallex ensures security for its services as this is one of the most critical cornerstones of a financial services company. Airwallex has established a multi-layered security architecture that combines regulatory compliance, advanced technological safeguards, and proactive threat management to protect its global financial platform. The company's approach addresses both technical vulnerabilities and operational risks through seven key pillars of security.</p><h2 id="1-regulatory-compliance-and-certifications">1. Regulatory Compliance and Certifications</h2><p>Airwallex maintains the highest international security certifications, demonstrating third-party validation of its controls:</p><h3 id="11-payment-card-industry-compliance">1.1 Payment Card Industry Compliance</h3><p>As a PCI-DSS Level 1 certified service provider, Airwallex adheres to strict requirements for payment card data protection, including secure network architecture and regular vulnerability testing. This certification covers all card processing activities and requires annual audits by qualified security assessors.</p><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">PCI DSS stands for&nbsp;Payment Card Industry Data Security Standard.&nbsp;It's a global standard designed to protect credit card data and ensure the secure handling of payment card information by businesses.&nbsp;Essentially, it's a set of rules and guidelines that organizations must follow to safeguard cardholder data and prevent fraud.&nbsp;</div></div><h3 id="12-information-security-management">1.2 Information Security Management</h3><p>The company holds <code>ISO 27001 certification</code>, implementing systematic controls for data confidentiality, integrity, and availability through risk assessments and security measures. This framework governs how Airwallex manages sensitive information across its global operations.</p><h3 id="13-financial-services-auditing">1.3 Financial Services Auditing</h3><p>Regular SOC 2 Type II audits validate the effectiveness of Airwallex's security controls related to availability, processing integrity, and confidentiality. Ernst &amp; Young conducts these assessments annually, with reports available through Airwallex's security portal.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://images.unsplash.com/photo-1632152133952-98b268dc4b86?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxwYXBlcndvcmt8ZW58MHx8fHwxNzQ2MzIzODQ0fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" class="kg-image" alt="a wooden table topped with papers and a pen" loading="lazy" width="3515" height="2344" srcset="https://images.unsplash.com/photo-1632152133952-98b268dc4b86?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxwYXBlcndvcmt8ZW58MHx8fHwxNzQ2MzIzODQ0fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=600 600w, https://images.unsplash.com/photo-1632152133952-98b268dc4b86?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxwYXBlcndvcmt8ZW58MHx8fHwxNzQ2MzIzODQ0fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1000 1000w, https://images.unsplash.com/photo-1632152133952-98b268dc4b86?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxwYXBlcndvcmt8ZW58MHx8fHwxNzQ2MzIzODQ0fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1600 1600w, https://images.unsplash.com/photo-1632152133952-98b268dc4b86?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxwYXBlcndvcmt8ZW58MHx8fHwxNzQ2MzIzODQ0fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2400 2400w" sizes="(min-width: 1200px) 1200px"><figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@2hmedia?ref=localhost"><span style="white-space: pre-wrap;">2H Media</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption></figure><h2 id="2-technical-security-infrastructure">2. Technical Security Infrastructure</h2><h3 id="21-encryption-protocols">2.1 Encryption Protocols</h3><p>All customer data undergoes dual encryption using TLS v1.2 for data in transit and AES-256 for data at rest. This ensures protection against interception during transmission and unauthorized access to stored information, meeting banking-grade security standards.</p><h3 id="22-access-management">2.2 Access Management</h3><p>A mandatory two-factor authentication (2FA) system requires mobile device verification for all account logins. The platform implements role-based access controls with audit logging, while privileged access requires justification and time-bound approvals.</p><h3 id="23-network-protection">2.3 Network Protection</h3><p>Airwallex employs a defense-in-depth network strategy featuring:</p><ul><li>Next-generation firewalls with intrusion prevention systems</li><li>Distributed denial-of-service (DDoS) mitigation through cloud-based scrubbing centers</li><li>Continuous traffic monitoring using machine learning anomaly detection</li></ul><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDg3fHx0ZWNofGVufDB8fHx8MTc0NjMyMzg5M3ww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" class="kg-image" alt="cable network" loading="lazy" width="3956" height="2220" srcset="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDg3fHx0ZWNofGVufDB8fHx8MTc0NjMyMzg5M3ww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=600 600w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDg3fHx0ZWNofGVufDB8fHx8MTc0NjMyMzg5M3ww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1000 1000w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDg3fHx0ZWNofGVufDB8fHx8MTc0NjMyMzg5M3ww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1600 1600w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDg3fHx0ZWNofGVufDB8fHx8MTc0NjMyMzg5M3ww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2400 2400w" sizes="(min-width: 1200px) 1200px"><figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@tvick?ref=localhost"><span style="white-space: pre-wrap;">Taylor Vick</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption></figure><h2 id="3-fraud-prevention-mechanisms">3. Fraud Prevention Mechanisms</h2><h3 id="31-real-time-detection-systems">3.1 Real-Time Detection Systems</h3><p>Machine learning models analyze transaction patterns across 150+ billion annual data points, identifying fraudulent activity within 500 milliseconds. The system incorporates behavioral biometrics and device fingerprinting to detect account takeover attempts.</p><h3 id="32-identity-verification">3.2 Identity Verification</h3><p>Integration with Trulioo's platform enables:</p><ul><li>Document verification with liveness detection</li><li>Facial recognition biometric matching</li><li>Global watchlist screening against PEPs and sanctions lists<br>This layered approach reduces synthetic identity fraud by 68% compared to industry averages.</li></ul><h3 id="33-card-security-measures">3.3 Card Security Measures</h3><p>All card transactions utilize 3D Secure 2.0 authentication and tokenization. The platform's AI detects card-not-present fraud with 99.2% accuracy while maintaining sub-second authorization times.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://images.unsplash.com/photo-1733506260469-8a6a07d95051?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDYzMjIzODR8&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" class="kg-image" alt="A person holding a card next to a plate of cookies" loading="lazy" width="6192" height="4128" srcset="https://images.unsplash.com/photo-1733506260469-8a6a07d95051?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDYzMjIzODR8&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=600 600w, https://images.unsplash.com/photo-1733506260469-8a6a07d95051?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDYzMjIzODR8&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1000 1000w, https://images.unsplash.com/photo-1733506260469-8a6a07d95051?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDYzMjIzODR8&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1600 1600w, https://images.unsplash.com/photo-1733506260469-8a6a07d95051?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDYzMjIzODR8&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2400 2400w" sizes="(min-width: 1200px) 1200px"><figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@sumup?ref=localhost"><span style="white-space: pre-wrap;">SumUp</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption></figure><h2 id="4-data-protection-practices">4. Data Protection Practices</h2><h3 id="41-segregation-architecture">4.1 Segregation Architecture</h3><p>Customer funds reside in segregated accounts at partner banks like JP Morgan and Standard Chartered, separate from operational accounts. Daily reconciliation processes ensure transaction integrity across 13 banking jurisdictions.</p><h3 id="42-vulnerability-management">4.2 Vulnerability Management</h3><p>Airwallex's invite-only Bug Bounty Program rewards ethical hackers for identifying vulnerabilities, complemented by quarterly penetration tests from firms like NCC Group. The company maintains a mean time to patch of 4.3 hours for critical vulnerabilities.</p><h3 id="43-secure-development-lifecycle">4.3 Secure Development Lifecycle</h3><p>All code undergoes static/dynamic analysis and manual review before deployment. The CI/CD pipeline includes automated security testing, with containerized microservices reducing attack surface areas.</p><h2 id="5-operational-security-controls">5. Operational Security Controls</h2><h3 id="51-247-monitoring">5.1 24/7 Monitoring</h3><p>A global security operations center (SOC) analyzes 2.7 million security events daily using SIEM integration with Splunk and Sumo Logic. The team maintains a 15-second response SLA for critical alerts.</p><h3 id="52-employee-security">5.2 Employee Security</h3><p>All staff complete quarterly security training with phishing simulation tests achieving 97% detection rates. Access to production systems requires Just-In-Time provisioning and hardware security keys.</p><h3 id="53-business-continuity">5.3 Business Continuity</h3><p>Airwallex's infrastructure spans 23 availability zones across AWS and Google Cloud, enabling automatic failover with RPO/RTO metrics of &lt;5 minutes. Disaster recovery drills occur bi-annually with full transaction replay testing.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHx0cmFpbmluZ3xlbnwwfHx8fDE3NDYzMjU1MDV8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" class="kg-image" alt="woman reading book" loading="lazy" width="5184" height="3456" srcset="https://images.unsplash.com/photo-1529070538774-1843cb3265df?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHx0cmFpbmluZ3xlbnwwfHx8fDE3NDYzMjU1MDV8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=600 600w, https://images.unsplash.com/photo-1529070538774-1843cb3265df?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHx0cmFpbmluZ3xlbnwwfHx8fDE3NDYzMjU1MDV8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1000 1000w, https://images.unsplash.com/photo-1529070538774-1843cb3265df?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHx0cmFpbmluZ3xlbnwwfHx8fDE3NDYzMjU1MDV8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1600 1600w, https://images.unsplash.com/photo-1529070538774-1843cb3265df?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHx0cmFpbmluZ3xlbnwwfHx8fDE3NDYzMjU1MDV8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2400 2400w" sizes="(min-width: 1200px) 1200px"><figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@sincerelymedia?ref=localhost"><span style="white-space: pre-wrap;">Sincerely Media</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption></figure><h2 id="6-financial-safeguards">6. Financial Safeguards</h2><h3 id="61-fund-protection">6.1 Fund Protection</h3><p>Partner banks provide FDIC insurance eligibility up to $250,000 per qualified account in the US. Airwallex maintains excess deposit insurance through Lloyd's of London for enterprise clients.</p><h3 id="62-transaction-verification">6.2 Transaction Verification</h3><p>The platform employs multi-signature approval workflows for high-value transactions, requiring consensus from geographically distributed authorization nodes.</p><h2 id="7-conclusion">7 Conclusion</h2><p>Through this comprehensive security framework, Airwallex establishes trust with businesses operating in 150+ countries, processing over $50 billion annually while maintaining zero material security breaches since inception. The company's proactive approach positions it as a leader in financial infrastructure security, continually adapting to emerging cyber threats in the global payments landscape.</p>
+        </div>
+
+        <div class="pagination-container gh-canvas">
+        <nav class="pagination">
+
+            <div class="pagination-left">
+                    <a class="newer-posts" href="../case-study-airwallex/index.html">
+                        <span class="pagination-label">Previous</span>
+                        Payment Service Provider Case Study: Airwallex - Part 1
+                    </a>
+            </div>
+
+            <div class="pagination-right">
+            </div>
+
+        </nav>
+        </div>
+
+
+    </article>
+
+
+</main>
+    </div>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <div class="gh-copyright">
+                Spacecraft © 2025
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
+    <li class="nav-sign-up"><a href="index.html#/portal/">Sign up</a></li>
+</ul>
+
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="../assets/built/main.min.js%3Fv=077dc313fa"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
+
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+
+        orderedList: false,
+    });
+</script>
+
+
+<!-- Code highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!--   Scroll Top Button  -->
+<script>
+const scrollTopBtn = document.querySelector('.js-scroll-top');
+if (scrollTopBtn) {
+  scrollTopBtn.onclick = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  
+  const progressPath = document.querySelector('.scroll-top path');
+  const pathLength = progressPath.getTotalLength();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+  progressPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+  progressPath.style.strokeDashoffset = pathLength;
+  progressPath.getBoundingClientRect();
+  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';		
+  const updateProgress = function() {
+    const scroll = window.scrollY || window.scrollTopBtn || document.documentElement.scrollTopBtn;
+
+    const docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+    const height = docHeight - windowHeight;
+    var progress = pathLength - (scroll * pathLength / height);
+    progressPath.style.strokeDashoffset = progress;
+  }
+
+  updateProgress();
+  const offset = 100;
+
+  window.addEventListener('scroll', function(event) {
+    updateProgress();
+
+    //Scroll back to top
+    const scrollPos = window.scrollY || window.scrollTopBtn || document.getElementsByTagName('html')[0].scrollTopBtn;
+    scrollPos > offset ? scrollTopBtn.classList.add('is-active') : scrollTopBtn.classList.remove('is-active');
+
+  }, false);
+}
+</script>
+
+</body>
+</html>
